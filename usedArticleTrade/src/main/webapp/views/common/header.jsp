@@ -19,6 +19,7 @@
     .top{ 
         width: 1151px;
         height: 62px;
+        background-color: #EEEEEE;
     }
     #categoryBtn{
         width: 37px;
@@ -33,9 +34,9 @@
 </head>
 
 <body>
-    <div class="top">
-        <img src="resources/image/categoryBtn.png" alt="categoryBtn" id="categoryBtn">
-        <img src="resources/image/logo.png" alt="logo" id="logo">
+    <div class="top" align="center">
+        <img src="../../WEB-INF/resources/image/categoryBtn.png" alt="categoryBtn" id="categoryBtn">
+        <img src="../../WEB-INF/resources/image/logo.png" alt="logo" id="logo">
         <div id="searchBar">
 
         </div>
