@@ -587,7 +587,5 @@
         </div>
     </section>
     <%@ include file="views/common/footer.jsp" %>
-
-    aaa
 </body>
 </html>
