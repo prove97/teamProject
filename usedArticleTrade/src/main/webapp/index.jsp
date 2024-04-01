@@ -128,7 +128,6 @@
                 <div class="thumnail">
                     <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
                 </div>
-
                 <div class="thumnail-info">
                     <div class="name-heart">
                         <div class="name">
