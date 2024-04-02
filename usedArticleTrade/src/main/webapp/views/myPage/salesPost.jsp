@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.util.Random, java.lang.Math"%>
+<%
+    Random random = new Random();
+    int commentsCount = Math.abs(random.nextInt() % 30);
+%>
 <!DOCTYPE html>
 <html>
 
@@ -154,14 +159,61 @@
 
         /* 메인창 */
         #main {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             width: 900px;
             height: 965px;
             background: #D6EFE3;
-            position: relative;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        #innerMain{
+            width: 846px;
+            height: 876px;
+            background-color: white;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #menuName{
+            width: 90%;
+            height: 120px;
+
+            text-align: left;
+            line-height: 150px;
+
+            padding-left: 20px;
+
+            font-size: 40px;
+        }
+        #border-radius *{
+            font-size: 20px;
+        }
+
+        #border-radius{
+            width: 90%;
+            height: 90%;
+        }
+
+        #border-radius tr{
+            height: 60px;
+        }
+
+        #border-radius th{
+            margin: auto;
+            text-align: center;
+
+            border-top: 2px solid black;
+        }
+
+        #border-radius td{
+            text-align: center;
+            border-top: 0.1px solid rgb(187, 187, 187);
+            border-bottom: 0.1px solid rgb(187, 187, 187);
         }
 
         
@@ -173,7 +225,7 @@
     <section id="mainSection">
         <div id="aside">
             <div id="profile">
-                <div id="profileImage"><a href="#">프로필사진 변경</a></div>
+                <div id="profileImage"><a href="#"></a></div>
                 <div id="nickname">
                     user01
                 </div>
@@ -185,7 +237,7 @@
                 </div>
             </div>
             <div id="menubar">
-                <a href="#" class="nonStyle"><strong>내정보</strong></a>
+                <a href="profile.jsp" class="nonStyle"><strong>내정보</strong></a>
                 <ul>
                     <strong>나의 활동</strong>
                     <li><a href="salesPost.jsp" class="nonStyle">나의 판매글</a></li>
@@ -202,6 +254,31 @@
         </div>
 
         <div id="main">
+            <div id="innerMain">
+                <div id="menuName">나의 판매글</div>
+                <div id="border-radius">
+                    <table align="center">
+                        <tr>
+                            <th width="80px">글번호</th>
+                            <th width="450px">제목</th>
+                            <th width="80px">조회수</th>
+                            <th width="150px">작성일</th>
+                        </tr>
+                        <%for(int i=1; i<=10; i++) {%>
+                        <tr>
+                            <td><%=i %></td>
+                            <td>VGA RTX4090 팝니다 (<%=commentsCount%>)</td>
+                            <td>5</td>
+                            <td>2024.03.22</td>
+                        </tr>
+                        <%} %>
+
+                    </table>
+                </div>
+                
+                
+            </div>
+            
         </div>
     </section>
     <%@ include file="/views/common/footer.jsp" %>            

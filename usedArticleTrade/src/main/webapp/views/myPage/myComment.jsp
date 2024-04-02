@@ -154,15 +154,77 @@
 
         /* 메인창 */
         #main {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             width: 900px;
             height: 965px;
             background: #D6EFE3;
-            position: relative;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
         }
+
+        #innerMain{
+            width: 846px;
+            height: 876px;
+            background-color: white;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #menuName{
+            width: 90%;
+            height: 120px;
+
+            text-align: left;
+            line-height: 150px;
+
+            padding-left: 20px;
+
+            font-size: 40px;
+        }
+
+        #border-radius{
+            width: 90%;
+            height: 90%;
+        }
+
+        #border-radius th{
+            font-size: 20px;
+            text-align: center;
+
+            border-top: 2px solid black;
+        }
+
+        .firstTd{
+            border-top: 0.1px solid rgb(187, 187, 187);
+        }
+        
+        .secondTd{
+            border-bottom: 0.1px solid rgb(187, 187, 187);
+            height: 40px;
+
+        }
+        .comments{
+            font-size: 20px;
+            text-align: left;
+            padding-left: 20px;
+            height: 60px;
+
+        }
+        
+        .boards{
+            font-size: 15px; 
+            color: #b3b3b3;           
+            text-align: left;   
+            padding-left: 20px;
+            height: 40px;
+
+        }
+
+
 
         
     </style>
@@ -173,7 +235,7 @@
     <section id="mainSection">
         <div id="aside">
             <div id="profile">
-                <div id="profileImage"><a href="#">프로필사진 변경</a></div>
+                <div id="profileImage"><a href="#"></a></div>
                 <div id="nickname">
                     user01
                 </div>
@@ -185,7 +247,7 @@
                 </div>
             </div>
             <div id="menubar">
-                <a href="#" class="nonStyle"><strong>내정보</strong></a>
+                <a href="profile.jsp" class="nonStyle"><strong>내정보</strong></a>
                 <ul>
                     <strong>나의 활동</strong>
                     <li><a href="salesPost.jsp" class="nonStyle">나의 판매글</a></li>
@@ -202,6 +264,30 @@
         </div>
 
         <div id="main">
+            <div id="innerMain">
+                <div id="menuName">나의 댓글</div>
+                <div id="border-radius">
+                    <table align="center">
+                        <tr height="50px">
+                            <th width="560px">제목</th>
+                            <th width="200px">작성일</th>
+                        </tr>
+                        <%for(int i=0; i<6; i++) {%>
+                        <tr class="firstTd">
+                            <td class="comments">퇴근 후 7시에 가능합니다.</td>
+                            <td rowspan="2" align="center">2024.03.04</td>
+                        </tr>
+                        <tr class="secondTd">
+                            <td class="boards">게시글: 에어팟 맥스 팝니다.</td>
+                        </tr>
+                        <%} %>
+
+                    </table>
+                </div>
+                
+                
+            </div>
+            
         </div>
     </section>
     <%@ include file="/views/common/footer.jsp" %>            
