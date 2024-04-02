@@ -22,43 +22,36 @@
 
     <style>
         body{
+            height: 1400px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
+
         }
 
         .top{ 
-            position: fixed;
             z-index: 1;
-            margin-left: 20px;
+                       
         }
-
+            
         .footer{
-            width: 1151px;
-            height: 120px;
-            margin: 0 auto;
-            bottom: 0px;
-            height: 10rem;
-            background: white;
-
-        }
-
-        section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            margin: auto;
-            margin-top: 72px;
-            padding-top: 10px;
+            
         }
 
         #mainSection {
             height: 960px;
             width: 1151px;
+            
             display: flex;
             flex-direction: row;
+            align-items: center;
             justify-content: space-between;
+
+            margin: auto;
+            margin-top: 72px;
+            padding-top: 10px;
+
         }
 
         input {
@@ -163,6 +156,7 @@
         #main>form {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
             width: 900px;
             height: 965px;
@@ -212,7 +206,21 @@
             align-items: center;
         }
 
+        /* 중복체크 버튼 */
+        #duplicationCheckBtn {
+            background: #CCCCCC;
+            border: none;
+            border-radius: 6px;
 
+            height: 30px;
+
+            position: absolute;
+            right: 70px;
+            bottom: 40px;
+
+        }
+
+        /* 성별 체크 */
         #genderInput input {
             display: none;
         }
@@ -231,17 +239,7 @@
         }
 
         #genderInput input:checked+label {
-            background-color:
-                #70C9A0;
-
-        }
-
-        button {
-            background: #CCCCCC;
-            border: none;
-            border-radius: 6px;
-
-            height: 30px;
+            background-color: #70C9A0;
 
         }
 
@@ -249,11 +247,15 @@
             width: 80px;
             height: 50px;
 
+            background: #CCCCCC;
+            border: none;
+            border-radius: 6px;
+
             font-size: large;
 
             text-align: center;
             position: absolute;
-            bottom: 70px;
+            bottom: 20px;
             right: 70px;
         }
     </style>
@@ -338,14 +340,14 @@
                                 <td></td>
                                 <td><input type="text" value="010-0000-0000" name="phone" class="userInfo" readonly></td>
                             </tr>
-                            <tr>
-                                <th>닉네임</th>                                    
+                            <tr style="position: relative;">
+                                <th>닉네임</th>    
+                                <td></td>                                
                                 <td>
                                     <input type="text" value="user01" name="nickname">
-                                </td>
-                                <td>
-                                    <button type="button">중복확인</button>
-                                </td>
+                                </td>                                
+                                <button type="button" id="duplicationCheckBtn">중복확인</button>
+                                
                             </tr>
                         </table>
                     </div>
@@ -403,9 +405,10 @@
                 </div>
                 <button type="submit">저장</button>
             </form>
-        </div>            
+        </div>
     </section>
-    <%@ include file="/views/common/footer.jsp" %>
+    <%@ include file="/views/common/footer.jsp" %>            
+    
         <script>
             var cat1_num = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
             var cat1_name = new Array('서울', '부산', '대구', '인천', '광주', '대전', '울산', '강원', '경기', '경남', '경북', '전남', '전북', '제주', '충남', '충북');
