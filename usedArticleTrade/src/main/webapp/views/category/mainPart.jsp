@@ -90,12 +90,12 @@
             height: 1080px;
             border: 1px solid #70C9A0;
             display: block;
-            position: absolute;
+            position: fixed;
             background-color: #ffffff;
             color: black;
             top: 0;
             /* 2차 메뉴의 상단을 1차 메뉴의 상단에 고정 */
-           	left:200px;
+           	left:100%;
            
             /* 2차 메뉴를 1차 메뉴의 너비만큼 이동 */
             width: 100%;
