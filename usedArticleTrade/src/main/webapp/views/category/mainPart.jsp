@@ -5,10 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- Latest compiled and minified CSS -->
+=======
+<!-- Latest compiled and minified CSS -->
+>>>>>>> 2d68274ad24af4b87feefd1ce606a57ac12e1973
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
     <!-- jQuery library -->
@@ -141,10 +145,14 @@
 </head>
 <body>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> c1bebf4bf65a50cc595450ccd7ad868b1e4af42e
     <aside class="side-bar">
+=======
+<aside class="side-bar">
+>>>>>>> 2d68274ad24af4b87feefd1ce606a57ac12e1973
         <!-- <section class="side-bar__icon-box">
           <section class="side-bar__icon-1">
             <div></div>
@@ -230,5 +238,9 @@
             </li>
         </ul>
     </aside>
+<<<<<<< HEAD
+=======
+</body>
+>>>>>>> 2d68274ad24af4b87feefd1ce606a57ac12e1973
 </body>
 </html>
