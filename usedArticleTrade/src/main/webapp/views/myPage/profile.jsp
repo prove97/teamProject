@@ -220,8 +220,12 @@
 
             position: absolute;
             right: 70px;
-            bottom: 485px;
+            bottom: 470px;
 
+        }
+
+        .userInfo{
+            width: 200px;
         }
 
         /* 성별 체크 */
@@ -249,7 +253,7 @@
 
         button[type=submit] {
             width: 80px;
-            height: 50px;
+            height: 40px;
 
             background: #CCCCCC;
             border: none;
@@ -259,7 +263,7 @@
 
             text-align: center;
             position: absolute;
-            bottom: 20px;
+            bottom: 15px;
             right: 70px;
         }
     </style>
@@ -324,9 +328,9 @@
                                         const result = document.getElementsByClassName('warning');
 
 
-                                        if(!reg.test(newPwd)){
-                                            result[0].
-                                        }
+                                        //if(!reg.test(newPwd)){
+                                            //result[0].
+                                        //}
                                     }">
                                     <div class="warning">비밀번호는 영어, 숫자, 특수기호 포함 8자 이상이어야 합니다.</div>
                                 </td>
@@ -348,7 +352,7 @@
                                 <th>닉네임</th>    
                                 <td></td>                                
                                 <td>
-                                    <input type="text" value="user01" name="nickname">
+                                    <input type="text" value="user01" class="userInfo" name="nickname">
                                 </td>                                
                                 <button type="button" id="duplicationCheckBtn">중복확인</button>
                                 

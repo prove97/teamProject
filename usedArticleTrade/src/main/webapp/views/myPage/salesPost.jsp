@@ -255,7 +255,15 @@
 
         <div id="main">
             <div id="innerMain">
-                <div id="menuName">나의 판매글</div>
+                <div id="menuName">나의 판매글
+                    <select name="ddd" id="" >
+                        <option value="" selected>전체</option>
+                        <option value="">거래전</option>
+                        <option value="">거래완료</option>
+                    </select>
+
+                
+                </div>
                 <div id="border-radius">
                     <table align="center">
                         <tr>
