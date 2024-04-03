@@ -192,12 +192,14 @@
         }
 
         #menuName>select{
-            width: 100px;
+            width: 120px;
             height: 40px;
 
-            font-size: 20px;
+            font-size: 18px;
 
             margin-left: 20px;
+
+            padding-left: 10px;
         }
 
         #board-table *{
@@ -218,6 +220,8 @@
             text-align: center;
 
             border-top: 2px solid black;
+            font-size: 18px;
+
         }
 
         #board-table td{
@@ -231,6 +235,11 @@
             padding-left: 20px;
         }
 
+        .title>span{
+            font-weight: 600;
+            color: rgb(145, 145, 145);
+        }
+
         /* 페이지 선택 */
         #pageSelect{
             height: 90px;
@@ -240,9 +249,11 @@
         }
 
         #pageSelect>button{
+            width: 45px;
             height: 30px;
             background: white;
             border: 1px solid rgb(211, 211, 211);
+
         }
 
         
@@ -287,8 +298,8 @@
                 <div id="menuName">나의 판매글
                     <select name="tradeStatus" id="" >
                         <option value="" selected>전체</option>
-                        <option value="">거래전</option>
-                        <option value="">거래완료</option>
+                        <option value="">판매중</option>
+                        <option value="">판매완료</option>
                     </select>
 
                 
@@ -304,7 +315,7 @@
                         <%for(int i=1; i<=10; i++) {%>
                         <tr>
                             <td><%=i %></td>
-                            <td class="title">VGA RTX4090 팝니다 (<%=commentsCount%>)</td>
+                            <td class="title">VGA RTX4090 팝니다 <span>(<%=commentsCount%>)</span></td>
                             <td>5</td>
                             <td>2024.03.22</td>
                         </tr>
@@ -313,7 +324,9 @@
                     </table>
                     <div id="pageSelect" align="center">
                         <button onclick="location.href='#'">&lt;</button>
-                        <button onclick="location.href='#'">1</button>
+                        <% for(int i = 1; i <= 10; i++) { %>
+                            <button onclick="location.href='#'"><%= i %></button>
+                        <% } %>
                         <button onclick="location.href='#'">&gt;</button>
                     </div>
                 </div>

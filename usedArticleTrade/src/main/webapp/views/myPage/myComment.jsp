@@ -192,10 +192,11 @@
         }
 
         #board-table th{
-            font-size: 20px;
+            font-size: 18px;
             text-align: center;
 
             border-top: 2px solid black;
+            height: 50px;
         }
 
         .firstTd{
@@ -211,8 +212,7 @@
             font-size: 20px;
             text-align: left;
             padding-left: 20px;
-            height: 60px;
-
+            height: 61.7px;
         }
         
         .boards{
@@ -227,7 +227,16 @@
         /* 페이지 선택 */
         #pageSelect{
             height: 90px;
-            line-height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #pageSelect>button{
+            width: 45px;
+            height: 30px;
+            background: white;
+            border: 1px solid rgb(211, 211, 211);
         }
 
 
@@ -290,7 +299,11 @@
 
                     </table>
                     <div id="pageSelect" align="center">
-                        페이지 정렬
+                        <button onclick="location.href='#'">&lt;</button>
+                        <% for(int i = 1; i <= 10; i++) { %>
+                            <button onclick="location.href='#'"><%= i %></button>
+                        <% } %>
+                        <button onclick="location.href='#'">&gt;</button>
                     </div>
                 </div>
                 

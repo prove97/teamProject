@@ -189,6 +189,12 @@
             text-align: left;
         }
 
+        .passwordTd{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
         .warning{
             display: none;
             font-weight: bold;
@@ -312,45 +318,28 @@
                         <table align="center">
                             <tr>
                                 <th>아이디</th>
-                                <td></td>
-                                <td><input type="text" value="아이디" name="userId" class="userInfo" readonly></td>
+                                <td><input type="text" value="admin1234" name="userId" class="userInfo" readonly></td>
                             </tr>
                             <tr>
                                 <th>비밀번호</th>
-                                <td></td>
-                                <td>
-                                    <input type="password" name="userPwd" class="userInfo" oninput="function(){
-                                        let newPwd = document.getElementById('pwd').value;
-                                        let pwdCheck = document.getElementById('checkPwd').value;
-                                        const 
-                                        const reg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
-                                        
-                                        const result = document.getElementsByClassName('warning');
-
-
-                                        //if(!reg.test(newPwd)){
-                                            //result[0].
-                                        //}
-                                    }">
+                                <td class="passwordTd">
+                                    <input type="password" name="userPwd" id="pwd" class="userInfo" oninput="combinePwd();">
                                     <div class="warning">비밀번호는 영어, 숫자, 특수기호 포함 8자 이상이어야 합니다.</div>
                                 </td>
                             </tr>
                             <tr>
                                 <th>비밀번호 확인</th>
-                                <td></td>
-                                <td>
-                                    <input type="password" name="checkPwd" class="userInfo">
+                                <td class="passwordTd">
+                                    <input type="password" name="checkUserPwd" id="checkPwd" class="userInfo" oninput="differPwd();">
                                     <div class="warning">비밀번호가 일치하지 않습니다.</div>                                        
                                 </td>
                             </tr>
                             <tr>
                                 <th>휴대폰 번호</th>
-                                <td></td>
                                 <td><input type="text" value="010-0000-0000" name="phone" class="userInfo" readonly></td>
                             </tr>
                             <tr style="position: relative;">
                                 <th>닉네임</th>    
-                                <td></td>                                
                                 <td>
                                     <input type="text" value="user01" class="userInfo" name="nickname">
                                 </td>                                
@@ -358,6 +347,46 @@
                                 
                             </tr>
                         </table>
+                        <script>
+                            function combinePwd(){
+                                let newPwd = document.getElementById('pwd');
+                                let checkPwd = document.getElementById('checkPwd');
+                                let warning = document.getElementsByClassName('warning')[0];
+                                const reg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
+                                console.log(newPwd.value);
+                                console.log(reg.test(newPwd.value));
+
+                                if(reg.test(newPwd) || newPwd.value === ""){ //비밀번호의 조합조건이 맞거나 빈칸일 경우
+                                    warning.style.display = 'none';
+                                    newPwd.style.border = '0px';
+                                    newPwd.style.borderBottom = '1px solid black';
+                                    newPwd.style.borderRadius = '0px';
+                                } else{
+                                    newPwd.style.border = 'red solid';
+                                    newPwd.style.borderRadius = '5px';
+                                    warning.style.display = 'block';
+                                }
+                            }
+
+                            function differPwd(){
+                                let newPwd = document.getElementById('pwd');
+                                let checkPwd = document.getElementById('checkPwd');
+                                let warning = document.getElementsByClassName('warning')[1];
+
+                                if(newPwd.value === checkPwd.value || checkPwd.value === ""){ //비밀번호가 일치하거나 빈칸일 경우
+                                    warning.style.display = 'none';
+                                    checkPwd.style.border = '0px';
+                                    checkPwd.style.borderBottom = '1px solid black';
+                                    checkPwd.style.borderRadius = '0px';
+                                    
+                                } else{
+                                    checkPwd.style.border = 'red solid';
+                                    checkPwd.style.borderRadius = '5px';
+                                    warning.style.display = 'block';
+                                }
+
+                            }
+                        </script>
                     </div>
                 </div>
                 <div id="nonNecessaryInfo">
