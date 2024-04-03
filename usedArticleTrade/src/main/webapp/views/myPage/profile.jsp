@@ -164,6 +164,10 @@
             position: relative;
         }
 
+        div>h2{
+            margin-bottom: 20px;
+        }
+
         #main>form>div {
             width: 800px;
         }
@@ -216,7 +220,7 @@
 
             position: absolute;
             right: 70px;
-            bottom: 40px;
+            bottom: 485px;
 
         }
 
@@ -266,7 +270,7 @@
     <section id="mainSection">
         <div id="aside">
             <div id="profile">
-                <div id="profileImage"><a href="#">프로필사진 변경</a></div>
+                <div id="profileImage"><a href="#"></a></div>
                 <div id="nickname">
                     user01
                 </div>
@@ -278,7 +282,7 @@
                 </div>
             </div>
             <div id="menubar">
-                <a href="#" class="nonStyle"><strong>내정보</strong></a>
+                <a href="profile.jsp" class="nonStyle"><strong>내정보</strong></a>
                 <ul>
                     <strong>나의 활동</strong>
                     <li><a href="salesPost.jsp" class="nonStyle">나의 판매글</a></li>
