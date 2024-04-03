@@ -140,6 +140,10 @@
     </style>
 </head>
 <body>
+<<<<<<< HEAD
+=======
+
+>>>>>>> c1bebf4bf65a50cc595450ccd7ad868b1e4af42e
     <aside class="side-bar">
         <!-- <section class="side-bar__icon-box">
           <section class="side-bar__icon-1">
