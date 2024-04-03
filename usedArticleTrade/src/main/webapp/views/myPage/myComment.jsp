@@ -183,7 +183,7 @@
 
             padding-left: 20px;
 
-            font-size: 40px;
+            font-size: 30px;
         }
 
         #border-radius{
