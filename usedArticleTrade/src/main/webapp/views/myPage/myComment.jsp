@@ -186,12 +186,12 @@
             font-size: 30px;
         }
 
-        #border-radius{
+        #board-table{
             width: 90%;
             height: 90%;
         }
 
-        #border-radius th{
+        #board-table th{
             font-size: 20px;
             text-align: center;
 
@@ -222,6 +222,12 @@
             padding-left: 20px;
             height: 40px;
 
+        }
+
+        /* 페이지 선택 */
+        #pageSelect{
+            height: 90px;
+            line-height: 90px;
         }
 
 
@@ -266,7 +272,7 @@
         <div id="main">
             <div id="innerMain">
                 <div id="menuName">나의 댓글</div>
-                <div id="border-radius">
+                <div id="board-table">
                     <table align="center">
                         <tr height="50px">
                             <th width="560px">제목</th>
@@ -283,8 +289,10 @@
                         <%} %>
 
                     </table>
+                    <div id="pageSelect" align="center">
+                        페이지 정렬
+                    </div>
                 </div>
-                
                 
             </div>
             

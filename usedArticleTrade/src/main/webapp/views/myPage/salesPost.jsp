@@ -190,30 +190,59 @@
 
             font-size: 30px;
         }
-        #border-radius *{
+
+        #menuName>select{
+            width: 100px;
+            height: 40px;
+
             font-size: 20px;
+
+            margin-left: 20px;
         }
 
-        #border-radius{
+        #board-table *{
+            font-size: 15px;
+        }
+
+        #board-table{
             width: 90%;
             height: 90%;
         }
 
-        #border-radius tr{
+        #board-table tr{
             height: 60px;
         }
 
-        #border-radius th{
+        #board-table th{
             margin: auto;
             text-align: center;
 
             border-top: 2px solid black;
         }
 
-        #border-radius td{
+        #board-table td{
             text-align: center;
             border-top: 0.1px solid rgb(187, 187, 187);
             border-bottom: 0.1px solid rgb(187, 187, 187);
+        }
+
+        .title{
+            text-align-last: left;
+            padding-left: 20px;
+        }
+
+        /* 페이지 선택 */
+        #pageSelect{
+            height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #pageSelect>button{
+            height: 30px;
+            background: white;
+            border: 1px solid rgb(211, 211, 211);
         }
 
         
@@ -256,7 +285,7 @@
         <div id="main">
             <div id="innerMain">
                 <div id="menuName">나의 판매글
-                    <select name="ddd" id="" >
+                    <select name="tradeStatus" id="" >
                         <option value="" selected>전체</option>
                         <option value="">거래전</option>
                         <option value="">거래완료</option>
@@ -264,7 +293,7 @@
 
                 
                 </div>
-                <div id="border-radius">
+                <div id="board-table">
                     <table align="center">
                         <tr>
                             <th width="80px">글번호</th>
@@ -275,16 +304,19 @@
                         <%for(int i=1; i<=10; i++) {%>
                         <tr>
                             <td><%=i %></td>
-                            <td>VGA RTX4090 팝니다 (<%=commentsCount%>)</td>
+                            <td class="title">VGA RTX4090 팝니다 (<%=commentsCount%>)</td>
                             <td>5</td>
                             <td>2024.03.22</td>
                         </tr>
                         <%} %>
 
                     </table>
+                    <div id="pageSelect" align="center">
+                        <button onclick="location.href='#'">&lt;</button>
+                        <button onclick="location.href='#'">1</button>
+                        <button onclick="location.href='#'">&gt;</button>
+                    </div>
                 </div>
-                
-                
             </div>
             
         </div>
