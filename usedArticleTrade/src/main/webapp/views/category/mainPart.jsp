@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
     <!-- jQuery library -->
@@ -137,6 +136,7 @@
     </style>
 </head>
 <body>
+
 <aside class="side-bar">
         <!-- <section class="side-bar__icon-box">
           <section class="side-bar__icon-1">
@@ -223,6 +223,5 @@
             </li>
         </ul>
     </aside>
-</body>
 </body>
 </html>
