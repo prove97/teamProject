@@ -60,7 +60,7 @@
         position: absolute;
         border: 1px solid black;
         top: 14px;
-        left: 74px;
+        left: 71px;
         width: 175px;
         background-color: white;
     }
@@ -69,7 +69,7 @@
         position: absolute;
         border: 1px solid black;
         top: 14px;
-        left: 279px;
+        left: 276px;
         width: 175px;
         background-color: white;
     }
@@ -209,7 +209,7 @@
     }
     #opt1 > b, #opt2 > b{
         text-decoration: none;
-        color: gray;
+        color: darkgray;
         vertical-align: middle;
     }
     #opt1 > b{
@@ -229,8 +229,6 @@
         position: absolute;
         left: 370px;
         top: -10px;
-        /* align-items: start;
-        justify-content: center; */
         color: gray;
         font-size: 20px;
     }
@@ -366,7 +364,7 @@
         
         <div class="main_part">
             <div>
-                <img src="/resource/airpod.jpeg" alt="" id="airpod">
+                <img src="${pageContext.request.contextPath}/img/airpod.jpeg" alt="" id="airpod">
             </div>
             <div>
                 <div><h2>에어팟 맥스</h2></div>
@@ -389,7 +387,7 @@
         <div class="seller_part">
             <div class="seller_part">
                 <div>
-                    <img src="/resource/seller.jpeg" alt="" id="seller">
+                    <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" id="seller">
                 </div>
                 <div>
                     <p>판매자아이디</p>
@@ -457,7 +455,7 @@
                 <p class="purchase_method">[직거래 신청]</p>
                 <p class="time_of_writing1">2024.03.27 16:08</p>
                 <div class="buyer">
-                    <img src="/resource/seller.jpeg" alt="" class="buyer_pic">
+                    <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" class="buyer_pic">
                     <p class="buyer_name">구매자 닉네임</p>
                     <div class="score_bar2">
                         <div id="colored_score1"></div>
@@ -472,7 +470,7 @@
                 <p class="purchase_method">[택배거래 신청]</p>
                 <p class="time_of_writing1">2024.03.27 16:31</p>
                 <div class="buyer">
-                    <img src="/resource/seller.jpeg" alt="" class="buyer_pic">
+                    <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" class="buyer_pic">
                     <p class="buyer_name">구매자 닉네임</p>
                     <div class="score_bar2">
                         <div id="colored_score2"></div>
@@ -486,7 +484,7 @@
         </div>
         <div class="comment" id="comment_banner_menu2">
             <div class="buyer" style="margin-bottom: 20px;">
-                <img src="/resource/seller.jpeg" alt="" class="buyer_pic">
+                <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" class="buyer_pic">
                 <p class="buyer_name">구매자 닉네임</p>
                 <div class="score_bar2">
                     <div id="colored_score1"></div>
@@ -502,19 +500,19 @@
             </div>
             <div class="reply">
                 <p>↳</p>
-                <img src="/resource/seller.jpeg" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin: 0px 5px;">
+                <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin: 0px 5px;">
                 <p class="comment_reply">아직 판매중입니다!</p>
                 <p class="time_of_writing3">2024.03.27 16:09:02</p>
             </div>
             <div class="reply">
                 <p>↳</p>
-                <img src="/resource/seller.jpeg" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin: 0px 5px;">
+                <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin: 0px 5px;">
                 <p class="comment_reply">사용 기간이 어떻게 되나요?</p>
                 <p class="time_of_writing3">2024.03.27 16:11:26</p>
             </div>
             <div class="reply">
                 <p>↳</p>
-                <img src="/resource/seller.jpeg" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin: 0px 5px;">
+                <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin: 0px 5px;">
                 <p class="comment_reply">1주일 사용했습니다.</p>
                 <p class="time_of_writing3">2024.03.27 16:15:17</p>
             </div>
