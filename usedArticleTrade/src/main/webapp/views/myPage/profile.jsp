@@ -435,7 +435,7 @@
                             <tr>
                                 <th>지역</th>
                                 <td colspan="3">
-                                    <select name="h_area1" onChange="cat1_change(this.value,h_area2)" class="h_area1">
+                                    <select name="h_area1" onChange="location1_change(this.value, h_area2)" class="h_area1">
                                         <option>선택</option>
                                         <option value='1'>서울</option>
                                         <option value='2'>부산</option>
@@ -528,7 +528,7 @@
         location2_num[16] = [249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260];
         location2_name[16] = ['제천시', '청주시 상당구', '청주시 흥덕구', '충주시', '괴산군', '단양군', '보은군', '영동군', '옥천군', '음성군', '진천군', '청원군'];
 
-        function cat1_change(key, sel) {
+        function location1_change(key, sel) {
             if (key == '') return;
             let name = location2_name[key];
             let val = location2_num[key];
@@ -537,6 +537,7 @@
                 sel.options[i] = null;
             }
             sel.options[0] = new Option('-선택-', '', '', 'true');
+            
             for (i = 0; i < name.length; i++) {
                 sel.options[i + 1] = new Option(name[i], val[i]);
             }
