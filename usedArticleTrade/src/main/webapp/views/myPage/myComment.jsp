@@ -142,6 +142,10 @@
             list-style: none;
         }
 
+        #menubar a{
+            color: inherit;        
+        }
+
         .nonStyle {
             color: black;
             text-decoration: none;
@@ -162,6 +166,8 @@
             justify-content: center;
             align-items: center;
 
+            border-radius: 15px;
+
         }
 
         #innerMain{
@@ -172,6 +178,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+
+            border-radius: 10px;
+
         }
 
         #menuName{
