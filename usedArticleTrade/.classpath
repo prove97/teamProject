@@ -19,6 +19,7 @@
 =======
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/java-1.8.0"/>
 	<classpathentry kind="output" path="bin"/>
 >>>>>>> 31f0e1857897e873e0997e2be23f89ce4dacd283
 </classpath>
