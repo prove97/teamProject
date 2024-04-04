@@ -17,7 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         /* 노멀라이즈 시작 */
-        body,ul,li {
+        ul,li {
             margin: 0;
             padding: 0;
             list-style: none;
@@ -199,8 +199,7 @@
                 <ul>
                     <div class="side-bar-min-head">
                         <strong>프린터·복합기·스캐너</strong>
-                        <br>
-                        <br>
+
                     </div>
                     <li><a href="#">· 잉크젯 프린터</a></li>
                     <li><a href="#">· 레이저 프린터</a></li>
@@ -209,17 +208,15 @@
                 </ul>
             </li>
             <li>
-                <a href="#">네트워크 공유기</a>
+                
                 <ul>
                     <div class="side-bar-min-head">
-                        <strong>네트워크 공유기</strong>
-                        <br>
-                        <br>
+                        <li><a href="#">· 공유기</a></li>
+	                    <li><a href="#">· 랜카드</a></li>
+	                    <li><a href="#">· 랜 케이블</a></li>
+	                    <li><a href="#">· 스위칭 허브</a></li>
                     </div>
-                    <li><a href="#">· 공유기</a></li>
-                    <li><a href="#">· 랜카드</a></li>
-                    <li><a href="#">· 랜 케이블</a></li>
-                    <li><a href="#">· 스위칭 허브</a></li>
+                    
                 </ul>
             </li>
         </ul>
