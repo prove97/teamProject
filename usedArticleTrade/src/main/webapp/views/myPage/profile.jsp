@@ -365,7 +365,7 @@
                                 <td>
                                     <input type="text" value="user01" class="necessaryInput" name="nickname">
                                 </td>                                
-                                <button type="button" id="duplicationCheckBtn" onclick="idCheck();">중복확인</button>
+                                <button type="button" id="duplicationCheckBtn" onclick="nicknameCheck();">중복확인</button>
                                 
                             </tr>
                         </table>
@@ -409,8 +409,20 @@
 
                             }
 
-                            function idCheck(){ //아이디 중복체크
+                            function nicknameCheck(){ //닉네임 중복체크
+                                const nicknameInput = document.querySelector("input[name=nickname]");
                                 
+                                $.ajax({
+                                    type: "GET",
+                                    url: "nicknameCheck.me",
+                                    data:{
+                                        checkNickname: nicknameInput.value
+                                    },
+                                    success: function(res){},
+                                    error: function(err){}
+                                })
+
+
                             }
                         </script>
                     </div>
@@ -454,7 +466,7 @@
                                         <option value='15'>충남</option>
                                         <option value='16'>충북</option>
                                     </select>
-                                    <b>시/도</b>
+                                    <b>도/시</b>
 
                                     <select name="h_area2">
                                         <option>선택</option>
@@ -528,7 +540,7 @@
         location2_num[15] = [249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260];
         location2_name[15] = ['제천시', '청주시 상당구', '청주시 흥덕구', '충주시', '괴산군', '단양군', '보은군', '영동군', '옥천군', '음성군', '진천군', '청원군'];
 
-        function location1_change(key, sel) {
+        function location1_change(key, sel) { //매개변수 1:도/시 선택시 설정한 숫자값(this.value) , 2:시/구/군 select요소(h_area2)
             if (key == '') return;
             let name = location2_name[key-1];
             let val = location2_num[key-1];
@@ -536,7 +548,7 @@
             for (i = sel.length - 1; i >= 0; i--){
                 sel.options[i] = null;
             }
-            sel.options[0] = new Option('-선택-', '', '', 'true');
+            sel.options[0] = new Option('-선택-', '', '', 'true'); //Option 객체(text, value, 기본선택옵션(boolean), 선택(boolean))
             for (i = 0; i < name.length; i++) {
                 sel.options[i + 1] = new Option(name[i], val[i]);
             }
