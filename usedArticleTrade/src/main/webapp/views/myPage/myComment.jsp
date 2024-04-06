@@ -142,6 +142,10 @@
             list-style: none;
         }
 
+        #menubar a{
+            color: inherit;        
+        }
+
         .nonStyle {
             color: black;
             text-decoration: none;
@@ -162,6 +166,8 @@
             justify-content: center;
             align-items: center;
 
+            border-radius: 15px;
+
         }
 
         #innerMain{
@@ -172,6 +178,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+
+            border-radius: 10px;
+
         }
 
         #menuName{
@@ -183,19 +192,20 @@
 
             padding-left: 20px;
 
-            font-size: 40px;
+            font-size: 30px;
         }
 
-        #border-radius{
+        #board-table{
             width: 90%;
             height: 90%;
         }
 
-        #border-radius th{
-            font-size: 20px;
+        #board-table th{
+            font-size: 18px;
             text-align: center;
 
             border-top: 2px solid black;
+            height: 50px;
         }
 
         .firstTd{
@@ -211,8 +221,7 @@
             font-size: 20px;
             text-align: left;
             padding-left: 20px;
-            height: 60px;
-
+            height: 61.7px;
         }
         
         .boards{
@@ -222,6 +231,21 @@
             padding-left: 20px;
             height: 40px;
 
+        }
+
+        /* 페이지 선택 */
+        #pageSelect{
+            height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #pageSelect>button{
+            width: 45px;
+            height: 30px;
+            background: white;
+            border: 1px solid rgb(211, 211, 211);
         }
 
 
@@ -266,7 +290,7 @@
         <div id="main">
             <div id="innerMain">
                 <div id="menuName">나의 댓글</div>
-                <div id="border-radius">
+                <div id="board-table">
                     <table align="center">
                         <tr height="50px">
                             <th width="560px">제목</th>
@@ -283,8 +307,14 @@
                         <%} %>
 
                     </table>
+                    <div id="pageSelect" align="center">
+                        <button onclick="location.href='#'">&lt;</button>
+                        <% for(int i = 1; i <= 10; i++) { %>
+                            <button onclick="location.href='#'"><%= i %></button>
+                        <% } %>
+                        <button onclick="location.href='#'">&gt;</button>
+                    </div>
                 </div>
-                
                 
             </div>
             

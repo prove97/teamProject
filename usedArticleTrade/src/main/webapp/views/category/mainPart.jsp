@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
     <!-- jQuery library -->
@@ -90,12 +89,13 @@
             height: 1080px;
             border: 1px solid #70C9A0;
             display: block;
-            position: absolute;
+            position: fixed;
             background-color: #ffffff;
             color: black;
             top: 0;
             /* 2차 메뉴의 상단을 1차 메뉴의 상단에 고정 */
-            left: 100%;
+           	left:100%;
+           
             /* 2차 메뉴를 1차 메뉴의 너비만큼 이동 */
             width: 100%;
             /* 1차 메뉴의 너비를 상속 */
@@ -137,6 +137,7 @@
     </style>
 </head>
 <body>
+
 <aside class="side-bar">
         <!-- <section class="side-bar__icon-box">
           <section class="side-bar__icon-1">
@@ -223,6 +224,5 @@
             </li>
         </ul>
     </aside>
-</body>
 </body>
 </html>
