@@ -22,12 +22,10 @@
 
     <style>
         body{
-            height: 1400px;
+            height: 1300px;
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
             position: relative;
-
         }
 
         .top{ 
@@ -235,8 +233,8 @@
             height: 30px;
 
             position: absolute;
-            right: 65px;
-            bottom: 470px;
+            right: -85px;
+            bottom: 25px;
 
         }
 
@@ -364,8 +362,8 @@
                                 <th>닉네임</th>    
                                 <td>
                                     <input type="text" value="user01" class="necessaryInput" name="nickname">
+                                    <button type="button" id="duplicationCheckBtn" onclick="nicknameCheck();">중복확인</button>
                                 </td>                                
-                                <button type="button" id="duplicationCheckBtn" onclick="nicknameCheck();">중복확인</button>
                                 
                             </tr>
                         </table>
