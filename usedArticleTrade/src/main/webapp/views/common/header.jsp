@@ -26,10 +26,11 @@
         margin: 0 auto;
         display: flex;
         align-items: center;
+        z-index: 1;
     }
 
     /*카테고리버튼*/
-    #categoryBtn{
+    .categoryBtn{
         width: 37px;
         height: 43px;
         background-image: url(${pageContext.request.contextPath}/img/categoryBtn.png);
@@ -39,7 +40,7 @@
     }
 
     /*피씨그린로고*/
-    #logo{
+    .logo{
         width: 72px;
         height: 45px;
         background-image: url(${pageContext.request.contextPath}/img/logo.png);
@@ -85,15 +86,17 @@
         font-size: 14px;
         font-style: none;
     }
+
 </style>
 </head>
 
 <body>
-	
+    
     <div class="top" >        
-        <button type="button"  id="categoryBtn"><!--<img src="${pageContext.request.contextPath}/img/categoryBtn.png" alt="aa" >--></button>
-        <button type="button" id="logo"></button>
-        
+        <button type="button"  class="categoryBtn" onclick="hoverCategoryBtn();"></button> 
+        <button type="button" class="logo"></button>
+ 
+
         <div id="searchBar">
             <form action="">
                 <input type="search" name="keyword" >
@@ -105,7 +108,7 @@
                 <a href=""><img src="${pageContext.request.contextPath}/img/userBtn.png" alt="">로그인/회원가입</a>
             </form>
         </div>
-
     </div>
+
 </body>
 </html>
