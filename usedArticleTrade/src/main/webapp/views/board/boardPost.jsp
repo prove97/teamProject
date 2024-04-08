@@ -130,6 +130,8 @@
 		padding-top: 30px;
 		padding-bottom: 30px;
 
+		margin-bottom: 200px;
+
 
 
 	}
@@ -256,7 +258,7 @@
 		list-style: none;
 	}
 
-	/**/
+	/*게시글 제목,작성일 폰트크기 수정*/
 	#userBoardList>#list a>.title{
 		font-size: 15px;
 	}
@@ -270,6 +272,10 @@
 		width: 1151px;
 		height: 150px;
 
+		background-image: url(${pageContext.request.contextPath}/img/banner.png);
+		background-repeat: no-repeat;
+		background-size: contain;
+
 		border: 1px solid black;
 		margin-top: 90px;
 		margin-bottom: 50px;
@@ -279,12 +285,123 @@
 	/*게시글 댓글 영역*/
 	.commentSection{
 		width: 1080px;
-		height: 100px;
+		height: auto;
+		
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		
+		margin-bottom: 150px;
+	}
 
-		margin-bottom: 50px;
+	.commentSection>span{
+		height: 35px;
+
+		font-size: 26px;
+		margin-bottom: 20px;
+
+		align-self: flex-start;
 
 	}
 
+	.commentSection>.commentSpace{
+		width: 100%;
+		height: auto;
+
+		display: flex;
+		justify-content: left;
+
+		margin: 10px;
+
+		position: relative;
+	}
+
+	.commentSection>.commentSpace>.img{
+		width: 50px;
+		height: 50px;
+
+		background: gray;
+
+		border-radius: 100%;
+	}
+
+	.commentSection>.commentSpace>.comment{
+		width: 60%;
+		height: auto;
+
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start ;
+
+		margin-left: 20px;
+	}
+
+	.commentSection>.commentSpace>.comment>#commentNickname{
+		font-weight: bold;
+		margin-bottom: 5px;
+	}
+
+	.commentSection>.commentSpace>.comment>#commentContents{
+		height: auto;
+
+		word-break: normal;
+
+	}
+
+
+	.commentSection>.commentSpace>.commentEnrollDate{
+		font-size: 13px;
+
+		position: absolute;
+		right: 10px;
+
+	}
+
+	
+	.commentSection>.ReplyBtn{
+		width: 100%;
+		height: 20px;
+
+		background: #c7c7c77a;
+		font-size: 15px;
+		text-align: center;
+	}
+
+	.commentSection>.ReplyBtn:hover{
+		cursor: pointer;
+	}
+
+
+	.commentSection>.enrollComment{
+		width: 100%;
+		height: 100px;
+
+		display: none;
+
+
+	}
+
+	.commentSection>.enrollComment textarea{
+		height: 120px;
+		width: 100%;
+
+		resize: none;
+	}
+	.commentSection>.enrollComment button{
+		height: 40px;
+		width: 105px;
+
+		border: none;		
+		border-radius: 5px;
+
+		float: right;
+		
+	}
+
+
+
+	/*footer 공간 설정*/
 	#footerSpace{
 		height: 160px;
 	}
@@ -314,7 +431,7 @@
 			<div class="boardInfo">				
 				<span>
 					<span>닉네임</span>
-					<span>댓글: 2</span>
+					<span>댓글: 4</span>
 					<span>조회수: 1585</span>
 				</span>
 				<span>2024.04.01 20:31</span>					
@@ -324,7 +441,21 @@
 					안녕하세요 이번에 입문용으로 monsgeek m3를 구매하였는데 스테빌에 대해 여쭤보려고 합니다. 
 					제가 본건 sw투명 무보강 스테빌 V2입니다(네이버에 치면 나오는 거) 판매자에게 여쭤보니 호환이 안된다고 하는데 리뷰에는 m3가 보이는 것 같아서요... 호환되는거면 사려하지만 만약 안된다면 스테빌 추천 부탁드립니다!!
 					또 스테빌만 윤활하려는데 초심자에게 크라이록스 205g은 과하겠죠? 퍼마텍스가 낫겠죠....?
-					<br><br><br><br><br><br><br><br><br><br><br>
+					안녕하세요 이번에 입문용으로 monsgeek m3를 구매하였는데 스테빌에 대해 여쭤보려고 합니다. 
+					제가 본건 sw투명 무보강 스테빌 V2입니다(네이버에 치면 나오는 거) 판매자에게 여쭤보니 호환이 안된다고 하는데 리뷰에는 m3가 보이는 것 같아서요... 호환되는거면 사려하지만 만약 안된다면 스테빌 추천 부탁드립니다!!
+					또 스테빌만 윤활하려는데 초심자에게 크라이록스 205g은 과하겠죠? 퍼마텍스가 낫겠죠....?
+					안녕하세요 이번에 입문용으로 monsgeek m3를 구매하였는데 스테빌에 대해 여쭤보려고 합니다. 
+					제가 본건 sw투명 무보강 스테빌 V2입니다(네이버에 치면 나오는 거) 판매자에게 여쭤보니 호환이 안된다고 하는데 리뷰에는 m3가 보이는 것 같아서요... 호환되는거면 사려하지만 만약 안된다면 스테빌 추천 부탁드립니다!!
+					또 스테빌만 윤활하려는데 초심자에게 크라이록스 205g은 과하겠죠? 퍼마텍스가 낫겠죠....?
+					안녕하세요 이번에 입문용으로 monsgeek m3를 구매하였는데 스테빌에 대해 여쭤보려고 합니다. 
+					제가 본건 sw투명 무보강 스테빌 V2입니다(네이버에 치면 나오는 거) 판매자에게 여쭤보니 호환이 안된다고 하는데 리뷰에는 m3가 보이는 것 같아서요... 호환되는거면 사려하지만 만약 안된다면 스테빌 추천 부탁드립니다!!
+					또 스테빌만 윤활하려는데 초심자에게 크라이록스 205g은 과하겠죠? 퍼마텍스가 낫겠죠....?
+					안녕하세요 이번에 입문용으로 monsgeek m3를 구매하였는데 스테빌에 대해 여쭤보려고 합니다. 
+					제가 본건 sw투명 무보강 스테빌 V2입니다(네이버에 치면 나오는 거) 판매자에게 여쭤보니 호환이 안된다고 하는데 리뷰에는 m3가 보이는 것 같아서요... 호환되는거면 사려하지만 만약 안된다면 스테빌 추천 부탁드립니다!!
+					또 스테빌만 윤활하려는데 초심자에게 크라이록스 205g은 과하겠죠? 퍼마텍스가 낫겠죠....?
+					dskdfjasdkfjs;ladfjdsl;kfj
+					aksdjfkasj;ladfjdslasdkfskdfjl
+					
 				</p>
 			</div>
 
@@ -354,36 +485,14 @@
 					</div>
 					<div id="list">
 						<ul>
+						<%for(int i = 0; i < 5; i++){ %>
 							<li>
 								<a href="#">
 									<div class="title">monsgeek m3 키보드 스테빌 질문!!</div>
 									<div class="date">2023.04.16</div>
 								</a>
 							</li>
-							<li>
-								<a href="#">
-									<div class="title">monsgeek m3 키보드 스테빌 질문!!</div>
-									<div class="date">2023.04.16</div>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<div class="title">monsgeek m3 키보드 스테빌 질문!!</div>
-									<div class="date">2023.04.16</div>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<div class="title">monsgeek m3 키보드 스테빌 질문!!</div>
-									<div class="date">2023.04.16</div>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<div class="title">monsgeek m3 키보드 스테빌 질문!!</div>
-									<div class="date">2023.04.16</div>
-								</a>
-							</li>
+						<%} %>
 						</ul>
 				
 
@@ -393,24 +502,57 @@
 		</div>
 	</div>
 
-	<div class="banner" align="center">배너</div>
+	<div class="banner" align="center"></div>
 
 	<div class="commentSection">
-		<div class="enrollComment"></div>
-
-		<span>댓글: 6개</span>
+		<span>댓글: 4개</span>
 		<div class="commentSpace">
-			<div class="img"></div>
-			<div>
-				<div class="commentNickname">뚱냥이</div>
-				<div class="commentContents">걸어서 3시간 거리인데 중간에 인도가 없어서요! 혹시 목숨값으로 좀 깎아주실수 있나요?!</div>
+			<div class="img">
+				<img src="" alt="">
 			</div>
-			<div class="commentEnrollDate">2024.01.01</div>
+			<div class="comment">
+				<div id="commentNickname">뚱냥이</div>
+				<div id="commentContents">걸어서 3시간 거리인데 중간에 인도가 없어서요! 혹시 목숨값으로 좀 깎아주실수 있나요?!</div>
+			</div>
+			<div class="commentEnrollDate">2023.03.27 AM 11:20</div>
 		</div>
-		<div class="ReplyBtn"></div>
+		<div class="commentSpace">
+			<div class="img">
+				<img src="" alt="">
+			</div>
+			<div class="comment">
+				<div id="commentNickname">캡숑</div>
+				<div id="commentContents">목숨을 깍아드릴순 있는데</div>
+			</div>
+			<div class="commentEnrollDate">2023.03.27 AM 11:33</div>
+		</div>
+		<div class="commentSpace">
+			<div class="img">
+				<img src="" alt="">
+			</div>
+			<div class="comment">
+				<div id="commentNickname">ㅋㅋ</div>
+				<div id="commentContents">ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</div>
+			</div>
+			<div class="commentEnrollDate">2023.03.27 AM 11:36</div>
+		</div>
+		<div class="ReplyBtn" onclick="enrollComment();">답글작성</div>
+		<div class="enrollComment">
+			<form action="">
+				<textarea required></textarea>
+				<button type="submit" align="right">댓글달기</button>
+			</form>
+		</div>
 	</div>
 	
 	<div id="footerSpace"></div>
 	<%@ include file="/views/common/footer.jsp" %>
+
+
+	<script>
+		function enrollComment(){
+			const commentInput = document.querySelector(".commentSection>.enrollComment");
+			commentInput
+	</script>
 </body>
 </html>
