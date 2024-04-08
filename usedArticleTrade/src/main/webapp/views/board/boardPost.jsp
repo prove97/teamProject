@@ -359,16 +359,18 @@
 	}
 
 	
-	.commentSection>.ReplyBtn{
+	.commentSection>.replyBtn{
 		width: 100%;
 		height: 20px;
 
 		background: #c7c7c77a;
 		font-size: 15px;
 		text-align: center;
+		
+		margin-bottom: 20px;
 	}
 
-	.commentSection>.ReplyBtn:hover{
+	.commentSection>.replyBtn:hover{
 		cursor: pointer;
 	}
 
@@ -398,8 +400,6 @@
 		float: right;
 		
 	}
-
-
 
 	/*footer 공간 설정*/
 	#footerSpace{
@@ -536,7 +536,7 @@
 			</div>
 			<div class="commentEnrollDate">2023.03.27 AM 11:36</div>
 		</div>
-		<div class="ReplyBtn" onclick="enrollComment();">답글작성</div>
+		<div class="replyBtn" onclick="enrollComment();">답글작성</div>
 		<div class="enrollComment">
 			<form action="">
 				<textarea required></textarea>
@@ -552,7 +552,18 @@
 	<script>
 		function enrollComment(){
 			const commentInput = document.querySelector(".commentSection>.enrollComment");
-			commentInput
+			const inputBtn = document.querySelector(".commentSection>.replyBtn");
+			
+			if(inputBtn.innerHTML === "답글작성"){
+				commentInput.style.display = "block";
+				inputBtn.innerHTML = "닫기";
+			} else {
+				commentInput.style.display = "none";
+				inputBtn.innerHTML = "답글작성";
+
+			}
+
+		}
 	</script>
 </body>
 </html>
