@@ -5,8 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
     <!-- jQuery library -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
@@ -18,7 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         /* 노멀라이즈 시작 */
-        body,ul,li {
+        ul,li {
             margin: 0;
             padding: 0;
             list-style: none;
@@ -28,7 +26,7 @@
         a {
             color: inherit;
             /* 부모 엘리먼트의 값을 물려받는다 */
-            text-decoration: none  !important;
+            text-decoration: none ;
             /* 해당 태그의 text-decoration 속성을 none 값으로 하는 것으로 밑줄을 제거한다 */
         }
 
@@ -56,6 +54,7 @@
             padding-top: 30px;
             padding-bottom: 30px;
             padding-left: 6px;
+            text-decoration: none  !important;
         }
 
         /* 소분류의 a에 속성값 부여 */
@@ -89,12 +88,13 @@
             height: 1080px;
             border: 1px solid #70C9A0;
             display: block;
-            position: absolute;
+            position: fixed;
             background-color: #ffffff;
             color: black;
             top: 0;
             /* 2차 메뉴의 상단을 1차 메뉴의 상단에 고정 */
-            left: 100%;
+           	left:100%;
+           
             /* 2차 메뉴를 1차 메뉴의 너비만큼 이동 */
             width: 100%;
             /* 1차 메뉴의 너비를 상속 */
@@ -136,7 +136,8 @@
     </style>
 </head>
 <body>
-	<aside class="side-bar">
+
+<aside class="side-bar">
         <!-- <section class="side-bar__icon-box">
           <section class="side-bar__icon-1">
             <div></div>
@@ -153,7 +154,7 @@
                         <br>
                         <br>
                     </div>
-                    <li><a href="#">· CPU</a></li>
+                    <li><a href="https://www.naver.com/">· CPU</a></li>
                     <li><a href="#">· 메인보드</a></li>
                     <li><a href="#">· 메모리</a></li>
                     <li><a href="#">· 그래픽카드</a></li>
@@ -197,8 +198,7 @@
                 <ul>
                     <div class="side-bar-min-head">
                         <strong>프린터·복합기·스캐너</strong>
-                        <br>
-                        <br>
+
                     </div>
                     <li><a href="#">· 잉크젯 프린터</a></li>
                     <li><a href="#">· 레이저 프린터</a></li>
@@ -207,20 +207,24 @@
                 </ul>
             </li>
             <li>
-                <a href="#">네트워크 공유기</a>
+                
                 <ul>
                     <div class="side-bar-min-head">
-                        <strong>네트워크 공유기</strong>
-                        <br>
-                        <br>
+                        <li><a href="#">· 공유기</a></li>
+	                    <li><a href="#">· 랜카드</a></li>
+	                    <li><a href="#">· 랜 케이블</a></li>
+	                    <li><a href="#">· 스위칭 허브</a></li>
                     </div>
-                    <li><a href="#">· 공유기</a></li>
-                    <li><a href="#">· 랜카드</a></li>
-                    <li><a href="#">· 랜 케이블</a></li>
-                    <li><a href="#">· 스위칭 허브</a></li>
+                    
                 </ul>
             </li>
         </ul>
     </aside>
+
+    <script>
+        function categorymneu(){
+            alert('클릭이벤트');
+        }
+    </script>
 </body>
 </html>
