@@ -60,7 +60,7 @@
         /* 좌측 테두리 제거 */
         border-right: none;
         /* 우측 테두리 제거 */
-        background-image: url('../../resources/image/signupId.png');
+        background-image: url('../../resources/image/idInput.png');
         background-size: 30px;
         background-position: 10px center;
         background-repeat: no-repeat;
