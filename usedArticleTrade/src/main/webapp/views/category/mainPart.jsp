@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
     <!-- jQuery library -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
@@ -15,6 +16,13 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
+        .catebort-btn{
+            height: 50px;
+            width: 50px;
+
+        }
+
+        
         /* 노멀라이즈 시작 */
         body,ul,li {
             margin: 0;
@@ -102,6 +110,7 @@
 
         /* 사이드바 너비의 80%만큼 왼쪽으로 이동 */
         .side-bar {
+            display: none;
             transform: translate(calc(var(--side-bar-width) * -0.8), 0);
             /* X축 이동, Y축 고정 */
             transition: .5s;
@@ -136,6 +145,9 @@
     </style>
 </head>
 <body>
+    <div class="catebort-btn">
+        <button type="button"><img onclick="categortbar()" src="https://previews.123rf.com/images/martialred/martialred1507/martialred150700865/42615143-%EC%95%B1%EA%B3%BC-%EC%9B%B9-%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%97%90-%EB%8C%80%ED%95%9C-%ED%96%84%EB%B2%84%EA%B1%B0-%EB%A9%94%EB%89%B4-%EB%B0%94-%EB%9D%BC%EC%9D%B8-%EC%95%84%ED%8A%B8-%EC%95%84%EC%9D%B4%EC%BD%98.jpg" alt="" style="height: 50px; width: 50px;"></button>
+    </div>
 
 <aside class="side-bar">
         <!-- <section class="side-bar__icon-box">
@@ -223,11 +235,16 @@
             </li>
         </ul>
     </aside>
-
-    <script>
-        function categorymneu(){
-            alert('클릭이벤트');
-        }
-    </script>
 </body>
+<script>
+    function categortbar(){
+        // 사이드바의 상태를 확인하고 토글한다
+        var sidebar = document.querySelector('.side-bar');
+        if (sidebar.style.transform === 'translate(0px, 0)') {
+            sidebar.style.transform = 'translate(calc(var(--side-bar-width) * -0.8), 0)';
+        } else {
+            sidebar.style.transform = 'translate(0px, 0)';
+        }
+    }
+</script>
 </html>
