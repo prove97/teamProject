@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
     <!-- jQuery library -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
@@ -224,5 +223,11 @@
             </li>
         </ul>
     </aside>
+
+    <script>
+        function categorymneu(){
+            alert('클릭이벤트');
+        }
+    </script>
 </body>
 </html>
