@@ -120,7 +120,9 @@ $RECYCLE.BIN/
 *.lnk
 
 Servers/
-
-.classpath
+Servers1/
+Servers2/
+Servers3/
+usedArticleTrade/.classpath
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,eclipse,java
