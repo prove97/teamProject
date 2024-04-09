@@ -7,6 +7,16 @@
         <title>Insert title here</title>
 
         <style>
+            body{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                height: auto;
+
+                position: relative;
+            }
+            
             #pull {
                 width: 1151px;
                 height: 1080px;
@@ -23,6 +33,7 @@
 
             .border-border-border {
                 border: 0.5px solid #D9D9D9;
+                border-radius: 20px 20px 20px 20px / 20px 20px 20px 20px;
             }
 
             #mainSection {
@@ -85,6 +96,7 @@
                 border: 1px solid #70C9A0;
                 background: #70C9A0;
                 padding: 3px;
+                border-radius: 30px 30px 30px 30px / 30px 30px 30px 30px;
             }
 
             .sedbar-left {
@@ -95,10 +107,15 @@
             .sedbar-top {
                 border-top: 0.8px solid #D9D9D9;
             }
+
+            .footerSpace{
+                height: 160px;
+            }
         </style>
     </head>
 
     <body>
+        <%@ include file="/views/common/header.jsp" %>
         <div id="pull">
             <section id="mainSection" class="border-border">
                 <div id="bestList">
@@ -344,6 +361,8 @@
                 </div>
             </section>
         </div>
+        <div class="footerSpace"></div>
+        <%@ include file="/views/common/footer.jsp" %>
     </body>
 
     </html>
