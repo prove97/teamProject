@@ -27,12 +27,10 @@
 
     <style>
         body{
-            height: 1400px;
+            height: 1300px;
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
             position: relative;
-
         }
 
         .top{ 
