@@ -1,0 +1,253 @@
+@charset "UTF-8";
+body{
+        display: flex;
+        justify-content: center;
+        height: 1280px;
+        position: relative;
+    }
+    /*메인 홈페이지*/
+    .main{
+        padding-top: 100px;
+        height: 1080px;
+        position: relative;
+    }
+
+    /*배너*/
+    #banner{
+        width: 1151px;
+        height: 148px;
+       border: 1px solid lightgray;
+       display: flex;
+       margin: auto;
+    }
+    #banner img{
+        width: 1151px;
+        height: 148px;
+        object-fit: none; 
+    }
+
+    /*게시글 담는 페이지*/
+    .contents{
+        width: 1151px;
+        height: 720px;
+        padding-top: 40px;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-auto-rows: 230px;
+        column-gap: 37px;
+        margin: auto;
+        
+    }
+    /*게시글*/
+    .contents-preview{
+        width: 160px;
+        height: 185px;
+    }
+    /*썸네일*/
+    .thumnail img{
+        width: 160px;
+        height: 137px;
+    }
+    /*썸네일 설명*/
+    .thumnail-info{
+        border: #D9D9D9 solid 1px;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 5px;
+    }
+    .name-heart{
+        height: 20px;
+        display: flex;
+        margin-top: 5px;
+        justify-content: space-between
+    }
+    .name-heart p{
+        margin: 0;
+        font-size: 13px;
+    }
+    .heart{
+        margin-right: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .heart img{
+        width: 15px;
+        height: 15px;
+    }
+    .heart p{
+        margin: 0;
+        font-size: 13px;
+        color: #70C9A0;
+    }
+    .price-beforeDay{
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between
+        
+    }
+    .price p{
+        font-size: 17px;
+        margin: 0;
+    }
+    .beforeDay p{
+        font-size: 13px;
+        margin: 0;
+        color: #767676;
+    }
+
+    /* 페이징 버튼 */
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 42px;
+      }
+      
+      .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        border: 1px solid #ddd;
+        margin: 0 4px;
+      }
+      
+      .pagination a.active {
+        background-color: #70c9a0;
+        color: white;
+        border: 1px solid #70c9a0;
+      }
+      
+      .pagination a:hover:not(.active) {background-color: #ddd;}
+
+/* 카테고리*/
+#side-bar{
+    position: absolute;
+    width: 200px;
+    height: 1080px;
+    background-color: #70C9A0;      
+    z-index: 2;
+    display: none;
+    top: 61px;
+}
+    ul,li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        /* 해당 태그의 list-style을 none으로 하는 것으로 ●을 제거한다 */
+    }
+
+    a {
+        color: inherit;
+        /* 부모 엘리먼트의 값을 물려받는다 */
+        text-decoration: none ;
+        /* 해당 태그의 text-decoration 속성을 none 값으로 하는 것으로 밑줄을 제거한다 */
+    }
+
+    /* 노멀라이즈 끝 */
+
+    /* 2차 이상의 메뉴를 숨기기 */
+    #side-bar>ul ul {
+        display: none;
+    }
+
+    /* 사이트의 높이를 1080px로 만들어 스크롤 생성 */
+
+
+    /* 대분류의 a에 속성값 부여 */
+    #side-bar ul>li>a {
+        display: block;
+        color: rgb(255, 255, 255);
+        font-size: 14px;
+        font-weight: bold;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 6px;
+        
+        text-decoration: none  !important;
+    }
+
+    /* 소분류의 a에 속성값 부여 */
+    #side-bar ul>li>ul>li>a {
+        display: block;
+        color: rgb(0, 0, 0);
+        font-size: 14px;
+        font-weight: bold;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+    }
+
+
+
+    /* 자식의 position이 absolute일 때 자식을 영역 안에 가두어 준다 */
+    #side-bar>ul>li {
+        position: relative;
+    }
+
+    /* 모든 메뉴가 마우스 인식 시 반응 */
+    #side-bar ul>li:hover>a {
+        background-color: #EEEEEE;
+        border-bottom: 1px solid #EEEEEE;
+        color: black;
+    }
+
+
+    /* 1차 메뉴의 항목이 마우스 인식 시에 2차 메뉴 등장 */
+    #side-bar>ul>li:hover>ul {
+        height: 1080px;
+        border: 1px solid #70C9A0;
+        display: block;
+        position: fixed;
+        background-color: #ffffff;
+        color: black;
+        top: 0;
+        /* 2차 메뉴의 상단을 1차 메뉴의 상단에 고정 */
+           left:100%;
+       
+        /* 2차 메뉴를 1차 메뉴의 너비만큼 이동 */
+        width: 100%;
+        /* 1차 메뉴의 너비를 상속 */
+    }
+
+    /* 사이드바 너비의 80%만큼 왼쪽으로 이동 */
+    #side-bar {
+        transform: translate(calc(var(--side-bar-width) * -0.8), 0);
+        /* X축 이동, Y축 고정 */
+        transition: .5s;
+    }
+
+    /* 마우스 인식 시 원래의 위치로 이동 */
+    #side-bar:hover {
+        transform: translate(0px, 0);
+        /* 둥근 모서리의 너비만큼 X축 이동, Y축 고정 */
+    }
+
+    /* 소분류 사이드바 메뉴바 글씨 */
+    #side-bar-min-head {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 18px;
+    }
+
+    i.fa-solid:hover {
+    color: darkcyan;
+    }
+
+    i.fa-bars {
+    cursor: pointer;
+    }
+
+    i.fa-xmark {
+    float: right;
+    margin: 5px 10px 0 0;
+    cursor: pointer;
+    }
+
+
+
+
+    
