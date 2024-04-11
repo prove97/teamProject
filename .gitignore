@@ -119,12 +119,11 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-Servers/
-Servers1/
-Servers2/
-Servers3/
-usedArticleTrade/.classpath
+# Eclipse Core       
+.project 
 
-pom.xml
+# JDT-specific (Eclipse Java Development Tools)      
+.classpath
+
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,eclipse,java
