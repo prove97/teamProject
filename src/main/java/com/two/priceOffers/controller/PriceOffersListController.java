@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class priceOffersListController
  */
-@WebServlet("/list.pr")
+@WebServlet("/list.of")
 public class PriceOffersListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
