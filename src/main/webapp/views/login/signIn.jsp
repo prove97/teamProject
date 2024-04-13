@@ -350,7 +350,7 @@
 <body>
     <!-- 메인 -->
     <div class="main">
-        <div id="logo1"><img src="../../resources/image/loginlogo.png" alt=""></div>
+        <div id="logo1"><img src="${pageContext.request.contextPath}/img/loginlogo.png" alt=""></div>
         <div class="signup-area"></div>
             <fieldset class="id-pwd-email">
                 <div><input type="text" placeholder="아이디" required id="id-input"></div>
