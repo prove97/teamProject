@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%
 	String contextPath = request.getContextPath();
+
 %>
 <!DOCTYPE html>
 <html>
@@ -81,16 +85,55 @@
     #login form{
         height: 100%;
     }
-    #login > form a{
+    #login > a{
         color: black;
         font-size: 14px;
         font-style: none;
     }
+    
+    /*로그인 후*/
+    #loginAfter{
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    #myPageDiv{   
+        margin-top: 15px;
+        height: 100%;
+        padding-left: 20px;
+    }
+    #maPageTag{
+        
+        font-size: 15px;
+        color: #70C9A0;
+        
+    }
+    /*  현재 미적용된 css, 추후 추가 예정
+    #maPageTag::after{
+        width: 0;
+        height: 1vw;
+        background: #5d8cef;
+        left: 50%;
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        z-index: -1;
+    }
+    #myPageTag :hover{
+        width: 100%;
+        left: 0;
+        transition: all .3s;
+    }
+    */
 
 </style>
 </head>
 
 <body>
+
     
     <div class="top" >        
         <button type="button"  class="categoryBtn" onclick="hoverCategoryBtn();"></button> 
@@ -102,13 +145,37 @@
                 <input type="search" name="keyword" >
                 <button type="submit" id="searchBtn"></button>
             </form> 
-        </div>
-        <div id="login">
-            <form action="">               
-                <a href=""><img src="${pageContext.request.contextPath}/img/userBtn.png" alt="">로그인/회원가입</a>
-            </form>
-        </div>
+        </div>     
+        
+        <c:choose>
+    		<c:when test="${ empty loginUser }">
+		        <div id="login">
+                             
+		            <a href="<%=contextPath %>/enrollForm.me"><img src="${pageContext.request.contextPath}/img/userBtn.png" alt="">로그인/회원가입</a>           
+		        </div>
+		    </c:when>
+			<c:otherwise>
+			
+            <div id="loginAfter">
+                <div>      
+                    <img src="${pageContext.request.contextPath}/img/mannerScore.png" style="margin-left: 25px;" alt="매너점수">
+                 </div>  
+                <div id="myPageDiv" style="font-size: 13px; " >
+                    아무개님<br>
+                    <a href="" id="maPageTag"> 마이페이지</a>
+                </div>
+                <div>
+                    <a href="" id="bellTag" style="margin-left: 25px;"><img src="${pageContext.request.contextPath}/img/bell.png" alt=""></a>
+                </div>
+            </div>
+		       
+		    </c:otherwise>
+		 </c:choose>
+		
+		    
     </div>
+    <script>
 
+    </script>
 </body>
 </html>
