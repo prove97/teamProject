@@ -274,7 +274,7 @@
 </head>
 <body>
     <div class="main">
-        <div><img src="../../resources/image/loginlogo.png" alt="" id="img1"></div>
+        <div><img src="${pageContext.request.contextPath}/img/loginlogo.png" alt="" id="img1"></div>
         <div>
             <fieldset id="login-area">
                 <p id="login-font">login</p>
