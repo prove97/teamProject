@@ -1,11 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.two.member.model.vo.Member"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
 	String contextPath = request.getContextPath();
 
+	Member loginUser = (Member)session.getAttribute("loginUser");
+	// 로그인 시도 전 menubar.jsp로딩시 : null
+	// 로그인 성공 후 menubar.jsp로딩시 : 로그인 성공한 회원의 정보
+	
+	String alertMsg = (String)session.getAttribute("alertMsg");
+	//서비스 요청 전 : null
+	//서비스 요청 후 : alert띄워줄 메세지 문구
 %>
 <!DOCTYPE html>
 <html>
@@ -149,9 +156,8 @@
         
         <c:choose>
     		<c:when test="${ empty loginUser }">
-		        <div id="login">
-                             
-		            <a href="<%=contextPath %>/enrollForm.me"><img src="${pageContext.request.contextPath}/img/userBtn.png" alt="">로그인/회원가입</a>           
+		        <div id="login">          
+		            <a href="${pageContext.request.contextPath}/login.me"><img src="${pageContext.request.contextPath}/img/userBtn.png" alt="">로그인/회원가입</a>           
 		        </div>
 		    </c:when>
 			<c:otherwise>
@@ -161,7 +167,7 @@
                     <img src="${pageContext.request.contextPath}/img/mannerScore.png" style="margin-left: 25px;" alt="매너점수">
                  </div>  
                 <div id="myPageDiv" style="font-size: 13px; " >
-                    아무개님<br>
+                    ${loginUser.userName } 님<br>
                     <a href="" id="maPageTag"> 마이페이지</a>
                 </div>
                 <div>
