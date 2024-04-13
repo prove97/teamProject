@@ -269,12 +269,12 @@
                 </div>
             </div>
             <div id="menubar">
-                <a href="profile.jsp" class="nonStyle"><strong>내정보</strong></a>
+                <a href="${pageContext.request.contextPath}/myPageMain.my" class="nonStyle"><strong>내정보</strong></a>
                 <ul>
                     <strong>나의 활동</strong>
-                    <li><a href="salesPost.jsp" class="nonStyle">나의 판매글</a></li>
-                    <li><a href="myComment.jsp" class="nonStyle">나의 댓글</a></li>
-                    <li><a href="heart.jsp" class="nonStyle">찜목록</a></li>
+                    <li><a href="${pageContext.request.contextPath}/changeMyPost.my" class="nonStyle">나의 판매글</a></li>
+                    <li><a href="${pageContext.request.contextPath}/changeMyComment.my" class="nonStyle">나의 댓글</a></li>
+                    <li><a href="${pageContext.request.contextPath}/changeHeart.my" class="nonStyle">찜목록</a></li>
                 </ul>
                 <ul>
                     <strong>문의사항</strong>
