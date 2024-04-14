@@ -19,15 +19,18 @@
     }
     body{
         display: flex;
-        align-items: center;
+        /* align-items: center; */
         /* justify-content: center; */
         position: relative;
         overflow-x: auto;
+        height: 1500px;
     }
     .contentBox{
         width: 1151px;
         background-color: white;
         margin: auto;
+        margin-top: 0;
+        margin-bottom: 0;
         overflow-x: auto;
         overflow-y: auto;
     }
@@ -40,7 +43,6 @@
         margin: 0px auto;
         margin-top: 80px;
         width: 870px;
-        height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -334,7 +336,7 @@
 </head>
 <body bgcolor="D9D9D9">
     <div class="contentBox">
-        <%@ include file="../common/header.jsp" %>
+    <%@ include file="../common/header.jsp" %>
         <br>
         <div class="category_header">
             <div class="category_navi">
@@ -529,7 +531,7 @@
                 <p class="time_of_writing3">2024.03.27 16:15:17</p>
             </div>
         </div>
-        <%@ include file="../common/footer.jsp" %>
+    <%@ include file="../common/footer.jsp" %>
     </div>
 
     <script>

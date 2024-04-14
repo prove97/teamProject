@@ -64,22 +64,21 @@
             align-items: center;
             font-size: 15px;
         }
-        #category_top_box{
-            border: 1px solid darkgray;
+        .category_box > div{
+        	border: 1px solid darkgray;
             width: 200px;
             height: 130px;
             overflow-x: auto;
             overflow-y: auto;
+        }
+        .category_box p:hover {
+        	cursor: default;
+        	background-color: darkgray;
         }
         #category_top_box > p{
             margin: 10px 5px;
         }
-        #category_middle_box{
-            border: 1px solid darkgray;
-            width: 200px;
-            height: 130px;
-            overflow-x: auto;
-            overflow-y: auto;
+        #category_middle_noselected{
             display: flex;
             align-items: center;
             justify-content: center;
@@ -201,14 +200,49 @@
                 <td class="column2">
                     <div class="category_box">
                         <div id="category_top_box">
-                            <p>컴퓨터 주요 부품</p>
-                            <p>키보드, 마우스, 주변기기</p>
-                            <p>모니터, 악세서리</p>
-                            <p>프린터, 복합기, 스캐너</p>
-                            <p>네트워크, 공유기</p>
+                            <p onclick="category_middle(1);">컴퓨터 주요 부품</p>
+                            <p onclick="category_middle(2);">키보드, 마우스, 주변기기</p>
+                            <p onclick="category_middle(3);">모니터, 악세서리</p>
+                            <p onclick="category_middle(4);">프린터, 복합기, 스캐너</p>
+                            <p onclick="category_middle(5);">네트워크, 공유기</p>
                         </div>
-                        <div id="category_middle_box">
+                        <div id="category_middle_noselected">
                             <b style="color: darkgray;">중분류 선택</b>
+                        </div>
+                        <div id="category_middle_1" style="display: none">
+                        	<p>CPU</p>
+                            <p>메인보드</p>
+                            <p>메모리</p>
+                            <p>그래픽카드</p>
+                            <p>SSD</p>
+                            <p>하드디스크</p>
+                            <p>ODD(외장/내장)</p>
+                            <p>케이스</p>
+                            <p>파워서플라이</p>
+                            <p>공/수냉쿨러</p>
+                        </div>
+                        <div id="category_middle_2" style="display: none">
+                        	<p>키보드</p>
+                            <p>마우스</p>
+                            <p>스피커</p>
+                        </div>
+                        <div id="category_middle_3" style="display: none">
+                        	<p>19~22인치 모니터</p>
+                            <p>24~26인치 모니터</p>
+                            <p>27~29인치 모니터</p>
+                            <p>30~39인치 모니터</p>
+                        </div>
+                        <div id="category_middle_4" style="display: none">
+                        	<p>잉크젯 프린터</p>
+                            <p>레이저 프린터</p>
+                            <p>복합기</p>
+                            <p>스캐너</p>
+                        </div>
+                        <div id="category_middle_5" style="display: none">
+                        	<p>공유기</p>
+                            <p>랜카드</p>
+                            <p>랜 케이블</p>
+                            <p>스위칭 허브</p>
                         </div>
                     </div>
                 </td>
@@ -345,11 +379,32 @@
             $('#info_letter_count').text("("+content.length+" / 2000)");
 
             if (content.length > 2000){
-                alert("최대 40자까지 입력 가능합니다.");
-                $(this).val(content.substring(0, 40));
+                alert("최대 2000자까지 입력 가능합니다.");
+                $(this).val(content.substring(0, 2000));
                 $('#counter').text("(2000 / 2000)");
             }
         });
+        
+       	const noselected = document.getElementById("category_middle_noselected");
+       	const middle1 = document.getElementById("category_middle_1");
+       	const middle2 = document.getElementById("category_middle_2");
+       	const middle3 = document.getElementById("category_middle_3");
+       	const middle4 = document.getElementById("category_middle_4");
+       	const middle5 = document.getElementById("category_middle_5");
+        	
+        function category_middle(num){
+            var categoryId = "category_middle_" + num;
+            const ele = document.getElementById(categoryId);
+
+        	noselected.style.display = "none";
+        	middle1.style.display = "none";
+        	middle2.style.display = "none";
+        	middle3.style.display = "none";
+        	middle4.style.display = "none";
+        	middle5.style.display = "none";
+        	
+        	ele.style.display = "block";
+        }
     </script>
 </body>
 </html>
