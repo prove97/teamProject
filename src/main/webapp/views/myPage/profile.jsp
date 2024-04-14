@@ -194,7 +194,8 @@
             text-align: left;
         }
 
-        .passwordTd{
+        /* 비밀번호,닉네임 등 입력에 체크가 필요한 input*/
+        .inputWrong{
             display: flex;
             flex-direction: column;
             align-items: flex-end;
@@ -312,12 +313,12 @@
                 </div>
             </div>
             <div id="menubar">
-                <a href="profile.jsp" class="nonStyle"><strong>내정보</strong></a>
+                <a href="${pageContext.request.contextPath}/myPageMain.my" class="nonStyle"><strong>내정보</strong></a>
                 <ul>
                     <strong>나의 활동</strong>
-                    <li><a href="salesPost.jsp" class="nonStyle">나의 판매글</a></li>
-                    <li><a href="myComment.jsp" class="nonStyle">나의 댓글</a></li>
-                    <li><a href="heart.jsp" class="nonStyle">찜목록</a></li>
+                    <li><a href="${pageContext.request.contextPath}/changeMyPost.my" class="nonStyle">나의 판매글</a></li>
+                    <li><a href="${pageContext.request.contextPath}/changeMyComment.my" class="nonStyle">나의 댓글</a></li>
+                    <li><a href="${pageContext.request.contextPath}/changeHeart.my" class="nonStyle">찜목록</a></li>
                 </ul>
                 <ul>
                     <strong>문의사항</strong>
@@ -342,14 +343,14 @@
                             </tr>
                             <tr>
                                 <th>비밀번호</th>
-                                <td class="passwordTd">
+                                <td class="inputWrong">
                                     <input type="password" name="userPwd" id="pwd" class="necessaryInput" maxlength="20" oninput="combinePwd();">
                                     <div class="warning">비밀번호는 영어, 숫자, 특수기호 포함 8자 이상이어야 합니다.</div>
                                 </td>
                             </tr>
                             <tr>
                                 <th>비밀번호 확인</th>
-                                <td class="passwordTd">
+                                <td class="inputWrong">
                                     <input type="password" name="checkUserPwd" id="checkPwd" class="necessaryInput" maxlength="20" oninput="differPwd();">
                                     <div class="warning">비밀번호가 일치하지 않습니다.</div>                                        
                                 </td>
@@ -360,8 +361,9 @@
                             </tr>
                             <tr style="position: relative;">
                                 <th>닉네임</th>    
-                                <td>
+                                <td class="inputWrong">
                                     <input type="text" value="user01" class="necessaryInput" name="nickname">
+                                    <div class="warning">중복된 닉네임입니다</div>                                        
                                     <button type="button" id="duplicationCheckBtn" onclick="nicknameCheck();">중복확인</button>
                                 </td>                                
                                 

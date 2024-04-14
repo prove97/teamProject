@@ -1,6 +1,8 @@
-package com.two.member.controller;
+package com.two.myPage.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MemberEnrollFormController
+ * Servlet implementation class MyPageChangeHeartController
  */
-@WebServlet("/Login.me")
-public class MemberloginController extends HttpServlet {
+@WebServlet("/changeMyComment.my")
+public class MyPageChangeMyComment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberloginController() {
+    public MyPageChangeMyComment() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +28,7 @@ public class MemberloginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/views/login/login.jsp").forward(request, response);
+		request.getRequestDispatcher("views/myPage/heart.jsp").forward(request, response);	;	
 	}
 
 	/**

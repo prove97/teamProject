@@ -11,6 +11,9 @@ public class Member {
 	private String activated;
 	private int score;
 	private Date joinDate;
+	private String gender;
+	private String email;
+	private String loacation;
 	
 	public Member() {
 		super();
@@ -28,12 +31,30 @@ public class Member {
 		this.score = score;
 		this.joinDate = joinDate;
 	}
-	
+
+	public Member(int userNo, String userId, String userPwd, String authority, String phone, String activated,
+			int score, Date joinDate, String gender, String email, String loacation) {
+		super();
+		this.userNo = userNo;
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.authority = authority;
+		this.phone = phone;
+		this.activated = activated;
+		this.score = score;
+		this.joinDate = joinDate;
+		this.gender = gender;
+		this.email = email;
+		this.loacation = loacation;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", authority=" + authority
-				+ ", phone=" + phone + ", activated=" + activated + ", score=" + score + ", joinDate=" + joinDate + "]";
+				+ ", phone=" + phone + ", activated=" + activated + ", score=" + score + ", joinDate=" + joinDate
+				+ ", gender=" + gender + ", email=" + email + ", loacation=" + loacation + "]";
 	}
+
 	public int getUserNo() {
 		return userNo;
 	}
@@ -81,6 +102,24 @@ public class Member {
 	}
 	public void setJoinDate(Date joinDate) {
 		this.joinDate = joinDate;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getLoacation() {
+		return loacation;
+	}
+	public void setLoacation(String loacation) {
+		this.loacation = loacation;
 	}
 	
 	
