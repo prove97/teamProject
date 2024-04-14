@@ -267,19 +267,19 @@
                     상품상태<sup style="color: red;">*</sup>
                 </td>
                 <td class="column2">
-                    <input type="radio" name="product_status">새상품(미개봉)
+                    <input type="radio" name="product_status"> 새상품(미개봉)
                     <b class="status_explane">사용하지 않은 새 상품</b>
                     <br><br>
-                    <input type="radio" name="product_status">사용감 없음
+                    <input type="radio" name="product_status"> 사용감 없음
                     <b class="status_explane">사용은 했지만 눈에 띄는 흔적이나 얼룩이 없음</b>
                     <br><br>
-                    <input type="radio" name="product_status">사용감 적음
+                    <input type="radio" name="product_status"> 사용감 적음
                     <b class="status_explane">눈에 띄는 흔적이나 얼룩이 약간 있음</b>
                     <br><br>
-                    <input type="radio" name="product_status">사용감 많음
+                    <input type="radio" name="product_status"> 사용감 많음
                     <b class="status_explane">눈에 띄는 흔적이나 얼룩이 많이 있음</b>
                     <br><br>
-                    <input type="radio" name="product_status">고장/파손상품
+                    <input type="radio" name="product_status"> 고장/파손상품
                     <b class="status_explane">기능 이상이나 외관 손상 등으로 수리/수선 필요</b>
                 </td>
             </tr>
@@ -307,27 +307,23 @@
             //inputFile.files.length -> 1
             console.log(inputFile.files.length)
 
-            if (inputFile.files.length == 1){//파일을 하나 선택했다. => 미리보기
-                //파일을 읽어들일 FileReader객체생성
+            if (inputFile.files.length == 1){//파일을 하나 선택 => 미리보기
                 const reader = new FileReader();
 
-                //파일을 읽어들이는 메소드
-                //해당파일을 읽어들이는 순간 해당 파일만의 고유한 url부여
                 reader.readAsDataURL(inputFile.files[0]);
 
-                //파일 읽어들이기 완료했을 때 실행할 함수 정의
                 reader.onload = function(ev){
-                    // console.log(ev.target.result) => 읽어들인 파일의 고유한 url
                     if(num == 1) {
                        document.getElementById("product-img").src = ev.target.result;
                     }
                 }
-            } else { // 선택된 파일을 취소한 경우 => 미리보기 지워준다.
+            } else { // 선택된 파일을 취소한 경우 => 미리보기 지우기
                if (num == 1) {
                   document.getElementById("product-img").src = "${pageContext.request.contextPath}/img/fileImg.png";
                }
             }
         }
+       
         function chooseFile(num){
             const imgInput = document.querySelector("#file" + num);
             imgInput.click();

@@ -529,7 +529,6 @@
                 <p class="time_of_writing3">2024.03.27 16:15:17</p>
             </div>
         </div>
-        <br>
         <%@ include file="../common/footer.jsp" %>
     </div>
 
