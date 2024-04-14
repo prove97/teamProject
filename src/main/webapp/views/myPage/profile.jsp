@@ -39,11 +39,6 @@
             margin-top: 82px;
         }
 
-        input {
-            border: none;
-            border-bottom: 1px solid black;
-        }
-
         /*사이드 구역 */
         #aside {
             width: 240px;
@@ -179,6 +174,12 @@
         th {
             font-size: 18px;
             text-align: left;
+        }
+
+        /*회원정보 입력칸 밑줄만 나오게 설정*/
+        #main>form input {
+            border: none;
+            border-bottom: 1px solid black;
         }
 
         /* 비밀번호,닉네임 등 입력에 체크가 필요한 input*/

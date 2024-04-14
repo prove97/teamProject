@@ -44,11 +44,6 @@
             margin-top: 82px;
         }
 
-        input {
-            border: none;
-            border-bottom: 1px solid black;
-        }
-
         /*사이드 구역 */
         #aside {
             width: 240px;
