@@ -5,15 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+   <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         *{
             box-sizing: border-box;
-            /* border: 1px solid red; */
         }
         body{
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
         }
         .contentBox{
             width: 1151px;
@@ -34,15 +42,14 @@
             width: 865px;
             margin: auto;
         }
-        .input_table tr{
-            border-bottom: 1px solid gray;;
-        }
+        /*
         #photo_count{
             padding: 0px;
             margin: 0px;
             font-size: 15px;
             color: darkgray;
         }
+        */
         #title{
             width: 580px;
             height: 30px;
@@ -93,6 +100,7 @@
             border: 1px solid darkgray;
             width: 94px;
             height: 30px;
+            font-size: 12px;
         }
         #detail_address{
             border: 1px solid darkgray;
@@ -108,10 +116,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-
+            margin-left: 9px;
+            padding: 0px;
         }
         #price > input{
-            border: 1px solid gray;
             border-right: none;
         }
         .price_check_opt{
@@ -145,6 +153,10 @@
         #submit_btn{
             background-color: mediumaquamarine;
         }
+        #product-img:hover{
+           cursor: pointer;
+           scale: 0.98;
+        }
     </style>
 </head>
 <body bgcolor="D9D9D9">
@@ -162,10 +174,10 @@
             <tr class="row1">
                 <td class="column1">
                     상품사진<sup style="color: red;">*</sup>
-                    <p id="photo_count">(0/10)</p>
+                    <!-- <p id="photo_count">(0/10)</p> -->
                 </td>
                 <td class="column2">
-                    <img src="" style="width: 144px; height: 150px;">
+                    <img id="product-img" src="${pageContext.request.contextPath}/img/fileImg.png" style="width: 144px; height: 150px;" onclick="chooseFile(1);">
                 </td>
             </tr>
             <tr class="lines">
@@ -176,7 +188,7 @@
                     글 제목<sup style="color: red;">*</sup>
                 </td>
                 <td class="column2">
-                    <input type="text" id="title"> <sub class="letter_count">0/40</sub>
+                    <input type="text" id="title"> <sub class="letter_count" id="title_letter_count" maxlength="40">0/40</sub>
                 </td>
             </tr>
             <tr class="lines">
@@ -196,7 +208,7 @@
                             <p>네트워크, 공유기</p>
                         </div>
                         <div id="category_middle_box">
-                            <b style="color: darkgray;">소분류 선택</b>
+                            <b style="color: darkgray;">중분류 선택</b>
                         </div>
                     </div>
                 </td>
@@ -209,8 +221,8 @@
                     상품 설명<sup style="color: red;">*</sup>
                 </td>
                 <td class="column2">
-                    <textarea name="" id="product_info" cols="79" rows="10"></textarea>
-                    <sub class="letter_count">0/2000</sub>
+                    <textarea name="" id="product_info" cols="70" rows="10" maxlength="2000"></textarea>
+                    <sub class="letter_count" id="info_letter_count">0/2000</sub>
                 </td>
             </tr>
             <tr class="lines">
@@ -275,10 +287,73 @@
                 <td colspan="2"><br><hr><br></td>
             </tr>
         </table>
+        <div style="display:none">
+                <input type="file" name="file1" id="file1" required onchange="loadImg(this, 1)">
+            </div>
         <div class="btn">
             <button id="delete_btn">삭제하기</button>
             <button id="submit_btn">등록하기</button>
         </div>
     </div>
+    
+    <script>
+       function loadImg(inputFile, num){
+            // console.log(inputFile)
+            // console.log(num)
+            //inputFile : 현재 변화가 생긴 input type=file 요소객체
+            //num : 몇번째 input요소인지 확인하기 위한 파라미터
+            
+            //inputFile.files[0] => 선택된 파일이 담겨있다.
+            //inputFile.files.length -> 1
+            console.log(inputFile.files.length)
+
+            if (inputFile.files.length == 1){//파일을 하나 선택했다. => 미리보기
+                //파일을 읽어들일 FileReader객체생성
+                const reader = new FileReader();
+
+                //파일을 읽어들이는 메소드
+                //해당파일을 읽어들이는 순간 해당 파일만의 고유한 url부여
+                reader.readAsDataURL(inputFile.files[0]);
+
+                //파일 읽어들이기 완료했을 때 실행할 함수 정의
+                reader.onload = function(ev){
+                    // console.log(ev.target.result) => 읽어들인 파일의 고유한 url
+                    if(num == 1) {
+                       document.getElementById("product-img").src = ev.target.result;
+                    }
+                }
+            } else { // 선택된 파일을 취소한 경우 => 미리보기 지워준다.
+               if (num == 1) {
+                  document.getElementById("product-img").src = "${pageContext.request.contextPath}/img/fileImg.png";
+               }
+            }
+        }
+        function chooseFile(num){
+            const imgInput = document.querySelector("#file" + num);
+            imgInput.click();
+        }
+
+        $('#title').keyup(function (e){
+            var content = $(this).val();
+            $('#title_letter_count').text("("+content.length+" / 40)");
+
+            if (content.length > 40){
+                alert("최대 40자까지 입력 가능합니다.");
+                $(this).val(content.substring(0, 40));
+                $('#counter').text("(40 / 40)");
+            }
+        });
+        
+        $('#product_info').keyup(function (e){
+            var content = $(this).val();
+            $('#info_letter_count').text("("+content.length+" / 2000)");
+
+            if (content.length > 2000){
+                alert("최대 40자까지 입력 가능합니다.");
+                $(this).val(content.substring(0, 40));
+                $('#counter').text("(2000 / 2000)");
+            }
+        });
+    </script>
 </body>
 </html>

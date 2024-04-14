@@ -5,15 +5,24 @@
 <head>
 <meta charset="UTF-8">
 <title>product_mainPage</title>
+	<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <style>
     *{
         box-sizing: border-box;
-        /* border: 1px solid black; */
     }
     body{
         display: flex;
         align-items: center;
-        justify-content: center;
+        /* justify-content: center; */
+        position: relative;
+        overflow-x: auto;
     }
     .contentBox{
         width: 1151px;
@@ -228,7 +237,6 @@
     .purchase_method{
         position: absolute;
         left: 370px;
-        top: -10px;
         /* align-items: start;
         justify-content: center; */
         color: gray;
@@ -326,6 +334,8 @@
 </head>
 <body bgcolor="D9D9D9">
     <div class="contentBox">
+        <%@ include file="../common/header.jsp" %>
+        <br>
         <div class="category_header">
             <div class="category_navi">
                 <div>🏠 홈</div>
@@ -519,6 +529,8 @@
                 <p class="time_of_writing3">2024.03.27 16:15:17</p>
             </div>
         </div>
+        <br>
+        <%@ include file="../common/footer.jsp" %>
     </div>
 
     <script>
