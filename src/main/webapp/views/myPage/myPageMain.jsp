@@ -24,34 +24,21 @@
 
     <style>
         body{
-            height: 1300px;
             display: flex;
             justify-content: center;
             position: relative;
         }
 
-        .top{ 
-            z-index: 1;
-                       
-        }
-            
-        .footer{
-            
-        }
-
         #mainSection {
-            height: 960px;
+            height: 1200px;
             width: 1151px;
             
             display: flex;
             flex-direction: row;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
 
-            margin: auto;
-            margin-top: 72px;
-            padding-top: 10px;
-
+            margin-top: 82px;
         }
 
         input {
