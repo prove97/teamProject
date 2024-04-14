@@ -22,39 +22,21 @@
 
     <style>
         body{
-            height: 1300px;
             display: flex;
             justify-content: center;
             position: relative;
         }
 
-        .top{ 
-            z-index: 1;
-                       
-        }
-            
-        .footer{
-            
-        }
-
         #mainSection {
-            height: 960px;
+            height: 1200px;
             width: 1151px;
             
             display: flex;
             flex-direction: row;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
 
-            margin: auto;
-            margin-top: 72px;
-            padding-top: 10px;
-
-        }
-
-        input {
-            border: none;
-            border-bottom: 1px solid black;
+            margin-top: 82px;
         }
 
         /*사이드 구역 */
@@ -65,7 +47,7 @@
 
         /*프로필*/
         #profile {
-            width: 241px;
+            width: 240px;
             height: 326px;
             border: 1px solid black;
             border-radius: 15px;
@@ -192,6 +174,12 @@
         th {
             font-size: 18px;
             text-align: left;
+        }
+
+        /*회원정보 입력칸 밑줄만 나오게 설정*/
+        #main>form input {
+            border: none;
+            border-bottom: 1px solid black;
         }
 
         /* 비밀번호,닉네임 등 입력에 체크가 필요한 input*/
