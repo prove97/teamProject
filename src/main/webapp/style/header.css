@@ -1,6 +1,4 @@
-#sdiv{
-    position: relative;
-}
+
 /*헤더 div*/
 .top{ 
     position: fixed;
@@ -89,6 +87,11 @@
 
 
 /* 카테고리 css */
+#sdiv{
+    position: relative;
+}
+
+
 #side-bar{
 position: absolute;
 width: 200px;
@@ -211,6 +214,15 @@ float: right;
 margin: 5px 10px 0 0;
 cursor: pointer;
 }
+
+
+
+
+
+
+
+
+
 
 
 

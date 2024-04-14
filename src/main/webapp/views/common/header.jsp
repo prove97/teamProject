@@ -126,13 +126,19 @@
 
         <div id="loginAfter">
             <div>      
-                <img src="${pageContext.request.contextPath}/resources/image/mannerScore.png" style="margin-left: 25px;" alt="매너점수">
+                <!--  <img src="${pageContext.request.contextPath}/resources/image/mannerScore.png" style="margin-left: 25px;" alt="매너점수"> -->
+                <div id="brightnessRate" style=" margin-left: 10px; height: 35px;">
+                    <p style="font-size: 14px; margin: 0;">밝음 수치: 70 lux</p>
+                    <div class="progress" style="width: 120px; height: 14px;  border-radius: 10px; border: 0.1px solid darkgray;" >
+                        <div class="progress-bar" style="width:70%; background: #70C9A0;"></div>
+                    </div>
+                </div>
              </div>  
             <div id="myPageDiv" style="font-size: 13px; " >
                 ${loginUser.userName } 님<br>
                 <a href="${pageContext.request.contextPath}/indexToMyPage.my" id="myPageTag" onmouseover="overMyPage();"> 마이페이지</a>
-                <div id="mdiv" style="background-image: url(${pageContext.request.contextPath}/img/myPageHover.png); background-size: 100px 200px" onmouseout="outMyPage();">                  
-                        <ul class="myPageUl">
+                <div id="mdiv" style="background-image: url(${pageContext.request.contextPath}/img/myPageHover.png); background-size: 100px 200px" onmouseover="overMyPage();" onmouseout="outMyPage();">                  
+                        <ul class="myPageUl" >
                             <li class="three"><a href=""><img src="${pageContext.request.contextPath}/img/heartIcon.png" alt="">좋아요</a></li>
                             <li class="four"><a href=""><img src="${pageContext.request.contextPath}/img/chatIcon.png" alt="" >거래내역</a></li>
                             <li class="two"><a href=""><img src="${pageContext.request.contextPath}/img/settingIcon.png" alt="">설정</a></li>
