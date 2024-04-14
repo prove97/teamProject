@@ -113,27 +113,27 @@
 </div>
     
     <div class="top" >        
-        <button type="button"  class="categoryBtn" onclick="hoverCategoryBtn();" style="background-image: url(${pageContext.request.contextPath}/img/categoryBtn.png);"></button> 
-        <button type="button" class="logo" onclick="clickLogo();" style="background-image: url(${pageContext.request.contextPath}/img/logo.png);"></button>
+        <button type="button"  class="categoryBtn" onclick="hoverCategoryBtn();" style="background-image: url(${pageContext.request.contextPath}/resources/image/categoryBtn.png);"></button> 
+        <button type="button" class="logo" onclick="clickLogo();" style="background-image: url(${pageContext.request.contextPath}/resources/image/logo.png);"></button>
  
 
         <div id="searchBar">
             <form action="">
                 <input type="search" name="keyword" >
-                <button type="submit" id="searchBtn" style="background-image: url(${pageContext.request.contextPath}/img/searchBtn.png);"></button>
+                <button type="submit" id="searchBtn" style="background-image: url(${pageContext.request.contextPath}/resources/image/searchBtn.png);"></button>
             </form> 
         </div>     
 
         <div id="loginAfter">
             <div>      
-                <img src="${pageContext.request.contextPath}/img/mannerScore.png" style="margin-left: 25px;" alt="매너점수">
+                <img src="${pageContext.request.contextPath}/resources/image/mannerScore.png" style="margin-left: 25px;" alt="매너점수">
              </div>  
             <div id="myPageDiv" style="font-size: 13px; " >
                 ${loginUser.userName } 님<br>
                 <a href="${pageContext.request.contextPath}/indexToMyPage.my" id="maPageTag"> 마이페이지</a>
             </div>
             <div>
-                <a href="" id="bellTag" style="margin-left: 25px;"><img src="${pageContext.request.contextPath}/img/bell.png" alt=""></a>
+                <a href="" id="bellTag" style="margin-left: 25px;"><img src="${pageContext.request.contextPath}/resources/image/bell.png" alt=""></a>
             </div>
         </div>
 
@@ -141,7 +141,7 @@
         <!-- <c:choose>
     		<c:when test="${ empty loginUser }">
 		        <div id="login">          
-		            <a href="${pageContext.request.contextPath}/Login.me"><img src="${pageContext.request.contextPath}/img/userBtn.png" alt="">로그인/회원가입</a>           
+		            <a href="${pageContext.request.contextPath}/Login.me"><img src="${pageContext.request.contextPath}/resources/image/userBtn.png" alt="">로그인/회원가입</a>           
 		        </div>
 		    </c:when>
 			<c:otherwise> -->
