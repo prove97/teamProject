@@ -184,85 +184,36 @@
     }
     </style>
 </head>
-<!-- 헤더 -->
-<div class="top" >        
-    <button type="button"  id="categoryBtn"><!--<img src="${pageContext.request.contextPath}/img/categoryBtn.png" alt="aa" >--></button>
-    <button type="button" id="logo"></button>
-    
-    <div id="searchBar">
-        <form action="">
-            <input type="search" name="keyword" >
-            <button type="submit" id="searchBtn"></button>
-        </form> 
-    </div>
-    <div id="login">
-        <form action="">               
-            <a href=""><img src="${pageContext.request.contextPath}/img/userBtn.png" alt="">로그인/회원가입</a>
-        </form>
-    </div>
-
-</div>
-<!-- 메인 -->
-<div style="width: 100%; padding-left: 174px;">
-    <div class="FAQ-title">
-        <h1 id="title-text">1:1 문의하기</h1>
-    </div>
-        <fieldset class="write-area">
-            <div>
-                <input type="text" name="title" id="title-input" placeholder="제목" required>
-            </div>
-            <div>
-                <textarea name="content" id="content-input" placeholder="내용" required></textarea>
-            </div>
-            <div>
-                <div class="button-input">
-                    첨부 파일 : <input type="file" name="" id="">
-                </div>
-                <div>
-                    <input type="submit" value="문의하기" id="submit-input">
-                </div>
-            </div>
-        </fieldset>
-</div>
-<!-- 푸터 -->
 <body>
-    <div class="footer">
-        <div id="footer-1">
-            <div id="footer-1-box">
-                <a href="">팀소개</a>|
-                <a href="">이용약관</a>|
-                <a href="">운영정책</a>|
-                <a href="">개인정보처리방침</a>|
-                <a href="">청소년보호정책</a>|
-                <a href="">광고제휴</a>
-            </div>
-        </div>
-        <div id="footer-2">
-            <div>
-                <p style="font-size: 15px; margin-top: 10px">황금(2조) 팀 정보</p>
-                <p style="font-size: 12px; margin-top: 5px ">
-                팀장 : 김도헌 | 
-                형상관리자 : 이원기
-                <br>
-                DB관리자 : 임병준 | 
-                일정관리자 : 장용준
-                <br>
-                이슈관리자 : 심규홍
-            </p>
-            </div>
-            <div>
-                <p style="font-size: 15px; margin-top: 10px">토스트뱅크 채무지급보증 안내</p>
-                <p style="font-size: 12px; margin-top: 5px">
-                    피씨그린은 회사가 직접 판매하는 상품에 한하여, 고객님의 현금 결제 금액에 대해<br>
-                    토스트뱅크과 채무지급보증 계약을 체결하여 안전거래를 보장하고 있습니다.</p>
-                    <p style="font-size: 13px; margin-top: 5px ">Ⓒ PCGreen. Inc All rights reserved.</p>
-            </div>
-            <div>
-                <p style="font-size: 15px; margin-top: 10px">고객센터 ></p>
-                <p style="font-size: 24px;">1670-2910</p>
-                <p style="font-size: 12px; margin-top: 5px">운영시간 9시 - 18시 (주말/공휴일 휴무, 점심시간 12시 50분 - 14시)</p>
-            </div>
-        </div>
-    </div>
+	<!-- 헤더 -->
+    <%@ include file="/views/common/header.jsp" %>	
+	
+	<!-- 메인 -->
+	<div style="width: 100%; padding-left: 174px;">
+		<div class="FAQ-title">
+			<h1 id="title-text">1:1 문의하기</h1>
+		</div>
+		<fieldset class="write-area">
+			<div>
+				<input type="text" name="title" id="title-input" placeholder="제목"
+					required>
+			</div>
+			<div>
+				<textarea name="content" id="content-input" placeholder="내용"
+					required></textarea>
+			</div>
+			<div>
+				<div class="button-input">
+					첨부 파일 : <input type="file" name="" id="">
+				</div>
+				<div>
+					<input type="submit" value="문의하기" id="submit-input">
+				</div>
+			</div>
+		</fieldset>
+	</div>
+	<!-- 푸터 -->
+    <%@ include file="/views/common/footer.jsp" %>
+     	
 </body>
 </html>
