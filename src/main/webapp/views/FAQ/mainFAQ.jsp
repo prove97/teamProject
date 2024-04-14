@@ -22,6 +22,11 @@
     }
 
     /*  메인div  */
+    .main{
+        width: 1151px;
+        height: auto;
+    }
+
     .FAQ-title{
         margin-top: 140px;
         margin-bottom: 65px;
@@ -121,9 +126,9 @@
     <%@ include file="/views/common/header.jsp" %>
 
     <!-- 메인 -->
-    <div>
+    <div class="main">
         <div class="FAQ-title">
-            <h1 id="title-text">문 의 하 기</h1>
+            <h1 id="title-text" style="padding-left: 160px;">문 의 하 기</h1>
         </div>
         <div class="FAQ-area">
             <div id="FAQ1" onclick="toggleFAQ('1')">

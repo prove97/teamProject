@@ -14,10 +14,10 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <style>
-    body {
+    body{
         display: flex;
         justify-content: center;
-        height: 1200px;
+        height: 1280px;
         position: relative;
     }
 
@@ -29,7 +29,7 @@
         margin-top: 30px;
     }
     .main {
-        width: 100%;
+        width: 1151px;
         height: 100%;
         text-align: center;
         margin-top: 8px;

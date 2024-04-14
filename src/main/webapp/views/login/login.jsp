@@ -14,15 +14,15 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <style>
-    body{
+body{
         display: flex;
         justify-content: center;
-        height: 1200px;
+        height: 1280px;
         position: relative;
     }
     
-    .main{
-        width: 100%;
+    .log{
+        width: 1151px;
         height: 100%;
         text-align: center;
     }
@@ -157,7 +157,7 @@
     <%@ include file="/views/common/header.jsp" %>
 
     <section>
-    <div class="main">
+    <div class="log">
         <div><img src="${pageContext.request.contextPath}/resources/image/loginlogo.png" alt="" id="img1"></div>
         <div>
             <fieldset id="login-area">
