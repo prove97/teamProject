@@ -82,13 +82,10 @@
     height: 100%;
     padding-left: 20px;
 }
-#maPageTag{
-    
+#myPageTag{
     font-size: 15px;
     color: #70C9A0;
-    
 }
-/* 로그인 후 마이페이지 css */
 
 
 /* 카테고리 css */
@@ -101,14 +98,14 @@ z-index: 2;
 display: none;
 top: 61px;
 }   
-ul,li {
+#side-bar >ul, #side-bar > li {
     margin: 0;
     padding: 0;
     list-style: none;
     /* 해당 태그의 list-style을 none으로 하는 것으로 ●을 제거한다 */
 }
 
-a {
+#side-bar > a {
     color: inherit;
     /* 부모 엘리먼트의 값을 물려받는다 */
     text-decoration: none ;
@@ -214,3 +211,64 @@ float: right;
 margin: 5px 10px 0 0;
 cursor: pointer;
 }
+
+
+
+/* 마이페이지 A태그 호버 */
+#mdiv{
+    position: absolute;
+    width: 100px;
+    height: 200px;
+    margin-top: 5px;
+    top: 61px;
+    z-index: 2;
+    display: none;
+}
+
+.myPageUl{
+    
+    list-style:none;
+    padding-left:10px;
+    margin-top: 25px;
+}
+
+.myPageUl li{
+    line-height: 180%;
+    position: relative;
+}
+
+.myPageUl li > a{
+    font-size: 14px;  
+    color: black;
+    text-decoration: none;
+}
+
+.myPageUl li a::after {
+    content: '';
+    display: block;
+    z-index: -1;
+    width: 0;
+    height: 3px;
+    background: #5d8cef;
+    position: absolute;
+    
+}
+
+.two a:hover::after {
+    width: 55%;
+    left: 0;
+    transition: all .3s;
+}
+
+.three a:hover::after {
+    width: 67%;
+    left: 0;
+    transition: all .3s;
+}
+
+.four a:hover::after {
+    width: 82%;
+    left: 0;
+    transition: all .3s;
+}
+
