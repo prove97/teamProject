@@ -16,7 +16,7 @@ body{
     #banner{
         width: 1151px;
         height: 148px;
-       border: 1px solid lightgray;
+      
        display: flex;
        margin: auto;
     }

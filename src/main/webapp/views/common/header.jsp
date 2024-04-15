@@ -33,84 +33,7 @@
 </head>
 
 <body>
-<div id="sdiv">
-    <div id="side-bar">
-        <ul>
-            <li >
-                <a href="#">컴퓨터·주요부품</a>
-                <ul >
-                    <div class="side-bar-min-head">
-                        <strong>컴퓨터·주요부품</strong>
-                        <br>
-                        <br>
-                    </div>
-                    <li><a href="https://www.naver.com/">· CPU</a></li>
-                    <li><a href="#">· 메인보드</a></li>
-                    <li><a href="#">· 메모리</a></li>
-                    <li><a href="#">· 그래픽카드</a></li>
-                    <li><a href="#">· SSD</a></li>
-                    <li><a href="#">· 하드디스크</a></li>
-                    <li><a href="#">· ODD(외장/내장)</a></li>
-                    <li><a href="#">· 케이스</a></li>
-                    <li><a href="#">· 파워서플라이</a></li>
-                    <li><a href="#">· 공/수냉쿨러</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">키보드·마우스·주변기기</a>
-                <ul >
-                    <div class="side-bar-min-head">
-                        <strong>키보드·마우스·주변기기</strong>
-                        <br>
-                        <br>
-                    </div>
-                    <li><a href="#">· 키보드</a></li>
-                    <li><a href="#">· 마우스</a></li>
-                    <li><a href="#">· 스피커</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">모니터·악세서리</a>
-                <ul>
-                    <div class="side-bar-min-head">
-                        <strong>모니터·악세서리 </strong>
-                        <br>
-                        <br>
-                    </div>
-                    <li><a href="#">· 19~22 인치 모니터</a></li>
-                    <li><a href="#">· 24~26 인치 모니터</a></li>
-                    <li><a href="#">· 27~29 인치 모니터</a></li>
-                    <li><a href="#">· 30~39 인치 모니터</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">프린터·복합기·스캐너</a>
-                <ul>
-                    <div class="side-bar-min-head">
-                        <strong>프린터·복합기·스캐너</strong>
-
-                    </div>
-                    <li><a href="#">· 잉크젯 프린터</a></li>
-                    <li><a href="#">· 레이저 프린터</a></li>
-                    <li><a href="#">· 복합기</a></li>
-                    <li><a href="#">· 스캐너</a></li>
-                </ul>
-            </li>
-            <li>
-                
-                <ul>
-                    <div class="side-bar-min-head">
-                        <li><a href="#">· 공유기</a></li>
-                        <li><a href="#">· 랜카드</a></li>
-                        <li><a href="#">· 랜 케이블</a></li>
-                        <li><a href="#">· 스위칭 허브</a></li>
-                    </div>
-                    
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
+	<%@ include file="/views/category/mainPart.jsp" %>
     
     <div class="top" >        
         <button type="button"  class="categoryBtn" onclick="hoverCategoryBtn();" style="background-image: url(${pageContext.request.contextPath}/resources/image/categoryBtn.png);"></button> 
@@ -139,13 +62,13 @@
                 <a href="${pageContext.request.contextPath}/indexToMyPage.my" id="myPageTag" onmouseover="overMyPage();"> 마이페이지</a>
                 <div id="mdiv" style="background-image: url(${pageContext.request.contextPath}/img/myPageHover.png); background-size: 100px 200px" onmouseover="overMyPage();" onmouseout="outMyPage();">                  
                         <ul class="myPageUl" >
-                            <li class="three"><a href=""><img src="${pageContext.request.contextPath}/img/heartIcon.png" alt="">좋아요</a></li>
-                            <li class="four"><a href=""><img src="${pageContext.request.contextPath}/img/chatIcon.png" alt="" >거래내역</a></li>
-                            <li class="two"><a href=""><img src="${pageContext.request.contextPath}/img/settingIcon.png" alt="">설정</a></li>
-                            <li class="three"><a href=""><img src="${pageContext.request.contextPath}/img/writeIcon.png" alt="">글쓰기</a></li>
-                            <li class="three"><a href=""><img src="${pageContext.request.contextPath}/img/personIcon.png" alt="">프로필</a></li>
-                            <li class="four"><a href=""><img src="${pageContext.request.contextPath}/img/faqIcon.png" alt="">고객센터</a></li>
-                            <li class="four"><a href=""><img src="${pageContext.request.contextPath}/img/logoutIcon.png" alt="">로그아웃</a></li>
+                            <li class="three"><a href="${pageContext.request.contextPath}/indexToLike.my"><img src="${pageContext.request.contextPath}/img/heartIcon.png" alt="">좋아요</a></li>
+                            <li class="four"><a href="${pageContext.request.contextPath}/indexToTradeHistory.my"><img src="${pageContext.request.contextPath}/img/chatIcon.png" alt="" >거래내역</a></li>
+                            <li class="two"><a href="${pageContext.request.contextPath}/indexToSetting.my"><img src="${pageContext.request.contextPath}/img/settingIcon.png" alt="">설정</a></li>
+                            <li class="three"><a href="${pageContext.request.contextPath}/indexToWrite.po"><img src="${pageContext.request.contextPath}/img/writeIcon.png" alt="">글쓰기</a></li>
+                            <li class="three"><a href="${pageContext.request.contextPath}/indexToProfile.my"><img src="${pageContext.request.contextPath}/img/personIcon.png" alt="">프로필</a></li>
+                            <li class="four"><a href="${pageContext.request.contextPath}/indexToFaq.fa"><img src="${pageContext.request.contextPath}/img/faqIcon.png" alt="">고객센터</a></li>
+                            <li class="four"><a href="${pageContext.request.contextPath}"><img src="${pageContext.request.contextPath}/img/logoutIcon.png" alt="">로그아웃</a></li>
                         </ul>
             
                 </div>
@@ -177,16 +100,6 @@
             location.href = "${pageContext.request.contextPath}/index.re";
         }
 
-        /* 카테고리Btn */
-        function hoverCategoryBtn(){
-            let divSb = document.getElementById("side-bar");
-            if(divSb.style.display=="none"){
-                divSb.style.display="block";
-            } else{
-                divSb.style.display="none";
-            }
-            
-        }
 
         /* 마이페이지 마우스 오버 */
         function overMyPage(){
