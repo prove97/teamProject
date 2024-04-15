@@ -200,11 +200,11 @@
                 <td class="column2">
                     <div class="category_box">
                         <div id="category_top_box">
-                            <p onclick="category_middle(1);">컴퓨터 주요 부품</p>
-                            <p onclick="category_middle(2);">키보드, 마우스, 주변기기</p>
-                            <p onclick="category_middle(3);">모니터, 악세서리</p>
-                            <p onclick="category_middle(4);">프린터, 복합기, 스캐너</p>
-                            <p onclick="category_middle(5);">네트워크, 공유기</p>
+                            <p id="category_middle_opt1" onclick="category_middle(1);">컴퓨터 주요 부품</p>
+                            <p id="category_middle_opt2" onclick="category_middle(2);">키보드, 마우스, 주변기기</p>
+                            <p id="category_middle_opt3" onclick="category_middle(3);">모니터, 악세서리</p>
+                            <p id="category_middle_opt4" onclick="category_middle(4);">프린터, 복합기, 스캐너</p>
+                            <p id="category_middle_opt5" onclick="category_middle(5);">네트워크, 공유기</p>
                         </div>
                         <div id="category_middle_noselected">
                             <b style="color: darkgray;">중분류 선택</b>
@@ -391,6 +391,11 @@
        	const middle3 = document.getElementById("category_middle_3");
        	const middle4 = document.getElementById("category_middle_4");
        	const middle5 = document.getElementById("category_middle_5");
+       	const middleOpt1 = document.getElementById("category_middle_opt1");
+       	const middleOpt2 = document.getElementById("category_middle_opt2");
+       	const middleOpt3 = document.getElementById("category_middle_opt3");
+       	const middleOpt4 = document.getElementById("category_middle_opt4");
+       	const middleOpt5 = document.getElementById("category_middle_opt5");
         	
         function category_middle(num){
             var categoryId = "category_middle_" + num;
@@ -402,8 +407,17 @@
         	middle3.style.display = "none";
         	middle4.style.display = "none";
         	middle5.style.display = "none";
-        	
         	ele.style.display = "block";
+        	
+        	var categoryOpt = "category_middle_opt" + num;
+        	const opt = document.getElementById(categoryOpt);
+        	
+        	middleOpt1.style.background = "none";
+        	middleOpt2.style.background = "none";
+        	middleOpt3.style.background = "none";
+        	middleOpt4.style.background = "none";
+        	middleOpt5.style.background = "none";
+        	opt.style.background = "darkgray";
         }
     </script>
 </body>

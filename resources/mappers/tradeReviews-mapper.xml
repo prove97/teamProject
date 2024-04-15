@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="tradeReviewsMapper">
+	<resultMap id="tradeReviewsResultSet" type="TradeReviews">
+		<result column="REVIEW_ID" property="reviewId"/>
+		<result column="SELLER_NO" property="sellerNo"/>
+		<result column="BUYER_NO" property="buyerNo"/>
+		<result column="GOODS_ID" property="goodsId"/>
+		<result column="MESSAGE" property="message"/>
+		<result column="FIELD_SCORE" property="fieldScore"/>
+		<result column="REVIEW_DATE" property="reviewDate"/>
+	</resultMap>
+	
+</mapper>
