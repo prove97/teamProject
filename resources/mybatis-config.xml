@@ -10,8 +10,21 @@
  	</settings>
  	<!-- typeAlias : VO/DTO 클래스들의 풀클래스명을 단순한 클래스명(별칭)으로 사용하기위한 별칭을 등록하는 영역-->
  	<typeAliases>
- 		<typeAlias type="com.kh.mybatis.member.model.vo.Member" alias="Member" />
- 		<typeAlias type="com.kh.mybatis.board.model.vo.Board" alias="Board" />
+ 		<typeAlias type="com.two.attachment.model.vo.Attachment" alias="Attachment"/>
+ 		<typeAlias type="com.two.board.model.vo.Board" alias="Board"/>
+ 		<typeAlias type="com.two.category.model.vo.Category" alias="Category"/>
+ 		<typeAlias type="com.two.category.model.vo.CategoryMiddle" alias="CategoryMiddle"/>
+ 		<typeAlias type="com.two.category.model.vo.CategoryTop" alias="CategoryTop"/>
+ 		<typeAlias type="com.two.comments.model.vo.Comments" alias="Comments"/>
+ 		<typeAlias type="com.two.common.model.vo.Common" alias="Common"/>
+ 		<typeAlias type="com.two.evaluationItems.model.vo.EvaluationItems" alias="EvaluationItems"/>
+ 		<typeAlias type="com.two.faq.model.vo.Faq" alias="Faq"/>
+ 		<typeAlias type="com.two.member.model.vo.Member" alias="Member"/>
+ 		<typeAlias type="com.two.myPage.model.vo.MyPage" alias="MyPage"/>
+ 		<typeAlias type="com.two.priceOffers.model.vo.PriceOffers" alias="PriceOffers"/>
+ 		<typeAlias type="com.two.product.model.vo.Product" alias="Product"/>
+ 		<typeAlias type="com.two.tradeReviews.model.vo.TradeReviews" alias="TradeReviews"/>
+ 		<typeAlias type="com.two.wishList.model.vo.WishList" alias="WishList"/>
  	</typeAliases>
  	
  	<!-- environments : mybatis에서 연동할 DB정보들을 등록하는 영역-->
@@ -31,15 +44,27 @@
  			<dataSource type="POOLED">
 		        <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
 		        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-		        <property name="username" value="semi"/>
-		        <property name="password" value="semi"/>
+		        <property name="username" value="SEMI"/>
+		        <property name="password" value="SEMI"/>
 	        </dataSource>
  		</environment>
  	</environments>
  	<!-- mappers : 실행할 sql문들을 기록해둔 mapper파일들을 등록하는 영역 -->
  	<mappers>
- 		<mapper resource="/mappers/member-mapper.xml"/>
+ 		<mapper resource="/mappers/attachment-mapper.xml"/>
  		<mapper resource="/mappers/board-mapper.xml"/>
+ 		<mapper resource="/mappers/category_middle-mapper.xml"/>
+ 		<mapper resource="/mappers/category_top-mapper.xml"/>
+ 		<mapper resource="/mappers/comments-mapper.xml"/>
+ 		<mapper resource="/mappers/evaluationItems-mapper.xml"/>
+ 		<mapper resource="/mappers/faq-mapper.xml"/>
+ 		<mapper resource="/mappers/member-mapper.xml"/>
+ 		<mapper resource="/mappers/myPage-mapper.xml"/>
+ 		<mapper resource="/mappers/posting-mapper.xml"/>
+ 		<mapper resource="/mappers/priceOffers-mapper.xml"/>
+ 		<mapper resource="/mappers/product-mapper.xml"/>
+ 		<mapper resource="/mappers/tradeReviews-mapper.xml"/>
+ 		<mapper resource="/mappers/wishList-mapper.xml"/>
  	</mappers>
 
  	
