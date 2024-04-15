@@ -40,14 +40,8 @@
                 height: 960px;
                 width: 1151px;
 
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-
                 margin: auto;
                 margin-top: 72px;
-                padding-top: 10px;
 
             }
 
@@ -55,10 +49,14 @@
                 font-size: 25px;
             }
 
+            .bestListTitle {
+                font-size: 20px;
+            }
+
             .bestListNum-left {
                 background: orange;
-                height: 20px;
-                width: 20px;
+                height: 23px;
+                width: 23px;
 
                 font-weight: 500;
                 text-align: center;
@@ -108,23 +106,52 @@
                 border-top: 0.8px solid #D9D9D9;
             }
 
+            .sedbar-top > a{
+                text-decoration: none;
+                color: black;
+            }
+            
+
             .footerSpace{
                 height: 160px;
             }
+            
+            /* 오늘의 BEST 랭킹 */
+            .list1-10{
+                padding-right: 70px;
+                padding-bottom: 20px;
+                margin: 5px;
+            }
+
+            /* 추천 행 */
+            #cncjs{
+                border: 0.8px solid #999999; 
+                width: 30px;
+                border-radius: 10px 10px 10px 10px / 10px 10px 10px 10px;
+                margin: 5px 0px;
+            }
+
+            /* 잡담 행 */
+            #wkqeka{
+                border-radius: 10px 10px 10px 10px / 10px 10px 10px 10px;
+                background: #70C9A0; 
+                width: 70px;
+            }
+            
         </style>
     </head>
 
     <body>
         <%@ include file="/views/common/header.jsp" %>
         <div id="pull">
-            <section id="mainSection" class="border-border">
-                <div id="bestList">
+            <section id="mainSection" class="">
+                <div id="bestList" >
                     <div class="border-border">
-                        <div id="bestListTitle">오늘의 BEST
+                        <div id="bestListTitle" style="width: 575px; margin-top: 20px;">오늘의 BEST
                             <hr>
                         </div>
-                        <div>
-                            <table id="list1-5">
+                        <div class="list1-10">
+                            <table>
                                 <tr>
                                     <td class="bestListNum-left">1</td>
                                     <td class="bestListTitle">차단된 회원 게시물입니다</td>
@@ -146,7 +173,7 @@
                                     <td class="bestListTitle">중고컴퓨터 담배냄새 제거후기</td>
                                 </tr>
                             </table>
-                            <table id="list6-10">
+                            <table>
                                 <tr>
                                     <td class="bestListNum-right">6</td>
                                     <td class="bestListTitle">모니터암에 충돌경고문구 있어야 하지 않나요?</td>
@@ -171,10 +198,10 @@
                         </div>
                     </div>
                     <div id="main">
-                        <div id="categorySelectTab">
+                        <div id="categorySelectTab" style="padding: 8px 0px;">
                             <table>
                                 <tr>
-                                    <th>베스트</th>
+                                    <th style="background: #70C9A0;">베스트</th>
                                     <th>전체</th>
                                     <th>잡담</th>
                                     <th>정보</th>
@@ -183,177 +210,184 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="boardList" class="border-border">
-                            <table>
+                        <div id="boardList" class="" align="center">
+                            <table style="width: 1151px; padding-bottom: 8px;">
                                 <tr align="center">
-                                    <td width="26">추천</td>
-                                    <td width="80">분류</td>
-                                    <td width="300">제목</td>
-                                    <td width="80">닉네임</td>
-                                    <td width="80">조회수</td>
-                                    <td width="80">날짜</td>
+                                    <td width="36">추천</td>
+                                    <td width="90">분류</td>
+                                    <td width="310">제목</td>
+                                    <td width="90">닉네임</td>
+                                    <td width="90">조회수</td>
+                                    <td width="90">날짜</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                <tr class="border-border" >
-                                    <td class="border-border-border" align="center">0 </td>
-                                    <td class="bunlyu sedbar-top" align="center">잡담</td>
-                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp;퀘존앱은 로그인 기능이 없나요? </td>
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
                                     <td align="center" class="sedbar-left">Dodle</td>
                                     <td align="center" class="sedbar-left">25</td>
                                     <td align="center" class="sedbar-left">03-25</td>
                                 </tr>
-                                
+                                <tr class="border-border">
+                                    <td align="center"> <div id="cncjs">0</div> </td>
+                                    <td align="center"> <div id="wkqeka">잡담</div> </td>
+                                    <td class="sedbar-top">&nbsp;&nbsp;&nbsp; <a href="">퀘존앱은 로그인 기능이 없나요?</a> </td>
+                                    <td align="center" class="sedbar-left">Dodle</td>
+                                    <td align="center" class="sedbar-left">25</td>
+                                    <td align="center" class="sedbar-left">03-25</td>
+                                </tr>
                                 
                             </table>
                         </div>
