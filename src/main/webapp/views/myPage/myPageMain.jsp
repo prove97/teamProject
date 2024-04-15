@@ -156,7 +156,7 @@
 </head>
 
 <body>
-    <%@ include file="/views/common/header.jsp" %>
+    <jsp:include page="/views/common/header.jsp" />
     <section id="mainSection">
         <div id="aside">
             <div id="profile">
@@ -166,7 +166,7 @@
                 </div>
                 <div id="brightnessRate">
                     <h6>밝음 수치: 70 lux</h6>
-                    <div class="progress" style="width: 150px; border-radius: 10px;">
+                    <div class="progress" style="width: 150px; border: 1px solid darkgray; border-radius: 10px;">
                         <div class="progress-bar" style="width:70%; background: #70C9A0;"></div>
                     </div>
                 </div>
@@ -189,12 +189,10 @@
 
             </div>
         </div>
-
-        <div class="main">
-
-        </div>
+		<jsp:include page="${changeUrl}" />						
     </section>
-    <%@ include file="/views/common/footer.jsp" %>            
+    <jsp:include page="/views/common/footer.jsp" />
+
     
 </body>
 

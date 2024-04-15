@@ -28,8 +28,8 @@ public class MyPageChangeHeart extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/myPage/myComment.jsp").forward(request, response);	;		
-	}
+		request.setAttribute("changeUrl", "heart.jsp");		
+		request.getRequestDispatcher("views/myPage/myPageMain.jsp").forward(request, response);	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

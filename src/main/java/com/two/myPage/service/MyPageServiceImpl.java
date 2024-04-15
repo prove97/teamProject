@@ -1,5 +1,5 @@
 package com.two.myPage.service;
 
-public interface MyPageService {
+public class MyPageServiceImpl {
 	
 }
