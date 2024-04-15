@@ -41,7 +41,6 @@
         border: 0.8px solid #d9d9d9;
         width: 100px;
         height: 20px;
-
     }
 
     /* 돋보기사진 */
@@ -104,7 +103,7 @@
 
 </head>
 <body>
-	 <%@ include file="/views/common/header.jsp" %>
+    <%@ include file="/views/common/header.jsp" %>
     <div id="All">
         <thead id="head">
             <img src="https://pbs.twimg.com/media/EA9UJBjU4AAdkCm.jpg" alt="광고배너" style="width: 1150px; height: 148px; box-shadow: 0px 10px 10px -10px #000; margin-top: 61px;">                                       
@@ -159,81 +158,54 @@
                                 <option value="">5 PNY XLR8 지포···</option>
                             </select>
                         </td>
+                        <td  class="bobo" style="border: none;">
+                            
+                        </td>
+                        <td  class="bobo" style="border: none;">
+                            
+                        </td>
+                        <td  class="bobo" style="border: none;">
+                            
+                        </td>
+                        <td  class="bobo" style="border: none;">
+                            
+                        </td>
+                        <td  class="bobo" style="border: none;">
+                            
+                        </td>
+                        <td  class="bobo" style="border: none;">
+                            
+                        </td>
                         <td>
                             <button style="border: 0.8px solid #d9d9d9; width: 125px; height: 33px; background: white;">저장 (2)</button>
                         </td>
-                        <td  class="bobo">
-
+                    </tr>
+                    <tr>
+                        <td  class="bobo" style="border: none;">
                         </td>
-                        <td  class="bobo">
-
+                    </tr>
+                    <tr>
+                        <td  class="bobo"  style="border: 0.8px solid #d9d9d9; width: 220px; height: 40px;">
+                             <div style="font-size: 15px;"><input type="checkbox" style="margin:0px 15px;">메인 베스트 등록 금지</div>
                         </td>
-                        <td  class="bobo">
-
-                        </td>
-                        <td  class="bobo">
+                        <td  class="bobo"  style="border: none;">
                             
                         </td>
-                        <td  class="bobo">
+                        <td  class="bobo"  style="border: 0.8px solid #d9d9d9; width: 240px; height: 40px;">
+                            <div style="font-size: 15px;"><input type="checkbox" style="margin:0px 15px;">게시판 베스트 등록 금지</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  class="bobo" style="border: none;">
+                            <div style="width: 00px;"></div>
+                        </td>
+                    </tr>
 
-                        </td>
-                        <td  class="bobo">
-                            
-                        </td>
+                    <tr>
+                        <td style="font-size: 20px;"><strong>제목을 입력하세요</strong> </td>
                     </tr>
                     <tr>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
+                        <td></td>
                     </tr>
                 </table>
                 
