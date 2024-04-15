@@ -108,5 +108,16 @@
             sidebar.style.transform = 'translate(0px, 0)';
         }
     }
+    
+    /* 카테고리Btn */
+    function hoverCategoryBtn(){
+        let divSb = document.getElementById("side-bar");
+        if(divSb.style.display=="none"){
+            divSb.style.display="block";
+        } else{
+            divSb.style.display="none";
+        }
+        
+    }
 </script>
 </html>

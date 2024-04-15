@@ -24,7 +24,7 @@
     <section class="main">
     	
         <div id="banner">
-            <img src="${pageContext.request.contextPath}/img/banner.png" alt="배너">
+            <img src="${pageContext.request.contextPath}/img/banner.PNG" alt="배너" style="width: 1151px; object-fit: cover;">
         </div>
         <div class="contents">
             <div class="contents-preview">
