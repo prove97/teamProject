@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 
@@ -21,137 +23,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
-        body{
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-
-        #mainSection {
-            height: 1200px;
-            width: 1151px;
-            
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            justify-content: space-between;
-
-            margin-top: 82px;
-        }
-
-        /*사이드 구역 */
-        #aside {
-            width: 240px;
-            height: 940px;
-        }
-
-        /*프로필*/
-        #profile {
-            width: 240px;
-            height: 326px;
-            border: 1px solid black;
-            border-radius: 15px;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-
-        }
-
-        #profile>div {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        #profileImage {
-            background-image: url(${pageContext.request.contextPath}/img/sample1.png);
-
-            width: 150px;
-            height: 150px;
-
-            border: 1px solid black;
-            border-radius: 100%;
-
-            margin-top: 20px;
-
-            text-align: center;
-            line-height: 150px;            
-        }
-
-
-        #profileImage:hover{
-            filter: brightness(40%);
-        }
-
-        #profile>#nickname {
-            font-size: 24px;
-        }
-
-
-        #brightnessRate>h6 {
-            margin: 5px 0;
-        }
-
-        /* 사이드 메뉴바 */
-        #menubar {
-            height: 100px;
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-
-            padding: 0 23px;
-        }
-
-        #menubar * {
-            font-size: 21px;
-            padding: 13px 0;
-        }
-
-        #menubar strong {
-            font-size: 24px;
-        }
-
-        #menubar ul {
-            margin: 0;
-            margin-top: 10px;
-        }
-
-        #menubar li {
-            list-style: none;
-        }
-
-        #menubar a{
-            color: inherit;        
-        }
-
-        .nonStyle {
-            color: black;
-            text-decoration: none;
-            list-style: none;
-        }
-
-        .nonStyle:hover {
-            text-decoration: underline solid;
-        }
-
-        /* 회원정보창 */
-        #main>form {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 900px;
-            height: 965px;
-            background: #D6EFE3;
-            position: relative;
-
-            border-radius: 15px;
-
-        }
-
-        div>h2{
+	    /* 회원정보창 */
+	    #main>form {
+	        display: flex;
+	        flex-direction: column;
+	        justify-content: center;
+	        align-items: center;
+	        width: 900px;
+	        height: 965px;
+	        background: #D6EFE3;
+	        position: relative;
+	
+	        border-radius: 15px;
+	
+	    }
+	
+	    div>h2{
             margin-bottom: 20px;
         }
 
@@ -285,193 +172,157 @@
 </head>
 
 <body>
-    <%@ include file="/views/common/header.jsp" %>
-    <section id="mainSection">
-        <div id="aside">
-            <div id="profile">
-                <div id="profileImage"><a href="#"></a></div>
-                <div id="nickname">
-                    user01
-                </div>
-                <div id="brightnessRate">
-                    <h6>밝음 수치: 70 lux</h6>
-                    <div class="progress" style="width: 150px; border-radius: 10px;">
-                        <div class="progress-bar" style="width:70%; background: #70C9A0;"></div>
-                    </div>
-                </div>
-            </div>
-            <div id="menubar">
-                <a href="${pageContext.request.contextPath}/myPageMain.my" class="nonStyle"><strong>내정보</strong></a>
-                <ul>
-                    <strong>나의 활동</strong>
-                    <li><a href="${pageContext.request.contextPath}/changeMyPost.my" class="nonStyle">나의 판매글</a></li>
-                    <li><a href="${pageContext.request.contextPath}/changeMyComment.my" class="nonStyle">나의 댓글</a></li>
-                    <li><a href="${pageContext.request.contextPath}/changeHeart.my" class="nonStyle">찜목록</a></li>
-                </ul>
-                <ul>
-                    <strong>문의사항</strong>
-                    <li><a href="#" class="nonStyle">1:1문의</a></li>
-                    <li><a href="#" class="nonStyle">자주묻는질문</a></li>
-                    <li><a href="#" class="nonStyle">신고내역</a></li>
-                </ul>
-
-
-            </div>
-        </div>
-
-        <div id="main">
-            <form action="">
-                <div id="necessaryInfo">
-                    <h2>회원정보</h2>
-                    <div class="inputSpace">
-                        <table align="center">
-                            <tr>
-                                <th>아이디</th>
-                                <td><input type="text" value="admin1234" name="userId" class="necessaryInput" readonly></td>
-                            </tr>
-                            <tr>
-                                <th>비밀번호</th>
-                                <td class="inputWrong">
-                                    <input type="password" name="userPwd" id="pwd" class="necessaryInput" maxlength="20" oninput="combinePwd();">
-                                    <div class="warning">비밀번호는 영어, 숫자, 특수기호 포함 8자 이상이어야 합니다.</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>비밀번호 확인</th>
-                                <td class="inputWrong">
-                                    <input type="password" name="checkUserPwd" id="checkPwd" class="necessaryInput" maxlength="20" oninput="differPwd();">
-                                    <div class="warning">비밀번호가 일치하지 않습니다.</div>                                        
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>휴대폰 번호</th>
-                                <td><input type="text" value="010-0000-0000" name="phone" class="necessaryInput" readonly></td>
-                            </tr>
-                            <tr style="position: relative;">
-                                <th>닉네임</th>    
-                                <td class="inputWrong">
-                                    <input type="text" value="user01" class="necessaryInput" name="nickname">
-                                    <div class="warning">중복된 닉네임입니다</div>                                        
-                                    <button type="button" id="duplicationCheckBtn" onclick="nicknameCheck();">중복확인</button>
-                                </td>                                
-                                
-                            </tr>
-                        </table>
-                        <script>
-                            function combinePwd(){
-                                let newPwd = document.getElementById('pwd');
-                                let checkPwd = document.getElementById('checkPwd');
-                                let warning = document.getElementsByClassName('warning')[0];
-                                const reg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
-
-                                
-                                if(reg.test(newPwd.value) || newPwd.value === ""){ //비밀번호의 조합조건이 맞거나 빈칸일 경우
-                                    warning.style.display = 'none';
-                                    newPwd.style.border = '0px';
-                                    newPwd.style.borderBottom = '1px solid black';
-                                    newPwd.style.borderRadius = '0px';
-                                } else {
-                                    newPwd.style.border = 'red solid';
-                                    newPwd.style.borderRadius = '5px';
-                                    warning.style.display = 'block';
-                                } 
-                                
-                            }
-
-                            function differPwd(){
-                                let newPwd = document.getElementById('pwd');
-                                let checkPwd = document.getElementById('checkPwd');
-                                let warning = document.getElementsByClassName('warning')[1];
-
-                                if(newPwd.value === checkPwd.value || checkPwd.value === ""){ //비밀번호가 일치하거나 빈칸일 경우
-                                    warning.style.display = 'none';
-                                    checkPwd.style.border = '0px';
-                                    checkPwd.style.borderBottom = '1px solid black';
-                                    checkPwd.style.borderRadius = '0px';
-                                    
-                                } else{
-                                    checkPwd.style.border = 'red solid';
-                                    checkPwd.style.borderRadius = '5px';
-                                    warning.style.display = 'block';
-                                }
-
-                            }
-
-                            function nicknameCheck(){ //닉네임 중복체크
-                                const nicknameInput = document.querySelector("input[name=nickname]");
-                                
-                                $.ajax({
-                                    type: "GET",
-                                    url: "nicknameCheck.me",
-                                    data:{
-                                        checkNickname: nicknameInput.value
-                                    },
-                                    success: function(res){},
-                                    error: function(err){}
-                                })
-
-
-                            }
-                        </script>
-                    </div>
-                </div>
-                <div id="nonNecessaryInfo">
-                    <h2>선택입력</h2>
-                    <div class="inputSpace">
-                        <table align="center">
-                            <tr>
-                                <th>성별</th>
-                                <td id="genderInput">
-                                    <input type="radio" name="gender" id="male">
-                                    <label for="male">남</label>
-                                    <input type="radio" name="gender" id="female">
-                                    <label for="female">여</label>
-
-                                </td>
-
-                                <th>이메일</th>
-                                <td><input type="email"></td>
-                            </tr>
-                            <tr>
-                                <th>지역</th>
-                                <td colspan="3">
-                                    <select name="h_area1" onChange="location1_change(this.value, h_area2)" class="h_area1">
-                                        <option>선택</option>
-                                        <option value='1'>서울</option>
-                                        <option value='2'>부산</option>
-                                        <option value='3'>대구</option>
-                                        <option value='4'>인천</option>
-                                        <option value='5'>광주</option>
-                                        <option value='6'>대전</option>
-                                        <option value='7'>울산</option>
-                                        <option value='8'>강원</option>
-                                        <option value='9'>경기</option>
-                                        <option value='10'>경남</option>
-                                        <option value='11'>경북</option>
-                                        <option value='12'>전남</option>
-                                        <option value='13'>전북</option>
-                                        <option value='14'>제주</option>
-                                        <option value='15'>충남</option>
-                                        <option value='16'>충북</option>
-                                    </select>
-                                    <b>도/시</b>
-
-                                    <select name="h_area2">
-                                        <option>선택</option>
-                                    </select>
-                                    <b>시/구/군</b>
-                                    <!-- <select name="location" id=""></select>
-                                    <b>동</b> -->
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <button type="submit">저장</button>
-            </form>
-        </div>
-    </section>
-    <%@ include file="/views/common/footer.jsp" %>            
+	<div id="main">
+	    <form action="">
+	        <div id="necessaryInfo">
+	            <h2>회원정보</h2>
+	            <div class="inputSpace">
+	                <table align="center">
+	                    <tr>
+	                        <th>아이디</th>
+	                        <td><input type="text" value="admin1234" name="userId" class="necessaryInput" readonly></td>
+	                    </tr>
+	                    <tr>
+	                        <th>비밀번호</th>
+	                        <td class="inputWrong">
+	                            <input type="password" name="userPwd" id="pwd" class="necessaryInput" maxlength="20" oninput="combinePwd();">
+	                            <div class="warning">비밀번호는 영어, 숫자, 특수기호 포함 8자 이상이어야 합니다.</div>
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                        <th>비밀번호 확인</th>
+	                        <td class="inputWrong">
+	                            <input type="password" name="checkUserPwd" id="checkPwd" class="necessaryInput" maxlength="20" oninput="differPwd();">
+	                            <div class="warning">비밀번호가 일치하지 않습니다.</div>                                        
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                        <th>휴대폰 번호</th>
+	                        <td><input type="text" value="010-0000-0000" name="phone" class="necessaryInput" readonly></td>
+	                    </tr>
+	                    <tr style="position: relative;">
+	                        <th>닉네임</th>    
+	                        <td class="inputWrong">
+	                            <input type="text" value="user01" class="necessaryInput" name="nickname">
+	                            <div class="warning">중복된 닉네임입니다</div>                                        
+	                            <button type="button" id="duplicationCheckBtn" onclick="nicknameCheck();">중복확인</button>
+	                        </td>                                
+	                        
+	                    </tr>
+	                </table>
+	                <script>
+	                    function combinePwd(){
+	                        let newPwd = document.getElementById('pwd');
+	                        let checkPwd = document.getElementById('checkPwd');
+	                        let warning = document.getElementsByClassName('warning')[0];
+	                        const reg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
+	
+	                        
+	                        if(reg.test(newPwd.value) || newPwd.value === ""){ //비밀번호의 조합조건이 맞거나 빈칸일 경우
+	                            warning.style.display = 'none';
+	                            newPwd.style.border = '0px';
+	                            newPwd.style.borderBottom = '1px solid black';
+	                            newPwd.style.borderRadius = '0px';
+	                        } else {
+	                            newPwd.style.border = 'red solid';
+	                            newPwd.style.borderRadius = '5px';
+	                            warning.style.display = 'block';
+	                        } 
+	                        
+	                    }
+	
+	                    function differPwd(){
+	                        let newPwd = document.getElementById('pwd');
+	                        let checkPwd = document.getElementById('checkPwd');
+	                        let warning = document.getElementsByClassName('warning')[1];
+	
+	                        if(newPwd.value === checkPwd.value || checkPwd.value === ""){ //비밀번호가 일치하거나 빈칸일 경우
+	                            warning.style.display = 'none';
+	                            checkPwd.style.border = '0px';
+	                            checkPwd.style.borderBottom = '1px solid black';
+	                            checkPwd.style.borderRadius = '0px';
+	                            
+	                        } else{
+	                            checkPwd.style.border = 'red solid';
+	                            checkPwd.style.borderRadius = '5px';
+	                            warning.style.display = 'block';
+	                        }
+	
+	                    }
+	
+	                    function nicknameCheck(){ //닉네임 중복체크
+	                        const nicknameInput = document.querySelector("input[name=nickname]");
+	                        
+	                        $.ajax({
+	                            type: "GET",
+	                            url: "nicknameCheck.me",
+	                            data:{
+	                                checkNickname: nicknameInput.value
+	                            },
+	                            success: function(res){},
+	                            error: function(err){}
+	                        })
+	
+	
+	                    }
+	                </script>
+	            </div>
+	        </div>
+	        <div id="nonNecessaryInfo">
+	            <h2>선택입력</h2>
+	            <div class="inputSpace">
+	                <table align="center">
+	                    <tr>
+	                        <th>성별</th>
+	                        <td id="genderInput">
+	                            <input type="radio" name="gender" id="male">
+	                            <label for="male">남</label>
+	                            <input type="radio" name="gender" id="female">
+	                            <label for="female">여</label>
+	
+	                        </td>
+	
+	                        <th>이메일</th>
+	                        <td><input type="email"></td>
+	                    </tr>
+	                    <tr>
+	                        <th>지역</th>
+	                        <td colspan="3">
+	                            <select name="h_area1" onChange="location1_change(this.value, h_area2)" class="h_area1">
+	                                <option>선택</option>
+	                                <option value='1'>서울</option>
+	                                <option value='2'>부산</option>
+	                                <option value='3'>대구</option>
+	                                <option value='4'>인천</option>
+	                                <option value='5'>광주</option>
+	                                <option value='6'>대전</option>
+	                                <option value='7'>울산</option>
+	                                <option value='8'>강원</option>
+	                                <option value='9'>경기</option>
+	                                <option value='10'>경남</option>
+	                                <option value='11'>경북</option>
+	                                <option value='12'>전남</option>
+	                                <option value='13'>전북</option>
+	                                <option value='14'>제주</option>
+	                                <option value='15'>충남</option>
+	                                <option value='16'>충북</option>
+	                            </select>
+	                            <b>도/시</b>
+	
+	                            <select name="h_area2">
+	                                <option>선택</option>
+	                            </select>
+	                            <b>시/구/군</b>
+	                            <!-- <select name="location" id=""></select>
+	                            <b>동</b> -->
+	                        </td>
+	                    </tr>
+	                </table>
+	            </div>
+	        </div>
+	        <button type="submit">저장</button>
+	    </form>
+	</div>
     
     <script>
         let location1_num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
