@@ -23,8 +23,12 @@ public class ProductServiceImpl implements ProductService{
 	
 	@Override
 	public ArrayList<Product> selectList(PageInfo pi) {
+		SqlSession sqlSession = Template.getSqlSession();
+		ArrayList<Product> list = pDao.selectList(sqlSession, pi);
 		
-		return null;
+		sqlSession.close();
+		
+		return list;
 	}
 
 
