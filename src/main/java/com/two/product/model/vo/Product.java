@@ -115,5 +115,4 @@ public class Product {
 		this.productStatus = productStatus;
 	}
 	
-	
 }
