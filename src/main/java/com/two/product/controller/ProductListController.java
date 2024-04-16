@@ -35,14 +35,15 @@ public class ProductListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int listCount = new ProductServiceImpl().selectListCount();
 		int currentPage = Integer.parseInt(request.getParameter("cpage"));
-		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 5);
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 18);
 		
 		ArrayList<Product>list = new ProductServiceImpl().selectList(pi);
 		
 		request.setAttribute("list", list);
 		request.setAttribute("pi", pi);
+		System.out.println(list);
 		
-		request.getRequestDispatcher("").forward(request, response);
+		request.getRequestDispatcher("${pageContext.request.contextPath}").forward(request, response);
 	}
 
 	/**

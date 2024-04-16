@@ -13,10 +13,9 @@
  		<typeAlias type="com.two.attachment.model.vo.Attachment" alias="Attachment"/>
  		<typeAlias type="com.two.board.model.vo.Board" alias="Board"/>
  		<typeAlias type="com.two.category.model.vo.Category" alias="Category"/>
- 		<typeAlias type="com.two.category.model.vo.CategoryMiddle" alias="CategoryMiddle"/>
- 		<typeAlias type="com.two.category.model.vo.CategoryTop" alias="CategoryTop"/>
+ 		<typeAlias type="com.two.category.model.vo.CateMiddle" alias="CategoryMiddle"/>
+ 		<typeAlias type="com.two.category.model.vo.CateTop" alias="CategoryTop"/>
  		<typeAlias type="com.two.comments.model.vo.Comments" alias="Comments"/>
- 		<typeAlias type="com.two.common.model.vo.Common" alias="Common"/>
  		<typeAlias type="com.two.evaluationItems.model.vo.EvaluationItems" alias="EvaluationItems"/>
  		<typeAlias type="com.two.faq.model.vo.Faq" alias="Faq"/>
  		<typeAlias type="com.two.member.model.vo.Member" alias="Member"/>
@@ -59,11 +58,14 @@
  		<mapper resource="/mappers/evaluationItems-mapper.xml"/>
  		<mapper resource="/mappers/faq-mapper.xml"/>
  		<mapper resource="/mappers/member-mapper.xml"/>
+<<<<<<< HEAD
  		<mapper resource="/mappers/myPage-mapper.xml"/>
+=======
+>>>>>>> faa6827576e2255a6d31315683f552d606d366c2
  		<mapper resource="/mappers/priceOffers-mapper.xml"/>
- 		<mapper resource="/mappers/product-mapper.xml"/>
  		<mapper resource="/mappers/tradeReviews-mapper.xml"/>
  		<mapper resource="/mappers/wishList-mapper.xml"/>
+ 		<mapper resource="/mappers/product-mapper.xml"/>
  	</mappers>
 
  	
