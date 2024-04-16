@@ -60,7 +60,6 @@
  		<mapper resource="/mappers/faq-mapper.xml"/>
  		<mapper resource="/mappers/member-mapper.xml"/>
  		<mapper resource="/mappers/myPage-mapper.xml"/>
- 		<mapper resource="/mappers/posting-mapper.xml"/>
  		<mapper resource="/mappers/priceOffers-mapper.xml"/>
  		<mapper resource="/mappers/product-mapper.xml"/>
  		<mapper resource="/mappers/tradeReviews-mapper.xml"/>
