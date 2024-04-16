@@ -26,7 +26,8 @@ public class IndexToProfileController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/myPage/profile.jsp").forward(request, response);
+		request.setAttribute("changeUrl", "profile.jsp"); //changeUrl의 값에 따라 myPageMain.jsp창에서 뜨는 내용이 달라짐
+		request.getRequestDispatcher("views/myPage/myPageMain.jsp").forward(request, response);	
 	}
 
 	/**

@@ -75,30 +75,55 @@
             height: 50px;
         }
 
-        .firstTd{
+        /* 댓글 리스트 */
+        .commentList{
+            height: 101.7px;
             border-top: 0.1px solid rgb(187, 187, 187);
-        }
-        
-        .secondTd{
             border-bottom: 0.1px solid rgb(187, 187, 187);
-            height: 40px;
-
         }
-        .comments{
+
+        .commentList:hover{
+            cursor: pointer;
+            background-color: rgba(0,0,0,0.03) ;
+        }
+
+        .commentList>td:nth-child(1){
+            height: 100px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .commentList>td>#commentContent{
             font-size: 20px;
             text-align: left;
-            padding-left: 20px;
-            height: 61.7px;
+
+            padding-left: 30px;
+            margin-bottom: 15px;
+
+            text-overflow: ellipsis;
+
         }
-        
-        .boards{
+
+        .commentList>td>#commentContent:hover{
+            text-decoration: underline;
+        }
+
+        .commentList>td>#boardTitle{
             font-size: 15px; 
             color: #b3b3b3;           
             text-align: left;   
-            padding-left: 20px;
-            height: 40px;
-
+            padding-left: 30px;
         }
+
+        .commentList>#enrollDate{
+            text-align: center;   
+            font-size: 15px; 
+        }
+
+
+
 
         /* 페이지 선택 */
         #pageSelect{
@@ -132,12 +157,12 @@
 	                    <th width="200px">작성일</th>
 	                </tr>
 	                <%for(int i=0; i<6; i++) {%>
-	                <tr class="firstTd">
-	                    <td class="comments">퇴근 후 7시에 가능합니다.</td>
-	                    <td rowspan="2" align="center">2024.03.04</td>
-	                </tr>
-	                <tr class="secondTd">
-	                    <td class="boards">게시글: 에어팟 맥스 팝니다.</td>
+	                <tr class="commentList">
+	                    <td>
+                            <div id="commentContent">퇴근 후 7시에 가능합니다.</div>
+                            <div id="boardTitle">게시글: 에어팟 맥스 팝니다.</div>
+                        </td>
+                        <td id="enrollDate">2024.03.04</td>
 	                </tr>
 	                <%} %>
 	
