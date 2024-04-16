@@ -26,8 +26,8 @@ public class IndexToTradeHistory extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/views/myPage/salesPost.jsp").forward(request, response);
-		
+		request.setAttribute("changeUrl", "salesPost.jsp");		
+		request.getRequestDispatcher("views/myPage/myPageMain.jsp").forward(request, response);		
 	}
 
 	/**

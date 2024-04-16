@@ -109,8 +109,11 @@
         .myPostingList{
             cursor: pointer;
         }
-
         .myPostingList:hover{
+            background-color: rgba(0,0,0,0.03) ;
+        }
+
+        .myPostingList>.title:hover{
             text-decoration : underline;
         }
 
@@ -185,7 +188,7 @@
 
                     <script>
                         function BoardDetailView(){
-                            
+                        	
                         }
                         
                     </script>

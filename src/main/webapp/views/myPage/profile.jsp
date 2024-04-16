@@ -173,7 +173,7 @@
 
 <body>
 	<div id="main">
-	    <form action="">
+	    <form action="updateMemberInfo.my" method="POST">
 	        <div id="necessaryInfo">
 	            <h2>회원정보</h2>
 	            <div class="inputSpace">
@@ -275,9 +275,9 @@
 	                    <tr>
 	                        <th>성별</th>
 	                        <td id="genderInput">
-	                            <input type="radio" name="gender" id="male">
+	                            <input type="radio" name="gender" id="male" value="M">
 	                            <label for="male">남</label>
-	                            <input type="radio" name="gender" id="female">
+	                            <input type="radio" name="gender" id="female" value="F">
 	                            <label for="female">여</label>
 	
 	                        </td>
