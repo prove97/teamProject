@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="evaluationItemsMapper">
+	<resultMap id="evaluationItemsResultSet" type="EvaluationItems">
+		<result column="FIELD_SCORE" property="fieldScore"/>
+		<result column="KIND" property="kind"/>
+		<result column="FAST_ANSWER" property="fastAnswer"/>
+		<result column="TIME_APPOINTMENT" property="timeAppointment"/>
+		<result column="PRODUCT_STATUS" property="productStatus"/>
+		<result column="DETAIL_EXPLAN" property="detailExplan"/>
+		<result column="CHEAP" property="cheap"/>
+	</resultMap>
+	
+</mapper>

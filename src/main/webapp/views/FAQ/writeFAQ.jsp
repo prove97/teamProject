@@ -20,6 +20,7 @@
         height: 1200px;
         position: relative;
     }        
+<<<<<<< .merge_file_VluCwU
         /* 헤더 */
     .top{ 
         position: fixed;
@@ -90,6 +91,15 @@
     }
 
     /* 메인 */
+=======
+ 
+    /* 메인 */
+    .main{
+        width: 1151px;
+        height: auto;
+    }
+
+>>>>>>> .merge_file_CdjBMn
     .FAQ-title{
         margin-top: 164px;
         margin-bottom: 65px;
@@ -133,6 +143,7 @@
     #submit-input{
         margin-left: 350px;
     }
+<<<<<<< .merge_file_VluCwU
 
     /* 푸터 */
     .footer{
@@ -264,5 +275,42 @@
             </div>
         </div>
     </div>
+=======
+    </style>
+</head>
+<body>
+	<!-- 헤더 -->
+    <%@ include file="/views/common/header.jsp" %>	
+	
+	<!-- 메인 -->
+    <section class="main">
+	<div style="width: 100%; padding-left: 174px;">
+		<div class="FAQ-title">
+			<h1 id="title-text">1:1 문의하기</h1>
+		</div>
+		<fieldset class="write-area">
+			<div>
+				<input type="text" name="title" id="title-input" placeholder="제목"
+					required>
+			</div>
+			<div>
+				<textarea name="content" id="content-input" placeholder="내용"
+					required></textarea>
+			</div>
+			<div>
+				<div class="button-input">
+					첨부 파일 : <input type="file" name="" id="">
+				</div>
+				<div>
+					<input type="submit" value="문의하기" id="submit-input">
+				</div>
+			</div>
+		</fieldset>
+	</div>
+</section>
+	<!-- 푸터 -->
+    <%@ include file="/views/common/footer.jsp" %>
+     	
+>>>>>>> .merge_file_CdjBMn
 </body>
 </html>

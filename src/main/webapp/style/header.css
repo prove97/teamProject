@@ -1,0 +1,147 @@
+
+/*헤더 div*/
+.top{ 
+    position: fixed;
+    width: 1151px;
+    height: 62px;
+    background-color: #EEEEEE;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+
+/*카테고리버튼*/
+.categoryBtn{
+    width: 37px;
+    height: 43px;
+    border: none;
+    margin-left: 25px;
+  
+}
+
+/*피씨그린로고*/
+.logo{
+    width: 72px;
+    height: 45px;
+    border: none;
+    margin-left: 25px;
+}
+
+/*검색창*/
+#searchBar{
+    width: 553px;
+    margin-left: 130px;
+    height: 35px;
+}
+#searchBar form{
+    height: 100%;
+    position: relative;
+}
+#searchBar input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+}
+#searchBar button{
+    
+    border: none;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 12px;
+    top: 7px;
+}
+
+/*로그인*/
+#login{
+    margin-left: 110px;
+}
+#login form{
+    height: 100%;
+}
+#login > a{
+    color: black;
+    font-size: 14px;
+    font-style: none;
+}
+
+/*로그인 후*/
+#loginAfter{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    
+}
+#myPageDiv{   
+    margin-top: 15px;
+    height: 100%;
+    padding-left: 20px;
+}
+#myPageTag{
+    font-size: 15px;
+    color: #70C9A0;
+}
+
+
+
+/* 마이페이지 A태그 호버 */
+#mdiv{
+    position: absolute;
+    width: 100px;
+    height: 200px;
+    margin-top: 5px;
+    top: 61px;
+    z-index: 2;
+    display: none;
+}
+
+.myPageUl{
+    
+    list-style:none;
+    padding-left:10px;
+    margin-top: 25px;
+}
+
+.myPageUl li{
+    line-height: 180%;
+    position: relative;
+}
+
+.myPageUl li > a{
+    font-size: 14px;  
+    color: black;
+    text-decoration: none;
+}
+
+.myPageUl li a::after {
+    content: '';
+    display: block;
+    z-index: -1;
+    width: 0;
+    height: 3px;
+    background: #5d8cef;
+    position: absolute;
+    
+}
+
+.two a:hover::after {
+    width: 55%;
+    left: 0;
+    transition: all .3s;
+}
+
+.three a:hover::after {
+    width: 67%;
+    left: 0;
+    transition: all .3s;
+}
+
+.four a:hover::after {
+    width: 82%;
+    left: 0;
+    transition: all .3s;
+}
+

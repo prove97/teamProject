@@ -5,20 +5,32 @@
 <head>
 <meta charset="UTF-8">
 <title>product_mainPage</title>
+	<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <style>
     *{
         box-sizing: border-box;
-        /* border: 1px solid black; */
     }
     body{
         display: flex;
-        align-items: center;
-        justify-content: center;
+        /* align-items: center; */
+        /* justify-content: center; */
+        position: relative;
+        overflow-x: auto;
+        height: 1500px;
     }
     .contentBox{
         width: 1151px;
         background-color: white;
         margin: auto;
+        margin-top: 0;
+        margin-bottom: 0;
         overflow-x: auto;
         overflow-y: auto;
     }
@@ -31,7 +43,6 @@
         margin: 0px auto;
         margin-top: 80px;
         width: 870px;
-        height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -228,7 +239,6 @@
     .purchase_method{
         position: absolute;
         left: 370px;
-        top: -10px;
         /* align-items: start;
         justify-content: center; */
         color: gray;
@@ -326,6 +336,8 @@
 </head>
 <body bgcolor="D9D9D9">
     <div class="contentBox">
+    <%@ include file="../common/header.jsp" %>
+        <br>
         <div class="category_header">
             <div class="category_navi">
                 <div>🏠 홈</div>
@@ -366,7 +378,7 @@
         
         <div class="main_part">
             <div>
-                <img src="/resource/airpod.jpeg" alt="" id="airpod">
+                <img src="${pageContext.request.contextPath}/img/airpod.jpeg" alt="" id="airpod">
             </div>
             <div>
                 <div><h2>에어팟 맥스</h2></div>
@@ -389,7 +401,7 @@
         <div class="seller_part">
             <div class="seller_part">
                 <div>
-                    <img src="/resource/seller.jpeg" alt="" id="seller">
+                    <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" id="seller">
                 </div>
                 <div>
                     <p>판매자아이디</p>
@@ -457,7 +469,7 @@
                 <p class="purchase_method">[직거래 신청]</p>
                 <p class="time_of_writing1">2024.03.27 16:08</p>
                 <div class="buyer">
-                    <img src="/resource/seller.jpeg" alt="" class="buyer_pic">
+                    <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" class="buyer_pic">
                     <p class="buyer_name">구매자 닉네임</p>
                     <div class="score_bar2">
                         <div id="colored_score1"></div>
@@ -472,7 +484,7 @@
                 <p class="purchase_method">[택배거래 신청]</p>
                 <p class="time_of_writing1">2024.03.27 16:31</p>
                 <div class="buyer">
-                    <img src="/resource/seller.jpeg" alt="" class="buyer_pic">
+                    <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" class="buyer_pic">
                     <p class="buyer_name">구매자 닉네임</p>
                     <div class="score_bar2">
                         <div id="colored_score2"></div>
@@ -486,7 +498,7 @@
         </div>
         <div class="comment" id="comment_banner_menu2">
             <div class="buyer" style="margin-bottom: 20px;">
-                <img src="/resource/seller.jpeg" alt="" class="buyer_pic">
+                <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" class="buyer_pic">
                 <p class="buyer_name">구매자 닉네임</p>
                 <div class="score_bar2">
                     <div id="colored_score1"></div>
@@ -502,23 +514,24 @@
             </div>
             <div class="reply">
                 <p>↳</p>
-                <img src="/resource/seller.jpeg" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin: 0px 5px;">
+                <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin: 0px 5px;">
                 <p class="comment_reply">아직 판매중입니다!</p>
                 <p class="time_of_writing3">2024.03.27 16:09:02</p>
             </div>
             <div class="reply">
                 <p>↳</p>
-                <img src="/resource/seller.jpeg" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin: 0px 5px;">
+                <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin: 0px 5px;">
                 <p class="comment_reply">사용 기간이 어떻게 되나요?</p>
                 <p class="time_of_writing3">2024.03.27 16:11:26</p>
             </div>
             <div class="reply">
                 <p>↳</p>
-                <img src="/resource/seller.jpeg" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin: 0px 5px;">
+                <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin: 0px 5px;">
                 <p class="comment_reply">1주일 사용했습니다.</p>
                 <p class="time_of_writing3">2024.03.27 16:15:17</p>
             </div>
         </div>
+    <%@ include file="../common/footer.jsp" %>
     </div>
 
     <script>

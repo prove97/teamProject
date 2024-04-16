@@ -14,10 +14,17 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <style>
+<<<<<<< .merge_file_lkYV7b
     body {
         display: flex;
         justify-content: center;
         height: 1200px;
+=======
+    body{
+        display: flex;
+        justify-content: center;
+        height: 1280px;
+>>>>>>> .merge_file_vNT93X
         position: relative;
     }
 
@@ -29,7 +36,11 @@
         margin-top: 30px;
     }
     .main {
+<<<<<<< .merge_file_lkYV7b
         width: 100%;
+=======
+        width: 1151px;
+>>>>>>> .merge_file_vNT93X
         height: 100%;
         text-align: center;
         margin-top: 8px;
@@ -60,7 +71,11 @@
         /* 좌측 테두리 제거 */
         border-right: none;
         /* 우측 테두리 제거 */
+<<<<<<< .merge_file_lkYV7b
         background-image: url('../../resources/image/idInput.png');
+=======
+        background-image: url(${pageContext.request.contextPath}/resources/image/idInput.png);
+>>>>>>> .merge_file_vNT93X
         background-size: 30px;
         background-position: 10px center;
         background-repeat: no-repeat;
@@ -75,7 +90,10 @@
         padding: 0px;
         border-style: none;
         height: 62px;
+<<<<<<< .merge_file_lkYV7b
         border-radius: 15px 15px 0px 0px;
+=======
+>>>>>>> .merge_file_vNT93X
         border-bottom: 3px solid #BCBCBC;
         /* 하단 테두리 설정 */
         border-top: none;
@@ -84,7 +102,11 @@
         /* 좌측 테두리 제거 */
         border-right: none;
         /* 우측 테두리 제거 */
+<<<<<<< .merge_file_lkYV7b
         background-image: url('../../resources/image/pwdInput.png');
+=======
+        background-image: url(${pageContext.request.contextPath}/resources/image/pwdInput.png);
+>>>>>>> .merge_file_vNT93X
         background-size: 27px;
         background-position: 10px center;
         background-repeat: no-repeat;
@@ -98,9 +120,15 @@
         width: 430px;
         padding: 0px;
         border-style: none;
+<<<<<<< .merge_file_lkYV7b
         border-radius: 15px;
         height: 53px;
         background-image: url('../../resources/image/이메일.png');
+=======
+        border-radius: 0px 0px 15px 15px;
+        height: 53px;
+        background-image: url(${pageContext.request.contextPath}/resources/image/이메일.png);
+>>>>>>> .merge_file_vNT93X
         background-size: 30px;
         background-position: 10px center;
         background-repeat: no-repeat;
@@ -134,7 +162,11 @@
         /* 좌측 테두리 제거 */
         border-right: none;
         /* 우측 테두리 제거 */
+<<<<<<< .merge_file_lkYV7b
         background-image: url('../../resources/image/signupId.png');
+=======
+        background-image: url(${pageContext.request.contextPath}/resources/image/idInput.png);
+>>>>>>> .merge_file_vNT93X
         background-size: 30px;
         background-position: 10px center;
         background-repeat: no-repeat;
@@ -158,7 +190,11 @@
         /* 좌측 테두리 제거 */
         border-right: none;
         /* 우측 테두리 제거 */
+<<<<<<< .merge_file_lkYV7b
         background-image: url('../../resources/image/폰.png');
+=======
+        background-image: url(${pageContext.request.contextPath}/resources/image/폰.png);
+>>>>>>> .merge_file_vNT93X
         background-size: 30px;
         background-position: 10px center;
         background-repeat: no-repeat;
@@ -231,6 +267,7 @@
         height: 22px;
         width: 22px;
     }
+<<<<<<< .merge_file_lkYV7b
     
     /* 헤더 */
             /*헤더 div*/
@@ -351,6 +388,17 @@
     <!-- 메인 -->
     <div class="main">
         <div id="logo1"><img src="../../resources/image/loginlogo.png" alt=""></div>
+=======
+</style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <%@ include file="/views/common/header.jsp" %>
+    
+    <!-- 메인 -->
+    <div class="main">
+        <div id="logo1"><img src="${pageContext.request.contextPath}/resources/image/loginlogo.png" alt=""></div>
+>>>>>>> .merge_file_vNT93X
         <div class="signup-area"></div>
             <fieldset class="id-pwd-email">
                 <div><input type="text" placeholder="아이디" required id="id-input"></div>
@@ -380,6 +428,7 @@
         });
     </script>
 
+<<<<<<< .merge_file_lkYV7b
     <!-- 헤더 -->
     <div class="top" >        
         <button type="button"  id="categoryBtn"><!--<img src="${pageContext.request.contextPath}/img/categoryBtn.png" alt="aa" >--></button>
@@ -397,6 +446,10 @@
             </form>
         </div>
     </div>
+=======
+    <!-- 푸터 -->
+    <%@ include file="/views/common/footer.jsp" %>
+>>>>>>> .merge_file_vNT93X
 
     <!-- 푸터 -->
     <div class="footer">

@@ -14,6 +14,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <style>
+<<<<<<< .merge_file_XPzfe7
     body{
         display: flex;
         justify-content: center;
@@ -23,6 +24,17 @@
     
     .main{
         width: 100%;
+=======
+body{
+        display: flex;
+        justify-content: center;
+        height: 1280px;
+        position: relative;
+    }
+    
+    .log{
+        width: 1151px;
+>>>>>>> .merge_file_MbC0cW
         height: 100%;
         text-align: center;
     }
@@ -53,7 +65,11 @@
     #id-input{
         width: 290px;
         height: 42px;
+<<<<<<< .merge_file_XPzfe7
         background-image: url('../../resources/image/idInput.png');
+=======
+        background-image: url(${pageContext.request.contextPath}/resources/image/idInput.png);
+>>>>>>> .merge_file_MbC0cW
         background-size: 28px;
         border-radius: 15px;
         border: 3px solid #8A8A8A;
@@ -69,7 +85,11 @@
     #pwd-input{
         width: 290px;
         height: 42px;
+<<<<<<< .merge_file_XPzfe7
         background-image: url('../../resources/image/pwdInput.png');
+=======
+        background-image: url(${pageContext.request.contextPath}/resources/image/pwdInput.png);
+>>>>>>> .merge_file_MbC0cW
         background-size: 23px;
         border-radius: 15px;
         border: 3px solid #8A8A8A;
@@ -150,6 +170,7 @@
     #bottom-right a {
     color: black; /* 링크의 색상을 검은색으로 지정 */
     }
+<<<<<<< .merge_file_XPzfe7
 
     .footer{
         margin-top: 188px;
@@ -275,6 +296,17 @@
 <body>
     <div class="main">
         <div><img src="../../resources/image/loginlogo.png" alt="" id="img1"></div>
+=======
+</style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <%@ include file="/views/common/header.jsp" %>
+
+    <section>
+    <div class="log">
+        <div><img src="${pageContext.request.contextPath}/resources/image/loginlogo.png" alt="" id="img1"></div>
+>>>>>>> .merge_file_MbC0cW
         <div>
             <fieldset id="login-area">
                 <p id="login-font">login</p>
@@ -288,11 +320,17 @@
                     <div id="bottom-right"><a href="">회원가입</a></div>
                 </div>
             </fieldset>
+<<<<<<< .merge_file_XPzfe7
             <div class="footer">
                 
             </div>
         </div>
     </div>
+=======
+        </div>
+    </div>
+    </section>
+>>>>>>> .merge_file_MbC0cW
     <script>
         document.getElementById('save-id').addEventListener('click', function() {
             var checkbox = document.getElementById('save-checkbox');
@@ -303,6 +341,7 @@
             checkbox.checked = !checkbox.checked;
         });
         </script>
+<<<<<<< .merge_file_XPzfe7
 
     <!-- 푸터 -->
     <div class="footer">
@@ -361,5 +400,10 @@
             </form>
         </div>
     </div>
+=======
+
+    <!-- 푸터 -->
+    <%@ include file="/views/common/footer.jsp" %>
+>>>>>>> .merge_file_MbC0cW
 </body>
 </html>

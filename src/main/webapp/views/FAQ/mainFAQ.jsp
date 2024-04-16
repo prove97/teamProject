@@ -20,6 +20,7 @@
         height: 1200px;
         position: relative;
     }
+<<<<<<< .merge_file_uZqcUk
     /*  헤더div  */
     .top{ 
         position: fixed;
@@ -92,6 +93,15 @@
 
 
     /*  메인div  */
+=======
+
+    /*  메인div  */
+    .main{
+        width: 1151px;
+        height: auto;
+    }
+
+>>>>>>> .merge_file_ZWV5H2
     .FAQ-title{
         margin-top: 140px;
         margin-bottom: 65px;
@@ -184,6 +194,7 @@
         background: #D6EFE3;
         border-radius: 5px;
     }
+<<<<<<< .merge_file_uZqcUk
 
 
 
@@ -230,10 +241,13 @@
     #footer-2 div:nth-child(3) p{
         margin: 0;
     }    
+=======
+>>>>>>> .merge_file_ZWV5H2
 </style>
 </head>
 <body>
     <!-- 헤더 -->
+<<<<<<< .merge_file_uZqcUk
     <div class="top" >        
         <button type="button"  id="categoryBtn"><!--<img src="${pageContext.request.contextPath}/img/categoryBtn.png" alt="aa" >--></button>
         <button type="button" id="logo"></button>
@@ -255,6 +269,14 @@
     <div>
         <div class="FAQ-title">
             <h1 id="title-text">문 의 하 기</h1>
+=======
+    <%@ include file="/views/common/header.jsp" %>
+
+    <!-- 메인 -->
+    <div class="main">
+        <div class="FAQ-title">
+            <h1 id="title-text" style="padding-left: 160px;">문 의 하 기</h1>
+>>>>>>> .merge_file_ZWV5H2
         </div>
         <div class="FAQ-area">
             <div id="FAQ1" onclick="toggleFAQ('1')">
@@ -366,6 +388,12 @@
             }
         }
         </script> -->
+<<<<<<< .merge_file_uZqcUk
+=======
+
+    <!-- 푸터 -->
+    <%@ include file="/views/common/footer.jsp" %>    
+>>>>>>> .merge_file_ZWV5H2
 
     <!-- 푸터 -->
     <div class="footer">
