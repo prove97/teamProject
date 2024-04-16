@@ -92,6 +92,20 @@
             border-bottom: 0.1px solid rgb(187, 187, 187);
         }
 
+        .myHeartList{
+            cursor: pointer;
+        }
+
+        .myHeartList:hover{
+            background-color: rgba(0,0,0,0.03) ;
+        }
+
+
+        
+        .myHeartList>.title:hover{
+            text-decoration: underline;
+        }
+
         .title{
             text-align-last: left;
             padding-left: 20px;
@@ -134,7 +148,7 @@
 	                    <th width="150px">작성자</th>
 	                </tr>
 	                <%for(int i=1; i<=10; i++) {%>
-	                <tr>
+	                <tr class="myHeartList">
 	                    <td><%=i%></td>
 	                    <td class="title">에어팟 맥스 팝니다 <span>(<%=commentsCount%>)</span></td>
 	                    <td>5</td>

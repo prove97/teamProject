@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,8 +25,12 @@
     <section class="main">
     	
         <div id="banner">
-            <img src="${pageContext.request.contextPath}/img/banner.PNG" alt="배너" style="width: 1151px; object-fit: cover;">
+            <img src="${pageContext.request.contextPath}/img/banner.png" alt="배너" style="width: 1151px; object-fit: cover;">
         </div>
+        
+
+   
+        <c:forEach var='p' items="${list }">
         <div class="contents">
             <div class="contents-preview">
                 <div class="thumnail">
@@ -34,7 +39,7 @@
                 <div class="thumnail-info">
                     <div class="name-heart">
                         <div class="name">
-                            <p>에어팟맥스</p>
+                            <p>${p.title }</p>
                         </div>
                         <div class="heart">
                             <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
@@ -43,448 +48,16 @@
                     </div>
                     <div class="price-beforeDay">
                         <div class="price">
-                            <p>500,000원</p>
+                            <p>${p.sellPrice }</p>
                         </div>
                         <div class="beforeDay">
-                            <p>4일전</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contents-preview">
-                <div class="thumnail">
-                    <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                </div>
-
-                <div class="thumnail-info">
-                    <div class="name-heart">
-                        <div class="name">
-                            <p>에어팟맥스</p>
-                        </div>
-                        <div class="heart">
-                            <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                            <p>2</p>
-                        </div>
-                    </div>
-                    <div class="price-beforeDay">
-                        <div class="price">
-                            <p>500,000원</p>
-                        </div>
-                        <div class="beforeDay">
-                            <p>4일전</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contents-preview">
-                <div class="thumnail">
-                    <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                </div>
-
-                <div class="thumnail-info">
-                    <div class="name-heart">
-                        <div class="name">
-                            <p>에어팟맥스</p>
-                        </div>
-                        <div class="heart">
-                            <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                            <p>2</p>
-                        </div>
-                    </div>
-                    <div class="price-beforeDay">
-                        <div class="price">
-                            <p>500,000원</p>
-                        </div>
-                        <div class="beforeDay">
-                            <p>4일전</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contents-preview">
-                <div class="thumnail">
-                    <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                </div>
-
-                <div class="thumnail-info">
-                    <div class="name-heart">
-                        <div class="name">
-                            <p>에어팟맥스</p>
-                        </div>
-                        <div class="heart">
-                            <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                            <p>2</p>
-                        </div>
-                    </div>
-                    <div class="price-beforeDay">
-                        <div class="price">
-                            <p>500,000원</p>
-                        </div>
-                        <div class="beforeDay">
-                            <p>4일전</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contents-preview">
-                <div class="thumnail">
-                    <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                </div>
-
-                <div class="thumnail-info">
-                    <div class="name-heart">
-                        <div class="name">
-                            <p>에어팟맥스</p>
-                        </div>
-                        <div class="heart">
-                            <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                            <p>2</p>
-                        </div>
-                    </div>
-                    <div class="price-beforeDay">
-                        <div class="price">
-                            <p>500,000원</p>
-                        </div>
-                        <div class="beforeDay">
-                            <p>4일전</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contents-preview">
-                <div class="thumnail">
-                    <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                </div>
-
-                <div class="thumnail-info">
-                    <div class="name-heart">
-                        <div class="name">
-                            <p>에어팟맥스</p>
-                        </div>
-                        <div class="heart">
-                            <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                            <p>2</p>
-                        </div>
-                    </div>
-                    <div class="price-beforeDay">
-                        <div class="price">
-                            <p>500,000원</p>
-                        </div>
-                        <div class="beforeDay">
-                            <p>4일전</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contents-preview">
-                <div class="thumnail">
-                    <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                </div>
-
-                <div class="thumnail-info">
-                    <div class="name-heart">
-                        <div class="name">
-                            <p>에어팟맥스</p>
-                        </div>
-                        <div class="heart">
-                            <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                            <p>2</p>
-                        </div>
-                    </div>
-                    <div class="price-beforeDay">
-                        <div class="price">
-                            <p>500,000원</p>
-                        </div>
-                        <div class="beforeDay">
-                            <p>4일전</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contents-preview">
-                <div class="thumnail">
-                    <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                </div>
-
-                <div class="thumnail-info">
-                    <div class="name-heart">
-                        <div class="name">
-                            <p>에어팟맥스</p>
-                        </div>
-                        <div class="heart">
-                            <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                            <p>2</p>
-                        </div>
-                    </div>
-                    <div class="price-beforeDay">
-                        <div class="price">
-                            <p>500,000원</p>
-                        </div>
-                        <div class="beforeDay">
-                            <p>4일전</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="contents-preview">
-                <div class="thumnail">
-                    <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                </div>
-
-                <div class="thumnail-info">
-                    <div class="name-heart">
-                        <div class="name">
-                            <p>에어팟맥스</p>
-                        </div>
-                        <div class="heart">
-                            <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                            <p>2</p>
-                        </div>
-                    </div>
-                    <div class="price-beforeDay">
-                        <div class="price">
-                            <p>500,000원</p>
-                        </div>
-                        <div class="beforeDay">
-                            <p>4일전</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="contents-preview">
-                <div class="thumnail">
-                    <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                </div>
-
-                <div class="thumnail-info">
-                    <div class="name-heart">
-                        <div class="name">
-                            <p>에어팟맥스</p>
-                        </div>
-                        <div class="heart">
-                            <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                            <p>2</p>
-                        </div>
-                    </div>
-                    <div class="price-beforeDay">
-                        <div class="price">
-                            <p>500,000원</p>
-                        </div>
-                        <div class="beforeDay">
-                            <p>4일전</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="contents-preview">
-                <div class="thumnail">
-                    <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                </div>
-
-                <div class="thumnail-info">
-                    <div class="name-heart">
-                        <div class="name">
-                            <p>에어팟맥스</p>
-                        </div>
-                        <div class="heart">
-                            <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                            <p>2</p>
-                        </div>
-                    </div>
-                    <div class="price-beforeDay">
-                        <div class="price">
-                            <p>500,000원</p>
-                        </div>
-                        <div class="beforeDay">
-                            <p>4일전</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="contents-preview">
-                <div class="thumnail">
-                    <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                </div>
-
-                <div class="thumnail-info">
-                    <div class="name-heart">
-                        <div class="name">
-                            <p>에어팟맥스</p>
-                        </div>
-                        <div class="heart">
-                            <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                            <p>2</p>
-                        </div>
-                    </div>
-                    <div class="price-beforeDay">
-                        <div class="price">
-                            <p>500,000원</p>
-                        </div>
-                        <div class="beforeDay">
-                            <p>4일전</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="contents-preview">
-                <div class="thumnail">
-                    <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                </div>
-
-                <div class="thumnail-info">
-                    <div class="name-heart">
-                        <div class="name">
-                            <p>에어팟맥스</p>
-                        </div>
-                        <div class="heart">
-                            <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                            <p>2</p>
-                        </div>
-                    </div>
-                    <div class="price-beforeDay">
-                        <div class="price">
-                            <p>500,000원</p>
-                        </div>
-                        <div class="beforeDay">
-                            <p>4일전</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="contents-preview">
-                <div class="thumnail">
-                    <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                </div>
-
-                <div class="thumnail-info">
-                    <div class="name-heart">
-                        <div class="name">
-                            <p>에어팟맥스</p>
-                        </div>
-                        <div class="heart">
-                            <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                            <p>2</p>
-                        </div>
-                    </div>
-                    <div class="price-beforeDay">
-                        <div class="price">
-                            <p>500,000원</p>
-                        </div>
-                        <div class="beforeDay">
-                            <p>4일전</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="contents-preview">
-                <div class="thumnail">
-                    <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                </div>
-
-                <div class="thumnail-info">
-                    <div class="name-heart">
-                        <div class="name">
-                            <p>에어팟맥스</p>
-                        </div>
-                        <div class="heart">
-                            <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                            <p>2</p>
-                        </div>
-                    </div>
-                    <div class="price-beforeDay">
-                        <div class="price">
-                            <p>500,000원</p>
-                        </div>
-                        <div class="beforeDay">
-                            <p>4일전</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="contents-preview">
-                <div class="thumnail">
-                    <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                </div>
-
-                <div class="thumnail-info">
-                    <div class="name-heart">
-                        <div class="name">
-                            <p>에어팟맥스</p>
-                        </div>
-                        <div class="heart">
-                            <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                            <p>2</p>
-                        </div>
-                    </div>
-                    <div class="price-beforeDay">
-                        <div class="price">
-                            <p>500,000원</p>
-                        </div>
-                        <div class="beforeDay">
-                            <p>4일전</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="contents-preview">
-                <div class="thumnail">
-                    <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                </div>
-
-                <div class="thumnail-info">
-                    <div class="name-heart">
-                        <div class="name">
-                            <p>에어팟맥스</p>
-                        </div>
-                        <div class="heart">
-                            <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                            <p>2</p>
-                        </div>
-                    </div>
-                    <div class="price-beforeDay">
-                        <div class="price">
-                            <p>500,000원</p>
-                        </div>
-                        <div class="beforeDay">
-                            <p>4일전</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="contents-preview">
-                <div class="thumnail">
-                    <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                </div>
-
-                <div class="thumnail-info">
-                    <div class="name-heart">
-                        <div class="name">
-                            <p>에어팟맥스</p>
-                        </div>
-                        <div class="heart">
-                            <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                            <p>2</p>
-                        </div>
-                    </div>
-                    <div class="price-beforeDay">
-                        <div class="price">
-                            <p>500,000원</p>
-                        </div>
-                        <div class="beforeDay">
-                            <p>4일전</p>
+                            <p>${p.enrollDate }</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+		</c:forEach>
         <div>
             <div class="pagination">
                 <a href="#">&laquo;</a>
@@ -502,6 +75,12 @@
               </div>
         </div>
     </section>
+    
+   	<script>
+    $(document).ready(function(){
+    	location.href="${pageContext.request.contextPath}/list.pr";
+	})
+	</script>
     
     <%@ include file="views/common/footer.jsp" %>
 </body>
