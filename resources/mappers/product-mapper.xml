@@ -14,11 +14,67 @@
 		<result column="VIEW_COUNT" property="viewCount"/>
 		<result column="P_EXPLAIN" property="pExplain"/>
 		<result column="ENROLL_DATE" property="enrollDate"/>
-		<result column="LOVEIT" property="loveIt"/>
 		<result column="RETURN_PD" property="returnPd"/>
 		<result column="LOCATION_T" property="locationT"/>
 		<result column="PRODUCT_STATUS" property="productStatus"/>
 	</resultMap>
 	
+	<insert id="insertProduct" parameterType="Product">
+		INSERT INTO PRODUCT
+		(
+			GOODS_ID,
+			SELLER_NO,
+			CATEGORY_M,
+			TITLE,
+			STATUS,
+			SELL_PRICE,
+			VIEW_COUNT,
+			P_EXPLANE,
+			ENROLL_DATE,
+			RETURN_PD,
+			LOCATION_T,
+			PRODUCT_STATUS
+		)
+		VALUES
+		(
+			SEQ_GOODSID.NEXTVAL,
+			?,
+			?,
+			?,
+			DEFAULT,
+			?,
+			DEFAULT,
+			?,
+			DEFAULT,
+			DEFAULT,
+			?,
+			?
+		)
+	</insert>
+	
+	<select id="selectProductList" parameterType="Product" resultMap="productResultSet">
+		SELECT GOODS_ID,
+				SELLER_NO,
+				CATEGORY_M,
+				TITLE,
+				STATUS,
+				SELL_PRICE,
+				VIEW_COUNT,
+				P_EXPLANE,
+				ENROLL_DATE,
+				RETURN_PD,
+				LOCATION_T,
+				PRODUCT_STATUS
+		FROM PRODUCT P
+		JOIN MEMBER ON (SELLER_NO = USER_NO)
+		WHERE STATUS = '판매중'
+		ORDER BY GOODS_ID DESC
+	</select>
+	
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*)
+	 	FROM PRODUCT
+		WHERE STATUS = '판매중'
+	</select>
 	
 </mapper>

@@ -12,7 +12,6 @@ public class Product {
 	private int viewCount;
 	private String pExplane;;
 	private Date enrollDate;
-	private String loveIt;
 	private String returnPd;
 	private String locationT;
 	private String productStatus;
@@ -20,7 +19,7 @@ public class Product {
 		super();
 	}
 	public Product(int goodsId, int sellerNo, String categoryM, String title, String status, int sellPrice,
-			int viewCount, String pExplane, Date enrollDate, String loveIt, String returnPd, String locationT,
+			int viewCount, String pExplane, Date enrollDate, String returnPd, String locationT,
 			String productStatus) {
 		super();
 		this.goodsId = goodsId;
@@ -32,7 +31,6 @@ public class Product {
 		this.viewCount = viewCount;
 		this.pExplane = pExplane;
 		this.enrollDate = enrollDate;
-		this.loveIt = loveIt;
 		this.returnPd = returnPd;
 		this.locationT = locationT;
 		this.productStatus = productStatus;
@@ -41,7 +39,7 @@ public class Product {
 	public String toString() {
 		return "Product [goodsId=" + goodsId + ", sellerNo=" + sellerNo + ", categoryM=" + categoryM + ", title="
 				+ title + ", status=" + status + ", sellPrice=" + sellPrice + ", viewCount=" + viewCount + ", pExplane="
-				+ pExplane + ", enrollDate=" + enrollDate + ", loveIt=" + loveIt + ", returnPd=" + returnPd
+				+ pExplane + ", enrollDate=" + enrollDate + ", returnPd=" + returnPd
 				+ ", locationT=" + locationT + ", productStatus=" + productStatus + "]";
 	}
 	public int getGoodsId() {
@@ -98,12 +96,6 @@ public class Product {
 	public void setEnrollDate(Date enrollDate) {
 		this.enrollDate = enrollDate;
 	}
-	public String getLoveIt() {
-		return loveIt;
-	}
-	public void setLoveIt(String loveIt) {
-		this.loveIt = loveIt;
-	}
 	public String getReturnPd() {
 		return returnPd;
 	}
@@ -122,6 +114,5 @@ public class Product {
 	public void setProductStatus(String productStatus) {
 		this.productStatus = productStatus;
 	}
-	
 	
 }
