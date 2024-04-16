@@ -58,6 +58,10 @@
  		<mapper resource="/mappers/evaluationItems-mapper.xml"/>
  		<mapper resource="/mappers/faq-mapper.xml"/>
  		<mapper resource="/mappers/member-mapper.xml"/>
+<<<<<<< HEAD
+ 		<mapper resource="/mappers/myPage-mapper.xml"/>
+=======
+>>>>>>> faa6827576e2255a6d31315683f552d606d366c2
  		<mapper resource="/mappers/priceOffers-mapper.xml"/>
  		<mapper resource="/mappers/tradeReviews-mapper.xml"/>
  		<mapper resource="/mappers/wishList-mapper.xml"/>
