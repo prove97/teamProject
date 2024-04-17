@@ -2,9 +2,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <!-- 나중에 ajax 이용하기 위해 추가 - myPage기본 틀-->
-    
+<head>    
     <meta charset="UTF-8">
     <title>profile</title>
     <!-- <link rel="stylesheet" href="resources/style/index.css">
