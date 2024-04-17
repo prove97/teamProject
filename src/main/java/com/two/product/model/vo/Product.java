@@ -10,7 +10,7 @@ public class Product {
 	private String status;
 	private int sellPrice;
 	private int viewCount;
-	private String pExplane;;
+	private String pExplain;
 	private Date enrollDate;
 	private String returnPd;
 	private String locationT;
@@ -19,7 +19,7 @@ public class Product {
 		super();
 	}
 	public Product(int goodsId, int sellerNo, String categoryM, String title, String status, int sellPrice,
-			int viewCount, String pExplane, Date enrollDate, String returnPd, String locationT,
+			int viewCount, String pExplain, Date enrollDate, String returnPd, String locationT,
 			String productStatus) {
 		super();
 		this.goodsId = goodsId;
@@ -29,7 +29,7 @@ public class Product {
 		this.status = status;
 		this.sellPrice = sellPrice;
 		this.viewCount = viewCount;
-		this.pExplane = pExplane;
+		this.pExplain = pExplain;
 		this.enrollDate = enrollDate;
 		this.returnPd = returnPd;
 		this.locationT = locationT;
@@ -38,8 +38,8 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [goodsId=" + goodsId + ", sellerNo=" + sellerNo + ", categoryM=" + categoryM + ", title="
-				+ title + ", status=" + status + ", sellPrice=" + sellPrice + ", viewCount=" + viewCount + ", pExplane="
-				+ pExplane + ", enrollDate=" + enrollDate + ", returnPd=" + returnPd
+				+ title + ", status=" + status + ", sellPrice=" + sellPrice + ", viewCount=" + viewCount + ", pExplain="
+				+ pExplain + ", enrollDate=" + enrollDate + ", returnPd=" + returnPd
 				+ ", locationT=" + locationT + ", productStatus=" + productStatus + "]";
 	}
 	public int getGoodsId() {
@@ -84,11 +84,11 @@ public class Product {
 	public void setViewCount(int viewCount) {
 		this.viewCount = viewCount;
 	}
-	public String getpExplane() {
-		return pExplane;
+	public String getpExplain() {
+		return pExplain;
 	}
-	public void setpExplane(String pExplane) {
-		this.pExplane = pExplane;
+	public void setpExplain(String pExplain) {
+		this.pExplain = pExplain;
 	}
 	public Date getEnrollDate() {
 		return enrollDate;
