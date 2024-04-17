@@ -57,7 +57,7 @@
                     </div>
                 </div>
              </div>  
-            <div id="myPageDiv" style="font-size: 13px; " >
+            <div id="myPageDiv" style="font-size: 13px;">
                 ${loginUser.userName } 님<br>
                 <a href="${pageContext.request.contextPath}/indexToMyPage.my" id="myPageTag" onmouseover="overMyPage();"> 마이페이지</a>
                 <div id="mdiv" style="background-image: url(${pageContext.request.contextPath}/img/myPageHover.png); background-size: 100px 200px" onmouseover="overMyPage();" onmouseout="outMyPage();">                  

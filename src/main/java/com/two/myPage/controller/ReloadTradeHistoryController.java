@@ -1,25 +1,30 @@
 package com.two.myPage.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import com.two.board.model.vo.Board;
+import com.two.myPage.service.MyPageService;
+import com.two.myPage.service.MyPageServiceImpl;
 
 /**
- * Servlet implementation class IndexToTradeHistory
+ * Servlet implementation class ReloadTradeHistoryController
  */
-@WebServlet("/indexToTradeHistory.my")
-public class IndexToTradeHistory extends HttpServlet {
+@WebServlet("/reloadTrade.my")
+public class ReloadTradeHistoryController extends HttpServlet {
+	MyPageService mpService = new MyPageServiceImpl();
+
 	private static final long serialVersionUID = 1L;
-       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IndexToTradeHistory() {
+    public ReloadTradeHistoryController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,14 +33,26 @@ public class IndexToTradeHistory extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+		String tradeListOption = request.getParameter("tradeListOption");
+		String userId = request.getParameter("userId");
 		
-		HttpSession session = request.getSession();
-		String userId = (String)session.getAttribute("userId");
+		System.out.println(userId);
 		
-		session.setAttribute("userId", userId);		
-		request.setAttribute("changeUrl", "salesPost.jsp");		
-		request.getRequestDispatcher("views/myPage/myPageMain.jsp").forward(request, response);		
+		ArrayList<Board> list = null;
+		if(tradeListOption.equals("onSale")){
+			list = mpService.loadOnSale();
+			System.out.println("팔고있는 것들");
+		} else if(tradeListOption.equals("soldOut")) {
+			list = mpService.loadSoldOut();
+			System.out.println("팔린것들");
+		} else {
+			list = mpService.myBoardList();
+			System.out.println("전부");			
+		}
+		
+		request.getAttribute("list", list);
+		
+		
 	}
 
 	/**

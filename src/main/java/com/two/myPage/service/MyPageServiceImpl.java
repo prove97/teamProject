@@ -49,6 +49,18 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 
 	@Override
+	public ArrayList<Board> loadOnSale(String userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public ArrayList<Board> loadSoldOut(String userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public ArrayList<Comments> myCommentList(String userId) {
 		// TODO Auto-generated method stub
 		return null;
@@ -65,6 +77,7 @@ public class MyPageServiceImpl implements MyPageService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 
 
