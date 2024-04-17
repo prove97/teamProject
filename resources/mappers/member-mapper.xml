@@ -29,7 +29,7 @@
 			   GENDER,
 			   EMAIL,
 			   LOCATION
-		FROM MEMBER
+			   FROM MEMBER
 		WHERE USER_ID = #{userId}
 		AND USER_PWD = #{userPwd}
 		AND ACTIVATED = 'N'

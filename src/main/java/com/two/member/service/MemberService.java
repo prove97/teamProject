@@ -14,6 +14,8 @@ public class MemberService {
 		SqlSession sqlSession = Template.getSqlSession();
 		Member loginUser = mDao.loginMember(sqlSession, m);
 		
+//		System.out.println(m);
+//		System.out.println(loginUser);
 		sqlSession.close();
 		return loginUser;
 	}

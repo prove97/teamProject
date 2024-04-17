@@ -26,7 +26,7 @@
         <div>
 				<fieldset id="login-area">
 					<p id="login-font">login</p>
-					<form action="${pageContext.request.contextPath}/loginPage.me" method="post">
+					<form action="loginPage.me" method="post">
 					<div id="login-form">
 						<input type="text" placeholder="아이디를 입력하세요" required id="id-input"
 							style="background-image: url(${pageContext.request.contextPath}/resources/image/idInput.png);">
