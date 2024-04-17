@@ -311,7 +311,7 @@
 	                    <tr>
 	                        <th>지역</th>
 	                        <td colspan="3">
-	                            <select name="location1" onChange="location1_change(this.value, address2)" class="h_area1">
+	                            <select name="location1" onChange="location1_change(this.value, address2)" class="location2">
 	                                <option>선택</option>
 	                                <option value='1'>서울</option>
 	                                <option value='2'>부산</option>
