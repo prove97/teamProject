@@ -174,34 +174,36 @@
 <body>
 	<div id="main">
 	    <form action="updateMemberInfo.my" method="POST">
+            <input type="hidden" name="nicknamePermit" value="N" >
+            <input type="hidden" name="passwordPermit" value="N" >
 	        <div id="necessaryInfo">
 	            <h2>회원정보</h2>
 	            <div class="inputSpace">
 	                <table align="center">
 	                    <tr>
-	                        <th>아이디</th>
+	                        <th>*아이디</th>
 	                        <td><input type="text" value="admin1234" name="userId" class="necessaryInput" readonly></td>
 	                    </tr>
 	                    <tr>
-	                        <th>비밀번호</th>
+	                        <th>*비밀번호 변경</th>
 	                        <td class="inputWrong">
 	                            <input type="password" name="userPwd" id="pwd" class="necessaryInput" maxlength="20" oninput="combinePwd();">
 	                            <div class="warning">비밀번호는 영어, 숫자, 특수기호 포함 8자 이상이어야 합니다.</div>
 	                        </td>
 	                    </tr>
 	                    <tr>
-	                        <th>비밀번호 확인</th>
+	                        <th>*비밀번호 확인</th>
 	                        <td class="inputWrong">
 	                            <input type="password" name="checkUserPwd" id="checkPwd" class="necessaryInput" maxlength="20" oninput="differPwd();">
 	                            <div class="warning">비밀번호가 일치하지 않습니다.</div>                                        
 	                        </td>
 	                    </tr>
 	                    <tr>
-	                        <th>휴대폰 번호</th>
+	                        <th>*휴대폰 번호</th>
 	                        <td><input type="text" value="010-0000-0000" name="phone" class="necessaryInput" readonly></td>
 	                    </tr>
 	                    <tr style="position: relative;">
-	                        <th>닉네임</th>    
+	                        <th>*닉네임</th>    
 	                        <td class="inputWrong">
 	                            <input type="text" value="user01" class="necessaryInput" name="nickname">
 	                            <div class="warning">중복된 닉네임입니다</div>                                        
@@ -211,6 +213,7 @@
 	                    </tr>
 	                </table>
 	                <script>
+                        
 	                    function combinePwd(){
 	                        let newPwd = document.getElementById('pwd');
 	                        let checkPwd = document.getElementById('checkPwd');
@@ -251,20 +254,40 @@
 	                    }
 	
 	                    function nicknameCheck(){ //닉네임 중복체크
-	                        const nicknameInput = document.querySelector("input[name=nickname]");
-	                        
+	                        const nickname = document.querySelector("input[name=nickname]");
+                            const nicknamePermit = document.querySelector("input[name=nicknamePermit]");
+                            const warning = document.getElementsByClassName('warning')[2];
+
+	                        console.log(nickname.value);
+
 	                        $.ajax({
 	                            type: "GET",
-	                            url: "nicknameCheck.me",
+	                            url: "nicknameCheck.my",
 	                            data:{
-	                                checkNickname: nicknameInput.value
+	                                checkNickname: nickname.value
 	                            },
-	                            success: function(res){},
-	                            error: function(err){}
+	                            success: function(res){
+                                    if(res === "NNNNY"){
+                                        alert("사용가능한 닉네임입니다.");
+                                        nicknamePermit.value = "Y"; 
+                                        console.log(nicknamePermit.value);                                        
+                                        warning.style.display = 'none';
+
+                                    } else{                                        
+                                        nicknamePermit.value = "N"; 
+                                        nickname.focus();
+                                        warning.style.display = 'block';
+
+                                    }
+                                },
+	                            error: function(err){
+                                    alert("닉네임 중복확인 실패");
+                                    nickname.focus();
+                                }
 	                        })
-	
-	
 	                    }
+
+                        
 	                </script>
 	            </div>
 	        </div>
@@ -288,7 +311,7 @@
 	                    <tr>
 	                        <th>지역</th>
 	                        <td colspan="3">
-	                            <select name="h_area1" onChange="location1_change(this.value, h_area2)" class="h_area1">
+	                            <select name="location1" onChange="location1_change(this.value, address2)" class="location2">
 	                                <option>선택</option>
 	                                <option value='1'>서울</option>
 	                                <option value='2'>부산</option>
@@ -309,7 +332,7 @@
 	                            </select>
 	                            <b>도/시</b>
 	
-	                            <select name="h_area2">
+	                            <select name="location2">
 	                                <option>선택</option>
 	                            </select>
 	                            <b>시/구/군</b>
@@ -320,7 +343,7 @@
 	                </table>
 	            </div>
 	        </div>
-	        <button type="submit">저장</button>
+	        <button type="submit" disabled>저장</button>
 	    </form>
 	</div>
     
