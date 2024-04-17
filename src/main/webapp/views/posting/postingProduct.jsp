@@ -169,7 +169,7 @@
         <hr style="border: 1px solid black;">
         <br>
 
-		<form action="" id="productEnroll-form" method="POST" enctype="multipart/form-data">
+		<form action="${pageContext.request.contextPath}/insert.pr" id="productEnroll-form" method="POST" enctype="multipart/form-data">
 	        <table class="input_table" style="font-size: 18px;">
 	            <tr class="row1">
 	                <td class="column1">
