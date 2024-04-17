@@ -26,6 +26,9 @@ public class IndexToProfileController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//로그인 되어있고, provePwd.jsp에서 비밀번호를 맞게 입력했다면 뜨게해야함
+		
 		request.setAttribute("changeUrl", "profile.jsp"); //changeUrl의 값에 따라 myPageMain.jsp창에서 뜨는 내용이 달라짐
 		request.getRequestDispatcher("views/myPage/myPageMain.jsp").forward(request, response);	
 	}
