@@ -29,7 +29,7 @@
 			STATUS,
 			SELL_PRICE,
 			VIEW_COUNT,
-			P_EXPLANE,
+			P_EXPLAIN,
 			ENROLL_DATE,
 			RETURN_PD,
 			LOCATION_T,
@@ -38,17 +38,17 @@
 		VALUES
 		(
 			SEQ_GOODSID.NEXTVAL,
-			?,
-			?,
-			?,
+			#{userPwd},
+			#{categoryM},
+			#{title},
 			DEFAULT,
-			?,
+			#{sellPrice},
 			DEFAULT,
-			?,
+			#{pExplain},
 			DEFAULT,
 			DEFAULT,
-			?,
-			?
+			#{locationT},
+			#{productStatus}
 		)
 	</insert>
 	
@@ -60,7 +60,7 @@
 				STATUS,
 				SELL_PRICE,
 				VIEW_COUNT,
-				P_EXPLANE,
+				P_EXPLAIN,
 				ENROLL_DATE,
 				RETURN_PD,
 				LOCATION_T,

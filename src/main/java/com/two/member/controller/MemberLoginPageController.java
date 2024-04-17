@@ -1,7 +1,6 @@
-package com.two.product.controller;
+package com.two.member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,22 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.two.common.Pagination;
-import com.two.common.model.vo.PageInfo;
-import com.two.product.model.vo.Product;
-import com.two.product.service.ProductServiceImpl;
+import com.two.member.model.vo.Member;
+import com.two.member.service.MemberService;
 
 /**
- * Servlet implementation class ProductListController
+ * Servlet implementation class MemberLoginPageController
  */
-@WebServlet("/list.pr")
-public class ProductListController extends HttpServlet {
+@WebServlet("/loginPage.me")
+public class MemberLoginPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductListController() {
+    public MemberLoginPageController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,25 +30,23 @@ public class ProductListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int listCount = new ProductServiceImpl().selectListCount();
+		request.setCharacterEncoding("UTF-8");
+		Member m = new Member();
 		
-		int currentPage;
+		m.setUserId(request.getParameter("userId"));
+		m.setUserPwd(request.getParameter("userPwd"));
+		Member loginUser = new MemberService().loginMember(m);
+//		System.out.println(m);
+//		System.out.println(loginUser);
 		
-		if(request.getParameter("cpage")==null) {
-			currentPage = 1;
+		if (loginUser == null) {
+			request.setAttribute("errorMsg", "로그인 실패");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		
 		} else {
-			currentPage = Integer.parseInt(request.getParameter("cpage"));
+			request.getSession().setAttribute("loginUser", loginUser);
+			response.sendRedirect(request.getContextPath());
 		}
-		
-		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 18);
-		
-		ArrayList<Product>list = new ProductServiceImpl().selectList(pi);
-		
-		request.setAttribute("list", list);
-		request.setAttribute("pi", pi);
-		System.out.println(list);
-		
-		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	/**

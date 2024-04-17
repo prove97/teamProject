@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.oreilly.servlet.MultipartRequest;
+import com.two.attachment.model.vo.Attachment;
 import com.two.common.model.vo.MyFileRenamePolicy;
 import com.two.product.model.vo.Product;
+import com.two.product.service.ProductService;
+import com.two.product.service.ProductServiceImpl;
 
 /**
  * Servlet implementation class ProductInsertController
@@ -41,7 +44,23 @@ public class ProductInsertController extends HttpServlet {
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 			
 			Product p = new Product();
+			p.setSellerNo(Integer.parseInt(multiRequest.getParameter("sellerNo")));
+			p.setTitle(multiRequest.getParameter("title"));
+			p.setSellPrice(Integer.parseInt(multiRequest.getParameter("sellPrice")));
+			p.setpExplane(multiRequest.getParameter("pExplain"));
 			
+			Attachment at = new Attachment();
+			at.setFilePath("resources/product_upfile");
+			
+			int result = new ProductServiceImpl().insertProduct(p, at);
+			
+			if (result > 0) {
+				request.getSession().setAttribute("alertMsg", "상품을 성공적으로 등록했습니다.");
+				response.sendRedirect(request.getContextPath());
+			} else {
+				request.setAttribute("errorMsg", "상품 등록 실패");
+				request.getRequestDispatcher("index.jsp").forward(request, response);
+			}
 		}
 	}
 

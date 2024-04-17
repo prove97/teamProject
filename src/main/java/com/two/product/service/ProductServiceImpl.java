@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.two.attachment.model.vo.Attachment;
 import com.two.common.Template;
 import com.two.common.model.vo.PageInfo;
 import com.two.product.model.dao.ProductDao;
@@ -29,6 +30,21 @@ public class ProductServiceImpl implements ProductService{
 		sqlSession.close();
 		
 		return list;
+	}
+
+	@Override
+	public int insertProduct(Product p, Attachment at) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		int result = pDao.insertProduct(sqlSession, p, at);
+		
+		if (result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		return result;
 	}
 
 
