@@ -37,7 +37,6 @@ body{
     #id-input{
         width: 290px;
         height: 42px;
-        background-image: url(${pageContext.request.contextPath}/resources/image/idInput.png);
         background-size: 28px;
         border-radius: 15px;
         border: 3px solid #8A8A8A;
@@ -53,7 +52,6 @@ body{
     #pwd-input{
         width: 290px;
         height: 42px;
-        background-image: url(${pageContext.request.contextPath}/resources/image/pwdInput.png);
         background-size: 23px;
         border-radius: 15px;
         border: 3px solid #8A8A8A;
@@ -141,116 +139,3 @@ body{
         height: 180px;
     }
 
-    /* 푸터 */
-    .footer{
-        width: 1151px;
-        height: 120px;
-        margin: 0 auto;
-        bottom: 0px;
-        position: absolute;
-        height: 10rem;
-        background: white;
-    }
-    #footer-1{
-        height: 48px;
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
-        display: flex;
-        justify-content: center;
-    }
-    #footer-1-box{
-        width: 625px;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-
-    #footer-1 a{
-        text-decoration: none;
-        color: black;
-    }
-    #footer-2{
-        display: flex;
-        justify-content: space-around;
-    }
-    #footer-2 div:nth-child(1) p{
-        margin: 0;
-    }
-    #footer-2 div:nth-child(2) p{
-        margin: 0;
-    }
-    #footer-2 div:nth-child(3) p{
-        margin: 0;
-    }
-
-    /* 헤더 */
-        /*헤더 div*/
-        .top{ 
-        position: fixed;
-        width: 1151px;
-        height: 62px;
-        background-color: #EEEEEE;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-    }
-
-    /*카테고리버튼*/
-    #categoryBtn{
-        width: 37px;
-        height: 43px;
-        background-image: url(${pageContext.request.contextPath}/img/categoryBtn.png);
-        border: none;
-        margin-left: 25px;
-      
-    }
-
-    /*피씨그린로고*/
-    #logo{
-        width: 72px;
-        height: 45px;
-        background-image: url(${pageContext.request.contextPath}/img/logo.png);
-        border: none;
-        margin-left: 25px;
-    }
-
-    /*검색창*/
-    #searchBar{
-        width: 553px;
-        margin-left: 130px;
-        height: 35px;
-    }
-    #searchBar form{
-        height: 100%;
-        position: relative;
-    }
-    #searchBar input{
-        width: 100%;
-        height: 100%;
-        border: none;
-        border-radius: 5px;
-    }
-    #searchBar button{
-        background-image: url(${pageContext.request.contextPath}/img/searchBtn.png);
-        border: none;
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        right: 12px;
-        top: 7px;
-    }
-
-    /*로그인*/
-    #login{
-        margin-left: 110px;
-    }
-    #login form{
-        height: 100%;
-    }
-    #login > form a{
-        color: black;
-        font-size: 14px;
-        font-style: none;
-    }

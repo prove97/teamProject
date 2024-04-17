@@ -52,6 +52,7 @@ body{
     font-weight: 900;
     opacity: 0.7;
     padding-left: 50px;
+    outline-style: none;
 }
 
 #pwd-input {
@@ -75,6 +76,7 @@ body{
     font-weight: 900;
     opacity: 0.7;
     padding-left: 50px;
+    outline-style: none;
 }
 
 #email-input {
@@ -91,6 +93,7 @@ body{
     font-weight: 900;
     opacity: 0.7;
     padding-left: 50px;
+    outline-style: none;
 }
 
 .name-phone-birth-gender {
@@ -125,6 +128,7 @@ body{
     font-weight: 900;
     opacity: 0.7;
     padding-left: 50px;
+    outline-style: none;
 }
 
 #phone-input {
@@ -149,6 +153,7 @@ body{
     font-weight: 900;
     opacity: 0.7;
     padding-left: 50px;
+    outline-style: none;
 }
 
 #birth-input {
@@ -173,6 +178,7 @@ body{
     font-weight: 900;
     opacity: 0.7;
     padding-left: 50px;
+    outline-style: none;
 }
 
 #submit-button {
