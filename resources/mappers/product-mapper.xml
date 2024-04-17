@@ -38,17 +38,17 @@
 		VALUES
 		(
 			SEQ_GOODSID.NEXTVAL,
-			?,
-			?,
-			?,
+			#{userPwd},
+			#{categoryM},
+			#{title},
 			DEFAULT,
-			?,
+			#{sellPrice},
 			DEFAULT,
-			?,
+			#{pExplain},
 			DEFAULT,
 			DEFAULT,
-			?,
-			?
+			#{locationT},
+			#{productStatus}
 		)
 	</insert>
 	

@@ -34,8 +34,17 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public int insertProduct(Product p, Attachment at) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		int result = pDao.insertProduct(sqlSession, p, at);
+		
+		if (result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		return result;
 	}
 
 
