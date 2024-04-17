@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class UpdateMemberInfoController
  */
-@WebServlet("/updateMemberInfo.my")
+@WebServlet("/updateMemberInfo.my") //member의 회원정보 업데이트
 public class UpdateMemberInfoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,7 +28,7 @@ public class UpdateMemberInfoController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String userId = request.getParameter("userId");
+		String userId = request.getParameter("userId"); //id만 보내서 db데이터 가져옴?
 		String userPwd = request.getParameter("userPwd");
 		String phone = request.getParameter("phone");
 		String nickname = request.getParameter("nickname");

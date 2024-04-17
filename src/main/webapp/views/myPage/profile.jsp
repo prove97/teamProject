@@ -181,29 +181,29 @@
 	            <div class="inputSpace">
 	                <table align="center">
 	                    <tr>
-	                        <th>아이디</th>
+	                        <th>*아이디</th>
 	                        <td><input type="text" value="admin1234" name="userId" class="necessaryInput" readonly></td>
 	                    </tr>
 	                    <tr>
-	                        <th>비밀번호</th>
+	                        <th>*비밀번호 변경</th>
 	                        <td class="inputWrong">
 	                            <input type="password" name="userPwd" id="pwd" class="necessaryInput" maxlength="20" oninput="combinePwd();">
 	                            <div class="warning">비밀번호는 영어, 숫자, 특수기호 포함 8자 이상이어야 합니다.</div>
 	                        </td>
 	                    </tr>
 	                    <tr>
-	                        <th>비밀번호 확인</th>
+	                        <th>*비밀번호 확인</th>
 	                        <td class="inputWrong">
 	                            <input type="password" name="checkUserPwd" id="checkPwd" class="necessaryInput" maxlength="20" oninput="differPwd();">
 	                            <div class="warning">비밀번호가 일치하지 않습니다.</div>                                        
 	                        </td>
 	                    </tr>
 	                    <tr>
-	                        <th>휴대폰 번호</th>
+	                        <th>*휴대폰 번호</th>
 	                        <td><input type="text" value="010-0000-0000" name="phone" class="necessaryInput" readonly></td>
 	                    </tr>
 	                    <tr style="position: relative;">
-	                        <th>닉네임</th>    
+	                        <th>*닉네임</th>    
 	                        <td class="inputWrong">
 	                            <input type="text" value="user01" class="necessaryInput" name="nickname">
 	                            <div class="warning">중복된 닉네임입니다</div>                                        
