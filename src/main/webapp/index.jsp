@@ -28,37 +28,59 @@
             <img src="${pageContext.request.contextPath}/img/banner.png" alt="배너" style="width: 1151px; object-fit: cover;">
         </div>
         
-
-   
         <c:forEach var='p' items="${list }">
-        <div class="contents">
-            <div class="contents-preview">
-                <div class="thumnail">
-                    <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                </div>
-                <div class="thumnail-info">
-                    <div class="name-heart">
-                        <div class="name">
-                            <p>${p.title }</p>
-                        </div>
-                        <div class="heart">
-                            <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                            <p>2</p>
-                        </div>
+            <div class="contents">
+                <div class="contents-preview">
+                    <div class="thumnail">
+                        <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
                     </div>
-                    <div class="price-beforeDay">
-                        <div class="price">
-                            <p>${p.sellPrice }</p>
+                    <div class="thumnail-info">
+                        <div class="name-heart">
+                            <div class="name">
+                                <p>${p.title }</p>
+                            </div>
+                            <div class="heart">
+                                <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
+                                <p>2</p>
+                            </div>
                         </div>
-                        <div class="beforeDay">
-                            <p>${p.enrollDate }</p>
+                        <div class="price-beforeDay">
+                            <div class="price">
+                                <p>${p.sellPrice }</p>
+                            </div>
+                            <div class="beforeDay">
+                                <p>${p.enrollDate }</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            </c:forEach>
+   
+
+		
+        <div class="pagination">
+	        <c:if test="${pi.currentPage ne 1}">
+	        	<a href="list.pr?cpage=${pi.currentPage - 1}">&laquo;</a>
+	        </c:if>
+	        
+	        <c:forEach var="i" begin="${pi.startPage }" end="${pi.endPage }">
+	        	<c:choose>
+		        	<c:when test="${empty condition }">
+		        		<a href="list.pr?cpage=${i}">${i}</a>
+		        	</c:when>
+		        	<c:otherwise>
+		        		<a href="search.bo?cpage=${i}&condition=${condition}&keyword=${keyword}">${i}</a>
+		        	</c:otherwise>
+	        	</c:choose>
+	        </c:forEach>
+	        
+	        <c:if test="${pi.currentPage ne pi.maxPage}">
+	        	<a href="list.pr?cpage=${pi.currentPage + 1}">&raquo;</a>
+	        </c:if>  
         </div>
-		</c:forEach>
-        <div>
+		
+       <!--   <div>
             <div class="pagination">
                 <a href="#">&laquo;</a>
                 <a href="#">1</a>
@@ -74,11 +96,20 @@
                 <a href="#">&raquo;</a>
               </div>
         </div>
+        -->
     </section>
     
    	<script>
     $(document).ready(function(){
-    	location.href="${pageContext.request.contextPath}/list.pr";
+    	$.ajax({
+            url: "list.pr",
+            success: function(result){
+                
+            },
+            error: function(){
+                console.log("ajax요청실패")
+            }
+        })
 	})
 	</script>
     

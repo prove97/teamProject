@@ -34,7 +34,15 @@ public class ProductListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int listCount = new ProductServiceImpl().selectListCount();
-		int currentPage = Integer.parseInt(request.getParameter("cpage"));
+		
+		int currentPage;
+		
+		if(request.getParameter("cpage")==null) {
+			currentPage = 1;
+		} else {
+			currentPage = Integer.parseInt(request.getParameter("cpage"));
+		}
+		
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 18);
 		
 		ArrayList<Product>list = new ProductServiceImpl().selectList(pi);
@@ -43,7 +51,7 @@ public class ProductListController extends HttpServlet {
 		request.setAttribute("pi", pi);
 		System.out.println(list);
 		
-		request.getRequestDispatcher("${pageContext.request.contextPath}").forward(request, response);
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	/**
