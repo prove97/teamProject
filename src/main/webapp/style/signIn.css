@@ -1,0 +1,222 @@
+body{
+    display: flex;
+    justify-content: center;
+    height: 1280px;
+    position: relative;
+}
+
+#logo1{
+    margin-top: 100px;
+}
+
+.signup-area{
+    margin-top: 30px;
+}
+.main {
+    width: 1151px;
+    height: 100%;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.id-pwd-email {
+    width: 440px;
+    height: 185px;
+    margin: 0 auto;
+    margin-top: 28px;
+    border: 3px solid #BCBCBC;
+    border-radius: 15px;
+    padding: 0px;
+    margin-bottom: 28px;
+}
+
+#id-input {
+    width: 430px;
+    padding: 0px;
+    border-style: none;
+    height: 62px;
+    border-radius: 15px 15px 0px 0px;
+    border-bottom: 3px solid #BCBCBC;
+    /* 하단 테두리 설정 */
+    border-top: none;
+    /* 상단 테두리 제거 */
+    border-left: none;
+    /* 좌측 테두리 제거 */
+    border-right: none;
+    /* 우측 테두리 제거 */
+    background-image: url(${pageContext.request.contextPath}/resources/image/idInput.png);
+    background-size: 30px;
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    font-size: 20px;
+    font-weight: 900;
+    opacity: 0.7;
+    padding-left: 50px;
+    outline-style: none;
+}
+
+#pwd-input {
+    width: 430px;
+    padding: 0px;
+    border-style: none;
+    height: 62px;
+    border-bottom: 3px solid #BCBCBC;
+    /* 하단 테두리 설정 */
+    border-top: none;
+    /* 상단 테두리 제거 */
+    border-left: none;
+    /* 좌측 테두리 제거 */
+    border-right: none;
+    /* 우측 테두리 제거 */
+    background-image: url(${pageContext.request.contextPath}/resources/image/pwdInput.png);
+    background-size: 27px;
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    font-size: 20px;
+    font-weight: 900;
+    opacity: 0.7;
+    padding-left: 50px;
+    outline-style: none;
+}
+
+#email-input {
+    width: 430px;
+    padding: 0px;
+    border-style: none;
+    border-radius: 0px 0px 15px 15px;
+    height: 53px;
+    background-image: url(${pageContext.request.contextPath}/resources/image/이메일.png);
+    background-size: 30px;
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    font-size: 20px;
+    font-weight: 900;
+    opacity: 0.7;
+    padding-left: 50px;
+    outline-style: none;
+}
+
+.name-phone-birth-gender {
+    width: 440px;
+    height: 282px;
+    margin: 0 auto;
+    border: 3px solid #BCBCBC;
+    border-radius: 15px;
+    padding: 0px;
+    margin-bottom: 28px;
+}
+
+#name-input {
+    width: 430px;
+    padding: 0px;
+    border-style: none;
+    height: 70.5px;
+    border-radius: 15px 15px 0px 0px;
+    border-bottom: 3px solid #BCBCBC;
+    /* 하단 테두리 설정 */
+    border-top: none;
+    /* 상단 테두리 제거 */
+    border-left: none;
+    /* 좌측 테두리 제거 */
+    border-right: none;
+    /* 우측 테두리 제거 */
+    background-image: url(${pageContext.request.contextPath}/resources/image/idInput.png);
+    background-size: 30px;
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    font-size: 20px;
+    font-weight: 900;
+    opacity: 0.7;
+    padding-left: 50px;
+    outline-style: none;
+}
+
+#phone-input {
+    width: 430px;
+    padding: 0px;
+    border-style: none;
+    height: 70.5px;
+    border-radius: 0px;
+    border-bottom: 3px solid #BCBCBC;
+    /* 하단 테두리 설정 */
+    border-top: none;
+    /* 상단 테두리 제거 */
+    border-left: none;
+    /* 좌측 테두리 제거 */
+    border-right: none;
+    /* 우측 테두리 제거 */
+    background-image: url(${pageContext.request.contextPath}/resources/image/폰.png);
+    background-size: 30px;
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    font-size: 20px;
+    font-weight: 900;
+    opacity: 0.7;
+    padding-left: 50px;
+    outline-style: none;
+}
+
+#birth-input {
+    width: 430px;
+    padding: 0px;
+    border-style: none;
+    height: 70.5px;
+    border-radius: 0px;
+    border-bottom: 3px solid #BCBCBC;
+    /* 하단 테두리 설정 */
+    border-top: none;
+    /* 상단 테두리 제거 */
+    border-left: none;
+    /* 좌측 테두리 제거 */
+    border-right: none;
+    /* 우측 테두리 제거 */
+    background-image: url('../../resources/image/달력.png');
+    background-size: 30px;
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    font-size: 20px;
+    font-weight: 900;
+    opacity: 0.7;
+    padding-left: 50px;
+    outline-style: none;
+}
+
+#submit-button {
+    width: 430px;
+    height: 71px;
+    font-size: 40px;
+    text-align: center;
+    border-radius: 15px;
+    border-style: none;
+    background: #70C9A0;
+    color: white;
+    cursor: pointer;
+}
+
+.gender {
+    width: 100%;
+    height: 36px;
+    margin-top: 10px;
+}
+
+#bottom-left {
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+    font-size: 30px;
+    color: #BCBCBC;
+    border-right: 3px solid #BCBCBC;
+}
+
+#bottom-right {
+    width: 50%;
+    float: right;
+    box-sizing: border-box;
+    font-size: 30px;
+    color: #BCBCBC;
+}
+
+.gender input{
+    height: 22px;
+    width: 22px;
+}
