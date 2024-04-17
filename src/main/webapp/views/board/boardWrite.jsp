@@ -17,7 +17,7 @@
     /* 전체를 감싸는 div */
     #All{
         width: 1151px;
-        height: 1142px;
+        height: 1080px;
         border: 0.8px solid #d9d9d9;
         margin: 0 auto;
     }
@@ -44,12 +44,10 @@
 
     /* 돋보기사진 */
     #eheqhrl{
-        border: 3px solid orange; 
-        background: orange; 
-        margin: 2px 0px -3px -28px;
-        padding: -5px 5px 0px 5px;
+        border: none;
+        margin: 13px 13px -3px -40px;
         width: 54px; 
-        height: 42px;
+        height: 47px;
     }
 
     /* 광고밑 검색어 옆 글귀 폰트및 크기 */
@@ -114,12 +112,12 @@
     <%@ include file="/views/common/header.jsp" %>
     <div id="All">
         <thead id="head">
-            <img src="../" alt="광고배너" style="width: 1150px; height: 148px; box-shadow: 0px 10px 10px -10px #000; margin-top: 61px;">                                       
+            <img src="../../resources/image/banner.png" alt="광고배너" style="width: 1153px; height: 148px; box-shadow: 0px 10px 10px -10px #000; margin-top: 61px;" align="right">                                       
             <div>
                 <table id="catebar-head" style="width: 1055px;">
                     <tr>
-                        <td> <input type="text" placeholder="검색어를 입력해 주세요."  style="width: 493px; height: 45px; border: 0.8px solid #d9d9d9; margin-top: 7px;"></td>
-                        <td><img src="../../resources/image/banner.png" alt="돋보기" id="eheqhrl"></td>
+                        <td style="width: 493px;"> <input type="text" placeholder="검색어를 입력해 주세요."  style="width: 493px; height: 45px; border: 0.8px solid #d9d9d9; margin-top: 7px;"></td>
+                        <td style="width: 60px; height: 45px;"><button type="button" style="width: 60px; height: 45px; border: none; margin-top: 13px;"></button></td>
                         <td align="right" style="">
                             <select name="" class="" style="color: orange; border: none; width: 250px; height: 26px;">
                             <option disabled selected>5 PNY XLR8 지포···</option>
@@ -184,11 +182,11 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="font-size: 20px;"><strong>제목을 입력하세요</strong> </td>
+                        <td style="font-size: 20px;"><input type="text" placeholder="제목을 입력하세요" style="width: 1005px; height: 30px; border: none;"></strong> </td>
                     </tr>
                 </table>
 
-                <hr style="border: 1px solid #d9d9d9; width: 1004px; margin: 20px 0px;"align="center">
+                <hr style="border: 1px solid #d9d9d9; width: 1004px; margin: 10px 0px;"align="center">
                 
                 <div style="width: 1006px; cursor: pointer; position: relative;">
                     <textarea name="" id="customTextarea" cols="135" rows="10" style="width: 100%; box-sizing: border-box; border: 0.8px solid #d9d9d9; resize: none; z-index: 1;"></textarea>
@@ -199,7 +197,7 @@
                     </div>
                 </div>
                 
-                <div style="display: flex; justify-content: center; align-items: center; padding-top: 15px;">
+                <div style="display: flex; justify-content: center; align-items: center; ">
                     <div style="margin-right: 10px;"><button style="color: white; background: orange; border: none; height: 30px;">작성완료</button></div>
                     <div><button style="background: white; border: 0.8px solid #d9d9d9; height: 30px;">취소</button></div>
                 </div>
