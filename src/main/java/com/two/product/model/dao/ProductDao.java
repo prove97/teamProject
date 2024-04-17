@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
+import com.two.attachment.model.vo.Attachment;
 import com.two.common.model.vo.PageInfo;
 import com.two.product.model.vo.Product;
 
@@ -29,4 +30,8 @@ public class ProductDao {
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		return (ArrayList)sqlSession.selectList("productMapper.selectProductList", null, rowBounds);
 	}
+
+	public int insertProduct(SqlSession sqlSession, Product p, Attachment at) {
+		return 0;
+  	}
 }
