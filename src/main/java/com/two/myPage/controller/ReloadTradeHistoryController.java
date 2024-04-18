@@ -40,17 +40,17 @@ public class ReloadTradeHistoryController extends HttpServlet {
 		
 		ArrayList<Board> list = null;
 		if(tradeListOption.equals("onSale")){
-			list = mpService.loadOnSale();
+			list = mpService.loadOnSale(userId );
 			System.out.println("팔고있는 것들");
 		} else if(tradeListOption.equals("soldOut")) {
-			list = mpService.loadSoldOut();
+			list = mpService.loadSoldOut(userId);
 			System.out.println("팔린것들");
 		} else {
-			list = mpService.myBoardList();
+			list = mpService.myBoardList(userId);
 			System.out.println("전부");			
 		}
 		
-		request.getAttribute("list", list);
+		request.setAttribute("list", list);
 		
 		
 	}
