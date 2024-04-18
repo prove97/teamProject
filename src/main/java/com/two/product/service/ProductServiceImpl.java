@@ -44,6 +44,8 @@ public class ProductServiceImpl implements ProductService{
 			sqlSession.rollback();
 		}
 		
+		sqlSession.close();
+		
 		return result;
 	}
 
