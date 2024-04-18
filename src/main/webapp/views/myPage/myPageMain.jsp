@@ -187,8 +187,12 @@
 
             </div>
         </div>
-		<jsp:include page="${changeUrl}" />						
+        ${loginUser.getUserId()}
+        
+		<jsp:include page="${changeUrl}" />		
+        
     </section>
+
     <jsp:include page="/views/common/footer.jsp" />
 
     

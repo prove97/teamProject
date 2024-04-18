@@ -25,10 +25,10 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 	
 	@Override
-	public int checkPassword(Member m) {
+	public int checkPassword(String userId) {
 		SqlSession sqlSession = Template.getSqlSession();
 		
-		int result = new MyPageDao().checkPassword(sqlSession, m);
+		int result = new MyPageDao().checkPassword(sqlSession, userId);
 
 		sqlSession.close();
 
@@ -44,6 +44,18 @@ public class MyPageServiceImpl implements MyPageService{
 
 	@Override
 	public ArrayList<Board> myBoardList(String userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Board> loadOnSale(String userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public ArrayList<Board> loadSoldOut(String userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -65,6 +77,7 @@ public class MyPageServiceImpl implements MyPageService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 
 
