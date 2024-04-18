@@ -27,7 +27,7 @@ body{
     }
 
     /*게시글 담는 페이지*/
-    .contents{
+    #contents{
         width: 1151px;
         height: 720px;
         padding-top: 40px;
@@ -64,6 +64,11 @@ body{
     .name-heart p{
         margin: 0;
         font-size: 13px;
+    }
+    .name{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .heart{
         margin-right: 5px;

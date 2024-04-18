@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.two.common.Pagination;
 import com.two.common.model.vo.PageInfo;
 import com.two.product.model.vo.Product;
@@ -47,11 +48,10 @@ public class ProductListController extends HttpServlet {
 		
 		ArrayList<Product>list = new ProductServiceImpl().selectList(pi);
 		
-		request.setAttribute("list", list);
 		request.setAttribute("pi", pi);
-		System.out.println(list);
+		response.setContentType("application/json; charset=utf-8");
+		new Gson().toJson(list, response.getWriter());
 		
-		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	/**

@@ -24,41 +24,17 @@
     
     <section class="main">
     	
+        <!-- 배너 자리 -->
         <div id="banner">
             <img src="${pageContext.request.contextPath}/img/banner.png" alt="배너" style="width: 1151px; object-fit: cover;">
         </div>
-        
-        <c:forEach var='p' items="${list }">
-            <div class="contents">
-                <div class="contents-preview">
-                    <div class="thumnail">
-                        <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                    </div>
-                    <div class="thumnail-info">
-                        <div class="name-heart">
-                            <div class="name">
-                                <p>${p.title }</p>
-                            </div>
-                            <div class="heart">
-                                <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                                <p>2</p>
-                            </div>
-                        </div>
-                        <div class="price-beforeDay">
-                            <div class="price">
-                                <p>${p.sellPrice }</p>
-                            </div>
-                            <div class="beforeDay">
-                                <p>${p.enrollDate }</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </c:forEach>
-   
 
-		
+        <!-- 컨텐츠 들어오는 곳 -->
+        <div id="contents">  
+        contentsFuntion();    
+        </div>
+     	
+		<!-- 페이징 처리 -->
         <div class="pagination">
 	        <c:if test="${pi.currentPage ne 1}">
 	        	<a href="list.pr?cpage=${pi.currentPage - 1}">&laquo;</a>
@@ -98,20 +74,55 @@
         </div>
         -->
     </section>
-    
-   	<script>
-    $(document).ready(function(){
-    	$.ajax({
-            url: "list.pr",
-            success: function(result){
-                
-            },
-            error: function(){
-                console.log("ajax요청실패")
-            }
+
+    <script>
+        function contentsFuntion(cpage){
+        $(document).ready(function(){
+            $.ajax({
+                url: "list.pr",
+                success: function(list){
+                    console.log(list)
+                    let str = "";
+                    let Section = document.getElementById("contents");
+                    for(const p of list){
+                                    
+                        str += `   <div class="contents-preview">
+                                        <div class="thumnail">
+                                            <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
+                                        </div>
+                                        <div class="thumnail-info">
+                                            <div class="name-heart">
+                                                <div class="name">
+                                                    <p>`+p.title+`</p>
+                                                </div>
+                                                <div class="heart">
+                                                    <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
+                                                    <p>`+p.loveIt+`</p>
+                                                </div>
+                                            </div>
+                                            <div class="price-beforeDay">
+                                                <div class="price">
+                                                    <p>`+p.sellPrice+`</p>
+                                                </div>
+                                                <div class="beforeDay">
+                                                    <p>`+p.enrollDate+`</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> `
+                    }
+                    Section.innerHTML += str;
+                    
+                },
+                error: function(){
+                    console.log("ajax요청실패")
+                }
+            })
         })
-	})
-	</script>
+    }
+    </script>
+    
+
     
     <%@ include file="views/common/footer.jsp" %>
 </body>
