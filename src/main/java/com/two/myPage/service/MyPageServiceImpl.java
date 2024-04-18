@@ -25,10 +25,10 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 	
 	@Override
-	public int checkPassword(String userId) {
+	public int checkPassword(Member m) {
 		SqlSession sqlSession = Template.getSqlSession();
 		
-		int result = new MyPageDao().checkPassword(sqlSession, userId);
+		int result = new MyPageDao().checkPassword(sqlSession, m);
 
 		sqlSession.close();
 
