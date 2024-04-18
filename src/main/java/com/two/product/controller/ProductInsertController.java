@@ -47,7 +47,7 @@ public class ProductInsertController extends HttpServlet {
 			p.setSellerNo(Integer.parseInt(multiRequest.getParameter("sellerNo")));
 			p.setTitle(multiRequest.getParameter("title"));
 			p.setSellPrice(Integer.parseInt(multiRequest.getParameter("sellPrice")));
-			p.setpExplane(multiRequest.getParameter("pExplain"));
+			p.setpExplain(multiRequest.getParameter("pExplain"));
 			
 			Attachment at = new Attachment();
 			at.setFilePath("resources/product_upfile");
