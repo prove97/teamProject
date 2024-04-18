@@ -32,12 +32,10 @@ public class MemberLoginPageController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		Member m = new Member();
-		
 		m.setUserId(request.getParameter("userId"));
 		m.setUserPwd(request.getParameter("userPwd"));
 		Member loginUser = new MemberService().loginMember(m);
-//		System.out.println(m);
-//		System.out.println(loginUser);
+		System.out.println(m);
 		
 		if (loginUser == null) {
 			request.setAttribute("errorMsg", "로그인 실패");
