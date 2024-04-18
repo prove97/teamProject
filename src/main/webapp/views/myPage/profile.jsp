@@ -182,30 +182,30 @@
 	                <table align="center">
 	                    <tr>
 	                        <th>*아이디</th>
-	                        <td><input type="text" value="admin1234" name="userId" class="necessaryInput" readonly></td>
+	                        <td><input type="text" value="${loginUser.getUserId()}" name="userId" class="necessaryInput" readonly></td>
 	                    </tr>
 	                    <tr>
 	                        <th>*비밀번호 변경</th>
 	                        <td class="inputWrong">
-	                            <input type="password" name="userPwd" id="pwd" class="necessaryInput" maxlength="20" oninput="combinePwd();">
+	                            <input type="password" name="userPwd" id="pwd" class="necessaryInput" maxlength="20" oninput="combinePwd(); btnActivate();">
 	                            <div class="warning">비밀번호는 영어, 숫자, 특수기호 포함 8자 이상이어야 합니다.</div>
 	                        </td>
 	                    </tr>
 	                    <tr>
 	                        <th>*비밀번호 확인</th>
 	                        <td class="inputWrong">
-	                            <input type="password" name="checkUserPwd" id="checkPwd" class="necessaryInput" maxlength="20" oninput="differPwd();">
+	                            <input type="password" name="checkUserPwd" id="checkPwd" class="necessaryInput" maxlength="20" oninput="differPwd(); btnActivate();">
 	                            <div class="warning">비밀번호가 일치하지 않습니다.</div>                                        
 	                        </td>
 	                    </tr>
 	                    <tr>
 	                        <th>*휴대폰 번호</th>
-	                        <td><input type="text" value="010-0000-0000" name="phone" class="necessaryInput" readonly></td>
+	                        <td><input type="text" value="${loginUser.getPhone()}" name="phone" class="necessaryInput" readonly></td>
 	                    </tr>
 	                    <tr style="position: relative;">
 	                        <th>*닉네임</th>    
 	                        <td class="inputWrong">
-	                            <input type="text" value="user01" class="necessaryInput" name="nickname">
+	                            <input type="text" value="db추가하면 추가" class="necessaryInput" name="nickname">
 	                            <div class="warning">중복된 닉네임입니다</div>                                        
 	                            <button type="button" id="duplicationCheckBtn" onclick="nicknameCheck();">중복확인</button>
 	                        </td>                                
@@ -213,34 +213,43 @@
 	                    </tr>
 	                </table>
 	                <script>
+                        const newPwd = document.getElementById('pwd');
+	                    const checkPwd = document.getElementById('checkPwd');
+                        const submitBtn = document.querySelector("#infoTrans");
+                        const warning1 = document.getElementsByClassName('warning')[0];
+                        const warning2 = document.getElementsByClassName('warning')[1];
                         
+
+                        function btnActivate(){
+                            if(newPwd.value !== "" && checkPwd.value !== "" &&
+                                warning1.style.display === 'none' && warning2.style.display === 'none'){
+                                submitBtn.disabled = false;
+                            } else{
+                                submitBtn.disabled = true;
+                            }
+                        }
+
+
 	                    function combinePwd(){
-	                        let newPwd = document.getElementById('pwd');
-	                        let checkPwd = document.getElementById('checkPwd');
-	                        let warning = document.getElementsByClassName('warning')[0];
 	                        const reg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
-	
 	                        
 	                        if(reg.test(newPwd.value) || newPwd.value === ""){ //비밀번호의 조합조건이 맞거나 빈칸일 경우
-	                            warning.style.display = 'none';
+	                            warning1.style.display = 'none';
 	                            newPwd.style.border = '0px';
 	                            newPwd.style.borderBottom = '1px solid black';
 	                            newPwd.style.borderRadius = '0px';
 	                        } else {
 	                            newPwd.style.border = 'red solid';
 	                            newPwd.style.borderRadius = '5px';
-	                            warning.style.display = 'block';
+	                            warning1.style.display = 'block';
 	                        } 
 	                        
 	                    }
 	
 	                    function differPwd(){
-	                        let newPwd = document.getElementById('pwd');
-	                        let checkPwd = document.getElementById('checkPwd');
-	                        let warning = document.getElementsByClassName('warning')[1];
 	
 	                        if(newPwd.value === checkPwd.value || checkPwd.value === ""){ //비밀번호가 일치하거나 빈칸일 경우
-	                            warning.style.display = 'none';
+	                            warning2.style.display = 'none';
 	                            checkPwd.style.border = '0px';
 	                            checkPwd.style.borderBottom = '1px solid black';
 	                            checkPwd.style.borderRadius = '0px';
@@ -248,9 +257,8 @@
 	                        } else{
 	                            checkPwd.style.border = 'red solid';
 	                            checkPwd.style.borderRadius = '5px';
-	                            warning.style.display = 'block';
+	                            warning2.style.display = 'block';
 	                        }
-	
 	                    }
 	
 	                    function nicknameCheck(){ //닉네임 중복체크
@@ -302,16 +310,22 @@
 	                            <label for="male">남</label>
 	                            <input type="radio" name="gender" id="female" value="F">
 	                            <label for="female">여</label>
-	
 	                        </td>
+                            <script>
+                                $(function(){
+                                    if("${loginUser.getGender()}" != ""){
+                                        $('input[value="${loginUser.getGender()}"]').attr("checked",true);
+                                    } 
+                                })
+                            </script>
 	
 	                        <th>이메일</th>
-	                        <td><input type="email"></td>
+	                        <td><input type="email" value="${loginUser.getEmail()}"></td>
 	                    </tr>
 	                    <tr>
 	                        <th>지역</th>
 	                        <td colspan="3">
-	                            <select name="location1" onChange="location1_change(this.value, address2)" class="location2">
+	                            <select name="location1" onChange="location1_change(this.value, location2)" class="location2">
 	                                <option>선택</option>
 	                                <option value='1'>서울</option>
 	                                <option value='2'>부산</option>
@@ -343,7 +357,7 @@
 	                </table>
 	            </div>
 	        </div>
-	        <button type="submit" disabled>저장</button>
+	        <button type="submit" id="infoTrans" disabled>저장</button>
 	    </form>
 	</div>
     

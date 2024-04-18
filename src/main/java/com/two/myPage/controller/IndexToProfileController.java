@@ -37,14 +37,8 @@ public class IndexToProfileController extends HttpServlet {
 		System.out.println("현재 로그인정보 : " + loginUser);
 		
 		if(loginUser != null) { //로그인 되어있을 경우
-			if(((String)session.getAttribute("completeCheckPwd")).equals("Y")) { //이미 비밀번호 입력을 했을 경우 -> 회원정보 창으로 이동
-				session.setAttribute("loginUser", loginUser);
-				request.setAttribute("changeUrl", "profile.jsp"); //changeUrl의 값에 따라 myPageMain.jsp창에서 뜨는 내용이 달라짐
-				request.getRequestDispatcher("views/myPage/myPageMain.jsp").forward(request, response);	
-			} else { //비밀번호를 아직 입력하지 않았을 경우 -> provePwd.jsp
-				request.setAttribute("changeUrl", "provePwd.jsp"); 
-				request.getRequestDispatcher("views/myPage/myPageMain.jsp").forward(request, response);	
-			}
+			request.setAttribute("changeUrl", "profile.jsp"); //changeUrl의 값에 따라 myPageMain.jsp창에서 뜨는 내용이 달라짐
+			request.getRequestDispatcher("views/myPage/myPageMain.jsp").forward(request, response);	
 			
 		} else { //로그인 되어있지 않을 경우
 			session.setAttribute("alertMsg", "로그인 해주세요");

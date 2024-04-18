@@ -41,13 +41,17 @@ public class CheckPasswordController extends HttpServlet {
 		
 		//로그인되어있는 session의 userId가져옴
 		HttpSession session = request.getSession();
-		String userId = ((Member)session.getAttribute("loginUser")).getUserId();
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		String userId = loginUser.getUserId();
 		
-		//userId를 db에 보내 저장된 비밀번호와 입력받은 비밀번호를 비교 -> 같으면 1 이상 값, 아니면 0 
-		int result = mpService.checkPassword(userId);
+		Member m = new Member();
+		m.setUserId(userId);
+		m.setUserPwd(inputPwd);
+		
+		//userId를 db에 보내 저장된 비밀번호와 입력받은 비밀번호를 비교 -> result : 같으면 1 이상 값, 아니면 0 
+		int result = mpService.checkPassword(m);
 
 		if(result > 0) { //비밀번호가 일치할경우
-			session.setAttribute("completeCheckPwd", "Y");
 			response.sendRedirect(request.getContextPath()+ "/indexToProfile.my");
 		} else { //비밀번호가 일치하지 않을 경우
 			request.setAttribute("changeUrl", "provePwd.jsp");
