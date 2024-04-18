@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.two.member.model.vo.Member;
+
 /**
  * Servlet implementation class IndexToTradeHistory
  */
@@ -28,14 +30,17 @@ public class IndexToTradeHistory extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession(); //현재 로그인 세션 정보 가져옴
+		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		HttpSession session = request.getSession();
-		String userId = (String)session.getAttribute("userId");
-		
-		session.setAttribute("userId", userId);		
-		request.setAttribute("changeUrl", "salesPost.jsp");		
-		request.getRequestDispatcher("views/myPage/myPageMain.jsp").forward(request, response);		
+		if(loginUser != null) { //로그인 되어있을 경우 나의 판매글 메뉴로 이동
+			session.setAttribute("loginUser", loginUser);
+			request.setAttribute("changeUrl", "salesPost.jsp");		
+			request.getRequestDispatcher("views/myPage/myPageMain.jsp").forward(request, response);
+		} else { //로그인 되어있지 않을 경우 로그인 창으로 이동
+			session.setAttribute("alertMsg", "로그인 해주세요");
+			response.sendRedirect(request.getContextPath()+"/Login.me");
+		} 
 	}
 
 	/**
