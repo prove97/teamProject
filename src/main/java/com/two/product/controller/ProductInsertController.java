@@ -44,10 +44,14 @@ public class ProductInsertController extends HttpServlet {
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 			
 			Product p = new Product();
-			p.setSellerNo(Integer.parseInt(multiRequest.getParameter("sellerNo")));
+//			p.setSellerNo(Integer.parseInt((String)request.getSession().getAttribute("userNo")));
+//			p.setSellerNo(4);
+//			p.setCategoryM("일단 임시값");
 			p.setTitle(multiRequest.getParameter("title"));
 			p.setSellPrice(Integer.parseInt(multiRequest.getParameter("sellPrice")));
 			p.setpExplain(multiRequest.getParameter("pExplain"));
+			p.setLocationT(multiRequest.getParameter("locationT"));
+			p.setProductStatus(multiRequest.getParameter("productStatus"));
 			
 			Attachment at = new Attachment();
 			at.setFilePath("resources/product_upfile");
@@ -55,6 +59,7 @@ public class ProductInsertController extends HttpServlet {
 			int result = new ProductServiceImpl().insertProduct(p, at);
 			
 			if (result > 0) {
+				System.out.println(p);
 				request.getSession().setAttribute("alertMsg", "상품을 성공적으로 등록했습니다.");
 				response.sendRedirect(request.getContextPath());
 			} else {
