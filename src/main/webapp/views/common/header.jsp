@@ -46,51 +46,48 @@
                 <button type="submit" id="searchBtn" style="background-image: url(${pageContext.request.contextPath}/resources/image/searchBtn.png);"></button>
             </form> 
         </div>     
-
-        <div id="loginAfter">
-            <div>      
-                <!--  <img src="${pageContext.request.contextPath}/resources/image/mannerScore.png" style="margin-left: 25px;" alt="매너점수"> -->
-                <div id="brightnessRate" style=" margin-left: 10px; height: 35px;">
-                    <p style="font-size: 14px; margin: 0;">밝음 수치: 70 lux</p>
-                    <div class="progress" style="width: 120px; height: 14px;  border-radius: 10px; border: 0.1px solid darkgray;" >
-                        <div class="progress-bar" style="width:70%; background: #70C9A0;"></div>
-                    </div>
-                </div>
-             </div>  
-            <div id="myPageDiv" style="font-size: 13px; " >
-                ${loginUser.userName } 님<br>
-                <a href="${pageContext.request.contextPath}/indexToMyPage.my" id="myPageTag" onmouseover="overMyPage();"> 마이페이지</a>
-                <div id="mdiv" style="background-image: url(${pageContext.request.contextPath}/img/myPageHover.png); background-size: 100px 200px" onmouseover="overMyPage();" onmouseout="outMyPage();">                  
-                        <ul class="myPageUl" >
-                            <li class="three"><a href="${pageContext.request.contextPath}/indexToLike.my"><img src="${pageContext.request.contextPath}/img/heartIcon.png" alt="">좋아요</a></li>
-                            <li class="four"><a href="${pageContext.request.contextPath}/indexToTradeHistory.my"><img src="${pageContext.request.contextPath}/img/chatIcon.png" alt="" >거래내역</a></li>
-                            <li class="two"><a href="${pageContext.request.contextPath}/indexToSetting.my"><img src="${pageContext.request.contextPath}/img/settingIcon.png" alt="">설정</a></li>
-                            <li class="three"><a href="${pageContext.request.contextPath}/indexToWrite.po"><img src="${pageContext.request.contextPath}/img/writeIcon.png" alt="">글쓰기</a></li>
-                            <li class="three"><a href="${pageContext.request.contextPath}/indexToProfile.my"><img src="${pageContext.request.contextPath}/img/personIcon.png" alt="">프로필</a></li>
-                            <li class="four"><a href="${pageContext.request.contextPath}/indexToFaq.fa"><img src="${pageContext.request.contextPath}/img/faqIcon.png" alt="">고객센터</a></li>
-                            <li class="four"><a href="${pageContext.request.contextPath}"><img src="${pageContext.request.contextPath}/img/logoutIcon.png" alt="">로그아웃</a></li>
-                        </ul>
-            
-                </div>
-            </div>
-            <div>
-                <a href="" id="bellTag" style="margin-left: 25px;"><img src="${pageContext.request.contextPath}/resources/image/bell.png" alt=""></a>
-            </div>
-        </div>
-
-        
-        <!-- <c:choose>
+            <!-- 로그인 전 -->
+         <c:choose>
     		<c:when test="${ empty loginUser }">
 		        <div id="login">          
 		            <a href="${pageContext.request.contextPath}/Login.me"><img src="${pageContext.request.contextPath}/resources/image/userBtn.png" alt="">로그인/회원가입</a>           
 		        </div>
 		    </c:when>
-			<c:otherwise> -->
-			
-            <!-- 이 자리에 login 후 코드 오면됨 -->
+			<c:otherwise> 
+			<!-- 로그인 후-->
+            <div id="loginAfter">
+                <div>      
+                    <!--  <img src="${pageContext.request.contextPath}/resources/image/mannerScore.png" style="margin-left: 25px;" alt="매너점수"> -->
+                    <div id="brightnessRate" style=" margin-left: 10px; height: 35px;">
+                        <p style="font-size: 14px; margin: 0;">밝음 수치: 70 lux</p>
+                        <div class="progress" style="width: 120px; height: 14px;  border-radius: 10px; border: 0.1px solid darkgray;" >
+                            <div class="progress-bar" style="width:70%; background: #70C9A0;"></div>
+                        </div>
+                    </div>
+                 </div>  
+                <div id="myPageDiv" style="font-size: 13px; " >
+                    ${loginUser.userId } 님<br>
+                    <a href="${pageContext.request.contextPath}/indexToMyPage.my" id="myPageTag" onmouseover="overMyPage();"> 마이페이지</a>
+                    <div id="mdiv" style="background-image: url(${pageContext.request.contextPath}/img/myPageHover.png); background-size: 100px 200px" onmouseover="overMyPage();" onmouseout="outMyPage();">                  
+                            <ul class="myPageUl" >
+                                <li class="three"><a href="${pageContext.request.contextPath}/indexToLike.my"><img src="${pageContext.request.contextPath}/img/heartIcon.png" alt="">좋아요</a></li>
+                                <li class="four"><a href="${pageContext.request.contextPath}/indexToTradeHistory.my"><img src="${pageContext.request.contextPath}/img/chatIcon.png" alt="" >거래내역</a></li>
+                                <li class="two"><a href="${pageContext.request.contextPath}/indexToSetting.my"><img src="${pageContext.request.contextPath}/img/settingIcon.png" alt="">설정</a></li>
+                                <li class="three"><a href="${pageContext.request.contextPath}/indexToWrite.po"><img src="${pageContext.request.contextPath}/img/writeIcon.png" alt="">글쓰기</a></li>
+                                <li class="three"><a href="${pageContext.request.contextPath}/indexToProfile.my"><img src="${pageContext.request.contextPath}/img/personIcon.png" alt="">프로필</a></li>
+                                <li class="four"><a href="${pageContext.request.contextPath}/indexToFaq.fa"><img src="${pageContext.request.contextPath}/img/faqIcon.png" alt="">고객센터</a></li>
+                                <li class="four"><a href="${pageContext.request.contextPath}/logout.me"><img src="${pageContext.request.contextPath}/img/logoutIcon.png" alt="">로그아웃</a></li>
+                            </ul>
+                
+                    </div>
+                </div>
+                <div>
+                    <a href="" id="bellTag" style="margin-left: 25px;"><img src="${pageContext.request.contextPath}/resources/image/bell.png" alt=""></a>
+                </div>
+            </div> 
 		       
-		    <!-- </c:otherwise>
-		 </c:choose> -->
+		     </c:otherwise>
+		 </c:choose> 
 
 		    
     </div>
