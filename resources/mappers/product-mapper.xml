@@ -38,8 +38,8 @@
 		VALUES
 		(
 			SEQ_GOODSID.NEXTVAL,
-			#{userPwd},
-			#{categoryM},
+			0,
+			'임시값',
 			#{title},
 			DEFAULT,
 			#{sellPrice},
