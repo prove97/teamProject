@@ -46,13 +46,13 @@
 					</div>
 					<div class="bottom">
 						<div id="bottom-left">
-							<a href="">아이디찾기</a>
+							<a href="${pageContext.request.contextPath}/views/login/idFind.jsp">아이디찾기</a>
 						</div>
 						<div id="bottom-right">
-							<a href="">비밀번호찾기</a>
+							<a href="${pageContext.request.contextPath}/views/login/pwdFind.jsp">비밀번호찾기</a>
 						</div>
 						<div id="bottom-right">
-							<a href="">회원가입</a>
+							<a href="${pageContext.request.contextPath}/views/login/signIn.jsp">회원가입</a>
 						</div>
 					</div>
 					</form>
