@@ -32,7 +32,7 @@ public class IndexToLikeController extends HttpServlet {
 		HttpSession session = request.getSession(); //현재 로그인 세션 정보 가져옴
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		if(loginUser != null) { //로그인 되어있을 경우 나의 댓글 메뉴로 이동
+		if(loginUser != null) { //로그인 되어있을 경우 찜목록 메뉴로 이동
 			session.setAttribute("loginUser", loginUser);
 			request.setAttribute("changeUrl", "heart.jsp");		
 			request.getRequestDispatcher("views/myPage/myPageMain.jsp").forward(request, response);

@@ -6,6 +6,7 @@ public class Member {
 	private int userNo;
 	private String userId;
 	private String userPwd;
+	private String nickname;
 	private String authority;
 	private String phone;
 	private String activated;
@@ -13,31 +14,19 @@ public class Member {
 	private Date joinDate;
 	private String gender;
 	private String email;
-	private String loacation;
+	private String location;
 	
 	public Member() {
 		super();
 	}
 	
-	public Member(int userNo, String userId, String userPwd, String authority, String phone, String activated,
-			int score, Date joinDate) {
+	public Member(int userNo, String userId, String userPwd, String nickname, String authority, String phone,
+			String activated, int score, Date joinDate, String gender, String email, String location) {
 		super();
 		this.userNo = userNo;
 		this.userId = userId;
 		this.userPwd = userPwd;
-		this.authority = authority;
-		this.phone = phone;
-		this.activated = activated;
-		this.score = score;
-		this.joinDate = joinDate;
-	}
-
-	public Member(int userNo, String userId, String userPwd, String authority, String phone, String activated,
-			int score, Date joinDate, String gender, String email, String loacation) {
-		super();
-		this.userNo = userNo;
-		this.userId = userId;
-		this.userPwd = userPwd;
+		this.nickname = nickname;
 		this.authority = authority;
 		this.phone = phone;
 		this.activated = activated;
@@ -45,16 +34,36 @@ public class Member {
 		this.joinDate = joinDate;
 		this.gender = gender;
 		this.email = email;
-		this.loacation = loacation;
+		this.location = location;
+	}
+	
+	public Member(int userNo, String userId, String userPwd, String nickname, String authority, String phone,
+			String activated, int score, Date joinDate) {
+		super();
+		this.userNo = userNo;
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.nickname = nickname;
+		this.authority = authority;
+		this.phone = phone;
+		this.activated = activated;
+		this.score = score;
+		this.joinDate = joinDate;
 	}
 
 	@Override
 	public String toString() {
-		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", authority=" + authority
-				+ ", phone=" + phone + ", activated=" + activated + ", score=" + score + ", joinDate=" + joinDate
-				+ ", gender=" + gender + ", email=" + email + ", loacation=" + loacation + "]";
+		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", nickname=" + nickname
+				+ ", authority=" + authority + ", phone=" + phone + ", activated=" + activated + ", score=" + score
+				+ ", joinDate=" + joinDate + ", gender=" + gender + ", email=" + email + ", location=" + location + "]";
 	}
 
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	public int getUserNo() {
 		return userNo;
 	}
@@ -115,14 +124,12 @@ public class Member {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getLoacation() {
-		return loacation;
+	public String getLocation() {
+		return location;
 	}
-	public void setLoacation(String loacation) {
-		this.loacation = loacation;
+	public void setLocation(String location) {
+		this.location = location;
 	}
-	
-	
 	
 
 }

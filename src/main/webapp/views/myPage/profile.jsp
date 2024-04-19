@@ -174,37 +174,36 @@
 <body>
 	<div id="main">
 	    <form action="updateMemberInfo.my" method="POST">
-            <input type="hidden" name="nicknamePermit" value="N" >
-            <input type="hidden" name="passwordPermit" value="N" >
 	        <div id="necessaryInfo">
 	            <h2>회원정보</h2>
 	            <div class="inputSpace">
 	                <table align="center">
 	                    <tr>
 	                        <th>*아이디</th>
-	                        <td><input type="text" value="${loginUser.getUserId()}" name="userId" class="necessaryInput" readonly></td>
+	                        <td><input type="text" value="${loginUser.userId}" name="userId" class="necessaryInput" readonly></td>
 	                    </tr>
 	                    <tr>
 	                        <th>*비밀번호 변경</th>
 	                        <td class="inputWrong">
-	                            <input type="password" name="userPwd" id="pwd" class="necessaryInput" maxlength="20" oninput="combinePwd(); btnActivate();">
+	                            <input type="password" name="userPwd" id="pwd" class="necessaryInput" maxlength="20" oninput="checkPassword()">
 	                            <div class="warning">비밀번호는 영어, 숫자, 특수기호 포함 8자 이상이어야 합니다.</div>
 	                        </td>
 	                    </tr>
 	                    <tr>
 	                        <th>*비밀번호 확인</th>
 	                        <td class="inputWrong">
-	                            <input type="password" name="checkUserPwd" id="checkPwd" class="necessaryInput" maxlength="20" oninput="differPwd(); btnActivate();">
+	                            <input type="password" name="checkUserPwd" id="checkPwd" class="necessaryInput" maxlength="20" oninput="checkPassword()">
 	                            <div class="warning">비밀번호가 일치하지 않습니다.</div>                                        
 	                        </td>
 	                    </tr>
 	                    <tr>
 	                        <th>*휴대폰 번호</th>
-	                        <td><input type="text" value="${loginUser.getPhone()}" name="phone" class="necessaryInput" readonly></td>
+	                        <td><input type="text" value="${loginUser.phone}" name="phone" class="necessaryInput" readonly></td>
 	                    </tr>
 	                    <tr style="position: relative;">
 	                        <th>*닉네임</th>    
-	                        <td class="inputWrong">
+	                        <td>
+                                <input type="checkbox" id="checkNickname" style="display: none;">
 	                            <input type="text" value="db추가하면 추가" class="necessaryInput" name="nickname">
 	                            <div class="warning">중복된 닉네임입니다</div>                                        
 	                            <button type="button" id="duplicationCheckBtn" onclick="nicknameCheck();">중복확인</button>
@@ -213,80 +212,101 @@
 	                    </tr>
 	                </table>
 	                <script>
-                        const newPwd = document.getElementById('pwd');
-	                    const checkPwd = document.getElementById('checkPwd');
-                        const submitBtn = document.querySelector("#infoTrans");
-                        const warning1 = document.getElementsByClassName('warning')[0];
-                        const warning2 = document.getElementsByClassName('warning')[1];
-                        
-
-                        function btnActivate(){
-                            if(newPwd.value !== "" && checkPwd.value !== "" &&
-                                warning1.style.display === 'none' && warning2.style.display === 'none'){
+                        function submitActivate(){ //저장버튼 활성화 여부 결정 함수
+                            const submitBtn = document.querySelector("#infoTrans"); //저장버튼
+                            if(checkPassword() && nicknameCheck()){ //패스워드와 닉네임의 조건이 맞을 경우
+                                console.log("저장활성화");
                                 submitBtn.disabled = false;
                             } else{
+                                console.log("비활성화");
                                 submitBtn.disabled = true;
                             }
                         }
 
+                        function checkPassword(){
+                            const newPwd = document.getElementById('pwd'); // 변경할 비밀번호
+	                        const checkPwd = document.getElementById('checkPwd'); //비밀번호 확인
+                            const warning1 = document.getElementsByClassName('warning')[0]; //비밀번호 조합 확인 div
+                            const warning2 = document.getElementsByClassName('warning')[1]; //비밀번호 일치 체크 div 
 
-	                    function combinePwd(){
+                            const combineCheck = combinePwd(newPwd, warning1);
+                            const differCheck = differPwd(newPwd, checkPwd, warning2);
+                            
+                            console.log(newPwd);
+                            console.log(checkPwd);
+
+                            console.log(combineCheck, differCheck)
+
+                            return combineCheck && differCheck;
+                        }
+
+
+	                    function combinePwd(targetInput, warning1){ //새로운 비밀번호 조합 확인
 	                        const reg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
 	                        
-	                        if(reg.test(newPwd.value) || newPwd.value === ""){ //비밀번호의 조합조건이 맞거나 빈칸일 경우
+	                        if(reg.test(targetInput.value) || targetInput.value === ""){ //비밀번호의 조합조건이 맞거나 빈칸일 경우
 	                            warning1.style.display = 'none';
-	                            newPwd.style.border = '0px';
-	                            newPwd.style.borderBottom = '1px solid black';
-	                            newPwd.style.borderRadius = '0px';
-	                        } else {
-	                            newPwd.style.border = 'red solid';
-	                            newPwd.style.borderRadius = '5px';
+	                            targetInput.style.border = '0px';
+	                            targetInput.style.borderBottom = '1px solid black';
+	                            targetInput.style.borderRadius = '0px';
+                                
+                                return targetInput.value !== ""; //값이 비어있는 것은 combinePwd조건에 만족은 아니다
+                                //값이 비어있을 경우 false, 값이 있으면 true
+
+                            } else {
+	                            targetInput.style.border = 'red solid';
+	                            targetInput.style.borderRadius = '5px';
 	                            warning1.style.display = 'block';
+                                return false;
 	                        } 
 	                        
 	                    }
 	
-	                    function differPwd(){
+	                    function differPwd(originInput, checkInput, warning2){ //비밀번호 일치 체크
 	
-	                        if(newPwd.value === checkPwd.value || checkPwd.value === ""){ //비밀번호가 일치하거나 빈칸일 경우
+	                        if(originInput.value === checkInput.value || checkInput.value === ""){ //비밀번호가 일치하거나 빈칸일 경우
 	                            warning2.style.display = 'none';
-	                            checkPwd.style.border = '0px';
-	                            checkPwd.style.borderBottom = '1px solid black';
-	                            checkPwd.style.borderRadius = '0px';
-	                            
+	                            checkInput.style.border = '0px';
+	                            checkInput.style.borderBottom = '1px solid black';
+	                            checkInput.style.borderRadius = '0px';
+                                
+                                return checkInput.value !== ""; //값이 비어있는 것은 differPwd조건에 만족은 아니다
+                               
 	                        } else{
-	                            checkPwd.style.border = 'red solid';
-	                            checkPwd.style.borderRadius = '5px';
+	                            checkInput.style.border = 'red solid';
+	                            checkInput.style.borderRadius = '5px';
 	                            warning2.style.display = 'block';
+                                return false;
 	                        }
 	                    }
 	
 	                    function nicknameCheck(){ //닉네임 중복체크
-	                        const nickname = document.querySelector("input[name=nickname]");
-                            const nicknamePermit = document.querySelector("input[name=nicknamePermit]");
-                            const warning = document.getElementsByClassName('warning')[2];
+	                        const inputNickname = document.querySelector("input[name=nickname]");
+                            const checkNickname = document.querySelector("#checkNickname");
+                            const warning3 = document.getElementsByClassName('warning')[2];
 
+                            console.log(checkNickname.checked);
 	                        console.log(nickname.value);
 
 	                        $.ajax({
 	                            type: "GET",
 	                            url: "nicknameCheck.my",
 	                            data:{
-	                                checkNickname: nickname.value
+	                                nickname: inputNickname.value
 	                            },
 	                            success: function(res){
                                     if(res === "NNNNY"){
                                         alert("사용가능한 닉네임입니다.");
-                                        nicknamePermit.value = "Y"; 
-                                        console.log(nicknamePermit.value);                                        
-                                        warning.style.display = 'none';
+                                        checkNickname.checked = true; 
+                                        warning3.style.display = 'none';
 
                                     } else{                                        
-                                        nicknamePermit.value = "N"; 
+                                        checkNickname.checked = false; 
                                         nickname.focus();
-                                        warning.style.display = 'block';
-
+                                        warning3.style.display = 'block';
                                     }
+
+                                    return checkNickname.checked;
                                 },
 	                            error: function(err){
                                     alert("닉네임 중복확인 실패");
@@ -313,14 +333,14 @@
 	                        </td>
                             <script>
                                 $(function(){
-                                    if("${loginUser.getGender()}" != ""){
-                                        $('input[value="${loginUser.getGender()}"]').attr("checked",true);
+                                    if("${loginUser.gender}" !== ""){
+                                        $('input[value="${loginUser.gender}"]').attr("checked",true);
                                     } 
                                 })
                             </script>
 	
 	                        <th>이메일</th>
-	                        <td><input type="email" value="${loginUser.getEmail()}"></td>
+	                        <td><input type="email" value="${loginUser.email}"></td>
 	                    </tr>
 	                    <tr>
 	                        <th>지역</th>
@@ -344,15 +364,17 @@
 	                                <option value='15'>충남</option>
 	                                <option value='16'>충북</option>
 	                            </select>
-	                            <b>도/시</b>
-	
+	                            <b>도/시&nbsp;&nbsp;&nbsp;&nbsp;</b>
+                                
 	                            <select name="location2">
 	                                <option>선택</option>
 	                            </select>
-	                            <b>시/구/군</b>
 	                            <!-- <select name="location" id=""></select>
 	                            <b>동</b> -->
 	                        </td>
+                            
+                            ${loginUser.location}
+
 	                    </tr>
 	                </table>
 	            </div>
@@ -362,64 +384,57 @@
 	</div>
     
     <script>
-        let location1_num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-        let location1_name = ['서울', '부산', '대구', '인천', '광주', '대전', '울산', '강원', '경기', '경남', '경북', '전남', '전북', '제주', '충남', '충북'];
+        function areaKoreaNo(num){
+            let location1_num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+            let location2_num = [];
 
-        let location2_num = [];
-        let location2_name = [];
+            location2_num[0] = [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41];
+            location2_num[1] = [42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57];
+            location2_num[2] = [58, 59, 60, 61, 62, 63, 64, 65];
+            location2_num[3] = [66, 67, 68, 69, 70, 71, 72, 73, 74, 75];
+            location2_num[4] = [76, 77, 78, 79, 80];
+            location2_num[5] = [81, 82, 83, 84, 85];
+            location2_num[6] = [86, 87, 88, 89, 90];
+            location2_num[7] = [91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108];
+            location2_num[8] = [109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148];
+            location2_num[9] = [149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168];
+            location2_num[10] = [169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192];
+            location2_num[11] = [193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214];
+            location2_num[12] = [215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229];
+            location2_num[13] = [230, 231, 232, 233];
+            location2_num[14] = [234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248];
+            location2_num[15] = [249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260];
+            
+            return location2_num[num];
+        }
+        
+        function areaKoreaName(num){
+            let location1_name = ['서울', '부산', '대구', '인천', '광주', '대전', '울산', '강원', '경기', '경남', '경북', '전남', '전북', '제주', '충남', '충북'];
+            let location2_name = [];
+            location2_name[0] = ['강남구', '강동구', '강북구', '강서구', '관악구', '광진구', '구로구', '금천구', '노원구', '도봉구', '동대문구', '동작구', '마포구', '서대문구', '서초구', '성동구', '성북구', '송파구', '양천구', '영등포구', '용산구', '은평구', '종로구', '중구', '중랑구'];
+            location2_name[1] = ['강서구', '금정구', '남구', '동구', '동래구', '부산진구', '북구', '사상구', '사하구', '서구', '수영구', '연제구', '영도구', '중구', '해운대구', '기장군'];
+            location2_name[2] = ['남구', '달서구', '동구', '북구', '서구', '수성구', '중구', '달성군'];
+            location2_name[3] = ['계양구', '남구', '남동구', '동구', '부평구', '서구', '연수구', '중구', '강화군', '옹진군'];
+            location2_name[4] = ['광산구', '남구', '동구', '북구', '서구'];
+            location2_name[5] = ['대덕구', '동구', '서구', '유성구', '중구'];
+            location2_name[6] = ['남구', '동구', '북구', '중구', '울주군'];
+            location2_name[7] = ['강릉시', '동해시', '삼척시', '속초시', '원주시', '춘천시', '태백시', '고성군', '양구군', '양양군', '영월군', '인제군', '정선군', '철원군', '평창군', '홍천군', '화천군', '횡성군'];
+            location2_name[8] = ['고양시 덕양구', '고양시 일산구', '과천시', '광명시', '광주시', '구리시', '군포시', '김포시', '남양주시', '동두천시', '부천시 소사구', '부천시 오정구', '부천시 원미구', '성남시 분당구', '성남시 수정구', '성남시 중원구', '수원시 권선구', '수원시 장안구', '수원시 팔달구', '시흥시', '안산시 단원구', '안산시 상록구', '안성시', '안양시 동안구', '안양시 만안구', '오산시', '용인시', '의왕시', '의정부시', '이천시', '파주시', '평택시', '하남시', '화성시', '가평군', '양주군', '양평군', '여주군', '연천군', '포천군'];
+            location2_name[9] = ['거제시', '김해시', '마산시', '밀양시', '사천시', '양산시', '진주시', '진해시', '창원시', '통영시', '거창군', '고성군', '남해군', '산청군', '의령군', '창녕군', '하동군', '함안군', '함양군', '합천군'];
+            location2_name[10] = ['경산시', '경주시', '구미시', '김천시', '문경시', '상주시', '안동시', '영주시', '영천시', '포항시 남구', '포항시 북구', '고령군', '군위군', '봉화군', '성주군', '영덕군', '영양군', '예천군', '울릉군', '울진군', '의성군', '청도군', '청송군', '칠곡군'];
+            location2_name[11] = ['광양시', '나주시', '목포시', '순천시', '여수시', '강진군', '고흥군', '곡성군', '구례군', '담양군', '무안군', '보성군', '신안군', '영광군', '영암군', '완도군', '장성군', '장흥군', '진도군', '함평군', '해남군', '화순군'];
+            location2_name[12] = ['군산시', '김제시', '남원시', '익산시', '전주시 덕진구', '전주시 완산구', '정읍시', '고창군', '무주군', '부안군', '순창군', '완주군', '임실군', '장수군', '진안군'];
+            location2_name[13] = ['서귀포시', '제주시', '남제주군', '북제주군'];
+            location2_name[14] = ['공주시', '논산시', '보령시', '서산시', '아산시', '천안시', '금산군', '당진군', '부여군', '서천군', '연기군', '예산군', '청양군', '태안군', '홍성군'];
+            location2_name[15] = ['제천시', '청주시 상당구', '청주시 흥덕구', '충주시', '괴산군', '단양군', '보은군', '영동군', '옥천군', '음성군', '진천군', '청원군'];
 
-        location2_num[0] = [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41];
-        location2_name[0] = ['강남구', '강동구', '강북구', '강서구', '관악구', '광진구', '구로구', '금천구', '노원구', '도봉구', '동대문구', '동작구', '마포구', '서대문구', '서초구', '성동구', '성북구', '송파구', '양천구', '영등포구', '용산구', '은평구', '종로구', '중구', '중랑구'];
-
-        location2_num[1] = [42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57];
-        location2_name[1] = ['강서구', '금정구', '남구', '동구', '동래구', '부산진구', '북구', '사상구', '사하구', '서구', '수영구', '연제구', '영도구', '중구', '해운대구', '기장군'];
-
-        location2_num[2] = [58, 59, 60, 61, 62, 63, 64, 65];
-        location2_name[2] = ['남구', '달서구', '동구', '북구', '서구', '수성구', '중구', '달성군'];
-
-        location2_num[3] = [66, 67, 68, 69, 70, 71, 72, 73, 74, 75];
-        location2_name[3] = ['계양구', '남구', '남동구', '동구', '부평구', '서구', '연수구', '중구', '강화군', '옹진군'];
-
-        location2_num[4] = [76, 77, 78, 79, 80];
-        location2_name[4] = ['광산구', '남구', '동구', '북구', '서구'];
-
-        location2_num[5] = [81, 82, 83, 84, 85];
-        location2_name[5] = ['대덕구', '동구', '서구', '유성구', '중구'];
-
-        location2_num[6] = [86, 87, 88, 89, 90];
-        location2_name[6] = ['남구', '동구', '북구', '중구', '울주군'];
-
-        location2_num[7] = [91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108];
-        location2_name[7] = ['강릉시', '동해시', '삼척시', '속초시', '원주시', '춘천시', '태백시', '고성군', '양구군', '양양군', '영월군', '인제군', '정선군', '철원군', '평창군', '홍천군', '화천군', '횡성군'];
-
-        location2_num[8] = [109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148];
-        location2_name[8] = ['고양시 덕양구', '고양시 일산구', '과천시', '광명시', '광주시', '구리시', '군포시', '김포시', '남양주시', '동두천시', '부천시 소사구', '부천시 오정구', '부천시 원미구', '성남시 분당구', '성남시 수정구', '성남시 중원구', '수원시 권선구', '수원시 장안구', '수원시 팔달구', '시흥시', '안산시 단원구', '안산시 상록구', '안성시', '안양시 동안구', '안양시 만안구', '오산시', '용인시', '의왕시', '의정부시', '이천시', '파주시', '평택시', '하남시', '화성시', '가평군', '양주군', '양평군', '여주군', '연천군', '포천군'];
-
-        location2_num[9] = [149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168];
-        location2_name[9] = ['거제시', '김해시', '마산시', '밀양시', '사천시', '양산시', '진주시', '진해시', '창원시', '통영시', '거창군', '고성군', '남해군', '산청군', '의령군', '창녕군', '하동군', '함안군', '함양군', '합천군'];
-
-        location2_num[10] = [169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192];
-        location2_name[10] = ['경산시', '경주시', '구미시', '김천시', '문경시', '상주시', '안동시', '영주시', '영천시', '포항시 남구', '포항시 북구', '고령군', '군위군', '봉화군', '성주군', '영덕군', '영양군', '예천군', '울릉군', '울진군', '의성군', '청도군', '청송군', '칠곡군'];
-
-        location2_num[11] = [193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214];
-        location2_name[11] = ['광양시', '나주시', '목포시', '순천시', '여수시', '강진군', '고흥군', '곡성군', '구례군', '담양군', '무안군', '보성군', '신안군', '영광군', '영암군', '완도군', '장성군', '장흥군', '진도군', '함평군', '해남군', '화순군'];
-
-        location2_num[12] = [215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229];
-        location2_name[12] = ['군산시', '김제시', '남원시', '익산시', '전주시 덕진구', '전주시 완산구', '정읍시', '고창군', '무주군', '부안군', '순창군', '완주군', '임실군', '장수군', '진안군'];
-
-        location2_num[13] = [230, 231, 232, 233];
-        location2_name[13] = ['서귀포시', '제주시', '남제주군', '북제주군'];
-
-        location2_num[14] = [234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248];
-        location2_name[14] = ['공주시', '논산시', '보령시', '서산시', '아산시', '천안시', '금산군', '당진군', '부여군', '서천군', '연기군', '예산군', '청양군', '태안군', '홍성군'];
-
-        location2_num[15] = [249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260];
-        location2_name[15] = ['제천시', '청주시 상당구', '청주시 흥덕구', '충주시', '괴산군', '단양군', '보은군', '영동군', '옥천군', '음성군', '진천군', '청원군'];
-
-        function location1_change(key, sel) { //매개변수 1:도/시 선택시 설정한 숫자값(this.value) , 2:시/구/군 select요소(h_area2)
+            return location2_name[num];
+        }
+        
+        function location1_change(key, sel) { //매개변수 1:도/시 선택시 설정한 숫자값(this.value) , 2:시/구/군 select요소(location2)
             if (key == '') return;
-            let name = location2_name[key-1];
-            let val = location2_num[key-1];
+            let name = areaKoreaName(key-1);
+            let val = areaKoreaNo(key-1);
 
             for (i = sel.length - 1; i >= 0; i--){
                 sel.options[i] = null;
