@@ -29,7 +29,9 @@ public class CheckNicknameController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nickname = request.getParameter("checkNickname");
+		request.setCharacterEncoding("UTF-8");
+		
+		String nickname = request.getParameter("nickname");
 		System.out.println(nickname);
 
 		int count = new MyPageServiceImpl().checkNickname(nickname);

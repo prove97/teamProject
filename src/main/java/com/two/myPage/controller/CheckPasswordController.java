@@ -52,10 +52,11 @@ public class CheckPasswordController extends HttpServlet {
 		int result = mpService.checkPassword(m);
 
 		if(result > 0) { //비밀번호가 일치할경우
+			session.setAttribute("completeCheckPwd", "Y");
 			response.sendRedirect(request.getContextPath()+ "/indexToProfile.my");
 		} else { //비밀번호가 일치하지 않을 경우
 			request.setAttribute("changeUrl", "provePwd.jsp");
-			request.setAttribute("wrongPwd", "Y");			
+			request.setAttribute("wrongPwd", "Y");						
 			request.getRequestDispatcher("/views/myPage/myPageMain.jsp").forward(request, response);
 		}
 	}
