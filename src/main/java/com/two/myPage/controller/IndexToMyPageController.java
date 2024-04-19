@@ -29,8 +29,21 @@ public class IndexToMyPageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("changeUrl", "provePwd.jsp"); 
-		request.getRequestDispatcher("views/myPage/myPageMain.jsp").forward(request, response);	
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		
+		
+		if(loginUser != null) { //로그인 되어있을 경우
+			if(session.getAttribute("completeCheckPwd") == "Y") { // 회원정보창 들어가기전 비밀번호 체크를 했을 경우
+				response.sendRedirect(request.getContextPath()+ "/indexToProfile.my");
+			} else {
+				request.setAttribute("changeUrl", "provePwd.jsp"); 
+				request.getRequestDispatcher("views/myPage/myPageMain.jsp").forward(request, response);	
+			}
+		} else { //로그인 되어있지 않을 경우 로그인 창으로 이동
+			session.setAttribute("alertMsg", "로그인 해주세요");
+			response.sendRedirect(request.getContextPath()+"/Login.me");
+		} 
 		
 	}
 
