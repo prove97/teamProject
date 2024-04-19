@@ -13,7 +13,7 @@ public class Member {
 	private Date joinDate;
 	private String gender;
 	private String email;
-	private String loacation;
+	private String location;
 	
 	public Member() {
 		super();
@@ -33,7 +33,7 @@ public class Member {
 	}
 
 	public Member(int userNo, String userId, String userPwd, String authority, String phone, String activated,
-			int score, Date joinDate, String gender, String email, String loacation) {
+			int score, Date joinDate, String gender, String email, String location) {
 		super();
 		this.userNo = userNo;
 		this.userId = userId;
@@ -45,14 +45,14 @@ public class Member {
 		this.joinDate = joinDate;
 		this.gender = gender;
 		this.email = email;
-		this.loacation = loacation;
+		this.location = location;
 	}
 
 	@Override
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", authority=" + authority
 				+ ", phone=" + phone + ", activated=" + activated + ", score=" + score + ", joinDate=" + joinDate
-				+ ", gender=" + gender + ", email=" + email + ", loacation=" + loacation + "]";
+				+ ", gender=" + gender + ", email=" + email + ", location=" + location + "]";
 	}
 
 	public int getUserNo() {
@@ -115,11 +115,11 @@ public class Member {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getLoacation() {
-		return loacation;
+	public String getLocation() {
+		return location;
 	}
-	public void setLoacation(String loacation) {
-		this.loacation = loacation;
+	public void setLocation(String location) {
+		this.location = location;
 	}
 	
 	

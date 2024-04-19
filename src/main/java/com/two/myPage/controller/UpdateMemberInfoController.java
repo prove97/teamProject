@@ -34,7 +34,7 @@ public class UpdateMemberInfoController extends HttpServlet {
 		String nickname = request.getParameter("nickname");
 		String gender = request.getParameter("gender");
 		String email = request.getParameter("email");
-		String address = request.getParameter("address1") + "," + request.getParameter("address2");
+		String location = request.getParameter("location1") + "/" + request.getParameter("location2");
 		
 		System.out.println(userId);
 		System.out.println(userPwd);
@@ -42,7 +42,7 @@ public class UpdateMemberInfoController extends HttpServlet {
 		System.out.println(nickname);
 		System.out.println(gender);
 		System.out.println(email);
-		System.out.println(address);
+		System.out.println(location);
 		
 //		Member m = new Member(userId, userPwd, userName, email, birthday, gender, phone, address);
 //		

@@ -168,7 +168,7 @@
                 </div>
             </div>
             <div id="menubar">
-                <a href="${pageContext.request.contextPath}/indexToProfile.my" class="nonStyle"><strong>내정보</strong></a>
+                <a href="${pageContext.request.contextPath}/indexToMyPage.my" class="nonStyle"><strong>내정보</strong></a>
                 <ul>
                     <strong>나의 활동</strong>
                     <li><a href="${pageContext.request.contextPath}/indexToTradeHistory.my" class="nonStyle">나의 판매글</a></li>

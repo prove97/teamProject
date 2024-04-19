@@ -182,25 +182,25 @@
 	                <table align="center">
 	                    <tr>
 	                        <th>*아이디</th>
-	                        <td><input type="text" value="${loginUser.getUserId()}" name="userId" class="necessaryInput" readonly></td>
+	                        <td><input type="text" value="${loginUser.userId}" name="userId" class="necessaryInput" readonly></td>
 	                    </tr>
 	                    <tr>
 	                        <th>*비밀번호 변경</th>
 	                        <td class="inputWrong">
-	                            <input type="password" name="userPwd" id="pwd" class="necessaryInput" maxlength="20" oninput="combinePwd(); btnActivate();">
+	                            <input type="password" name="userPwd" id="pwd" class="necessaryInput" maxlength="20" oninput="checkPassword()">
 	                            <div class="warning">비밀번호는 영어, 숫자, 특수기호 포함 8자 이상이어야 합니다.</div>
 	                        </td>
 	                    </tr>
 	                    <tr>
 	                        <th>*비밀번호 확인</th>
 	                        <td class="inputWrong">
-	                            <input type="password" name="checkUserPwd" id="checkPwd" class="necessaryInput" maxlength="20" oninput="differPwd(); btnActivate();">
+	                            <input type="password" name="checkUserPwd" id="checkPwd" class="necessaryInput" maxlength="20" oninput="checkPassword()">
 	                            <div class="warning">비밀번호가 일치하지 않습니다.</div>                                        
 	                        </td>
 	                    </tr>
 	                    <tr>
 	                        <th>*휴대폰 번호</th>
-	                        <td><input type="text" value="${loginUser.getPhone()}" name="phone" class="necessaryInput" readonly></td>
+	                        <td><input type="text" value="${loginUser.phone}" name="phone" class="necessaryInput" readonly></td>
 	                    </tr>
 	                    <tr style="position: relative;">
 	                        <th>*닉네임</th>    
@@ -213,51 +213,68 @@
 	                    </tr>
 	                </table>
 	                <script>
-                        const newPwd = document.getElementById('pwd');
-	                    const checkPwd = document.getElementById('checkPwd');
-                        const submitBtn = document.querySelector("#infoTrans");
-                        const warning1 = document.getElementsByClassName('warning')[0];
-                        const warning2 = document.getElementsByClassName('warning')[1];
-                        
+                        function checkPassword(){
+                            const newPwd = document.getElementById('pwd'); // 변경할 비밀번호
+	                        const checkPwd = document.getElementById('checkPwd'); //비밀번호 확인
+                            const submitBtn = document.querySelector("#infoTrans"); //저장버튼
+                            const warning1 = document.getElementsByClassName('warning')[0]; //비밀번호 조합 확인 div
+                            const warning2 = document.getElementsByClassName('warning')[1]; //비밀번호 일치 체크 div 
 
-                        function btnActivate(){
-                            if(newPwd.value !== "" && checkPwd.value !== "" &&
-                                warning1.style.display === 'none' && warning2.style.display === 'none'){
+                            const combineCheck = combinePwd(newPwd, warning1);
+                            const differCheck = differPwd(newPwd, checkPwd, warning2);
+                            
+                            console.log(newPwd);
+                            console.log(checkPwd);
+
+                            console.log(combineCheck, differCheck)
+                            if (combineCheck && differCheck) {
+                                //저장활성화
+                                console.log("저장활성화");
                                 submitBtn.disabled = false;
-                            } else{
+                            } else { 
+                                //저장 비활성화
+                                console.log("비활성화");
                                 submitBtn.disabled = true;
                             }
                         }
 
 
-	                    function combinePwd(){
+	                    function combinePwd(targetInput, warning1){ //새로운 비밀번호 조합 확인
 	                        const reg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
 	                        
-	                        if(reg.test(newPwd.value) || newPwd.value === ""){ //비밀번호의 조합조건이 맞거나 빈칸일 경우
+	                        if(reg.test(targetInput.value) || targetInput.value === ""){ //비밀번호의 조합조건이 맞거나 빈칸일 경우
 	                            warning1.style.display = 'none';
-	                            newPwd.style.border = '0px';
-	                            newPwd.style.borderBottom = '1px solid black';
-	                            newPwd.style.borderRadius = '0px';
-	                        } else {
-	                            newPwd.style.border = 'red solid';
-	                            newPwd.style.borderRadius = '5px';
+	                            targetInput.style.border = '0px';
+	                            targetInput.style.borderBottom = '1px solid black';
+	                            targetInput.style.borderRadius = '0px';
+                                
+                                return targetInput.value !== ""; //값이 비어있는 것은 combinePwd조건에 만족은 아니다
+                                //값이 비어있을 경우 false, 값이 있으면 true
+
+                            } else {
+	                            targetInput.style.border = 'red solid';
+	                            targetInput.style.borderRadius = '5px';
 	                            warning1.style.display = 'block';
+                                return false;
 	                        } 
 	                        
 	                    }
 	
-	                    function differPwd(){
+	                    function differPwd(originInput, checkInput, warning2){ //비밀번호 일치 체크
 	
-	                        if(newPwd.value === checkPwd.value || checkPwd.value === ""){ //비밀번호가 일치하거나 빈칸일 경우
+	                        if(originInput.value === checkInput.value || checkInput.value === ""){ //비밀번호가 일치하거나 빈칸일 경우
 	                            warning2.style.display = 'none';
-	                            checkPwd.style.border = '0px';
-	                            checkPwd.style.borderBottom = '1px solid black';
-	                            checkPwd.style.borderRadius = '0px';
-	                            
+	                            checkInput.style.border = '0px';
+	                            checkInput.style.borderBottom = '1px solid black';
+	                            checkInput.style.borderRadius = '0px';
+                                
+                                return checkInput.value !== ""; //값이 비어있는 것은 differPwd조건에 만족은 아니다
+                               
 	                        } else{
-	                            checkPwd.style.border = 'red solid';
-	                            checkPwd.style.borderRadius = '5px';
+	                            checkInput.style.border = 'red solid';
+	                            checkInput.style.borderRadius = '5px';
 	                            warning2.style.display = 'block';
+                                return false;
 	                        }
 	                    }
 	
@@ -313,14 +330,14 @@
 	                        </td>
                             <script>
                                 $(function(){
-                                    if("${loginUser.getGender()}" != ""){
-                                        $('input[value="${loginUser.getGender()}"]').attr("checked",true);
+                                    if("${loginUser.gender}" !== ""){
+                                        $('input[value="${loginUser.gender}"]').attr("checked",true);
                                     } 
                                 })
                             </script>
 	
 	                        <th>이메일</th>
-	                        <td><input type="email" value="${loginUser.getEmail()}"></td>
+	                        <td><input type="email" value="${loginUser.email}"></td>
 	                    </tr>
 	                    <tr>
 	                        <th>지역</th>
@@ -353,6 +370,26 @@
 	                            <!-- <select name="location" id=""></select>
 	                            <b>동</b> -->
 	                        </td>
+                            <script>
+                                $(function(){
+                                    const location = "${loginUser.location}";
+                                    const locationList = location.split("/");
+
+                                    if(locationList[0] !== ""){
+                                        $('input[value=' + locationList[0] + ']').attr("checked",true);
+                                    } 
+
+                                    if(locationList[1] !== ""){
+                                        $('input[value=' + locationList[1] + ']').attr("checked",true);
+                                    } 
+
+                                    
+                                    console.log(locationList[0]);
+                                    console.log(locationList[1]);
+
+                                })
+                            </script>
+
 	                    </tr>
 	                </table>
 	            </div>
