@@ -345,7 +345,7 @@
 	                    <tr>
 	                        <th>지역</th>
 	                        <td colspan="3">
-	                            <select name="location1" onChange="location1_change(this.value, location2)" class="location2">
+	                            <select name="location1" onChange="location1_change(this.value, location2)">
 	                                <option>선택</option>
 	                                <option value='1'>서울</option>
 	                                <option value='2'>부산</option>
@@ -372,8 +372,18 @@
 	                            <!-- <select name="location" id=""></select>
 	                            <b>동</b> -->
 	                        </td>
-                            
-                            ${loginUser.location}
+                            <script>
+                                $(function(){
+                                    const location = '${loginUser.location}'.split('/');
+                                    console.log(location[0]);
+                                    console.log(location[1]);
+                                    if("${loginUser.location}" !== ""){
+                                        $("select[name='location1'] option:contains(" +location[0] +")").attr("selected", "selected");
+                                        $("select[name='location2'] option:contains(" +location[1] +")").attr("selected", "selected");
+
+                                    } 
+                                })
+                            </script>
 
 	                    </tr>
 	                </table>
@@ -430,6 +440,7 @@
 
             return location2_name[num];
         }
+
         
         function location1_change(key, sel) { //매개변수 1:도/시 선택시 설정한 숫자값(this.value) , 2:시/구/군 select요소(location2)
             if (key == '') return;
