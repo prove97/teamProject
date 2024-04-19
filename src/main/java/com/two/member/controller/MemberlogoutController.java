@@ -1,4 +1,4 @@
-package com.two.myPage.controller;
+package com.two.member.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,21 +6,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.two.member.model.vo.Member;
 
 /**
- * Servlet implementation class IndexToMyPageController
+ * Servlet implementation class MemberlogoutController
  */
-@WebServlet("/indexToMyPage.my")
-public class IndexToMyPageController extends HttpServlet {
+@WebServlet("/logout.me")
+public class MemberlogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IndexToMyPageController() {
+    public MemberlogoutController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,9 +26,8 @@ public class IndexToMyPageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("changeUrl", "provePwd.jsp"); 
-		request.getRequestDispatcher("views/myPage/myPageMain.jsp").forward(request, response);	
-		
+		request.getSession().removeAttribute("loginUser");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	/**

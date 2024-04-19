@@ -157,17 +157,7 @@
 	                <option value="soldOut">판매완료</option>
 	            </select>
 	        </div>
-	        
-	        <script>
-	        	function reLoadBoardList(){
-                    const tradeStatus = document.querySelector("#boardStatusSelect");
-                    const option = tradeStatus.options[tradeStatus.selectedIndex];
-
-                    console.log(option.value);
-                                                            
-                }
-	        </script>
-	        
+	        	        
 	        <div id="board-table">
 	            <table align="center">
 	                <tr>
@@ -187,10 +177,31 @@
                     </c:forEach>
 
                     <script>
-                        function BoardDetailView(){
-                        	
+                        function reLoadBoardList(){
+                            const tradeStatus = document.querySelector("#boardStatusSelect");
+                            const myPostingList = document.querySelector(".myPostingList");
+                            console.log(tradeStatus.value);
+        
+                            $.ajax({
+                                    url: "reloadTrade.my",
+                                    data: {tradeListOption : tradeStatus.value,
+                                           userId : "${userId}"
+                                    
+                                    }, 
+                                    success: function(result){
+                                        console.log(result.value);
+                                    },
+                                    error: function(){
+                                    }
+                                })
+                                                                    
                         }
-                        
+
+
+                        function BoardDetailView(){
+                            console.log("이동");
+                        }
+
                     </script>
 	
 	            </table>

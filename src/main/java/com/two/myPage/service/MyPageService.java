@@ -13,6 +13,8 @@ public interface MyPageService {
 
 
 	public ArrayList<Board> myBoardList(String userId); //나의 판매글 리스트 불러오기 
+	public ArrayList<Board> loadOnSale(String userId);
+	public ArrayList<Board> loadSoldOut(String userId);	
 	
 	public ArrayList<Comments> myCommentList(String userId); //나의 댓글 리스트 불러오기
 	
