@@ -15,5 +15,18 @@
 		<result column="EYES" property="eyes"/>
 		<result column="MIND" property="mind"/>
 	</resultMap>
+
+
+	<!-- 나의 판매글 리스트 조회 -->
+	<select id="selectTradeList" parameterType="String" resultMap="memberResultSet">
+	        SELECT POST_ID, 
+	        	   TITLE_ID,
+	        	   EYES,
+	        	   WRITE_DATE
+	        FROM BOARD
+	        JOIN MEMBER USING (USER_NO)
+	        WHERE USER_ID = #{userId}
+	        ORDER BY POST_ID DESC 
+	</select>
 	
 </mapper>
