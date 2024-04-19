@@ -6,6 +6,7 @@ public class Member {
 	private int userNo;
 	private String userId;
 	private String userPwd;
+	private String nikName;
 	private String authority;
 	private String phone;
 	private String activated;
@@ -13,7 +14,7 @@ public class Member {
 	private Date joinDate;
 	private String gender;
 	private String email;
-	private String loacation;
+	private String location;
 	
 	public Member() {
 		super();
@@ -32,8 +33,8 @@ public class Member {
 		this.joinDate = joinDate;
 	}
 
-	public Member(int userNo, String userId, String userPwd, String authority, String phone, String activated,
-			int score, Date joinDate, String gender, String email, String loacation) {
+	public Member(int userNo, String userId, String userPwd, String nikName, String authority, String phone, String activated,
+			int score, Date joinDate, String gender, String email, String location) {
 		super();
 		this.userNo = userNo;
 		this.userId = userId;
@@ -45,14 +46,34 @@ public class Member {
 		this.joinDate = joinDate;
 		this.gender = gender;
 		this.email = email;
-		this.loacation = loacation;
+		this.location = location;
+		this.nikName = nikName;
 	}
+	
+	public Member(String userId, String userPwd, String nikName, String email, String phone, String location, String gender) {
+	super();
+	this.userId = userId;
+	this.userPwd = userPwd;
+	this.email = email;
+	this.nikName = nikName;
+	this.phone = phone;
+	this.location = location;
+	this.gender = gender;
+}
 
 	@Override
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", authority=" + authority
 				+ ", phone=" + phone + ", activated=" + activated + ", score=" + score + ", joinDate=" + joinDate
-				+ ", gender=" + gender + ", email=" + email + ", loacation=" + loacation + "]";
+				+ ", gender=" + gender + ", email=" + email + ", loacation=" + location + "]";
+	}
+
+	public String getNikName() {
+		return nikName;
+	}
+
+	public void setNikName(String nikName) {
+		this.nikName = nikName;
 	}
 
 	public int getUserNo() {
@@ -116,10 +137,10 @@ public class Member {
 		this.email = email;
 	}
 	public String getLoacation() {
-		return loacation;
+		return location;
 	}
 	public void setLoacation(String loacation) {
-		this.loacation = loacation;
+		this.location = loacation;
 	}
 	
 	

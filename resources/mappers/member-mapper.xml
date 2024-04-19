@@ -8,6 +8,7 @@
 		<result column="USER_NO" property="userNo"/>
 		<result column="USER_ID" property="userId"/>
 		<result column="USER_PWD" property="userPwd"/>
+		<!-- <result column="NIKNAME" property="nikName"/> -->
 		<result column="AUTHORITY" property="authority"/>
 		<result column="PHONE" property="phone"/>
 		<result column="ACTIVATED" property="activated"/>
@@ -21,6 +22,7 @@
 		SELECT USER_NO,
 			   USER_ID,
 			   USER_PWD,
+			   <!-- NIKNAME, -->
 			   AUTHORITY,
 			   PHONE,
 			   ACTIVATED,
@@ -34,4 +36,29 @@
 		AND USER_PWD = #{userPwd}
 		AND ACTIVATED = 'N'
 	</select>
+	
+	<insert id="insertMember" parameterType="Member">
+		INSERT INTO MEMBER(
+			USER_NO,
+			USER_ID,
+			USER_PWD,
+			<!-- NIKNAME, -->
+			PHONE,
+			SCORE,
+			GENDER,
+			EMAIL,
+			LOCATION
+		)
+		VALUES(
+			SEQ_USERNO.NEXTVAL,
+			#{userId},
+			#{userPwd},
+			<!-- #{nikName} -->
+			#{phone},
+			0,
+			#{gender},
+			#{email},
+			#{location}
+			)
+	</insert>
 </mapper>
