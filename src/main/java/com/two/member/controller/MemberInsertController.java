@@ -31,6 +31,8 @@ public class MemberInsertController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
 		String email = request.getParameter("email");
