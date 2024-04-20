@@ -1,4 +1,4 @@
-*{
+ *{
     box-sizing: border-box;
 }
 body{
@@ -55,9 +55,9 @@ body{
     overflow-x: auto;
     overflow-y: auto;
 }
-.category_box p:hover {
+.category_box p:hover{
 	cursor: default;
-	background-color: darkgray;
+	background-color: lightgray;
 }
 #category_top_box > p{
     margin: 10px 5px;
@@ -66,6 +66,18 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+li{
+    list-style: none;
+}
+li > button{
+    border: none;
+    background-color: white;
+    margin: 5px 0px;
+}
+li > button:hover{
+	cursor: default;
+	background-color: lightgray;
 }
 #product_info{
     border: 1px solid darkgray;
@@ -78,13 +90,13 @@ body{
 .column2{
     width: 82%;
 }
-.column2 > button{
+/* .column2 > button{
     background-color: white;
     border: 1px solid darkgray;
     width: 94px;
     height: 30px;
     font-size: 12px;
-}
+} */
 #detail_address{
     border: 1px solid darkgray;
     background-color:rgb(238, 238, 238);

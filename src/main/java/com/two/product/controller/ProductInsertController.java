@@ -45,16 +45,17 @@ public class ProductInsertController extends HttpServlet {
 			
 			Product p = new Product();
 //			p.setSellerNo(Integer.parseInt((String)request.getSession().getAttribute("userNo")));
-//			p.setSellerNo(4);
-//			p.setCategoryM("일단 임시값");
+			p.setSellerNo(1);
+			p.setCategoryM(multiRequest.getParameter("categoryM"));
 			p.setTitle(multiRequest.getParameter("title"));
 			p.setSellPrice(Integer.parseInt(multiRequest.getParameter("sellPrice")));
 			p.setpExplain(multiRequest.getParameter("pExplain"));
+			p.setReturnPd((multiRequest.getParameter("returnPd") == null) ? "N" : "Y");
 			p.setLocationT(multiRequest.getParameter("locationT"));
 			p.setProductStatus(multiRequest.getParameter("productStatus"));
 			
 			Attachment at = new Attachment();
-			at.setFilePath("resources/product_upfile");
+			at.setFilePath("resources/product_upfile/");
 			
 			int result = new ProductServiceImpl().insertProduct(p, at);
 			
