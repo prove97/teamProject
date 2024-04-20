@@ -59,31 +59,46 @@ const middle2 = document.getElementById("category_middle_2");
 const middle3 = document.getElementById("category_middle_3");
 const middle4 = document.getElementById("category_middle_4");
 const middle5 = document.getElementById("category_middle_5");
-const middleOpt1 = document.getElementById("category_middle_opt1");
-const middleOpt2 = document.getElementById("category_middle_opt2");
-const middleOpt3 = document.getElementById("category_middle_opt3");
-const middleOpt4 = document.getElementById("category_middle_opt4");
-const middleOpt5 = document.getElementById("category_middle_opt5");
     
-function category_middle(num){
-    var categoryId = "category_middle_" + num;
-    const ele = document.getElementById(categoryId);
-
+function category_top(num){
     noselected.style.display = "none";
+
     middle1.style.display = "none";
     middle2.style.display = "none";
     middle3.style.display = "none";
     middle4.style.display = "none";
     middle5.style.display = "none";
+
+    var categoryId = "category_middle_" + num;
+    const ele = document.getElementById(categoryId);
     ele.style.display = "block";
     
-    var categoryOpt = "category_middle_opt" + num;
-    const opt = document.getElementById(categoryOpt);
+    var elements = document.querySelectorAll('[id^="category_top_opt"]');
+    elements.forEach(function(element) {
+		element.style.color = "black";
+	});
     
-    middleOpt1.style.background = "none";
-    middleOpt2.style.background = "none";
-    middleOpt3.style.background = "none";
-    middleOpt4.style.background = "none";
-    middleOpt5.style.background = "none";
-    opt.style.background = "darkgray";
+    var categoryOpt = "category_top_opt" + num;
+    const opt = document.getElementById(categoryOpt);
+    opt.style.color = "green";
 }
+
+const formData = new FormData();
+var categoryM = "";
+
+function category_middle(button){
+    var elements = document.querySelectorAll('[id^="category_middle_opt"]');
+    elements.forEach(function(element) {
+        element.style.color = "black";
+    });
+
+    var categoryId = button.id;
+    const ele = document.getElementById(categoryId);
+    ele.style.color = "green";
+	
+	categoryM = button.value;
+}
+
+document.getElementById('submit_btn').addEventListener("click", function() {
+	document.getElementById("categoryM").value = categoryM;
+});
