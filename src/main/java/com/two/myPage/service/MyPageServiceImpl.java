@@ -11,13 +11,24 @@ import com.two.member.model.vo.Member;
 import com.two.myPage.model.dao.MyPageDao;
 
 public class MyPageServiceImpl implements MyPageService{
+	MyPageDao mpDao = new MyPageDao();
 	
+	@Override
+	public Member selectMember(String userId) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		Member m = mpDao.selectMember(sqlSession, userId);
+		
+		sqlSession.close();
+		
+		return m;
+	}
 
 	@Override
 	public int checkNickname(String nickname) {
 		SqlSession sqlSession = Template.getSqlSession();
 		
-		int result = new MyPageDao().checkNickname(sqlSession, nickname);
+		int result = mpDao.checkNickname(sqlSession, nickname);
 		
 		sqlSession.close();
 
@@ -25,35 +36,15 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 	
 	@Override
-	public int checkPassword(Member m) {
+	public ArrayList<Board> selectTradeList(int userNo) {
 		SqlSession sqlSession = Template.getSqlSession();
 		
-		int result = new MyPageDao().checkPassword(sqlSession, m);
-
-		sqlSession.close();
-
-		return result;
-	}
-	
-	@Override
-	public ArrayList<Board> selectTradeList(String userId) {
-		SqlSession sqlSession = Template.getSqlSession();
-		
-		ArrayList<Board> list = new MyPageDao().selectTradeList(sqlSession, userId);
+		ArrayList<Board> list = mpDao.selectTradeList(sqlSession, userNo);
 
 		sqlSession.close();
 
 		return list;
 	}
-
-	
-	@Override
-	public Member memberInfo(String userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 
 	@Override
 	public ArrayList<Comments> myCommentList(String userId) {

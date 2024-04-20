@@ -1,6 +1,7 @@
 package com.two.myPage.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,15 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.two.board.model.vo.Board;
 import com.two.member.model.vo.Member;
+import com.two.myPage.service.MyPageService;
+import com.two.myPage.service.MyPageServiceImpl;
 
 /**
  * Servlet implementation class IndexToCommentHistory
  */
 @WebServlet("/indexToCommentHistory.my")
 public class IndexToCommentHistory extends HttpServlet {
+	MyPageService mpService = new MyPageServiceImpl();
+
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -32,6 +38,14 @@ public class IndexToCommentHistory extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(); //현재 로그인 세션 정보 가져옴
 		Member loginUser = (Member)session.getAttribute("loginUser");
+		
+		String userId = loginUser.getUserId();
+		int userNo = mpService.selectMember(userId).getUserNo();
+		System.out.println(userNo);
+		
+		ArrayList<Board> list = mpService.selectTradeList(userNo);
+		System.out.println("나의 댓글 리스트 : " + list);	
+		
 		
 		if(loginUser != null) { //로그인 되어있을 경우 나의 댓글 메뉴로 이동
 			session.setAttribute("loginUser", loginUser);

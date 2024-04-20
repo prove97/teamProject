@@ -167,12 +167,12 @@
 	                    <th width="150px">작성일</th>
 	                </tr>
                     <c:forEach var="b" items="${list}">
-                        <tr class="myPostingList" onclick="BoardDetailView()">
-                            <td>${b.userId}</td>
+                        <tr class="myPostingList" onclick="location.href='views/posting/postPage.jsp'"> <!--쿼리로 postId 넘겨줄 예정-->
+                            <td>${b.postId}</td>
                             <td class="title">${b.titleId} <span>(<%=commentsCount%>)</span></td>
                             <td>${b.eyes}</td>
                             <td>${b.writeDate}</td>
-		                </tr>
+                        </tr>
                     </c:forEach>
 
                     <script>

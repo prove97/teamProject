@@ -8,7 +8,7 @@
 		<result column="USER_NO" property="userNo"/>
 		<result column="USER_ID" property="userId"/>
 		<result column="USER_PWD" property="userPwd"/>
-		<!-- <result column="NIKNAME" property="nikName"/> -->
+		<!-- <result column="NICKNAME" property="nickName"/> -->
 		<result column="AUTHORITY" property="authority"/>
 		<result column="PHONE" property="phone"/>
 		<result column="ACTIVATED" property="activated"/>
@@ -62,12 +62,21 @@
 			)
 	</insert>
 	
-	<!-- 패스워드 체크 -->
-	<select id="checkPassword" parameterType="Member" resultType="_int">
-	        SELECT COUNT(*)
+	<!-- 아이디로 유저 정보 조회 -->
+	<select id="selectMember" parameterType="String" resultMap="memberResultSet">
+	        SELECT USER_NO,
+	        	   USER_ID,
+				   USER_PWD,
+				   AUTHORITY,
+				   PHONE,
+				   ACTIVATED,
+				   SCORE,
+				   JOIN_DATE,
+				   GENDER,
+				   EMAIL,
+				   LOCATION
 	        FROM MEMBER
 	        WHERE USER_ID = #{userId}
-	        AND USER_PWD = #{userPwd}
 	        AND ACTIVATED='N'
 	</select>
 	
