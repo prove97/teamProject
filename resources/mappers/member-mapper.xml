@@ -22,7 +22,7 @@
 		SELECT USER_NO,
 			   USER_ID,
 			   USER_PWD,
-			   <!-- NIKNAME, -->
+			   <!-- NICKNAME, -->
 			   AUTHORITY,
 			   PHONE,
 			   ACTIVATED,
@@ -42,7 +42,7 @@
 			USER_NO,
 			USER_ID,
 			USER_PWD,
-			<!-- NIKNAME, -->
+			<!-- NICKNAME, -->
 			PHONE,
 			SCORE,
 			GENDER,
@@ -53,7 +53,7 @@
 			SEQ_USERNO.NEXTVAL,
 			#{userId},
 			#{userPwd},
-			<!-- #{nikName} -->
+			<!-- #{nickName} -->
 			#{phone},
 			0,
 			#{gender},
@@ -61,4 +61,22 @@
 			#{location}
 			)
 	</insert>
+	
+	<!-- 패스워드 체크 -->
+	<select id="checkPassword" parameterType="Member" resultType="_int">
+	        SELECT COUNT(*)
+	        FROM MEMBER
+	        WHERE USER_ID = #{userId}
+	        AND USER_PWD = #{userPwd}
+	        AND ACTIVATED='N'
+	</select>
+	
+	<!-- 닉네임 체크 -->
+	<select id="checkNickname" parameterType="String" resultType="_int">
+	        SELECT COUNT(*)
+	        FROM MEMBER
+	        WHERE NICKNAME = #{nickname}
+	        AND ACTIVATED='N'
+	</select>
+	
 </mapper>
