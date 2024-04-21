@@ -1,0 +1,83 @@
+body{
+    display: flex;
+    justify-content: center;
+    height: 1280px;
+    position: relative;
+}
+
+.log{
+    width: 1151px;
+    height: 100%;
+    text-align: center;
+}
+
+#img1{
+    width: 267px;
+    height: 167px;
+    margin-top: 137px;
+    margin-bottom: 25px;
+}
+
+#login-area{
+    width: 430px;
+    height: 400px;
+    margin: 0 auto;
+    border: 3px solid #B5B5B5;
+    border-radius: 20px;
+}
+
+#login-font{
+    color: #8A8A8A;
+    font-size: 40px;
+    margin-top: 20px;
+    font-weight: 900;
+    margin-bottom: 38px;
+}
+
+#id-input{
+    width: 290px;
+    height: 42px;
+    background-size: 28px;
+    border-radius: 15px;
+    border: 3px solid #8A8A8A;
+    background-position: 10px center;
+    padding-left: 50px;
+    background-repeat: no-repeat;
+    font-size: 15px;
+    margin-bottom: 32px;
+    font-weight: 900;           
+    opacity: 0.7;
+}
+
+#pwd-input{
+    width: 290px;
+    height: 42px;
+    background-size: 23px;
+    border-radius: 15px;
+    border: 3px solid #8A8A8A;
+    background-position: 10px center;
+    padding-left: 50px;
+    background-repeat: no-repeat;
+    font-size: 15px;
+    margin-bottom: 32px;
+    font-weight: 900;           
+    opacity: 0.7;
+}
+
+/* 체크된 상태의 커스텀 체크박스 디자인을 설정합니다 */
+#save-id > input[type="checkbox"]:checked {
+background-color: #70C9A0; /* 체크된 상태의 배경색 */   
+}  
+
+#submit-button{
+    width: 200px;
+    height: 40px;
+    color: white;
+    background: #70C9A0;
+    border-radius: 15px;
+    border-style: none;
+    opacity: 0.6;
+    font-size: 20px;
+    margin-bottom: 13px;
+    cursor: pointer;
+}

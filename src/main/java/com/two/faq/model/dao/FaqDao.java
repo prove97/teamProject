@@ -9,14 +9,14 @@ import com.two.common.model.vo.PageInfo;
 import com.two.faq.model.vo.Faq;
 
 public class FaqDao {
-	//문의내역리스트 조회
+	//臾몄쓽�궡�뿭由ъ뒪�듃 議고쉶
 	public int selectListCount(SqlSession sqlSession) {
 		return sqlSession.selectOne("faqMapper.selectListCount");
 	}
-	// 문의내역 페이지 리스트
+	// 臾몄쓽�궡�뿭 �럹�씠吏� 由ъ뒪�듃
 	public ArrayList<Faq> selectList(SqlSession sqlSession, PageInfo pi){
-		//마이바티스에서는 페이징처리를 위해 rowBounds라는 클래스를 제공한다.
-		/* offset :몇개의 게스글을 건너뛰고 조회할건지에 대한 값
+		//留덉씠諛뷀떚�뒪�뿉�꽌�뒗 �럹�씠吏뺤쿂由щ�� �쐞�빐 rowBounds�씪�뒗 �겢�옒�뒪瑜� �젣怨듯븳�떎.
+		/* offset :紐뉕컻�쓽 寃뚯뒪湲��쓣 嫄대꼫�쎇怨� 議고쉶�븷嫄댁��뿉 ���븳 媛�
 		 * 
 		 * currentPage : 1        1~5      0      5
 		 * currentPage : 2        6~10     5      5
@@ -25,7 +25,7 @@ public class FaqDao {
 		 */
 		
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
-		int limit = pi.getBoardLimit(); // 한페이지에 몇개 보여줄거냐
+		int limit = pi.getBoardLimit(); // �븳�럹�씠吏��뿉 紐뉕컻 蹂댁뿬以꾧굅�깘
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		return (ArrayList)sqlSession.selectList("faqMapper.selectList", null, rowBounds);

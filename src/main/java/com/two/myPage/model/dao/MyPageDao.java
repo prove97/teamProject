@@ -17,11 +17,11 @@ public class MyPageDao {
 	
 	public int checkPassword(SqlSession sqlSession, Member m) {		
 		int result = sqlSession.selectOne("memberMapper.checkPassword", m);
-		return result; //비밀번호가 일치하는 Member수(count) 리턴 (mapper수정해야함)
+		return result; //鍮꾨�踰덊샇媛� �씪移섑븯�뒗 Member�닔(count) 由ы꽩 (mapper�닔�젙�빐�빞�븿)
 	}
 	
 	public int checkNickname(SqlSession sqlSession, String nickname) {			
-		return sqlSession.selectOne("memberMapper.checkNickname", nickname);//닉네임이 일치하는 Member수(count) 리턴 (mapper수정해야함)
+		return sqlSession.selectOne("memberMapper.checkNickname", nickname);//�땳�꽕�엫�씠 �씪移섑븯�뒗 Member�닔(count) 由ы꽩 (mapper�닔�젙�빐�빞�븿)
 	}
 	
 	public int selectMyTradeListCount(SqlSession sqlSession, int userNo) {
