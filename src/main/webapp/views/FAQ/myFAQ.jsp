@@ -123,11 +123,11 @@
         </div>
         <div class="FAQ-area" onclick="toggleFAQ()">
             <div id="FAQ1">
-                <p align="left" style="font-size: 25px; margin-top: 13px;">제목 : ${ }</p> 
+                <p align="left" style="font-size: 25px; margin-top: 13px;">제목 : ${f.faqTitle }</p> 
                 <div align="right"><span style="padding: 6px; border: 2px solid #FFB800; color: #FFB800; border-radius: 10px;">답변대기</span><span id="icon1">▽</span></div>
                 <div class="hidden">
                     <p style="padding-left: 36px; padding-bottom: 20px; font-size: 20px;">운영자 답변</p>
-                    <p style="padding-left: 36px; font-size: 15px;">내용 : </p>
+                    <p style="padding-left: 36px; font-size: 15px;">내용 : ${f.answer}</p>
                 </div>
             </div>
         </div>
