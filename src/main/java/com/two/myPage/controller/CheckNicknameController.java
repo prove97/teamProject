@@ -34,16 +34,13 @@ public class CheckNicknameController extends HttpServlet {
 		String nickname = request.getParameter("nickname");
 		System.out.println(nickname);
 
-		int count = new MyPageServiceImpl().checkNickname(nickname);
+		int result = new MyPageServiceImpl().checkNickname(nickname);
 		
-		if(count > 0) { //중복아이디 존재
+		if(result > 0) { //중복아이디 존재
 			response.getWriter().print("NNNNN");
 		} else { //중복아이디 없음
 			response.getWriter().print("NNNNY");
 		}
-		
-		response.getWriter().print("NNNNY");
-
 		
 	}
 

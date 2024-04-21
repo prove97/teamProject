@@ -15,5 +15,5 @@
 		<result column="EYES" property="eyes"/>
 		<result column="MIND" property="mind"/>
 	</resultMap>
-
+	
 </mapper>
