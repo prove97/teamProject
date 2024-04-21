@@ -68,12 +68,46 @@ public class MyPageServiceImpl implements MyPageService{
 
 		return list;			
 	}
-	
+
+	@Override
+	public int selectMyCommentListCount(int userNo) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		int count = mpDao.selectMyCommentListCount(sqlSession, userNo);
+		
+		sqlSession.close();
+
+		return count;	
+	}
+
+	@Override
+	public ArrayList<Comments> selectMyCommentList(int userNo, PageInfo pi) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		ArrayList<Comments> list = mpDao.selectMyCommentList(sqlSession, userNo, pi);
+		
+		sqlSession.close();
+
+		return list;	
+	}
 	
 	@Override
-	public ArrayList<Comments> myCommentList(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Member updateInfo(Member m) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		int result = mpDao.updateInfo(sqlSession, m);
+		Member updateUser = null;
+		
+		if(result > 0) {
+			sqlSession.commit();
+			updateUser = mpDao.selectMember(sqlSession, m.getUserId());
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+
+		return updateUser;
 	}
 
 	@Override
@@ -87,6 +121,11 @@ public class MyPageServiceImpl implements MyPageService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	
+	
+
 
 
 

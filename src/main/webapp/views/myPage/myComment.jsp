@@ -156,23 +156,30 @@
 	                    <th width="560px">제목</th>
 	                    <th width="200px">작성일</th>
 	                </tr>
-	                <%for(int i=0; i<6; i++) {%>
-	                <tr class="commentList">
-	                    <td>
-                            <div id="commentContent">퇴근 후 7시에 가능합니다.</div>
-                            <div id="boardTitle">게시글: 에어팟 맥스 팝니다.</div>
-                        </td>
-                        <td id="enrollDate">2024.03.04</td>
-	                </tr>
-	                <%} %>
+                    <c:forEach var="cmt" items="${list}">
+                        <tr class="commentList">
+                            <td>
+                                <div id="commentContent">시발 왜 댓글이 없어어ㅓㅓㅓㅓ</div>
+                                <div id="boardTitle">게시글: </div>
+                            </td>
+                            <td id="enrollDate">${cmt.commentsDate}</td>
+                        </tr>
+                    </c:forEach>
+
 	
 	            </table>
 	            <div id="pageSelect" align="center">
-	                <button onclick="location.href='#'">&lt;</button>
-	                <% for(int i = 1; i <= 10; i++) { %>
-	                    <button onclick="location.href='#'"><%= i %></button>
-	                <% } %>
-	                <button onclick="location.href='#'">&gt;</button>
+                    <c:if test="${pi.currentPage != 1}">
+                        <a href="indexToCommentHistory.my?cpage=${pi.currentPage - 1}">&lt;</a>
+                   </c:if>
+
+                   <c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage}">
+                        <a href="indexToCommentHistory.my?cpage=${i}">${i}</a>
+                   </c:forEach>
+                   
+                   <c:if test="${pi.currentPage ne pi.maxPage}">
+                        <a href="indexToCommentHistory.my?cpage=${pi.currentPage + 1}">&gt;</a>
+                   </c:if>
 	            </div>
 	        </div>
 	    </div>
