@@ -18,7 +18,6 @@ public class ProductServiceImpl implements ProductService{
 		int listCount = pDao.selectListCount(sqlSession);
 		
 		sqlSession.close();
-	
 		return listCount;
 	}
 	
