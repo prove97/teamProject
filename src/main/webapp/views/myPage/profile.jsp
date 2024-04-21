@@ -173,7 +173,7 @@
 
 <body>
 	<div id="main">
-	    <form action="updateMemberInfo.my" method="POST">
+	    <form action="updateInfo.my" method="POST">
 	        <div id="necessaryInfo">
 	            <h2>회원정보</h2>
 	            <div class="inputSpace">
@@ -185,6 +185,7 @@
 	                    <tr>
 	                        <th>*비밀번호 변경</th>
 	                        <td class="inputWrong">
+                                <input type="checkbox" name="submitPwd" value="selected" style="display: none;">
 	                            <input type="password" name="userPwd" id="pwd" class="necessaryInput" maxlength="20" oninput="checkPassword()">
 	                            <div class="warning">비밀번호는 영어, 숫자, 특수기호 포함 8자 이상이어야 합니다.</div>
 	                        </td>
@@ -203,8 +204,8 @@
 	                    <tr style="position: relative;">
 	                        <th>*닉네임</th>    
 	                        <td>
-                                <input type="checkbox" id="checkNickname" style="display: none;">
-	                            <input type="text" value="db추가하면 추가" class="necessaryInput" name="nickname">
+                                <input type="checkbox" name="submitNickname" value="selected" style="display: none;">
+	                            <input type="text" value="${loginUser.nickname}" class="necessaryInput" name="nickname">
 	                            <div class="warning">중복된 닉네임입니다</div>                                        
 	                            <button type="button" id="duplicationCheckBtn" onclick="nicknameCheck();">중복확인</button>
 	                        </td>                                
@@ -212,17 +213,6 @@
 	                    </tr>
 	                </table>
 	                <script>
-                        function submitActivate(){ //저장버튼 활성화 여부 결정 함수
-                            const submitBtn = document.querySelector("#infoTrans"); //저장버튼
-                            if(checkPassword() && nicknameCheck()){ //패스워드와 닉네임의 조건이 맞을 경우
-                                console.log("저장활성화");
-                                submitBtn.disabled = false;
-                            } else{
-                                console.log("비활성화");
-                                submitBtn.disabled = true;
-                            }
-                        }
-
                         function checkPassword(){
                             const newPwd = document.getElementById('pwd'); // 변경할 비밀번호
 	                        const checkPwd = document.getElementById('checkPwd'); //비밀번호 확인
@@ -232,8 +222,8 @@
                             const combineCheck = combinePwd(newPwd, warning1);
                             const differCheck = differPwd(newPwd, checkPwd, warning2);
                             
-                            console.log(newPwd);
-                            console.log(checkPwd);
+                            console.log(newPwd.value);
+                            console.log(checkPwd.value);
 
                             console.log(combineCheck, differCheck)
 
@@ -281,18 +271,17 @@
 	                    }
 	
 	                    function nicknameCheck(){ //닉네임 중복체크
-	                        const inputNickname = document.querySelector("input[name=nickname]");
-                            const checkNickname = document.querySelector("#checkNickname"); //체크박스(중복확인 인증되면 체크)
+	                        const inputNickname = document.querySelector("input[name='nickname'");
+                            const checkNickname = document.querySelector("input[name='submitNickname'"); //체크박스(중복확인 인증되면 체크)
                             const warning3 = document.getElementsByClassName('warning')[2];
 
-                            console.log(checkNickname.checked);
-	                        console.log(nickname.value);
-
+	                        console.log("입력한 닉네임 : " + inputNickname.value);
+                            
 	                        $.ajax({
-	                            type: "GET",
+                                type: "GET",
 	                            url: "nicknameCheck.my",
 	                            data:{
-	                                nickname: inputNickname.value
+                                    nickname: inputNickname.value
 	                            },
 	                            success: function(res){
                                     if(res === "NNNNY"){
@@ -305,7 +294,7 @@
                                         nickname.focus();
                                         warning3.style.display = 'block';
                                     }
-
+                                    console.log(checkNickname.checked);
                                     return checkNickname.checked;
                                 },
 	                            error: function(err){
@@ -314,7 +303,6 @@
                                 }
 	                        })
 	                    }
-
                         
 	                </script>
 	            </div>
@@ -389,7 +377,7 @@
 	                </table>
 	            </div>
 	        </div>
-	        <button type="submit" id="infoTrans" disabled>저장</button>
+	        <button type="submit" id="infoTrans">저장</button>            
 	    </form>
 	</div>
     

@@ -19,18 +19,28 @@
 		<result column="LOCATION_T" property="locationT"/>
 		<result column="PRODUCT_STATUS" property="productStatus"/>
 	</resultMap>
+
+	<resultMap id="commentsResultSet" type="Comments">
+		<result column="KEY1" property="key1"/> <!-- 댓글 id번호 -->
+		<result column="USER_NO" property="userNo"/>
+		<result column="GOODS_ID" property="goodsId"/>
+		<result column="POST_ID" property="postId"/>
+		<result column="CONTENT" property="content"/>
+		<result column="COMMENTS_DATE" property="commentsDate"/>
+		<result column="KEY2" property="key2"/> <!-- 참조하는 댓글 id(대댓글, null일 경우 대댓글 아님) -->
+	</resultMap>
 	
 	<!-- 로그인 유저의 전체 판매글 개수 -->
     <select id="selectMyTradeListCount" resultType="_int">
-        SELECT COUNT(*)
-         FROM PRODUCT
+    	SELECT COUNT(*)
+        FROM PRODUCT
         WHERE SELLER_NO = #{userNo}
     </select>
 
     <!-- 로그인 유저의 전체 판매글 조회 -->
     <select id="selectMyTradeList" resultMap="productResultSet">
         SELECT GOODS_ID,
-                  SELLER_NO,
+               SELLER_NO,
                CATEGORY_M,
                TITLE,
                STATUS,
@@ -42,8 +52,30 @@
                RETURN_PD,
                LOCATION_T,
                PRODUCT_STATUS
-         FROM PRODUCT
+        FROM PRODUCT
         WHERE SELLER_NO = #{userNo}
+    </select>
+    
+    <!-- 로그인 유저의 전체 댓글 개수 조회 -->
+    <select id="selectMyCommentListCount" resultType="_int">
+        SELECT COUNT(*)
+        FROM COMMENTS
+        WHERE USER_NO = #{userNo}
+    </select>
+    
+        <!-- 로그인 유저의 전체 댓글리스트 조회 -->
+    <select id="selectMyCommentList" resultMap="commentsResultSet">
+        SELECT KEY1,
+			   USER_NO,
+			   GOODS_ID,
+			   POST_ID,
+			   CONTENT,
+			   COMMENTS_DATE,
+			   KEY2,
+			   TITLE <!-- 댓글이 있는 게시글 제목 -->
+        FROM COMMENTS
+        LEFT JOIN PRODUCT USING(GOODS_ID) 
+        WHERE USER_NO = #{userNo}
     </select>
 	
 </mapper>

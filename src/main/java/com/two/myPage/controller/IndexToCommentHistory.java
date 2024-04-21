@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.two.comments.model.vo.Comments;
+import com.two.common.Pagination;
+import com.two.common.model.vo.PageInfo;
 import com.two.member.model.vo.Member;
 import com.two.myPage.service.MyPageService;
 import com.two.myPage.service.MyPageServiceImpl;
-import com.two.product.model.vo.Product;
 
 /**
  * Servlet implementation class IndexToCommentHistory
@@ -39,16 +41,17 @@ public class IndexToCommentHistory extends HttpServlet {
 		HttpSession session = request.getSession(); //현재 로그인 세션 정보 가져옴
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		String userId = loginUser.getUserId();
-		int userNo = mpService.selectMember(userId).getUserNo();
-		System.out.println(userNo);
+		int userNo = loginUser.getUserNo();
 		
-//		ArrayList<Product> list = mpService.selectTradeList(userNo);
-//		System.out.println("나의 댓글 리스트 : " + list);	
+		int listCount = mpService.selectMyCommentListCount(userNo); //현재 로그인한 유저의 전체 댓글 수
+		int currentPage = Integer.parseInt(request.getParameter("cpage"));
 		
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 7);
+		ArrayList<Comments> list = mpService.selectMyCommentList(userNo, pi);
 		
 		if(loginUser != null) { //로그인 되어있을 경우 나의 댓글 메뉴로 이동
-			session.setAttribute("loginUser", loginUser);
+			request.setAttribute("pi", pi);
+			request.setAttribute("list", list);	
 			request.setAttribute("changeUrl", "myComment.jsp");		
 			request.getRequestDispatcher("views/myPage/myPageMain.jsp").forward(request, response);
 		} else { //로그인 되어있지 않을 경우 로그인 창으로 이동

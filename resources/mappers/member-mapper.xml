@@ -8,7 +8,7 @@
 		<result column="USER_NO" property="userNo"/>
 		<result column="USER_ID" property="userId"/>
 		<result column="USER_PWD" property="userPwd"/>
-		<!-- <result column="NICKNAME" property="nickName"/> -->
+		<result column="NICKNAME" property="nickname"/>
 		<result column="AUTHORITY" property="authority"/>
 		<result column="PHONE" property="phone"/>
 		<result column="ACTIVATED" property="activated"/>
@@ -22,7 +22,7 @@
 		SELECT USER_NO,
 			   USER_ID,
 			   USER_PWD,
-			   <!-- NICKNAME, -->
+			   NICKNAME,
 			   AUTHORITY,
 			   PHONE,
 			   ACTIVATED,
@@ -42,7 +42,7 @@
 			USER_NO,
 			USER_ID,
 			USER_PWD,
-			<!-- NICKNAME, -->
+			NICKNAME
 			PHONE,
 			SCORE,
 			GENDER,
@@ -53,7 +53,7 @@
 			SEQ_USERNO.NEXTVAL,
 			#{userId},
 			#{userPwd},
-			<!-- #{nickName} -->
+			#{nickName},
 			#{phone},
 			0,
 			#{gender},
@@ -67,6 +67,7 @@
 	        SELECT USER_NO,
 	        	   USER_ID,
 				   USER_PWD,
+				   NICKNAME,
 				   AUTHORITY,
 				   PHONE,
 				   ACTIVATED,
@@ -96,5 +97,17 @@
 	        WHERE NICKNAME = #{nickname}
 	        AND ACTIVATED='N'
 	</select>
+	
+	<!-- 회원정보 변경(업데이트) -->
+	<update id="updateInfo" parameterType="Member">
+	        UPDATE MEMBER
+	        SET USER_PWD = #{userPwd}, 
+	        	NICKNAME = #{nickname}, 
+	        	GENDER = #{gender}, 
+	        	EMAIL = #{email}, 
+	        	LOCATION = #{location}
+	        WHERE USER_ID=#{userId}
+	</update>
+	
 	
 </mapper>

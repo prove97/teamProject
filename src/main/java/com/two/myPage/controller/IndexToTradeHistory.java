@@ -50,7 +50,6 @@ public class IndexToTradeHistory extends HttpServlet {
 
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 10);
 		ArrayList<Product> list = mpService.selectMyTradeList(userNo, pi);
-		System.out.println("판매글 리스트 : " + list);
 		
 		if(loginUser != null) { //로그인 되어있을 경우 나의 판매글 메뉴로 이동
 			request.setAttribute("list", list);

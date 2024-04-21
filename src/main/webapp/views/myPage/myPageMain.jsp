@@ -172,7 +172,7 @@
                 <ul>
                     <strong>나의 활동</strong>
                     <li><a href="${pageContext.request.contextPath}/indexToTradeHistory.my?cpage=1" class="nonStyle">나의 판매글</a></li>
-                    <li><a href="${pageContext.request.contextPath}/indexToCommentHistory.my" class="nonStyle">나의 댓글</a></li>
+                    <li><a href="${pageContext.request.contextPath}/indexToCommentHistory.my?cpage=1" class="nonStyle">나의 댓글</a></li>
                     <li><a href="${pageContext.request.contextPath}/indexToLike.my" class="nonStyle">찜목록</a></li>
                 </ul>
                 <ul>
