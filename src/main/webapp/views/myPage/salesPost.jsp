@@ -141,6 +141,7 @@
             background: white;
             border: 1px solid rgb(211, 211, 211);
 
+            color: black;
         }
 
         

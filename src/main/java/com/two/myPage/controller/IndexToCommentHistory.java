@@ -43,8 +43,8 @@ public class IndexToCommentHistory extends HttpServlet {
 		int userNo = mpService.selectMember(userId).getUserNo();
 		System.out.println(userNo);
 		
-		ArrayList<Product> list = mpService.selectTradeList(userNo);
-		System.out.println("나의 댓글 리스트 : " + list);	
+//		ArrayList<Product> list = mpService.selectTradeList(userNo);
+//		System.out.println("나의 댓글 리스트 : " + list);	
 		
 		
 		if(loginUser != null) { //로그인 되어있을 경우 나의 댓글 메뉴로 이동

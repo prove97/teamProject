@@ -24,7 +24,7 @@ public class MyPageDao {
 	}
 	
 	public int selectMyTradeListCount(SqlSession sqlSession, int userNo) {
-		return sqlSession.selectOne("productMapper.selectMyTradeListCount", userNo);
+		return sqlSession.selectOne("myPageMapper.selectMyTradeListCount", userNo);
 	}
 	
 	public ArrayList<Product> selectMyTradeList(SqlSession sqlSession, int userNo, PageInfo pi){
@@ -33,6 +33,6 @@ public class MyPageDao {
 
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-		return (ArrayList)sqlSession.selectList("productMapper.selectMyTradeList", userNo, rowBounds);
+		return (ArrayList)sqlSession.selectList("myPageMapper.selectMyTradeList", userNo, rowBounds);
 	}
 }
