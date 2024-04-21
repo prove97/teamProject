@@ -41,8 +41,9 @@
  
 
         <div id="searchBar">
-            <form action="">
-                <input type="search" name="keyword" >
+            <form action="search.pr" method="get">
+            	<input type="hidden" name="cpage" value="1">
+                <input type="text" name="keyword" value="${keyword }">
                 <button type="submit" id="searchBtn" style="background-image: url(${pageContext.request.contextPath}/resources/image/searchBtn.png);"></button>
             </form> 
         </div>     
@@ -108,6 +109,8 @@
             let mdiv = document.getElementById("mdiv");
             mdiv.style.display="none";
         }
+        
+        function 
     </script>
 
 </body>

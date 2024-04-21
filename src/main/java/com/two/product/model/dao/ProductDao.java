@@ -1,6 +1,7 @@
 package com.two.product.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -34,4 +35,17 @@ public class ProductDao {
 	public int insertProduct(SqlSession sqlSession, Product p, Attachment at) {
 		return sqlSession.insert("productMapper.insertProduct", p);
   	}
+	
+	public int selectSearchCount(SqlSession sqlSession, HashMap<String, String> map) {
+		return sqlSession.selectOne("productMapper.selectSearchCount", map);
+	}
+	
+	public ArrayList<Product> selectSearchList(SqlSession sqlSession, HashMap<String, String> map, PageInfo pi){
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		
+		return (ArrayList)sqlSession.selectList("productMapper.selectSearchList", map, rowBounds);
+	}
 }
