@@ -3,65 +3,79 @@ package com.two.faq.model.vo;
 import java.sql.Date;
 
 public class Faq {
-	private int inquiryId;
+	private int faqId;
 	private int userNo;
-	private String inquiryTitle;
+	private String faqTitle;
 	private String answer;
-	private String inquiryContents;
-	private Date inquiryDate;
+	private String faqcontents;
+	private Date faqDate;
+	
 	public Faq() {
 		super();
 	}
-	public Faq(int inquiryId, int userNo, String inquiryTitle, String answer, String inquiryContents,
-			Date inquiryDate) {
+
+	public Faq(int faqId, int userNo, String faqTitle, String answer, String faqcontents, Date faqDate) {
 		super();
-		this.inquiryId = inquiryId;
+		this.faqId = faqId;
 		this.userNo = userNo;
-		this.inquiryTitle = inquiryTitle;
+		this.faqTitle = faqTitle;
 		this.answer = answer;
-		this.inquiryContents = inquiryContents;
-		this.inquiryDate = inquiryDate;
+		this.faqcontents = faqcontents;
+		this.faqDate = faqDate;
 	}
-	@Override
-	public String toString() {
-		return "Faq [inquiryId=" + inquiryId + ", userNo=" + userNo + ", inquiryTitle=" + inquiryTitle + ", answer="
-				+ answer + ", inquiryContents=" + inquiryContents + ", inquiryDate=" + inquiryDate + "]";
+
+	public int getFaqId() {
+		return faqId;
 	}
-	public int getInquiryId() {
-		return inquiryId;
+
+	public void setFaqId(int faqId) {
+		this.faqId = faqId;
 	}
-	public void setInquiryId(int inquiryId) {
-		this.inquiryId = inquiryId;
-	}
+
 	public int getUserNo() {
 		return userNo;
 	}
+
 	public void setUserNo(int userNo) {
 		this.userNo = userNo;
 	}
-	public String getInquiryTitle() {
-		return inquiryTitle;
+
+	public String getFaqTitle() {
+		return faqTitle;
 	}
-	public void setInquiryTitle(String inquiryTitle) {
-		this.inquiryTitle = inquiryTitle;
+
+	public void setFaqTitle(String faqTitle) {
+		this.faqTitle = faqTitle;
 	}
+
 	public String getAnswer() {
 		return answer;
 	}
+
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
-	public String getInquiryContents() {
-		return inquiryContents;
+
+	public String getFaqcontents() {
+		return faqcontents;
 	}
-	public void setInquiryContents(String inquiryContents) {
-		this.inquiryContents = inquiryContents;
+
+	public void setFaqcontents(String faqcontents) {
+		this.faqcontents = faqcontents;
 	}
-	public Date getInquiryDate() {
-		return inquiryDate;
+
+	public Date getFaqDate() {
+		return faqDate;
 	}
-	public void setInquiryDate(Date inquiryDate) {
-		this.inquiryDate = inquiryDate;
+
+	public void setFaqDate(Date faqDate) {
+		this.faqDate = faqDate;
+	}
+
+	@Override
+	public String toString() {
+		return "Faq [faqId=" + faqId + ", userNo=" + userNo + ", faqTitle=" + faqTitle + ", answer=" + answer
+				+ ", faqcontents=" + faqcontents + ", faqDate=" + faqDate + "]";
 	}
 	
 	
