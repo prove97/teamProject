@@ -18,6 +18,7 @@
 </head>
 <body bgcolor="D9D9D9">
     <div class="contentBox">
+    <%@ include file="../common/header.jsp" %>
         <div class="contentBox_top">
             <p style="font-size: 28px; margin-bottom: 0;">상품등록</p>
             <p style="color: red; margin-bottom: 0;">*필수항목</p>

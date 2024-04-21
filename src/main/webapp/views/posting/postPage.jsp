@@ -24,37 +24,62 @@
             <div class="category_navi">
                 <div>🏠 홈</div>
                 <div style="width: 30px; justify-content: center;">></div>
-                <div class="category_bar1" style="border: 1px solid black; padding: 3px;" onclick="showCategories('categories1')">
-                    <div style="width: 151px;">카테고리1</div>
-                    <div>▽</div>
+                <div class="category_bar1" style="padding: 3px;">
+                    <select name="categoryT">
+                    	<option selected disabled style="display:none">카테고리1</option>
+                    	<option>컴퓨터 주요 부품</option>
+                    	<option>키보드,마우스,주변 기기</option>
+                    	<option>모니터, 악세서리</option>
+                    	<option>프린터,복합기,스캐너</option>
+                    	<option>네트워크,공유기</option>
+                    </select>
                 </div>
-                <ul id="categories1">
-                    <li><a>컴퓨터 주요 부품</a></li>
-                    <li><a>키보드.마우스.주변 기기</a></li>
-                    <li><a>모니터.악세서리</a></li>
-                    <li><a>프린터.복합기.스캐너</a></li>
-                    <li><a>네트워크.공유기</a></li>
-                </ul>
                 <div style="width: 30px; justify-content: center;">></div>
-                <div class="category_bar2" style="border: 1px solid black; padding: 3px;"  onclick="showCategories('categories2_1')">
-                    <div style="width: 151px;">카테고리2</div>
-                    <div>▽</div>
+                <div class="category_bar2" style="padding: 3px;">
+                    <select name="categoryM">
+                    	<option selected disabled style="display:none">카테고리2</option>
+                    	<option>CPU</option>
+                    	<option>메인보드</option>
+                    	<option>메모리</option>
+                    	<option>그래픽카드</option>
+                    	<option>SSD</option>
+                    	<option>하드디스크</option>
+                    	<option>ODD(외장/내장)</option>
+                    	<option>케이스</option>
+                    	<option>파워서플라이</option>
+                    	<option>공/수냉쿨러</option>
+                    </select>
+                    <select name="categoryM" style="display:none">
+                    	<option selected disabled style="display:none">카테고리2</option>
+                    	<option>키보드</option>
+                    	<option>마우스</option>
+                    	<option>스피커</option>
+                    </select>
+                    <select name="categoryM" style="display:none">
+                    	<option selected disabled style="display:none">카테고리2</option>
+                    	<option>19~22인치 모니터</option>
+                    	<option>24~26인치 모니터</option>
+                    	<option>27~29인치 모니터</option>
+                    	<option>30~39인치 모니터</option>
+                    </select>
+                    <select name="categoryM" style="display:none">
+                    	<option selected disabled style="display:none">카테고리2</option>
+                    	<option>잉크젯 프린터</option>
+                    	<option>레이저 프린터</option>
+                    	<option>복합기</option>
+                    	<option>스캐너</option>
+                    </select>
+                    <select name="categoryM" style="display:none">
+                    	<option selected disabled style="display:none">카테고리2</option>
+                    	<option>공유기</option>
+                    	<option>랜카드</option>
+                    	<option>랜 케이블</option>
+                    	<option>스위칭 허브</option>
+                    </select>
                 </div>
-                <ul id="categories2_1">
-                    <li><a>CPU</a></li>
-                    <li><a>메인보드</a></li>
-                    <li><a>메모리</a></li>
-                    <li><a>그래픽카드</a></li>
-                    <li><a>SSD</a></li>
-                    <li><a>하드디스크</a></li>
-                    <li><a>ODD(외장/내장)</a></li>
-                    <li><a>케이스</a></li>
-                    <li><a>파워서플라이</a></li>
-                    <li><a>공/수냉쿨러</a></li>
-                </ul>
             </div>
             <div class="report">
-                <a href="#">☏ 신고하기</a>
+                <a href="../FAQ/mainFAQ.jsp">☏ 신고하기</a>
             </div>
         </div>
         
