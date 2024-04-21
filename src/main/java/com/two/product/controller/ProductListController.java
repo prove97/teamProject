@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+<<<<<<< HEAD
+=======
+import com.google.gson.JsonObject;
+>>>>>>> 4fc51a5e45a4e424de7153004f93eb54ece43e4c
 import com.two.common.Pagination;
 import com.two.common.model.vo.PageInfo;
 import com.two.product.model.vo.Product;
@@ -37,7 +41,8 @@ public class ProductListController extends HttpServlet {
 		int listCount = new ProductServiceImpl().selectListCount();
 		
 		int currentPage;
-		
+
+		System.out.println(request.getParameter("cpage"));
 		if(request.getParameter("cpage")==null) {
 			currentPage = 1;
 		} else {
@@ -45,14 +50,20 @@ public class ProductListController extends HttpServlet {
 		}
 		
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 18);
+		System.out.println("listCount : " + listCount);
+		System.out.println("currentPage : " + currentPage);
+		System.out.println("PageLimit : " + pi.getPageLimit());
+		System.out.println("BoardLimit : " + pi.getBoardLimit());
+		System.out.println("MaxPage : " + pi.getMaxPage());
+		System.out.println("StartPage : " + pi.getStartPage());
+		System.out.println("EndPage : " + pi.getEndPage());
 		
 		ArrayList<Product>list = new ProductServiceImpl().selectList(pi);
 		
-		request.setAttribute("list", list);
 		request.setAttribute("pi", pi);
-		System.out.println(list);
+		response.setContentType("application/json; charset=utf-8");
+		new Gson().toJson(list, response.getWriter());
 		
-		new Gson().toJson(list , response.getWriter());
 	}
 
 	/**
