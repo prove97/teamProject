@@ -14,6 +14,7 @@
 		<result column="VIEW_COUNT" property="viewCount"/>
 		<result column="P_EXPLAIN" property="pExplain"/>
 		<result column="ENROLL_DATE" property="enrollDate"/>
+		<result column="LOVEIT" property="loveIt" />
 		<result column="RETURN_PD" property="returnPd"/>
 		<result column="LOCATION_T" property="locationT"/>
 		<result column="PRODUCT_STATUS" property="productStatus"/>
@@ -54,7 +55,7 @@
 		)
 	</insert>
 	
-	<select id="selectProductList" parameterType="Product" resultMap="productResultSet">
+	<select id="selectProductList" resultMap="productResultSet">
 		SELECT GOODS_ID,
 				SELLER_NO,
 				CATEGORY_M,
@@ -64,19 +65,19 @@
 				VIEW_COUNT,
 				P_EXPLAIN,
 				ENROLL_DATE,
+				LOVEIT,
 				RETURN_PD,
 				LOCATION_T,
 				PRODUCT_STATUS
 		FROM PRODUCT P
 		JOIN MEMBER ON (SELLER_NO = USER_NO)
 		WHERE STATUS = '판매중'
-		ORDER BY GOODS_ID DESC
 	</select>
 	
 	<select id="selectListCount" resultType="_int">
 		SELECT COUNT(*)
-	 	FROM PRODUCT
-		WHERE STATUS = '판매중'
+		FROM PRODUCT
+	   WHERE STATUS = '판매중'
 	</select>
 	
 </mapper>

@@ -282,7 +282,7 @@
 	
 	                    function nicknameCheck(){ //닉네임 중복체크
 	                        const inputNickname = document.querySelector("input[name=nickname]");
-                            const checkNickname = document.querySelector("#checkNickname");
+                            const checkNickname = document.querySelector("#checkNickname"); //체크박스(중복확인 인증되면 체크)
                             const warning3 = document.getElementsByClassName('warning')[2];
 
                             console.log(checkNickname.checked);

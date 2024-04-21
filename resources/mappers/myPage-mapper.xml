@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="myPageMapper">
+	<resultMap id="productResultSet" type="Product">
+		<result column="GOODS_ID" property="goodsId"/>
+		<result column="SELLER_NO" property="sellerNo"/>
+		<result column="CATEGORY_M" property="categoryM"/>
+		<result column="TITLE" property="title"/>
+		<result column="STATUS" property="status"/>
+		<result column="SELL_PRICE" property="sellPrice"/>
+		<result column="VIEW_COUNT" property="viewCount"/>
+		<result column="P_EXPLAIN" property="pExplain"/>
+		<result column="ENROLL_DATE" property="enrollDate"/>
+		<result column="LOVEIT" property="loveIt" />
+		<result column="RETURN_PD" property="returnPd"/>
+		<result column="LOCATION_T" property="locationT"/>
+		<result column="PRODUCT_STATUS" property="productStatus"/>
+	</resultMap>
+	
+	<!-- 로그인 유저의 전체 판매글 개수 -->
+    <select id="selectMyTradeListCount" resultType="_int">
+        SELECT COUNT(*)
+         FROM PRODUCT
+        WHERE SELLER_NO = #{userNo}
+    </select>
+
+    <!-- 로그인 유저의 전체 판매글 조회 -->
+    <select id="selectMyTradeList" resultMap="productResultSet">
+        SELECT GOODS_ID,
+                  SELLER_NO,
+               CATEGORY_M,
+               TITLE,
+               STATUS,
+               SELL_PRICE,
+               VIEW_COUNT,
+               P_EXPLAIN,
+               ENROLL_DATE,
+               LOVEIT,
+               RETURN_PD,
+               LOCATION_T,
+               PRODUCT_STATUS
+         FROM PRODUCT
+        WHERE SELLER_NO = #{userNo}
+    </select>
+	
+</mapper>

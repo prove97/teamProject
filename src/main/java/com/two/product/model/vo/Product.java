@@ -69,6 +69,14 @@ public class Product {
 	public String getTitle() {
 		return title;
 	}
+	public int getLoveIt() {
+		return loveIt;
+	}
+
+	public void setLoveIt(int loveIt) {
+		this.loveIt = loveIt;
+	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
