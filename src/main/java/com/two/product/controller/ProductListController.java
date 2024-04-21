@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-<<<<<<< HEAD
-=======
-import com.google.gson.JsonObject;
->>>>>>> 4fc51a5e45a4e424de7153004f93eb54ece43e4c
 import com.two.common.Pagination;
 import com.two.common.model.vo.PageInfo;
 import com.two.product.model.vo.Product;
@@ -61,7 +57,9 @@ public class ProductListController extends HttpServlet {
 		ArrayList<Product>list = new ProductServiceImpl().selectList(pi);
 		
 		request.setAttribute("pi", pi);
+		
 		response.setContentType("application/json; charset=utf-8");
+		
 		new Gson().toJson(list, response.getWriter());
 		
 	}
