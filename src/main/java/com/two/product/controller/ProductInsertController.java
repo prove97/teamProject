@@ -13,8 +13,8 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import com.oreilly.servlet.MultipartRequest;
 import com.two.attachment.model.vo.Attachment;
 import com.two.common.model.vo.MyFileRenamePolicy;
+import com.two.member.model.vo.Member;
 import com.two.product.model.vo.Product;
-import com.two.product.service.ProductService;
 import com.two.product.service.ProductServiceImpl;
 
 /**
@@ -44,8 +44,10 @@ public class ProductInsertController extends HttpServlet {
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 			
 			Product p = new Product();
-//			p.setSellerNo(Integer.parseInt((String)request.getSession().getAttribute("userNo")));
-			p.setSellerNo(1);
+			Member m = (Member) request.getSession().getAttribute("loginUser");
+			
+			p.setSellerNo(m.getUserNo());
+//			p.setSellerNo(1);
 			p.setCategoryM(multiRequest.getParameter("categoryM"));
 			p.setTitle(multiRequest.getParameter("title"));
 			p.setSellPrice(Integer.parseInt(multiRequest.getParameter("sellPrice")));
@@ -64,7 +66,7 @@ public class ProductInsertController extends HttpServlet {
 				request.getSession().setAttribute("alertMsg", "상품을 성공적으로 등록했습니다.");
 				response.sendRedirect(request.getContextPath());
 			} else {
-				request.setAttribute("errorMsg", "상품 등록 실패");
+				request.setAttribute("errorMsg", "상품 등록 실패"); 
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 		}

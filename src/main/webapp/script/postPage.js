@@ -1,13 +1,3 @@
-function showCategories(category) {
-    const cate = document.getElementById(category);
-
-    if (cate.style.display === "none") {
-        cate.style.display = "block";
-    } else {
-        cate.style.display = "none";
-    }
-}
-
 const comment_part = document.getElementById("comment_banner_menu1");
 const comment = document.getElementById("comment_banner_menu2");
 const opt1 = document.getElementById("banner_opt1");

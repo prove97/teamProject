@@ -39,7 +39,7 @@
 		VALUES
 		(
 			SEQ_GOODSID.NEXTVAL,
-			1,
+			#{sellerNo},
 			#{categoryM},
 			#{title},
 			DEFAULT,
