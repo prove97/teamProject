@@ -43,75 +43,19 @@
         </div>
 
         <!-- 컨텐츠 들어오는 곳 -->
+     
         <div id="contents">
-            <script>
-            $(document).ready(function(){
-                $.ajax({
-                    url: "list.pr",
-                    success: function(list){
-                        console.log(list)
-                        let str = "";
-                        let Section = document.getElementById("contents");
-                        for(const p of list){
-                                        
-                            str += `   <div class="contents-preview">
-                                            <div class="thumnail">
-                                                <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                                            </div>
-                                            <div class="thumnail-info">
-                                                <div class="name-heart">
-                                                    <div class="name">
-                                                        <p>`+p.title+`</p>
-                                                    </div>
-                                                    <div class="heart">
-                                                        <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                                                        <p>`+p.loveIt+`</p>
-                                                    </div>
-                                                </div>
-                                                <div class="price-beforeDay">
-                                                    <div class="price">
-                                                        <p>`+p.sellPrice+`</p>
-                                                    </div>
-                                                    <div class="beforeDay">
-                                                        <p>`+p.enrollDate+`</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> `
-                        }
-                        Section.innerHTML += str;
-                        
-                    },
-                    error: function(){
-                        console.log("ajax요청실패")
-                    }
-                })
-            })    
-            </script>
-        	
+		   <script>
+		   $(document).ready(function(){
+			   contentsFunction(1);
+		   })
+       	   </script>
         </div>
 
 
 		<!-- 페이징 처리 -->	
-        <div class="pagination">
-            <c:if test="${pi.currentPage != 1}">
-                <button onclick="contentsFunction(${pi.currentPage - 1 });">&lt;</button>
-            </c:if>
-            
-            <c:forEach var="p" begin="${pi.startPage}" end="${pi.endPage}">
-                <c:choose>
-                    <c:when test="${p == pi.currentPage}">
-                        <button disabled>${p}</button>
-                    </c:when>
-                    <c:otherwise>
-                        <button onclick="contentsFunction(${pi.currentPage});">${p}</button>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
-            
-            <c:if test="${pi.currentPage != pi.maxPage}">
-                <button onclick="contentsFunction(${pi.currentPage + 1 });">&gt;</button>
-            </c:if>
+        <div id="pagination">
+
         </div>
 		
        <!--   <div>
@@ -138,14 +82,15 @@
         	console.log("ajax 실행됨")
             $.ajax({
                 url: "list.pr",
+                dataType:"json",
                 data: {'cpage' : cpage},
-                success: function(list){
-                    console.log(list)
+                success: function(data){
+                    console.log(data)
                     let str = "";
                     let Section = document.getElementById("contents");
-                    for(const p of list){
+                    for(const p of data.list){
                                     
-                        str += `   <div class="contents-preview">
+                        str += `   <a><div class="contents-preview">
                                         <div class="thumnail">
                                             <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
                                         </div>
@@ -168,17 +113,31 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>`
+                                    </div></a>`
                     }
                     Section.innerHTML = str;
                     
-                    console.log("${pi.currentPage}");
-                    console.log("${pi.startPage}");
-                    console.log("${pi.endPage}");
-                    console.log("${pi.maxPage}");
-                    console.log("${pi.currentPage - 1}");
-                    console.log("${pi.currentPage + 1}");
                     
+                    let pagi = document.getElementById("pagination");
+                    
+                    let pagingStr = "";
+
+                    if (data.pi.currentPage != 1) {
+                        pagingStr += `<button onclick="contentsFunction(\${data.pi.currentPage - 1 });">&lt;</button>`;
+                    }
+                    for (let p = data.pi.startPage; p <= data.pi.endPage; p++) {
+                        if (p == data.pi.currentPage) {
+                            pagingStr += `<button disabled>`+p+`</button>`;
+                        } else {
+                            pagingStr += `<button onclick="contentsFunction(\${p});">`+p+`</button>`;
+                        }
+                    }
+                    if (data.pi.currentPage != data.pi.maxPage) {
+                        pagingStr += `<button onclick="contentsFunction(\${data.pi.currentPage + 1 });">&gt;</button>`;
+                    }
+
+                    pagi.innerHTML = pagingStr;
+                   
                 },
                 error: function(){
                     console.log("ajax요청실패")
