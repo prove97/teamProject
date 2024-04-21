@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.two.board.model.vo.Board;
 import com.two.member.model.vo.Member;
 import com.two.myPage.service.MyPageService;
 import com.two.myPage.service.MyPageServiceImpl;
+import com.two.product.model.vo.Product;
 
 /**
  * Servlet implementation class IndexToCommentHistory
@@ -43,7 +43,7 @@ public class IndexToCommentHistory extends HttpServlet {
 		int userNo = mpService.selectMember(userId).getUserNo();
 		System.out.println(userNo);
 		
-		ArrayList<Board> list = mpService.selectTradeList(userNo);
+		ArrayList<Product> list = mpService.selectTradeList(userNo);
 		System.out.println("나의 댓글 리스트 : " + list);	
 		
 		

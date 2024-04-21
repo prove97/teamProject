@@ -4,11 +4,12 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.two.board.model.vo.Board;
 import com.two.comments.model.vo.Comments;
 import com.two.common.Template;
+import com.two.common.model.vo.PageInfo;
 import com.two.member.model.vo.Member;
 import com.two.myPage.model.dao.MyPageDao;
+import com.two.product.model.vo.Product;
 
 public class MyPageServiceImpl implements MyPageService{
 	MyPageDao mpDao = new MyPageDao();
@@ -23,6 +24,17 @@ public class MyPageServiceImpl implements MyPageService{
 		
 		return m;
 	}
+	
+	@Override
+	public int checkPassword(Member m) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		int result = new MyPageDao().checkPassword(sqlSession, m);
+
+		sqlSession.close();
+
+		return result;
+	}
 
 	@Override
 	public int checkNickname(String nickname) {
@@ -36,16 +48,28 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 	
 	@Override
-	public ArrayList<Board> selectTradeList(int userNo) {
+	public int selectMyTradeListCount(int userNo) {
 		SqlSession sqlSession = Template.getSqlSession();
 		
-		ArrayList<Board> list = mpDao.selectTradeList(sqlSession, userNo);
-
+		int count = mpDao.selectMyTradeListCount(sqlSession, userNo);
+		
 		sqlSession.close();
 
-		return list;
+		return count;	
 	}
+	
+	@Override
+	public ArrayList<Product> selectMyTradeList(int userNo, PageInfo pi) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		ArrayList<Product> list = mpDao.selectMyTradeList(sqlSession, userNo, pi);
+		
+		sqlSession.close();
 
+		return list;			
+	}
+	
+	
 	@Override
 	public ArrayList<Comments> myCommentList(String userId) {
 		// TODO Auto-generated method stub
@@ -53,16 +77,19 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 
 	@Override
-	public ArrayList<Board> likeBoardList(String userId) {
+	public ArrayList<Product> likeBoardList(String userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Board indexToBoard(int bno) {
+	public Product indexToBoard(int bno) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
 
 
 

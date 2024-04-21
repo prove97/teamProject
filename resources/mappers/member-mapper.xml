@@ -80,6 +80,15 @@
 	        AND ACTIVATED='N'
 	</select>
 	
+	<!-- 패스워드 체크 -->
+	<select id="checkPassword" parameterType="Member" resultType="_int">
+	        SELECT COUNT(*)
+	        FROM MEMBER
+	        WHERE USER_ID = #{userId}
+	        AND USER_PWD = #{userPwd}
+	        AND ACTIVATED='N'
+	</select>
+	
 	<!-- 닉네임 체크 -->
 	<select id="checkNickname" parameterType="String" resultType="_int">
 	        SELECT COUNT(*)

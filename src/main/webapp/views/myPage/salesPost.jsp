@@ -135,7 +135,7 @@
             align-items: center;
         }
 
-        #pageSelect>button{
+        #pageSelect>a{
             width: 45px;
             height: 30px;
             background: white;
@@ -166,50 +166,30 @@
 	                    <th width="80px">조회수</th>
 	                    <th width="150px">작성일</th>
 	                </tr>
-                    <c:forEach var="b" items="${list}">
+                    <c:forEach var="p" items="${list}">
                         <tr class="myPostingList" onclick="location.href='views/posting/postPage.jsp'"> <!--쿼리로 postId 넘겨줄 예정-->
-                            <td>${b.postId}</td>
-                            <td class="title">${b.titleId} <span>(<%=commentsCount%>)</span></td>
-                            <td>${b.eyes}</td>
-                            <td>${b.writeDate}</td>
+                            <td>${p.goodsId}</td>
+                            <td class="title">${p.title} <span>(<%=commentsCount%>)</span></td>
+                            <td>${p.viewCount}</td>
+                            <td>${p.enrollDate}</td>
                         </tr>
                     </c:forEach>
 
-                    <script>
-                        function reLoadBoardList(){
-                            const tradeStatus = document.querySelector("#boardStatusSelect");
-                            const myPostingList = document.querySelector(".myPostingList");
-                            console.log(tradeStatus.value);
-        
-                            $.ajax({
-                                    url: "reloadTrade.my",
-                                    data: {tradeListOption : tradeStatus.value,
-                                           userId : "${userId}"
-                                    
-                                    }, 
-                                    success: function(result){
-                                        console.log(result.value);
-                                    },
-                                    error: function(){
-                                    }
-                                })
-                                                                    
-                        }
 
-
-                        function BoardDetailView(){
-                            console.log("이동");
-                        }
-
-                    </script>
 	
 	            </table>
 	            <div id="pageSelect" align="center">
-	                <button onclick="location.href='#'">&lt;</button>
-	                <% for(int i = 1; i <= 10; i++) { %>
-	                    <button onclick="location.href='#'"><%= i %></button>
-	                <% } %>
-	                <button onclick="location.href='#'">&gt;</button>
+                    <c:if test="${pi.currentPage != 1}">
+                        <a href="indexToTradeHistory.my?cpage=${pi.currentPage - 1}">&lt;</a>
+                   </c:if>
+
+                   <c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage}">
+                        <a href="indexToTradeHistory.my?cpage=${i}">${i}</a>
+                   </c:forEach>
+                   
+                   <c:if test="${pi.currentPage ne pi.maxPage}">
+                        <a href="indexToTradeHistory.my?cpage=${pi.currentPage + 1}">&gt;</a>
+                   </c:if>
 	            </div>
 	        </div>
 	    </div>
