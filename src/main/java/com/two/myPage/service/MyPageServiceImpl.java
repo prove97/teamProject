@@ -4,24 +4,25 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.two.board.model.vo.Board;
 import com.two.comments.model.vo.Comments;
 import com.two.common.Template;
+import com.two.common.model.vo.PageInfo;
 import com.two.member.model.vo.Member;
 import com.two.myPage.model.dao.MyPageDao;
+import com.two.product.model.vo.Product;
 
 public class MyPageServiceImpl implements MyPageService{
+	MyPageDao mpDao = new MyPageDao();
 	
-
 	@Override
-	public int checkNickname(String nickname) {
+	public Member selectMember(String userId) {
 		SqlSession sqlSession = Template.getSqlSession();
 		
-		int result = new MyPageDao().checkNickname(sqlSession, nickname);
+		Member m = mpDao.selectMember(sqlSession, userId);
 		
 		sqlSession.close();
-
-		return result;
+		
+		return m;
 	}
 	
 	@Override
@@ -34,27 +35,41 @@ public class MyPageServiceImpl implements MyPageService{
 
 		return result;
 	}
-	
+
 	@Override
-	public ArrayList<Board> selectTradeList(String userId) {
+	public int checkNickname(String nickname) {
 		SqlSession sqlSession = Template.getSqlSession();
 		
-		ArrayList<Board> list = new MyPageDao().selectTradeList(sqlSession, userId);
-
+		int result = mpDao.checkNickname(sqlSession, nickname);
+		
 		sqlSession.close();
 
-		return list;
+		return result;
 	}
-
 	
 	@Override
-	public Member memberInfo(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+	public int selectMyTradeListCount(int userNo) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		int count = mpDao.selectMyTradeListCount(sqlSession, userNo);
+		
+		sqlSession.close();
+
+		return count;	
 	}
+	
+	@Override
+	public ArrayList<Product> selectMyTradeList(int userNo, PageInfo pi) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		ArrayList<Product> list = mpDao.selectMyTradeList(sqlSession, userNo, pi);
+		
+		sqlSession.close();
 
-
-
+		return list;			
+	}
+	
+	
 	@Override
 	public ArrayList<Comments> myCommentList(String userId) {
 		// TODO Auto-generated method stub
@@ -62,16 +77,19 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 
 	@Override
-	public ArrayList<Board> likeBoardList(String userId) {
+	public ArrayList<Product> likeBoardList(String userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Board indexToBoard(int bno) {
+	public Product indexToBoard(int bno) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
 
 
 
