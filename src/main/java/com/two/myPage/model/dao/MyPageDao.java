@@ -1,7 +1,10 @@
 package com.two.myPage.model.dao;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.session.SqlSession;
 
+import com.two.board.model.vo.Board;
 import com.two.member.model.vo.Member;
 
 public class MyPageDao {
@@ -12,8 +15,11 @@ public class MyPageDao {
 	
 	public int checkPassword(SqlSession sqlSession, Member m) {		
 		int result = sqlSession.selectOne("memberMapper.checkPassword", m);
-		System.out.println("dao : "+result);
-		return result;//비밀번호가 일치하는 Member수(count) 리턴 (mapper수정해야함)
+		return result; //비밀번호가 일치하는 Member수(count) 리턴 (mapper수정해야함)
+	}
+	
+	public ArrayList<Board> selectTradeList(SqlSession sqlSession, String userId){
+		return (ArrayList)sqlSession.selectList("memberMapper.selectTradeList", userId);
 	}
 
 }

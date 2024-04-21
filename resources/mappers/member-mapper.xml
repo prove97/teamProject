@@ -8,6 +8,7 @@
 		<result column="USER_NO" property="userNo"/>
 		<result column="USER_ID" property="userId"/>
 		<result column="USER_PWD" property="userPwd"/>
+		<!-- <result column="NIKNAME" property="nikName"/> -->
 		<result column="AUTHORITY" property="authority"/>
 		<result column="PHONE" property="phone"/>
 		<result column="ACTIVATED" property="activated"/>
@@ -21,6 +22,7 @@
 		SELECT USER_NO,
 			   USER_ID,
 			   USER_PWD,
+			   <!-- NICKNAME, -->
 			   AUTHORITY,
 			   PHONE,
 			   ACTIVATED,
@@ -34,4 +36,47 @@
 		AND USER_PWD = #{userPwd}
 		AND ACTIVATED = 'N'
 	</select>
+	
+	<insert id="insertMember" parameterType="Member">
+		INSERT INTO MEMBER(
+			USER_NO,
+			USER_ID,
+			USER_PWD,
+			<!-- NICKNAME, -->
+			PHONE,
+			SCORE,
+			GENDER,
+			EMAIL,
+			LOCATION
+		)
+		VALUES(
+			SEQ_USERNO.NEXTVAL,
+			#{userId},
+			#{userPwd},
+			<!-- #{nickName} -->
+			#{phone},
+			0,
+			#{gender},
+			#{email},
+			#{location}
+			)
+	</insert>
+	
+	<!-- 패스워드 체크 -->
+	<select id="checkPassword" parameterType="Member" resultType="_int">
+	        SELECT COUNT(*)
+	        FROM MEMBER
+	        WHERE USER_ID = #{userId}
+	        AND USER_PWD = #{userPwd}
+	        AND ACTIVATED='N'
+	</select>
+	
+	<!-- 닉네임 체크 -->
+	<select id="checkNickname" parameterType="String" resultType="_int">
+	        SELECT COUNT(*)
+	        FROM MEMBER
+	        WHERE NICKNAME = #{nickname}
+	        AND ACTIVATED='N'
+	</select>
+	
 </mapper>

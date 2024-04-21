@@ -32,6 +32,7 @@
 			VIEW_COUNT,
 			P_EXPLAIN,
 			ENROLL_DATE,
+			LOVEIT,
 			RETURN_PD,
 			LOCATION_T,
 			PRODUCT_STATUS
@@ -39,8 +40,8 @@
 		VALUES
 		(
 			SEQ_GOODSID.NEXTVAL,
-			0,
-			'임시값',
+			1,
+			#{categoryM},
 			#{title},
 			DEFAULT,
 			#{sellPrice},
@@ -48,6 +49,7 @@
 			#{pExplain},
 			DEFAULT,
 			DEFAULT,
+			#{returnPd},
 			#{locationT},
 			#{productStatus}
 		)

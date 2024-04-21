@@ -159,18 +159,16 @@
         <div id="aside">
             <div id="profile">
                 <div id="profileImage"><a href="#"></a></div>
-                <div id="nickname">
-                    user01
-                </div>
+                <div id="nickname">${loginUser.getUserId()}</div>
                 <div id="brightnessRate">
-                    <h6>밝음 수치: 70 lux</h6>
+                    <h6>밝음 수치: ${loginUser.getScore()} lux</h6>
                     <div class="progress" style="width: 150px; border: 1px solid darkgray; border-radius: 10px;">
-                        <div class="progress-bar" style="width:70%; background: #70C9A0;"></div>
+                        <div class="progress-bar" style="width:${loginUser.getScore()}%; background: #70C9A0;"></div>
                     </div>
                 </div>
             </div>
             <div id="menubar">
-                <a href="${pageContext.request.contextPath}/indexToProfile.my" class="nonStyle"><strong>내정보</strong></a>
+                <a href="${pageContext.request.contextPath}/indexToMyPage.my" class="nonStyle"><strong>내정보</strong></a>
                 <ul>
                     <strong>나의 활동</strong>
                     <li><a href="${pageContext.request.contextPath}/indexToTradeHistory.my" class="nonStyle">나의 판매글</a></li>
@@ -186,9 +184,11 @@
 
 
             </div>
-        </div>
-		<jsp:include page="${changeUrl}" />						
+        </div>        
+		<jsp:include page="${changeUrl}" />		
+        
     </section>
+
     <jsp:include page="/views/common/footer.jsp" />
 
     

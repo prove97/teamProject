@@ -157,17 +157,7 @@
 	                <option value="soldOut">판매완료</option>
 	            </select>
 	        </div>
-	        
-	        <script>
-	        	function reLoadBoardList(){
-                    const tradeStatus = document.querySelector("#boardStatusSelect");
-                    const option = tradeStatus.options[tradeStatus.selectedIndex];
-
-                    console.log(option.value);
-                                                            
-                }
-	        </script>
-	        
+	        	        
 	        <div id="board-table">
 	            <table align="center">
 	                <tr>
@@ -176,21 +166,41 @@
 	                    <th width="80px">조회수</th>
 	                    <th width="150px">작성일</th>
 	                </tr>
-                    
-                    <c:forEach var="i" begin="1" end="10">
-	                  	<tr class="myPostingList" onclick="BoardDetailView()">
-                            <td>${i}</td>
-                            <td class="title">VGA RTX4090 팝니다 <span>(<%=commentsCount%>)</span></td>
-                            <td>5</td>
-                            <td>2024.03.22</td>
+                    <c:forEach var="b" items="${list}">
+                        <tr class="myPostingList" onclick="BoardDetailView()">
+                            <td>${b.userId}</td>
+                            <td class="title">${b.titleId} <span>(<%=commentsCount%>)</span></td>
+                            <td>${b.eyes}</td>
+                            <td>${b.writeDate}</td>
 		                </tr>
                     </c:forEach>
 
                     <script>
-                        function BoardDetailView(){
-                        	
+                        function reLoadBoardList(){
+                            const tradeStatus = document.querySelector("#boardStatusSelect");
+                            const myPostingList = document.querySelector(".myPostingList");
+                            console.log(tradeStatus.value);
+        
+                            $.ajax({
+                                    url: "reloadTrade.my",
+                                    data: {tradeListOption : tradeStatus.value,
+                                           userId : "${userId}"
+                                    
+                                    }, 
+                                    success: function(result){
+                                        console.log(result.value);
+                                    },
+                                    error: function(){
+                                    }
+                                })
+                                                                    
                         }
-                        
+
+
+                        function BoardDetailView(){
+                            console.log("이동");
+                        }
+
                     </script>
 	
 	            </table>

@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.two.member.model.vo.Member;
 import com.two.myPage.service.MyPageService;
@@ -35,18 +36,27 @@ public class CheckPasswordController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		Member m = new Member();
-		m.setUserId(request.getParameter("userId"));
-		m.setUserPwd(request.getParameter("userPwd"));
-
-		int result = mpService.checkPassword(m);
-		System.out.println(result);
+		// jsp로부터 입력받은 password
+		String inputPwd = request.getParameter("userPwd");
 		
-		if(result > 0) { //비밀번호가 일치할경우;
+		//로그인되어있는 session의 userId가져옴
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		String userId = loginUser.getUserId();
+		
+		Member m = new Member();
+		m.setUserId(userId);
+		m.setUserPwd(inputPwd);
+		
+		//userId를 db에 보내 저장된 비밀번호와 입력받은 비밀번호를 비교 -> result : 같으면 1 이상 값, 아니면 0 
+		int result = mpService.checkPassword(m);
+
+		if(result > 0) { //비밀번호가 일치할경우
+			session.setAttribute("completeCheckPwd", "Y");
 			response.sendRedirect(request.getContextPath()+ "/indexToProfile.my");
-		} else {
+		} else { //비밀번호가 일치하지 않을 경우
 			request.setAttribute("changeUrl", "provePwd.jsp");
-			request.setAttribute("wrongPwd", "Y");			
+			request.setAttribute("wrongPwd", "Y");						
 			request.getRequestDispatcher("/views/myPage/myPageMain.jsp").forward(request, response);
 		}
 	}

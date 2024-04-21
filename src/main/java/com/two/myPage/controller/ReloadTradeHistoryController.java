@@ -8,23 +8,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.two.board.model.vo.Board;
-import com.two.member.model.vo.Member;
+import com.two.myPage.service.MyPageService;
 import com.two.myPage.service.MyPageServiceImpl;
 
 /**
- * Servlet implementation class IndexToTradeHistory
+ * Servlet implementation class ReloadTradeHistoryController
  */
-@WebServlet("/indexToTradeHistory.my")
-public class IndexToTradeHistory extends HttpServlet {
+@WebServlet("/reloadTrade.my")
+public class ReloadTradeHistoryController extends HttpServlet {
+	MyPageService mpService = new MyPageServiceImpl();
+
 	private static final long serialVersionUID = 1L;
-       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IndexToTradeHistory() {
+    public ReloadTradeHistoryController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,21 +33,26 @@ public class IndexToTradeHistory extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(); //현재 로그인 세션 정보 가져옴
-		Member loginUser = (Member)session.getAttribute("loginUser");
+		String tradeListOption = request.getParameter("tradeListOption");
+		String userId = request.getParameter("userId");
 		
-		String userId = loginUser.getUserId();
-		ArrayList<Board> list = new MyPageServiceImpl().selectTradeList(userId);
+		System.out.println(userId);
 		
-		if(loginUser != null) { //로그인 되어있을 경우 나의 판매글 메뉴로 이동
-			session.setAttribute("loginUser", loginUser);
-			request.setAttribute("list", list);
-			request.setAttribute("changeUrl", "salesPost.jsp");		
-			request.getRequestDispatcher("views/myPage/myPageMain.jsp").forward(request, response);
-		} else { //로그인 되어있지 않을 경우 로그인 창으로 이동
-			session.setAttribute("alertMsg", "로그인 해주세요");
-			response.sendRedirect(request.getContextPath()+"/Login.me");
-		} 
+		ArrayList<Board> list = null;
+		if(tradeListOption.equals("onSale")){
+			list = mpService.loadOnSale(userId );
+			System.out.println("팔고있는 것들");
+		} else if(tradeListOption.equals("soldOut")) {
+			list = mpService.loadSoldOut(userId);
+			System.out.println("팔린것들");
+		} else {
+			list = mpService.myBoardList(userId);
+			System.out.println("전부");			
+		}
+		
+		request.setAttribute("list", list);
+		
+		
 	}
 
 	/**

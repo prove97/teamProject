@@ -12,7 +12,7 @@ public interface MyPageService {
 	public int checkPassword(Member m); //비밀번호 일치 확인		
 
 
-	public ArrayList<Board> myBoardList(String userId); //나의 판매글 리스트 불러오기 
+	public ArrayList<Board> selectTradeList(String userId); //나의 판매글 리스트 불러오기 
 	
 	public ArrayList<Comments> myCommentList(String userId); //나의 댓글 리스트 불러오기
 	

@@ -32,6 +32,6 @@ public class ProductDao {
 	}
 
 	public int insertProduct(SqlSession sqlSession, Product p, Attachment at) {
-		return sqlSession.insert("memberMapper.insertProduct", p);
+		return sqlSession.insert("productMapper.insertProduct", p);
   	}
 }

@@ -34,6 +34,17 @@ public class MyPageServiceImpl implements MyPageService{
 
 		return result;
 	}
+	
+	@Override
+	public ArrayList<Board> selectTradeList(String userId) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		ArrayList<Board> list = new MyPageDao().selectTradeList(sqlSession, userId);
+
+		sqlSession.close();
+
+		return list;
+	}
 
 	
 	@Override
@@ -42,11 +53,7 @@ public class MyPageServiceImpl implements MyPageService{
 		return null;
 	}
 
-	@Override
-	public ArrayList<Board> myBoardList(String userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public ArrayList<Comments> myCommentList(String userId) {
@@ -65,6 +72,9 @@ public class MyPageServiceImpl implements MyPageService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
 
 
 
