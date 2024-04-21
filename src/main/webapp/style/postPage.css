@@ -41,6 +41,9 @@
         position: absolute;
         left: 0px;
     }
+    .category_bar1{
+    	border: none;
+    }
     .category_bar1:hover{
         cursor: pointer;
     }

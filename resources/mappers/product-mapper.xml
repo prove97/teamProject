@@ -40,7 +40,7 @@
 		VALUES
 		(
 			SEQ_GOODSID.NEXTVAL,
-			1,
+			#{sellerNo},
 			#{categoryM},
 			#{title},
 			DEFAULT,
@@ -78,6 +78,32 @@
 		SELECT COUNT(*)
 		FROM PRODUCT
 	   WHERE STATUS = '판매중'
+	</select>
+	
+	<select id="selectSearchCount" resultType="_int">
+		SELECT COUNT(*)
+		  FROM PRODUCT P
+		 WHERE P.STATUS = '판매중' 
+		 AND TITLE LIKE '%' || #{keyword} || '%'
+	</select>
+	
+	<select id="selectSearchList" resultMap="productResultSet">
+		SELECT GOODS_ID,
+				SELLER_NO,
+				CATEGORY_M,
+				TITLE,
+				STATUS,
+				SELL_PRICE,
+				VIEW_COUNT,
+				P_EXPLAIN,
+				ENROLL_DATE,
+				LOVEIT,
+				RETURN_PD,
+				LOCATION_T,
+				PRODUCT_STATUS
+				FROM PRODUCT P
+		WHERE STATUS = '판매중'
+		AND TITLE LIKE '%' || #{keyword} || '%'
 	</select>
 	
 </mapper>
