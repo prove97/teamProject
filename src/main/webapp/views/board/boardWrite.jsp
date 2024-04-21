@@ -6,20 +6,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    body{
+    body {
         display: flex;
         flex-direction: column;
         align-items: center;
-
         height: auto;
-
         position: relative;
     }
     
     /* 전체를 감싸는 div */
     #All{
         width: 1151px;
-        height: 1142px;
+        height: 1080px;
         border: 0.8px solid #d9d9d9;
         margin: 0 auto;
     }
@@ -39,19 +37,17 @@
     /* border만 준거 */
     .bobo{
         border: 0.8px solid #d9d9d9;
-        width: 100px;
-        height: 20px;
-
+        width: 1006px;
+        margin: auto;
+        padding: 10px; /* 내부 여백 추가 */
     }
 
     /* 돋보기사진 */
     #eheqhrl{
-        border: 3px solid orange; 
-        background: orange; 
-        margin: 2px 0px -3px -28px;
-        padding: -5px 5px 0px 5px;
+        border: none;
+        margin: 13px 13px -3px -40px;
         width: 54px; 
-        height: 42px;
+        height: 47px;
     }
 
     /* 광고밑 검색어 옆 글귀 폰트및 크기 */
@@ -88,11 +84,18 @@
     }
 
     /* 게시글 등록창 */
-    #catebar-body2{
+    #catebar-body2 {
         border: 0.8px solid #d9d9d9;
         width: 1055px;
-        margin: -1px 0px 0px 48px;
+        margin: auto;
+        position: relative; /* position 속성 추가 */
     }
+
+        #catebar-body2::before {
+        content: ""; /* 가상 요소 생성 */
+        display: block;
+        height: 20px; /* 원하는 공간의 높이로 설정하세요 */
+        }
 
 
     /* 맨 밑 */
@@ -100,19 +103,21 @@
         height: 160px;
     }
 
+    
+
 </style>
 
 </head>
 <body>
-	 <%@ include file="/views/common/header.jsp" %>
+    <%@ include file="/views/common/header.jsp" %>
     <div id="All">
         <thead id="head">
-            <img src="https://pbs.twimg.com/media/EA9UJBjU4AAdkCm.jpg" alt="광고배너" style="width: 1150px; height: 148px; box-shadow: 0px 10px 10px -10px #000; margin-top: 61px;">                                       
+            <img src="../../resources/image/banner.png" alt="광고배너" style="width: 1153px; height: 148px; box-shadow: 0px 10px 10px -10px #000; margin-top: 61px;" align="right">                                       
             <div>
                 <table id="catebar-head" style="width: 1055px;">
                     <tr>
-                        <td> <input type="text" placeholder="검색어를 입력해 주세요."  style="width: 493px; height: 45px; border: 0.8px solid #d9d9d9; margin-top: 7px;"></td>
-                        <td><img src="https://cdn-icons-png.flaticon.com/512/71/71403.png" alt="돋보기" id="eheqhrl"></td>
+                        <td style="width: 493px;"> <input type="text" placeholder="검색어를 입력해 주세요."  style="width: 493px; height: 45px; border: 0.8px solid #d9d9d9; margin-top: 7px;"></td>
+                        <td style="width: 60px; height: 45px;"><button type="button" style="width: 60px; height: 45px; border: none; margin-top: 13px;"></button></td>
                         <td align="right" style="">
                             <select name="" class="" style="color: orange; border: none; width: 250px; height: 26px;">
                             <option disabled selected>5 PNY XLR8 지포···</option>
@@ -140,7 +145,7 @@
                 <table id="catebar-body1_1">
                     <tr>
                         <td align="center" class="rhdwl">공지</td>
-                        <td style="height: 37px; padding: 0px 20px;"><a href="">퀘이사존 전체 게시판 공통 규정(23.10.31)</a></td>
+                        <td style="height: 37px; padding: 0px 20px;"><a href="" style="color: black;">퀘이사존 전체 게시판 공통 규정(23.10.31)</a></td>
                         <td></td>
                         <td align="center">퀘이사존  |  31k  |  11-01</td>
                     </tr>
@@ -149,8 +154,7 @@
             <br>
             <div id="catebar-body2" style="padding: 5px 20px;">
                 <table>
-                    <tr>
-                        <td>
+                        <div style="display: flex; justify-content: space-between;">
                             <select name="" class="" style="border: 0.8px solid #d9d9d9; width: 125px; height: 33px;">
                                 <option disabled selected align="center">카테고리</option>
                                 <option value="">5 PNY XLR8 지포···</option>
@@ -158,86 +162,57 @@
                                 <option value="">5 PNY XLR8 지포···</option>
                                 <option value="">5 PNY XLR8 지포···</option>
                             </select>
-                        </td>
-                        <td>
-                            <button style="border: 0.8px solid #d9d9d9; width: 125px; height: 33px; background: white;">저장 (2)</button>
-                        </td>
-                        <td  class="bobo">
+                        
+                        <button style="border: 0.8px solid #d9d9d9; width: 100px; height: 35px; background: white;" align="right">저장 (2)</button>
+                    </div>
 
-                        </td>
-                        <td  class="bobo">
+                    <div style="display: flex;  padding-top: 15px;">
+                        <div style="font-size: 16px; width: 200px; height: 43px; border: 0.8px solid #d9d9d9; padding: 10px 0px; margin-right: 20px;">
+                            <input type="checkbox" style="margin:0px 10px;">메인 베스트 등록 금지
+                        </div>
+                                            
+                        <div style="font-size: 16px; width: 215px; height: 43px; border: 0.8px solid #d9d9d9; padding: 10px 0px;">
+                            <input type="checkbox" style="margin:0px 10px;">게시판 베스트 등록 금지
+                        </div>
+                    </div>
 
-                        </td>
-                        <td  class="bobo">
-
-                        </td>
-                        <td  class="bobo">
-                            
-                        </td>
-                        <td  class="bobo">
-
-                        </td>
-                        <td  class="bobo">
-                            
+                    <tr>
+                        <td  class="bobo" style="border: none;">
+                            <div style="width: 00px;"></div>
                         </td>
                     </tr>
                     <tr>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
-                        <td  class="bobo">
-                        </td>
+                        <td style="font-size: 20px;"><input type="text" placeholder="제목을 입력하세요" style="width: 1005px; height: 30px; border: none;"></strong> </td>
                     </tr>
                 </table>
+
+                <hr style="border: 1px solid #d9d9d9; width: 1004px; margin: 10px 0px;"align="center">
                 
-            </div>
+                <div style="width: 1006px; cursor: pointer; position: relative;">
+                    <textarea name="" id="customTextarea" cols="135" rows="10" style="width: 100%; box-sizing: border-box; border: 0.8px solid #d9d9d9; resize: none; z-index: 1;"></textarea>
+                    
+                    <div id="placeholder" style="position: absolute; top: 10px; left: 10px; pointer-events: none; z-index: 0;">
+                        <span style="color: #29C379;">자유게시판은 PC관련 질문 강력히 금지</span>합니다.<span style="color: #29C379;"></span><br>
+                        하드웨어/게임/OS/인터넷 등의 주제는<span style="color: #29C379;">질문/토론 게시판</span>을 이용해 주세요.
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: center; align-items: center; ">
+                    <div style="margin-right: 10px;"><button style="color: white; background: orange; border: none; height: 30px;">작성완료</button></div>
+                    <div><button style="background: white; border: 0.8px solid #d9d9d9; height: 30px;">취소</button></div>
+                </div>
+                
+                <script>
+                    // textarea의 내용이 변경될 때마다 placeholder 숨기기/표시하기
+                    document.getElementById('customTextarea').addEventListener('input', function() {
+                        const placeholderDiv = document.getElementById('placeholder');
+                        if (this.value.length > 0) {
+                            placeholderDiv.style.display = 'none';
+                        } else {
+                            placeholderDiv.style.display = 'block';
+                        }
+                    });
+                </script>
         </tbody>
     </div>
     <%@ include file="/views/common/footer.jsp" %>
