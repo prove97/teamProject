@@ -42,7 +42,7 @@
 			USER_NO,
 			USER_ID,
 			USER_PWD,
-			NICKNAME
+			NICKNAME,
 			PHONE,
 			SCORE,
 			GENDER,
@@ -53,7 +53,7 @@
 			SEQ_USERNO.NEXTVAL,
 			#{userId},
 			#{userPwd},
-			#{nickName},
+			#{nickname},
 			#{phone},
 			0,
 			#{gender},
