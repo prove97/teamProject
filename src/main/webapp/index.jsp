@@ -29,7 +29,9 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
    
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/style/index.css">
+  	<link rel="stylesheet" href="${pageContext.request.contextPath}/style/index.css">
+
+	<script src="${pageContext.request.contextPath}/script/index.js"></script>
 
 </head>
 <body>
@@ -43,7 +45,7 @@
         </div>
 
         <!-- 컨텐츠 들어오는 곳 -->
-     
+
         <div id="contents">
 		   <script>
 		   $(document).ready(function(){
@@ -53,100 +55,14 @@
         </div>
 
 
-		<!-- 페이징 처리 -->	
+		<!-- 페이징 처리 들어오는 곳-->	
         <div id="pagination">
 
         </div>
-		
-       <!--   <div>
-            <div class="pagination">
-                <a href="#">&laquo;</a>
-                <a href="#">1</a>
-                <a href="#" class="active">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">7</a>
-                <a href="#">8</a>
-                <a href="#">9</a>
-                <a href="#">10</a>
-                <a href="#">&raquo;</a>
-              </div>
-        </div>
-        -->
+        
     </section>
 
-    <script>
-        function contentsFunction(cpage){
-        	console.log("ajax 실행됨")
-            $.ajax({
-                url: "list.pr",
-                dataType:"json",
-                data: {'cpage' : cpage},
-                success: function(data){
-                    console.log(data)
-                    let str = "";
-                    let Section = document.getElementById("contents");
-                    for(const p of data.list){
-                                    
-                        str += `   <a><div class="contents-preview">
-                                        <div class="thumnail">
-                                            <img src="${pageContext.request.contextPath}/img/sample1.png" alt="샘플이미지">
-                                        </div>
-                                        <div class="thumnail-info">
-                                            <div class="name-heart">
-                                                <div class="name">
-                                                    <p>`+p.title+`</p>
-                                                </div>
-                                                <div class="heart">
-                                                    <img src="${pageContext.request.contextPath}/img/heart.png" alt="">
-                                                    <p>`+p.loveIt+`</p>
-                                                </div>
-                                            </div>
-                                            <div class="price-beforeDay">
-                                                <div class="price">
-                                                    <p>`+p.sellPrice+`</p>
-                                                </div>
-                                                <div class="beforeDay">
-                                                    <p>`+p.enrollDate+`</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div></a>`
-                    }
-                    Section.innerHTML = str;
-                    
-                    
-                    let pagi = document.getElementById("pagination");
-                    
-                    let pagingStr = "";
 
-                    if (data.pi.currentPage != 1) {
-                        pagingStr += `<button onclick="contentsFunction(\${data.pi.currentPage - 1 });">&lt;</button>`;
-                    }
-                    for (let p = data.pi.startPage; p <= data.pi.endPage; p++) {
-                        if (p == data.pi.currentPage) {
-                            pagingStr += `<button disabled>`+p+`</button>`;
-                        } else {
-                            pagingStr += `<button onclick="contentsFunction(\${p});">`+p+`</button>`;
-                        }
-                    }
-                    if (data.pi.currentPage != data.pi.maxPage) {
-                        pagingStr += `<button onclick="contentsFunction(\${data.pi.currentPage + 1 });">&gt;</button>`;
-                    }
-
-                    pagi.innerHTML = pagingStr;
-                   
-                },
-                error: function(){
-                    console.log("ajax요청실패")
-                }
-            })
-        }
-        
-
-    </script>
 
 
     
