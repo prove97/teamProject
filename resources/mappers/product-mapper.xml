@@ -80,6 +80,32 @@
 	   WHERE STATUS = '판매중'
 	</select>
 	
+	<update id="increaseCount" parameterType="_int">
+		UPDATE PRODUCT
+		SET VIEW_COUNT = VIEW_COUNT + 1
+		WHERE GOODS_ID = #{goodsId}
+	</update>
+	
+	<select id="selectProduct" parameterType="_int" resultMap="productResultSet">
+		SELECT GOODS_ID,
+				SELLER_NO,
+				CATEGORY_M,
+				TITLE,
+				STATUS,
+				SELL_PRICE,
+				VIEW_COUNT,
+				P_EXPLAIN,
+				ENROLL_DATE,
+				LOVEIT,
+				RETURN_PD,
+				LOCATION_T,
+				PRODUCT_STATUS
+		FROM PRODUCT P
+		JOIN MEMBER ON (SELLER_NO = USER_NO)
+		WHERE P.STATUS = '판매중'
+			AND GOODS_ID = #{goodsId}
+	</select>
+	
 	<select id="selectSearchCount" resultType="_int">
 		SELECT COUNT(*)
 		  FROM PRODUCT P
@@ -101,7 +127,7 @@
 				RETURN_PD,
 				LOCATION_T,
 				PRODUCT_STATUS
-				FROM PRODUCT P
+		FROM PRODUCT P
 		WHERE STATUS = '판매중'
 		AND TITLE LIKE '%' || #{keyword} || '%'
 	</select>

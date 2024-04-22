@@ -177,7 +177,8 @@
         color: darkgray;
     }
     .product_info{
-        float: right;
+        float: left;
+        padding-right: 250px;
     }
     hr{
         margin: 20px auto;

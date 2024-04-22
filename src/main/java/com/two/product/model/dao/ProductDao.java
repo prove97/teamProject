@@ -35,6 +35,13 @@ public class ProductDao {
 	public int insertProduct(SqlSession sqlSession, Product p, Attachment at) {
 		return sqlSession.insert("productMapper.insertProduct", p);
   	}
+
+	public int increaseCount(SqlSession sqlSession, int goodsId) {
+		return sqlSession.update("productMapper.increaseCount", goodsId);
+	}
+
+	public Product selectProduct(SqlSession sqlSession, int goodsId) {
+		return sqlSession.selectOne("productMapper.selectProduct", goodsId);
 	
 	public int selectSearchCount(SqlSession sqlSession, HashMap<String, String> map) {
 		return sqlSession.selectOne("productMapper.selectSearchCount", map);

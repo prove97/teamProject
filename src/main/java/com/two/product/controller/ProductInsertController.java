@@ -39,7 +39,7 @@ public class ProductInsertController extends HttpServlet {
 		if (ServletFileUpload.isMultipartContent(request)) {
 			int maxSize = 1024 * 1024 * 10;
 			
-			String savePath = request.getSession().getServletContext().getRealPath("/resources/product_upfile/");
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/product_upfile");
 			
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 			
@@ -47,7 +47,6 @@ public class ProductInsertController extends HttpServlet {
 			Member m = (Member) request.getSession().getAttribute("loginUser");
 			
 			p.setSellerNo(m.getUserNo());
-//			p.setSellerNo(1);
 			p.setCategoryM(multiRequest.getParameter("categoryM"));
 			p.setTitle(multiRequest.getParameter("title"));
 			p.setSellPrice(Integer.parseInt(multiRequest.getParameter("sellPrice")));
@@ -57,7 +56,7 @@ public class ProductInsertController extends HttpServlet {
 			p.setProductStatus(multiRequest.getParameter("productStatus"));
 			
 			Attachment at = new Attachment();
-			at.setFilePath("resources/product_upfile/");
+			at.setFilePath("resources/product_upfile");
 			
 			int result = new ProductServiceImpl().insertProduct(p, at);
 			
@@ -66,7 +65,7 @@ public class ProductInsertController extends HttpServlet {
 				request.getSession().setAttribute("alertMsg", "상품을 성공적으로 등록했습니다.");
 				response.sendRedirect(request.getContextPath());
 			} else {
-				request.setAttribute("errorMsg", "상품 등록 실패"); 
+				request.setAttribute("errorMsg", "상품 등록 실패");
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 		}
