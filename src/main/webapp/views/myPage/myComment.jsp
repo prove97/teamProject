@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -133,11 +134,13 @@
             align-items: center;
         }
 
-        #pageSelect>button{
+        #pageSelect a{
             width: 45px;
             height: 30px;
             background: white;
             border: 1px solid rgb(211, 211, 211);
+
+            color: black;
         }
 
 
@@ -164,6 +167,13 @@
                             </td>
                             <td id="enrollDate">${cmt.commentsDate}</td>
                         </tr>
+                    </c:forEach>
+
+                    <c:set var="list" value="${list}" />
+                    <c:set var="listSize" value="${fn:length(list)}" />
+                    <c:set var="bLimit" value="${pi.boardLimit}" />
+                    <c:forEach var="i" begin="1" end="${bLimit - listSize}">
+                        <tr></tr>
                     </c:forEach>
 
 	
