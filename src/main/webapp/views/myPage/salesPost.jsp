@@ -98,6 +98,9 @@
 
             border-top: 2px solid black;
             font-size: 18px;
+
+            height: 60px;
+
         }
 
         #board-table td{
@@ -136,14 +139,13 @@
             align-items: center;
         }
 
-        #pageSelect>a{
+        #pageSelect a{
             width: 45px;
             height: 30px;
             background: white;
             border: 1px solid rgb(211, 211, 211);
 
             color: black;
-
             text-align: center;
             line-height: 30px;
         }
@@ -186,6 +188,9 @@
                     <c:forEach var="i" begin="1" end="${bLimit - listSize}">
                         <tr></tr>
                     </c:forEach>
+                    <c:remove var="list" />
+                    <c:remove var="listSize" />
+                    <c:remove var="bLimit" />
 
 
 

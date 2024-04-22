@@ -84,13 +84,21 @@
         WHERE USER_NO = #{userNo}
     </select>
     
+    <!-- 찜한 게시글(Product) 리스트 수 조회 -->
+    <select id="selectLikeProductCount" resultType="_int">
+        SELECT COUNT(*)
+        FROM WISH_LIST
+        WHERE USER_NO = #{userNo}
+    </select>
+
     <!-- 찜한 게시글(Product) 리스트 조회 -->
-    <select id="selectLikeList" resultMap="wishListResultSet">
+    <select id="selectLikeProduct" resultMap="wishListResultSet">
         SELECT USER_NO,
 			   GOODS_ID,
 			   WISH_DATE
-        FROM COMMENTS
+        FROM WISH_LIST
         WHERE USER_NO = #{userNo}
     </select>
+
 	
 </mapper>

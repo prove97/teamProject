@@ -68,15 +68,19 @@
             height: 90%;
         }
 
-        #board-table th{
+        #board-table th {
+            height: 50px;
             font-size: 18px;
             text-align: center;
 
             border-top: 2px solid black;
-            height: 50px;
         }
 
         /* 댓글 리스트 */
+        .nullCommentSpace{
+            height: 101.7px;
+        }
+
         .commentList{
             height: 101.7px;
             border-top: 0.1px solid rgb(187, 187, 187);
@@ -141,6 +145,8 @@
             border: 1px solid rgb(211, 211, 211);
 
             color: black;
+            text-align: center;
+            line-height: 30px;
         }
 
 
@@ -162,7 +168,7 @@
                     <c:forEach var="cmt" items="${list}">
                         <tr class="commentList">
                             <td>
-                                <div id="commentContent">시발 왜 댓글이 없어어ㅓㅓㅓㅓ</div>
+                                <div id="commentContent">${cmt.content}</div>
                                 <div id="boardTitle">게시글: </div>
                             </td>
                             <td id="enrollDate">${cmt.commentsDate}</td>
@@ -173,8 +179,12 @@
                     <c:set var="listSize" value="${fn:length(list)}" />
                     <c:set var="bLimit" value="${pi.boardLimit}" />
                     <c:forEach var="i" begin="1" end="${bLimit - listSize}">
-                        <tr></tr>
+                        <tr class="nullCommentSpace"></tr>
                     </c:forEach>
+                    <c:remove var="list" />
+                    <c:remove var="listSize" />
+                    <c:remove var="bLimit" />
+
 
 	
 	            </table>

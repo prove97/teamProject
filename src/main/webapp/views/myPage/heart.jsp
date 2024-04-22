@@ -125,11 +125,15 @@
             align-items: center;
         }
 
-        #pageSelect>button{
+        #pageSelect a{
             width: 45px;
             height: 30px;
             background: white;
             border: 1px solid rgb(211, 211, 211);
+
+            color: black;
+            text-align: center;
+            line-height: 30px;
         }
         
         
@@ -148,22 +152,39 @@
 	                    <th width="80px">조회수</th>
 	                    <th width="150px">작성자</th>
 	                </tr>
-	                <%for(int i=1; i<=10; i++) {%>
-	                <tr class="myHeartList">
-	                    <td><%=i%></td>
-	                    <td class="title">에어팟 맥스 팝니다 <span>(<%=commentsCount%>)</span></td>
-	                    <td>5</td>
-	                    <td>dkdksk</td>
-	                </tr>
-	                <%} %>
+                    <c:forEach var="w" items="${list}">
+                        <tr class="myHeartList">
+                            <td>${w.goodsId}</td>
+                            <td class="title">에어팟 맥스 팝니다 <span>(<%=commentsCount%>)</span></td>
+                            <td>5</td>
+                            <td>dkdksk</td>
+                        </tr>
+
+                    </c:forEach>
+                    <c:set var="list" value="${list}" />
+                    <c:set var="listSize" value="${fn:length(list)}" />
+                    <c:set var="bLimit" value="${pi.boardLimit}" />
+                    <c:forEach var="i" begin="1" end="${bLimit - listSize}">
+                        <tr></tr>
+                    </c:forEach>
+                    <c:remove var="list" />
+                    <c:remove var="listSize" />
+                    <c:remove var="bLimit" />
+
 	
 	            </table>
 	            <div id="pageSelect" align="center">
-	                <button onclick="location.href='#'">&lt;</button>
-	                <% for(int i = 1; i <= 10; i++) { %>
-	                    <button onclick="location.href='#'"><%= i %></button>
-	                <% } %>
-	                <button onclick="location.href='#'">&gt;</button>
+                    <c:if test="${pi.currentPage != 1}">
+                        <a href="indexToLike.my?cpage=${pi.currentPage - 1}">&lt;</a>
+                   </c:if>
+
+                   <c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage}">
+                        <a href="indexToLike.my?cpage=${i}">${i}</a>
+                   </c:forEach>
+                   
+                   <c:if test="${pi.currentPage ne pi.maxPage}">
+                        <a href="indexToLike.my?cpage=${pi.currentPage + 1}">&gt;</a>
+                   </c:if>
 	            </div>
 	        </div>
 	    </div>

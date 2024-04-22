@@ -22,7 +22,6 @@ import com.two.myPage.service.MyPageServiceImpl;
  */
 @WebServlet("/indexToCommentHistory.my")
 public class IndexToCommentHistory extends HttpServlet {
-	MyPageService mpService = new MyPageServiceImpl();
 
 	private static final long serialVersionUID = 1L;
 
@@ -38,18 +37,20 @@ public class IndexToCommentHistory extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		MyPageService mpService = new MyPageServiceImpl();
+		
 		HttpSession session = request.getSession(); //현재 로그인 세션 정보 가져옴
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		int userNo = loginUser.getUserNo();
-		
-		int listCount = mpService.selectMyCommentListCount(userNo); //현재 로그인한 유저의 전체 댓글 수
-		int currentPage = Integer.parseInt(request.getParameter("cpage"));
-		
-		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 7);
-		ArrayList<Comments> list = mpService.selectMyCommentList(userNo, pi);
-		
 		if(loginUser != null) { //로그인 되어있을 경우 나의 댓글 메뉴로 이동
+			int userNo = loginUser.getUserNo();
+			
+			int listCount = mpService.selectMyCommentListCount(userNo); //현재 로그인한 유저의 전체 댓글 수
+			int currentPage = Integer.parseInt(request.getParameter("cpage"));
+			
+			PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 6);
+			ArrayList<Comments> list = mpService.selectMyCommentList(userNo, pi);
+		
 			request.setAttribute("pi", pi);
 			request.setAttribute("list", list);	
 			request.setAttribute("changeUrl", "myComment.jsp");		
