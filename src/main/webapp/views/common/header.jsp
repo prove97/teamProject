@@ -30,6 +30,8 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/style/header.css">
 
+<script src="${pageContext.request.contextPath}/script/index.js"></script>
+
 </head>
 
 <body>
@@ -110,7 +112,7 @@
             mdiv.style.display="none";
         }
         
-        function 
+        
     </script>
 
 </body>
