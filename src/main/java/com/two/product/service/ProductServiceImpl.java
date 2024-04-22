@@ -50,6 +50,22 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
+	public Product increaseCount(int goodsId) {
+		SqlSession sqlSession = Template.getSqlSession();
+		int result = pDao.increaseCount(sqlSession, goodsId);
+		Product p = null;
+		if (result > 0) {
+			sqlSession.commit();
+			p = pDao.selectProduct(sqlSession, goodsId);
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		return p;
+	}
+
+	@Override
 	public int selectSearchCount(HashMap<String, String> map) {
 		SqlSession sqlSession = Template.getSqlSession();
 		
