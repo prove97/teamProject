@@ -1,0 +1,9 @@
+diff a/resources/mappers/member-mapper.xml b/resources/mappers/member-mapper.xml	(rejected hunks)
+@@ -63,6 +63,7 @@
+ 			)
+ 	</insert>
+ 	
++    		AND ACTIVATED = 'N'
+ 	<!-- 아이디로 유저 정보 조회 -->
+ 	<select id="selectMember" parameterType="String" resultMap="memberResultSet">
+ 	        SELECT USER_NO,
