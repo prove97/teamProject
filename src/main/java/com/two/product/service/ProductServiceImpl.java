@@ -1,6 +1,7 @@
 package com.two.product.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -63,4 +64,29 @@ public class ProductServiceImpl implements ProductService{
 		sqlSession.close();
 		return p;
 	}
+
+	@Override
+	public int selectSearchCount(HashMap<String, String> map) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		int searchCount = pDao.selectSearchCount(sqlSession, map);
+		
+		sqlSession.close();
+		
+		return searchCount;
+	}
+
+	@Override
+	public ArrayList<Product> selectSearchList(HashMap<String, String> map, PageInfo pi) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		ArrayList<Product> list = pDao.selectSearchList(sqlSession, map, pi);
+		
+		sqlSession.close();
+		
+		return list;
+	}
+
+
+	
 }

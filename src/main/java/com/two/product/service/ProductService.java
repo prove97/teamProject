@@ -1,6 +1,7 @@
 package com.two.product.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.two.attachment.model.vo.Attachment;
 import com.two.common.model.vo.PageInfo;
@@ -11,4 +12,6 @@ public interface ProductService {
 	public int selectListCount();
 	public int insertProduct(Product p, Attachment at);
 	public Product increaseCount(int goodsId);
+	public int selectSearchCount(HashMap<String, String> map);
+	public ArrayList<Product> selectSearchList(HashMap<String, String> map, PageInfo pi);
 }

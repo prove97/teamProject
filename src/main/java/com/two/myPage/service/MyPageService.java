@@ -16,7 +16,10 @@ public interface MyPageService {
 	public int selectMyTradeListCount(int userNo); //나의 판매글 개수 불러오기 
 	public ArrayList<Product> selectMyTradeList(int userNo, PageInfo pi); //나의 판매글 리스트 불러오기 
 	
-	public ArrayList<Comments> myCommentList(String userId); //나의 댓글 리스트 불러오기
+	public int selectMyCommentListCount(int userNo); //나의 전체 댓글 개수 불러오기 
+	public ArrayList<Comments> selectMyCommentList(int userNo, PageInfo pi); //나의 전체 댓글 리스트 불러오기
+	
+	public Member updateInfo(Member m);
 	
 	public ArrayList<Product> likeBoardList(String userId); // 찜목록 리스트 불러오기
 	

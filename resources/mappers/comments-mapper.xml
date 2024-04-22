@@ -9,6 +9,7 @@
 		<result column="USER_NO" property="userNo"/>
 		<result column="GOODS_ID" property="goodsId"/>
 		<result column="POST_ID" property="postId"/>
+		<result column="CONTENT" property="content"/>
 		<result column="COMMENTS_DATE" property="commentsDate"/>
 		<result column="KEY2" property="key2"/>
 	</resultMap>

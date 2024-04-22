@@ -2,6 +2,7 @@ package com.two.product.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -56,12 +57,17 @@ public class ProductListController extends HttpServlet {
 		
 		ArrayList<Product>list = new ProductServiceImpl().selectList(pi);
 		
-		request.setAttribute("pi", pi);
 		
+		
+		request.setAttribute("pi", pi);
+		request.setAttribute("list", list);
 		response.setContentType("application/json; charset=utf-8");
 		
-		new Gson().toJson(list, response.getWriter());
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("pi", pi);
+		map.put("list",	list);
 		
+		new Gson().toJson(map, response.getWriter());
 	}
 
 	/**
