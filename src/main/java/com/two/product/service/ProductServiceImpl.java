@@ -48,6 +48,19 @@ public class ProductServiceImpl implements ProductService{
 		return result;
 	}
 
-
-	
+	@Override
+	public Product increaseCount(int goodsId) {
+		SqlSession sqlSession = Template.getSqlSession();
+		int result = pDao.increaseCount(sqlSession, goodsId);
+		Product p = null;
+		if (result > 0) {
+			sqlSession.commit();
+			p = pDao.selectProduct(sqlSession, goodsId);
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		return p;
+	}
 }

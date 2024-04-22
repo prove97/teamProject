@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +38,7 @@
                 <div style="width: 30px; justify-content: center;">></div>
                 <div class="category_bar2" style="padding: 3px;">
                     <select name="categoryM">
-                    	<option selected disabled style="display:none">카테고리2</option>
+                    	<option selected disabled style="display:none">${p.categoryM}</option>
                     	<option>CPU</option>
                     	<option>메인보드</option>
                     	<option>메모리</option>
@@ -79,7 +80,7 @@
                 </div>
             </div>
             <div class="report">
-                <a href="../FAQ/mainFAQ.jsp">☏ 신고하기</a>
+                <a href="indexToFaq.fa">☏ 신고하기</a>
             </div>
         </div>
         
@@ -88,19 +89,19 @@
                 <img src="${pageContext.request.contextPath}/img/airpod.jpeg" alt="" id="airpod">
             </div>
             <div>
-                <div><h2>에어팟 맥스</h2></div>
-                <div><h1>500,000원</h1></div>
+                <div><h2>${p.title}</h2></div>
+                <div><h1>${p.sellPrice}원</h1></div>
                 <br><br>
                 <div class="post_info">
-                    <div style="color: mediumaquamarine;">♥ 2</div>
-                    <div>👀 9</div>
-                    <div>⏱️ 4일전</div>
+                    <div style="color: mediumaquamarine;">♥ ${p.loveIt}</div>
+                    <div>👀 ${p.viewCount}</div>
+                    <div id="enrollDate">⏱️ ${p.enrollDate}</div>
                 </div>
                 <br>
                 <div class="buttons">
-                    <div><button id="button1">♥ 찜</button></div>
-                    <div><button id="button2">댓글 달기</button></div>
-                    <div><button id="button3">구매 신청</button></div>
+                    <div><button type="button" id="button1">♥ 찜</button></div>
+                    <div><button type="button" id="button2">댓글 달기</button></div>
+                    <div><button type="button" id="button3">구매 신청</button></div>
                 </div>
             </div>
         </div>
@@ -133,33 +134,30 @@
                     <table>
                         <tr>
                             <th>· 제품 상태 : </th>
-                            <td>사용감 없음</td>
+                            <td>${p.productStatus}</td>
                         </tr>
                         <tr>
                             <th>· 교환 여부 : </th>
-                            <td>교환 불가</td>
+                            <td>
+                            	<c:choose>
+                            		<c:when test="${p.returnPd eq 'Y'}">
+                            			가능
+                            		</c:when>
+                            		<c:otherwise>
+                            			불가능
+                            		</c:otherwise>
+                            	</c:choose>
+                            </td>
                         </tr>
                         <tr>
                             <th>· 거래 지역 : </th>
-                            <td>인천시 연수구 송도1동</td>
-                        </tr>
-                        <tr>
-                            <th>· 가격 제안 : </th>
-                            <td>가능</td>
+                            <td>${p.locationT}</td>
                         </tr>
                     </table>
                 </div>
                 <div class="product_info">
                     <pre>
-                        세 달 정도 사용했습니다.
-                        상태 S급, 외관상 기능상 하자 없어요
-                        구성품 : 기기, 스마트 케이스
-                        박스 및 충전기x
-
-                        직거래 인천 송도
-                        택배는 우체국 택배로 포장 꼼꼼히 해서 보냅니다
-                        발송 전에 인증 사진 찍어드려요
-                        택배 시 계좌이체 결제, 택배비 5천원 추가입니다.
+                        ${p.pExplain}
                     </pre>
                 </div>
             </div>
