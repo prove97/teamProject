@@ -37,6 +37,18 @@ public class Member {
 		this.location = location;
 	}
 	
+	public Member(String userId, String userPwd, String nickname, String phone, String gender, String email,
+			String location) {
+		super();
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.nickname = nickname;
+		this.phone = phone;
+		this.gender = gender;
+		this.email = email;
+		this.location = location;
+	}
+
 	public Member(int userNo, String userId, String userPwd, String nickname, String authority, String phone,
 			String activated, int score, Date joinDate) {
 		super();

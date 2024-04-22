@@ -34,7 +34,7 @@
                     style="background-image: url(${pageContext.request.contextPath}/resources/image/이메일.png)"></div>
             </fieldset>
             <fieldset class="name-phone-location-gender">
-                <div><input type="text" placeholder="닉네임" required id="name-input" name="userName"
+                <div><input type="text" placeholder="닉네임" required id="name-input" name="nickname"
                     style="background-image: url(${pageContext.request.contextPath}/resources/image/idInput.png)"></div>
                 <div><input type="text" placeholder="전화번호 (- 미포함)" required id="phone-input" name="phone"
                     style="background-image: url(${pageContext.request.contextPath}/resources/image/폰.png)"></div>
