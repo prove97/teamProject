@@ -159,7 +159,7 @@
         <div id="aside">
             <div id="profile">
                 <div id="profileImage"><a href="#"></a></div>
-                <div id="nickname">${loginUser.getUserId()}</div>
+                <div id="nickname">${loginUser.getNickname()}</div>
                 <div id="brightnessRate">
                     <h6>밝음 수치: ${loginUser.getScore()} lux</h6>
                     <div class="progress" style="width: 150px; border: 1px solid darkgray; border-radius: 10px;">
@@ -173,7 +173,7 @@
                     <strong>나의 활동</strong>
                     <li><a href="${pageContext.request.contextPath}/indexToTradeHistory.my?cpage=1" class="nonStyle">나의 판매글</a></li>
                     <li><a href="${pageContext.request.contextPath}/indexToCommentHistory.my?cpage=1" class="nonStyle">나의 댓글</a></li>
-                    <li><a href="${pageContext.request.contextPath}/indexToLike.my" class="nonStyle">찜목록</a></li>
+                    <li><a href="${pageContext.request.contextPath}/indexToLike.my?cpage=1" class="nonStyle">찜목록</a></li>
                 </ul>
                 <ul>
                     <strong>문의사항</strong>

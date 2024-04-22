@@ -30,6 +30,12 @@
 		<result column="KEY2" property="key2"/> <!-- 참조하는 댓글 id(대댓글, null일 경우 대댓글 아님) -->
 	</resultMap>
 	
+	<resultMap id="wishListResultSet" type="WishList">
+		<result column="USER_NO" property="userNo"/> 
+		<result column="GOODS_ID" property="goodsId"/>
+		<result column="WISH_DATE" property="wishDate"/>
+	</resultMap>
+	
 	<!-- 로그인 유저의 전체 판매글 개수 -->
     <select id="selectMyTradeListCount" resultType="_int">
     	SELECT COUNT(*)
@@ -77,5 +83,22 @@
         LEFT JOIN PRODUCT USING(GOODS_ID) 
         WHERE USER_NO = #{userNo}
     </select>
+    
+    <!-- 찜한 게시글(Product) 리스트 수 조회 -->
+    <select id="selectLikeProductCount" resultType="_int">
+        SELECT COUNT(*)
+        FROM WISH_LIST
+        WHERE USER_NO = #{userNo}
+    </select>
+
+    <!-- 찜한 게시글(Product) 리스트 조회 -->
+    <select id="selectLikeProduct" resultMap="wishListResultSet">
+        SELECT USER_NO,
+			   GOODS_ID,
+			   WISH_DATE
+        FROM WISH_LIST
+        WHERE USER_NO = #{userNo}
+    </select>
+
 	
 </mapper>

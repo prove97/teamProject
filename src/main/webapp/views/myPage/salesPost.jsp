@@ -98,6 +98,9 @@
 
             border-top: 2px solid black;
             font-size: 18px;
+
+            height: 60px;
+
         }
 
         #board-table td{
@@ -136,13 +139,15 @@
             align-items: center;
         }
 
-        #pageSelect>a{
+        #pageSelect a{
             width: 45px;
             height: 30px;
             background: white;
             border: 1px solid rgb(211, 211, 211);
 
             color: black;
+            text-align: center;
+            line-height: 30px;
         }
 
         
@@ -169,7 +174,7 @@
 	                    <th width="150px">작성일</th>
 	                </tr>
                     <c:forEach var="p" items="${list}">
-                        <tr class="myPostingList" onclick="location.href='views/posting/postPage.jsp'"> <!--쿼리로 postId 넘겨줄 예정-->
+                        <tr class="myPostingList" onclick="location.href='${pageContext.request.contextPath}/detail.pr'"> <!--쿼리로 postId 넘겨줄 예정-->
                             <td>${p.goodsId}</td>
                             <td class="title">${p.title} <span>(<%=commentsCount%>)</span></td>
                             <td>${p.viewCount}</td>
@@ -183,6 +188,9 @@
                     <c:forEach var="i" begin="1" end="${bLimit - listSize}">
                         <tr></tr>
                     </c:forEach>
+                    <c:remove var="list" />
+                    <c:remove var="listSize" />
+                    <c:remove var="bLimit" />
 
 
 

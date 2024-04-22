@@ -22,7 +22,6 @@ import com.two.product.model.vo.Product;
  */
 @WebServlet("/indexToTradeHistory.my")
 public class IndexToTradeHistory extends HttpServlet {
-	MyPageService mpService = new MyPageServiceImpl();
 	
 	private static final long serialVersionUID = 1L;
        
@@ -38,20 +37,22 @@ public class IndexToTradeHistory extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		MyPageService mpService = new MyPageServiceImpl();
+
 		request.setCharacterEncoding("UTF-8");
 		
 		HttpSession session = request.getSession(); //현재 로그인 세션 정보 가져옴
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		int userNo = loginUser.getUserNo();
-		
-		int listCount = mpService.selectMyTradeListCount(userNo); //현재 로그인한 유저의 전체 판매글 수
-		int currentPage = Integer.parseInt(request.getParameter("cpage"));
-
-		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 10);
-		ArrayList<Product> list = mpService.selectMyTradeList(userNo, pi);
-		
 		if(loginUser != null) { //로그인 되어있을 경우 나의 판매글 메뉴로 이동
+			int userNo = loginUser.getUserNo();
+			
+			int listCount = mpService.selectMyTradeListCount(userNo); //현재 로그인한 유저의 전체 판매글 수
+			int currentPage = Integer.parseInt(request.getParameter("cpage"));
+	
+			PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 10);
+			ArrayList<Product> list = mpService.selectMyTradeList(userNo, pi);
+		
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 			request.setAttribute("changeUrl", "salesPost.jsp");		

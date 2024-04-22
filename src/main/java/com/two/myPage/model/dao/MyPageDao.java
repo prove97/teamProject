@@ -9,6 +9,7 @@ import com.two.comments.model.vo.Comments;
 import com.two.common.model.vo.PageInfo;
 import com.two.member.model.vo.Member;
 import com.two.product.model.vo.Product;
+import com.two.wishList.model.vo.WishList;
 
 public class MyPageDao {
 	public Member selectMember(SqlSession sqlSession, String userId){
@@ -20,8 +21,28 @@ public class MyPageDao {
 		return result; //鍮꾨�踰덊샇媛� �씪移섑븯�뒗 Member�닔(count) 由ы꽩 (mapper�닔�젙�빐�빞�븿)
 	}
 	
+	public int updatePassword(SqlSession sqlSession, String userId, String userPwd) {
+		System.out.println(userId +" " + userPwd);
+		Member m = new Member();
+		m.setUserId(userId);
+		m.setUserPwd(userPwd);
+		return sqlSession.update("memberMapper.updatePassword", m);
+	}
+	
 	public int checkNickname(SqlSession sqlSession, String nickname) {			
 		return sqlSession.selectOne("memberMapper.checkNickname", nickname);//�땳�꽕�엫�씠 �씪移섑븯�뒗 Member�닔(count) 由ы꽩 (mapper�닔�젙�빐�빞�븿)
+	}
+	
+	public int updateNickname(SqlSession sqlSession, String userId, String nickname) {
+		System.out.println(userId +" " + nickname);
+		Member m = new Member();
+		m.setUserId(userId);
+		m.setNickname(nickname);
+		return sqlSession.update("memberMapper.updateNickname", m);
+	}
+	
+	public int updateInfo(SqlSession sqlSession, Member m) {
+		return sqlSession.update("memberMapper.updateInfo", m);
 	}
 	
 	public int selectMyTradeListCount(SqlSession sqlSession, int userNo) {
@@ -50,8 +71,13 @@ public class MyPageDao {
 		return (ArrayList)sqlSession.selectList("myPageMapper.selectMyCommentList", userNo, rowBounds);
 	}
 
-	public int updateInfo(SqlSession sqlSession, Member m) {
-		return sqlSession.update("memberMapper.updateInfo", m);
+	public int selectLikeProductCount(SqlSession sqlSession, int userNo) {
+		return sqlSession.selectOne("myPageMapper.selectLikeProductCount", userNo);
 	}
+
+	public ArrayList<WishList> selectLikeProduct(SqlSession sqlSession, int userNo, PageInfo pi) {
+		return (ArrayList)sqlSession.selectList("myPageMapper.selectLikeProduct", userNo);
+	}
+	
 	
 }

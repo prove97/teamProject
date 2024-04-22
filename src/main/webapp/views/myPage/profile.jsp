@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -196,16 +197,18 @@
 	                            <input type="password" name="checkUserPwd" id="checkPwd" class="necessaryInput" maxlength="20" oninput="checkPassword()">
 	                            <div class="warning">비밀번호가 일치하지 않습니다.</div>                                        
 	                        </td>
+
 	                    </tr>
 	                    <tr>
 	                        <th>*휴대폰 번호</th>
-	                        <td><input type="text" value="${loginUser.phone}" name="phone" class="necessaryInput" readonly></td>
+                            <c:set var="phone" value="${loginUser.phone}" />
+	                        <td><input type="text" value=" ${fn:substring(phone,0,3)}-${fn:substring(phone,3,7)}-${fn:substring(phone,7,11)}" name="phone" class="necessaryInput" readonly></td>
 	                    </tr>
 	                    <tr style="position: relative;">
 	                        <th>*닉네임</th>    
 	                        <td>
                                 <input type="checkbox" name="submitNickname" value="selected" style="display: none;">
-	                            <input type="text" value="${loginUser.nickname}" class="necessaryInput" name="nickname">
+	                            <input type="text" value="${loginUser.nickname}" class="necessaryInput" name="nickname" oninput="unCheckNickname();">
 	                            <div class="warning">중복된 닉네임입니다</div>                                        
 	                            <button type="button" id="duplicationCheckBtn" onclick="nicknameCheck();">중복확인</button>
 	                        </td>                                
@@ -217,17 +220,24 @@
                             const newPwd = document.getElementById('pwd'); // 변경할 비밀번호
 	                        const checkPwd = document.getElementById('checkPwd'); //비밀번호 확인
                             const warning1 = document.getElementsByClassName('warning')[0]; //비밀번호 조합 확인 div
-                            const warning2 = document.getElementsByClassName('warning')[1]; //비밀번호 일치 체크 div 
+                            const warning2 = document.getElementsByClassName('warning')[1]; //비밀번호 일치 체크 div                             
 
                             const combineCheck = combinePwd(newPwd, warning1);
                             const differCheck = differPwd(newPwd, checkPwd, warning2);
+
+                            const submitPwd = document.querySelector("input[name='submitPwd']");
+                            
+                            if(combineCheck && differCheck){
+                                submitPwd.checked = true;
+
+                            } else{
+                                submitPwd.checked = false;
+                            }
                             
                             console.log(newPwd.value);
                             console.log(checkPwd.value);
 
                             console.log(combineCheck, differCheck)
-
-                            return combineCheck && differCheck;
                         }
 
 
@@ -253,7 +263,6 @@
 	                    }
 	
 	                    function differPwd(originInput, checkInput, warning2){ //비밀번호 일치 체크
-	
 	                        if(originInput.value === checkInput.value || checkInput.value === ""){ //비밀번호가 일치하거나 빈칸일 경우
 	                            warning2.style.display = 'none';
 	                            checkInput.style.border = '0px';
@@ -269,6 +278,13 @@
                                 return false;
 	                        }
 	                    }
+
+                        function unCheckNickname(){ //닉네임 input에 입력시 submitNickname의 체크를 false로 바꿈
+                            const submitPwd = document.querySelector("input[name='submitNickname']");
+                            submitPwd.checked = false;
+
+                            console.log(submitPwd.checked);
+                        }
 	
 	                    function nicknameCheck(){ //닉네임 중복체크
 	                        const inputNickname = document.querySelector("input[name='nickname'");
@@ -285,9 +301,11 @@
 	                            },
 	                            success: function(res){
                                     if(res === "NNNNY"){
-                                        alert("사용가능한 닉네임입니다.");
-                                        checkNickname.checked = true; 
-                                        warning3.style.display = 'none';
+                                        if(inputNickname.value!== ""){
+                                            alert("사용가능한 닉네임입니다.");
+                                            checkNickname.checked = true; 
+                                            warning3.style.display = 'none';
+                                        }
 
                                     } else{                                        
                                         checkNickname.checked = false; 
@@ -328,7 +346,7 @@
                             </script>
 	
 	                        <th>이메일</th>
-	                        <td><input type="email" value="${loginUser.email}"></td>
+	                        <td><input type="email" name="email" value="${loginUser.email}"></td>
 	                    </tr>
 	                    <tr>
 	                        <th>지역</th>
