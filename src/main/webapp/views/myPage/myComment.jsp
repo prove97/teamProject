@@ -162,7 +162,7 @@
 	        <div id="board-table">
 	            <table align="center">
 	                <tr height="50px">
-	                    <th width="560px">제목</th>
+	                    <th width="560px">댓글</th>
 	                    <th width="200px">작성일</th>
 	                </tr>
                     <c:forEach var="cmt" items="${list}">

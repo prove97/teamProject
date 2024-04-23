@@ -19,6 +19,12 @@ public interface MyPageService {
 
 	public int selectMyTradeListCount(int userNo); //로그인한 유저의 판매글 개수 불러오기 
 	public ArrayList<Product> selectMyTradeList(int userNo, PageInfo pi); //로그인한 유저의 판매글 리스트 불러오기 
+
+	public int selectOnSaleListCount(int userNo); //로그인한 유저의 판매중인글 개수 불러오기 
+	public ArrayList<Product> selectOnSaleList(int userNo, PageInfo pi); //로그인한 유저의 판매중인글 리스트 불러오기 
+	
+	public int selectSoldOutListCount(int userNo); //로그인한 유저의 판매완료된글 개수 불러오기 
+	public ArrayList<Product> selectSoldOutList(int userNo, PageInfo pi); //로그인한 유저의 판매완료된글 리스트 불러오기 
 	
 	public int selectMyCommentListCount(int userNo); //로그인한 유저의 댓글 개수 불러오기 
 	public ArrayList<Comments> selectMyCommentList(int userNo, PageInfo pi); //로그인한 유저의 전체 댓글 리스트 불러오기

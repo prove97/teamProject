@@ -62,6 +62,62 @@
         WHERE SELLER_NO = #{userNo}
     </select>
     
+	<!-- 로그인 유저의 판매중인글 개수 -->
+    <select id="selectOnSaleListCount" resultType="_int">
+    	SELECT COUNT(*)
+        FROM PRODUCT
+        WHERE SELLER_NO = #{userNo}
+        AND STATUS = '판매중'
+    </select>
+
+    <!-- 로그인 유저의 판매중인글 조회 -->
+    <select id="selectOnSaleList" resultMap="productResultSet">
+        SELECT GOODS_ID,
+               SELLER_NO,
+               CATEGORY_M,
+               TITLE,
+               STATUS,
+               SELL_PRICE,
+               VIEW_COUNT,
+               P_EXPLAIN,
+               ENROLL_DATE,
+               LOVEIT,
+               RETURN_PD,
+               LOCATION_T,
+               PRODUCT_STATUS
+        FROM PRODUCT
+        WHERE SELLER_NO = #{userNo}
+        AND STATUS = '판매중'
+    </select>
+
+	<!-- 로그인 유저의 판매완료글 개수 -->
+    <select id="selectSoldOutListCount" resultType="_int">
+    	SELECT COUNT(*)
+        FROM PRODUCT
+        WHERE SELLER_NO = #{userNo}
+        AND NOT STATUS = '판매중'
+        
+    </select>
+
+    <!-- 로그인 유저의 판매완료글 조회 -->
+    <select id="selectSoldOutList" resultMap="productResultSet">
+        SELECT GOODS_ID,
+               SELLER_NO,
+               CATEGORY_M,
+               TITLE,
+               STATUS,
+               SELL_PRICE,
+               VIEW_COUNT,
+               P_EXPLAIN,
+               ENROLL_DATE,
+               LOVEIT,
+               RETURN_PD,
+               LOCATION_T,
+               PRODUCT_STATUS
+        FROM PRODUCT
+        WHERE NOT SELLER_NO = #{userNo}
+    </select>
+    
     <!-- 로그인 유저의 전체 댓글 개수 조회 -->
     <select id="selectMyCommentListCount" resultType="_int">
         SELECT COUNT(*)
@@ -69,7 +125,7 @@
         WHERE USER_NO = #{userNo}
     </select>
     
-        <!-- 로그인 유저의 전체 댓글리스트 조회 -->
+    <!-- 로그인 유저의 전체 댓글리스트 조회 -->
     <select id="selectMyCommentList" resultMap="commentsResultSet">
         SELECT KEY1,
 			   USER_NO,

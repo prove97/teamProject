@@ -6,6 +6,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
 import com.two.comments.model.vo.Comments;
+import com.two.common.Template;
 import com.two.common.model.vo.PageInfo;
 import com.two.member.model.vo.Member;
 import com.two.product.model.vo.Product;
@@ -57,6 +58,35 @@ public class MyPageDao {
 		
 		return (ArrayList)sqlSession.selectList("myPageMapper.selectMyTradeList", userNo, rowBounds);
 	}
+
+	public int selectOnSaleListCount(SqlSession sqlSession, int userNo) {
+		return sqlSession.update("myPageMapper.selectOnSaleListCount", userNo);
+	}
+
+	public ArrayList<Product> selectOnSaleList(SqlSession sqlSession, int userNo, PageInfo pi) {
+		int offset = (pi.getCurrentPage()-1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		
+		return (ArrayList)sqlSession.selectList("myPageMapper.selectOnSaleList", userNo, rowBounds);
+	}
+
+	public int selectSoldOutListCount(SqlSession sqlSession, int userNo) {
+		return sqlSession.update("myPageMapper.selectSoldOutListCount", userNo);
+	
+	}
+
+	public ArrayList<Product> selectSoldOutList(SqlSession sqlSession, int userNo, PageInfo pi) {
+		int offset = (pi.getCurrentPage()-1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		
+		return (ArrayList)sqlSession.selectList("myPageMapper.selectSoldOutList", userNo, rowBounds);	
+	}
+	
+	
 	
 	public int selectMyCommentListCount(SqlSession sqlSession, int userNo) {
 		return sqlSession.selectOne("myPageMapper.selectMyCommentListCount", userNo);
