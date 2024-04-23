@@ -60,9 +60,9 @@
                 <div>      
                     <!--  <img src="${pageContext.request.contextPath}/resources/image/mannerScore.png" style="margin-left: 25px;" alt="매너점수"> -->
                     <div id="brightnessRate" style=" margin-left: 10px; height: 35px;">
-                        <p style="font-size: 14px; margin: 0;">밝음 수치: 70 lux</p>
+                        <p style="font-size: 14px; margin: 0;">밝음 수치: ${loginUser.score }</p>
                         <div class="progress" style="width: 120px; height: 14px;  border-radius: 10px; border: 0.1px solid darkgray;" >
-                            <div class="progress-bar" style="width:70%; background: #70C9A0;"></div>
+                            <div class="progress-bar" style="width:${loginUser.score }%; background: #70C9A0;"></div>
                         </div>
                     </div>
                  </div>  
