@@ -17,16 +17,16 @@ import com.two.product.model.vo.Product;
 import com.two.product.service.ProductServiceImpl;
 
 /**
- * Servlet implementation class ProductSearchController
+ * Servlet implementation class ProductCategorySearch
  */
-@WebServlet("/search.pr")
-public class ProductSearchController extends HttpServlet {
+@WebServlet("/categorySearch.pr")
+public class ProductCategorySearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductSearchController() {
+    public ProductCategorySearch() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,27 +35,23 @@ public class ProductSearchController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String keyword = request.getParameter("searchValue"); //사용자가 입력한 키워드값
-		System.out.println("keyword"+keyword);
+		String BeforeCate = request.getParameter("cate"); //사용자가 입력한 키워드값
+		String cate = BeforeCate.substring(2,5);
 		HashMap<String, String> map = new HashMap<>();
-		map.put("keyword", keyword);
+		map.put("cate", cate);
 		
-		int searchCount = new ProductServiceImpl().selectSearchCount(map);
+		int cateCount = new ProductServiceImpl().selectcateCount(map);
 		int currentPage = request.getParameter("cpage") == null ? 1 : Integer.parseInt(request.getParameter("cpage"));
 
-//		System.out.println(searchCount); 잘가져옴
-		HashMap<String, Object> searchMap = new HashMap<>();
-		PageInfo pi = Pagination.getPageInfo(searchCount, currentPage, 10 , 18);
-		ArrayList<Product> list = new ProductServiceImpl().selectSearchList(map, pi);
+//		System.out.println("써치카운트 : "+cateCount); 
+		HashMap<String, Object> cateMap = new HashMap<>();
+		PageInfo pi = Pagination.getPageInfo(cateCount, currentPage, 10 , 18);
+		ArrayList<Product> list = new ProductServiceImpl().selectcateList(map, pi);
 		
-		searchMap.put("pi", pi);
-		searchMap.put("list",list);
+		cateMap.put("pi", pi);
+		cateMap.put("list",	list);
 
-		request.setAttribute("keyword", keyword);
-		
-		new Gson().toJson(searchMap, response.getWriter());
-		
-
+		new Gson().toJson(cateMap, response.getWriter());
 	}
 
 	/**

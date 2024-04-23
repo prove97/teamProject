@@ -14,4 +14,6 @@ public interface ProductService {
 	public Product increaseCount(int goodsId);
 	public int selectSearchCount(HashMap<String, String> map);
 	public ArrayList<Product> selectSearchList(HashMap<String, String> map, PageInfo pi);
+	public int selectcateCount(HashMap<String, String> map);
+	public ArrayList<Product> selectcateList(HashMap<String, String> map, PageInfo pi);
 }
