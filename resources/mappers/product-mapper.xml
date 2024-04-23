@@ -138,4 +138,30 @@
 		AND TITLE LIKE '%' || #{keyword} || '%'
 	</select>
 	
+	<select id="selectcateCount" resultType="_int">
+		SELECT COUNT(*)
+		  FROM PRODUCT P
+		 WHERE P.STATUS = '판매중' 
+		 AND CATEGORY_M LIKE '%' || #{cate} || '%'
+	</select>
+	
+	<select id="selectcateList" resultMap="productResultSet">
+				SELECT GOODS_ID,
+				SELLER_NO,
+				CATEGORY_M,
+				TITLE,
+				STATUS,
+				SELL_PRICE,
+				VIEW_COUNT,
+				P_EXPLAIN,
+				ENROLL_DATE,
+				LOVEIT,
+				RETURN_PD,
+				LOCATION_T,
+				PRODUCT_STATUS
+		FROM PRODUCT P
+		WHERE STATUS = '판매중'
+		AND CATEGORY_M LIKE '%' || #{cate} || '%'
+	</select>
+	
 </mapper>
