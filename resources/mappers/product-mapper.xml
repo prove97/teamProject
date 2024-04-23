@@ -18,6 +18,8 @@
 		<result column="RETURN_PD" property="returnPd"/>
 		<result column="LOCATION_T" property="locationT"/>
 		<result column="PRODUCT_STATUS" property="productStatus"/>
+		<result column="NICKNAME" property="nickName"/>
+		<result column="SCORE" property="score"/>
 	</resultMap>
 	
 	<insert id="insertProduct" parameterType="Product">
@@ -99,10 +101,14 @@
 				LOVEIT,
 				RETURN_PD,
 				LOCATION_T,
-				PRODUCT_STATUS
+				PRODUCT_STATUS,
+				M.NICKNAME,
+				M.SCORE
 		FROM PRODUCT P
 		JOIN MEMBER ON (SELLER_NO = USER_NO)
-		WHERE P.STATUS = '판매중'
+		LEFT JOIN MEMBER M ON (P.NICKNAME = M.NICKNAME)
+			AND (P.SCORE = M.SCORE)
+		WHERE STATUS = '판매중'
 			AND GOODS_ID = #{goodsId}
 	</select>
 	

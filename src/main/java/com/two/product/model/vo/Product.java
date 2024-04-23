@@ -16,6 +16,8 @@ public class Product {
 	private String returnPd;
 	private String locationT;
 	private String productStatus;
+	private String nickName;
+	private int score;
 	
 	public Product() {
 		super();
@@ -23,7 +25,7 @@ public class Product {
 
 	public Product(int goodsId, int sellerNo, String categoryM, String title, String status, int sellPrice,
 			int viewCount, String pExplain, Date enrollDate, int loveIt, String returnPd, String locationT,
-			String productStatus) {
+			String productStatus, String nickName, int score) {
 		super();
 		this.goodsId = goodsId;
 		this.sellerNo = sellerNo;
@@ -38,37 +40,82 @@ public class Product {
 		this.returnPd = returnPd;
 		this.locationT = locationT;
 		this.productStatus = productStatus;
+		this.nickName = nickName;
+		this.score = score;
 	}
 
-	@Override
-	public String toString() {
-		return "Product [goodsId=" + goodsId + ", sellerNo=" + sellerNo + ", categoryM=" + categoryM + ", title="
-				+ title + ", status=" + status + ", sellPrice=" + sellPrice + ", viewCount=" + viewCount + ", pExplain="
-				+ pExplain + ", enrollDate=" + enrollDate + ", returnPd=" + returnPd
-				+ ", locationT=" + locationT + ", productStatus=" + productStatus + "]";
-	}
-	
 	public int getGoodsId() {
 		return goodsId;
 	}
+
 	public void setGoodsId(int goodsId) {
 		this.goodsId = goodsId;
 	}
+
 	public int getSellerNo() {
 		return sellerNo;
 	}
+
 	public void setSellerNo(int sellerNo) {
 		this.sellerNo = sellerNo;
 	}
+
 	public String getCategoryM() {
 		return categoryM;
 	}
+
 	public void setCategoryM(String categoryM) {
 		this.categoryM = categoryM;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public int getSellPrice() {
+		return sellPrice;
+	}
+
+	public void setSellPrice(int sellPrice) {
+		this.sellPrice = sellPrice;
+	}
+
+	public int getViewCount() {
+		return viewCount;
+	}
+
+	public void setViewCount(int viewCount) {
+		this.viewCount = viewCount;
+	}
+
+	public String getpExplain() {
+		return pExplain;
+	}
+
+	public void setpExplain(String pExplain) {
+		this.pExplain = pExplain;
+	}
+
+	public Date getEnrollDate() {
+		return enrollDate;
+	}
+
+	public void setEnrollDate(Date enrollDate) {
+		this.enrollDate = enrollDate;
+	}
+
 	public int getLoveIt() {
 		return loveIt;
 	}
@@ -77,56 +124,52 @@ public class Product {
 		this.loveIt = loveIt;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	public int getSellPrice() {
-		return sellPrice;
-	}
-	public void setSellPrice(int sellPrice) {
-		this.sellPrice = sellPrice;
-	}
-	public int getViewCount() {
-		return viewCount;
-	}
-	public void setViewCount(int viewCount) {
-		this.viewCount = viewCount;
-	}
-	public String getpExplain() {
-		return pExplain;
-	}
-	public void setpExplain(String pExplain) {
-		this.pExplain = pExplain;
-	}
-	public Date getEnrollDate() {
-		return enrollDate;
-	}
-	public void setEnrollDate(Date enrollDate) {
-		this.enrollDate = enrollDate;
-	}
 	public String getReturnPd() {
 		return returnPd;
 	}
+
 	public void setReturnPd(String returnPd) {
 		this.returnPd = returnPd;
 	}
+
 	public String getLocationT() {
 		return locationT;
 	}
+
 	public void setLocationT(String locationT) {
 		this.locationT = locationT;
 	}
+
 	public String getProductStatus() {
 		return productStatus;
 	}
+
 	public void setProductStatus(String productStatus) {
 		this.productStatus = productStatus;
 	}
-	
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [goodsId=" + goodsId + ", sellerNo=" + sellerNo + ", categoryM=" + categoryM + ", title="
+				+ title + ", status=" + status + ", sellPrice=" + sellPrice + ", viewCount=" + viewCount + ", pExplain="
+				+ pExplain + ", enrollDate=" + enrollDate + ", loveIt=" + loveIt + ", returnPd=" + returnPd
+				+ ", locationT=" + locationT + ", productStatus=" + productStatus + ", nickName=" + nickName
+				+ ", score=" + score + "]";
+	}
 }
