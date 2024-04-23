@@ -69,7 +69,7 @@
         }
 
         #board-table th {
-            height: 50px;
+            height: 60px;
             font-size: 18px;
             text-align: center;
 
@@ -78,11 +78,11 @@
 
         /* 댓글 리스트 */
         .nullCommentSpace{
-            height: 101.7px;
+            height: 99px;
         }
 
         .commentList{
-            height: 101.7px;
+            height: 99px;
             border-top: 0.1px solid rgb(187, 187, 187);
             border-bottom: 0.1px solid rgb(187, 187, 187);
         }
@@ -92,14 +92,21 @@
             background-color: rgba(0,0,0,0.03) ;
         }
 
-        .commentList>td:nth-child(1){
-            height: 100px;
+        .commentList>td:nth-child(2){
+            height: 99px;
 
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
+        /*댓글 번호*/
+        .commentList>#commentNo{
+            text-align: center;
+
+        }
+
+        /*댓글 내용*/
         .commentList>td>#commentContent{
             font-size: 20px;
             text-align: left;
@@ -115,6 +122,7 @@
             text-decoration: underline;
         }
 
+        /*댓글이 있는 게시글 제목*/
         .commentList>td>#boardTitle{
             font-size: 15px; 
             color: #b3b3b3;           
@@ -122,13 +130,11 @@
             padding-left: 30px;
         }
 
+        /*댓글 등록일*/
         .commentList>#enrollDate{
             text-align: center;   
             font-size: 15px; 
         }
-
-
-
 
         /* 페이지 선택 */
         #pageSelect{
@@ -162,14 +168,16 @@
 	        <div id="board-table">
 	            <table align="center">
 	                <tr height="50px">
+                        <th width="100px">댓글번호</th>
 	                    <th width="560px">댓글</th>
 	                    <th width="200px">작성일</th>
 	                </tr>
                     <c:forEach var="cmt" items="${list}">
-                        <tr class="commentList">
+                        <tr class="commentList" onclick="location.href='${pageContext.request.contextPath}/detail.pr?goodsId=${cmt.product.goodsId}'">
+                            <td id="commentNo">${cmt.key1}</td>
                             <td>
                                 <div id="commentContent">${cmt.content}</div>
-                                <div id="boardTitle">게시글: </div>
+                                <div id="boardTitle">게시글: ${cmt.product.title}</div>
                             </td>
                             <td id="enrollDate">${cmt.commentsDate}</td>
                         </tr>
