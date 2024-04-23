@@ -36,7 +36,7 @@ public class MemberInsertController extends HttpServlet {
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
 		String email = request.getParameter("email");
-		String nikName = request.getParameter("nikName");
+		String nickname = request.getParameter("nickname");
 		String phone = request.getParameter("phone");
 		String location = request.getParameter("location");
 		String gender = request.getParameter("gender");
@@ -44,8 +44,8 @@ public class MemberInsertController extends HttpServlet {
 //		Member m = new Member(userId, userPwd, email, userName,
 //							  phone, location, gender);
 		
-		Member m = new Member(userId, userPwd, email, nikName,
-		  phone, location, gender);
+		Member m = new Member(userId, userPwd, nickname, phone,
+		  gender, email, location);
 		
 		int result = new MemberService().insertMember(m);
 		

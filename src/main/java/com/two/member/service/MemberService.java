@@ -33,4 +33,9 @@ public class MemberService {
 		sqlSession.close();
 		return result;
 	}
+	
+	public String idFind(String nickname, String phone) {
+		SqlSession sqlSession = Template.getSqlSession();
+        return mDao.idFind(sqlSession, nickname, phone);
+    }
 }

@@ -18,7 +18,6 @@ import com.two.myPage.service.MyPageServiceImpl;
  */
 @WebServlet("/checkPwd.my")
 public class CheckPasswordController extends HttpServlet {
-	private MyPageService mpService = new MyPageServiceImpl();
 	
 	private static final long serialVersionUID = 1L;
        
@@ -34,6 +33,8 @@ public class CheckPasswordController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		MyPageService mpService = new MyPageServiceImpl();
+		
 		request.setCharacterEncoding("UTF-8");
 		
 		// jsp로부터 입력받은 password
