@@ -44,15 +44,21 @@ public class MemberPwdFindController extends HttpServlet {
         // 닉네임과 전화번호를 이용하여 userPwd를 가져옵니다.
         String userPwd = memberService.pwdFind(m);
         System.out.println(userPwd);
-        if (userId != null) {
-            // userId가 존재할 경우
-            String message = "회원 비밀번호: " + userPwd;
-            String url = request.getContextPath();
-            String script = "<script>alert('" + message + "');";
-            script += "window.location='" + url + "';</script>";
-            response.setContentType("text/html; charset=UTF-8");
-            PrintWriter out = response.getWriter();
-            out.println(script);
+        if (userPwd != null) {
+            // userPwd가 존재할 경우
+//            String message = "회원 비밀번호: " + userPwd;
+//            String url = request.getContextPath();
+//            String script = "<script>alert('" + message + "');";
+//            script += "window.location='" + url + "';</script>";
+//            response.setContentType("text/html; charset=UTF-8");
+//            PrintWriter out = response.getWriter();
+//            out.println(script);
+            // userPwd가 존재할 경우
+            String message = "회원님의 비밀번호 : " + userPwd;
+            // successMsg에 비밀번호 메시지 저장
+            request.setAttribute("successMsg", message);
+            // FindResult.jsp로 포워딩
+            request.getRequestDispatcher("views/common/FindResult.jsp").forward(request, response);
         } else {
             // userId가 존재하지 않을 경우
             request.setAttribute("errorMsg", "해당하는 회원이 없습니다.");
