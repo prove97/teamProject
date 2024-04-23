@@ -39,7 +39,7 @@ public class ProductInsertController extends HttpServlet {
 		if (ServletFileUpload.isMultipartContent(request)) {
 			int maxSize = 1024 * 1024 * 10;
 			
-			String savePath = request.getSession().getServletContext().getRealPath("/resources/product_upfile");
+			String savePath = request.getSession().getServletContext().getRealPath("${pageContext.request.contextPath}/resources/product_upfile");
 			
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 			
@@ -56,7 +56,7 @@ public class ProductInsertController extends HttpServlet {
 			p.setProductStatus(multiRequest.getParameter("productStatus"));
 			
 			Attachment at = new Attachment();
-			at.setFilePath("resources/product_upfile");
+			at.setFilePath("${pageContext.request.contextPath}/resources/product_upfile");
 			
 			int result = new ProductServiceImpl().insertProduct(p, at);
 			

@@ -14,7 +14,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/style/login.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/style/idFind.css">
 </head>
 <body>
     <!-- 헤더 -->
@@ -28,11 +28,11 @@
 					<p id="login-font">아이디찾기</p>
 					<form action="${pageContext.request.contextPath}/idFind.me" method="post">
 					<div id="login-form">
-						<input type="text" placeholder="닉네임을 입력하세요" required id="id-input" name="userId"
+						<input type="text" placeholder="닉네임을 입력하세요" required id="id-input" name="nickname"
 							style="background-image: url(${pageContext.request.contextPath}/resources/image/idInput.png);">
 					</div>
 					<div id="login-form">
-						<input type="text" placeholder="전화번호를 입력하세요" required id="pwd-input" name="userPwd"
+						<input type="text" placeholder="전화번호를 입력하세요" required id="pwd-input" name="phone"
 							style="background-image: url(${pageContext.request.contextPath}/resources/image/폰.png);">
 					</div>
 					<br>
