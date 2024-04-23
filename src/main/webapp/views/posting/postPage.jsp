@@ -23,7 +23,7 @@
     <%@ include file="../common/header.jsp" %>
         <br>
         <div class="category_header">
-            <div class="category_navi">
+            <div class="category_navi" style="display:none">
                 <div>🏠 홈</div>
                 <div style="width: 30px; justify-content: center;">></div>
                 <div class="category_bar1" style="padding: 3px;">
@@ -110,22 +110,18 @@
         </div>
         
         <div class="seller_part">
-            <div class="seller_part">
+            <div class="seller_info">
                 <div>
                     <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" id="seller">
                 </div>
                 <div>
-                    <p>판매자아이디</p>
+                    <p>${p.nickName}</p>
                 </div>
             </div>
-            <div class="score">
-                <div>
-                    <p style="text-align: center; margin-bottom: 5px;">밝음 수치 40lux</p>
-                </div>
-                <div class="score_bar">
-                    <!-- <div id="total_score"></div> -->
-                    <div id="colored_score1"></div>
-                    <div id="empty_score1"></div>
+            <div id="SellerBrightnessRate" style="height: 35px;">
+                <p style="font-size: 14px; margin: 0; width: 100%">밝음 수치: ${p.score} lux</p>
+                <div class="progress" style="width: 120px; height: 14px;  border-radius: 10px; border: 0.1px solid darkgray;" >
+                    <div id="progress-bar" style="width:${p.score}%; background: #70C9A0;"></div>
                 </div>
             </div>
         </div>
@@ -174,7 +170,7 @@
         </div>
         <div class="comment_part" id="comment_banner_menu1">
             <div class="purchase_request">
-                <p class="purchase_method">[직거래 신청]</p>
+                <p class="purchase_method">[구매 신청]</p>
                 <p class="time_of_writing1">2024.03.27 16:08</p>
                 <div class="buyer">
                     <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" class="buyer_pic">
@@ -189,7 +185,7 @@
                 </div>
             </div>
             <div class="purchase_request">
-                <p class="purchase_method">[택배거래 신청]</p>
+                <p class="purchase_method">[구매 신청]</p>
                 <p class="time_of_writing1">2024.03.27 16:31</p>
                 <div class="buyer">
                     <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" class="buyer_pic">
