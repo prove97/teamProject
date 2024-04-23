@@ -43,11 +43,9 @@
  
 
         <div id="searchBar">
-            <form action="search.pr" method="get">
-            	<input type="hidden" name="cpage" value="1">
-                <input type="text" name="keyword" value="${keyword }">
-                <button type="submit" id="searchBtn" style="background-image: url(${pageContext.request.contextPath}/resources/image/searchBtn.png);"></button>
-            </form> 
+                <input type="text" onkeyup="enter(event);" id="searchKeyword"name="keyword" value="${keyword }">
+                <button type="button" onclick="contentsFunction(cpage)"  id="searchBtn" style="background-image: url(${pageContext.request.contextPath}/resources/image/searchBtn.png);"></button>
+
         </div>     
             <!-- 로그인 전 -->
          <c:choose>
