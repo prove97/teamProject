@@ -100,6 +100,29 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
+	public int selectcateCount(HashMap<String, String> map) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		int cateCount = pDao.selectcateCount(sqlSession, map);
+		
+		sqlSession.close();
+		
+		return cateCount;
+	}
+
+	@Override
+	public ArrayList<Product> selectcateList(HashMap<String, String> map, PageInfo pi) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		ArrayList<Product> list = pDao.selectcateList(sqlSession, map, pi);
+		
+		sqlSession.close();
+		
+		return list;
+	}
+
+
+	@Override
 	public ArrayList<Reply> selectReplyList(int goodsId) {
 		SqlSession sqlSession = Template.getSqlSession();
 		ArrayList<Reply> replyList = pDao.selectReplyList(sqlSession, goodsId);

@@ -71,4 +71,17 @@ public class ProductDao {
 	public ArrayList<Nreply> selectNreplyList(SqlSession sqlSession, int goodsId) {
 		return (ArrayList)sqlSession.selectList("productMapper.selectNreplyList", goodsId);
 	}
+	
+	public int selectcateCount(SqlSession sqlSession, HashMap<String, String> map) {
+		return sqlSession.selectOne("productMapper.selectcateCount", map);
+	}
+	
+	public ArrayList<Product> selectcateList(SqlSession sqlSession, HashMap<String, String> map, PageInfo pi){
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		
+		return (ArrayList)sqlSession.selectList("productMapper.selectcateList", map, rowBounds);
+	}
 }

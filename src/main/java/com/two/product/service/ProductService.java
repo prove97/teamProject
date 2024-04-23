@@ -20,4 +20,6 @@ public interface ProductService {
 	public ArrayList<Request> selectRequestList(int goodsId);
 	public ArrayList<Reply> selectReplyList(int goodsId);
 	public ArrayList<Nreply> selectNreplyList(int goodsId);
+	public int selectcateCount(HashMap<String, String> map);
+	public ArrayList<Product> selectcateList(HashMap<String, String> map, PageInfo pi);
 }
