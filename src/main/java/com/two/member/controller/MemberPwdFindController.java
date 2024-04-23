@@ -13,16 +13,16 @@ import com.two.member.model.vo.Member;
 import com.two.member.service.MemberService;
 
 /**
- * Servlet implementation class MemberIdFindController
+ * Servlet implementation class MemberPwdFindController
  */
-@WebServlet("/idFind.me")
-public class MemberIdFindController extends HttpServlet {
+@WebServlet("/pwdFind.me")
+public class MemberPwdFindController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberIdFindController() {
+    public MemberPwdFindController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,22 +33,20 @@ public class MemberIdFindController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
         // 닉네임과 전화번호를 파라미터로부터 가져옵니다.
+        String userId = request.getParameter("userId");
         String nickname = request.getParameter("nickname");
         String phone = request.getParameter("phone");
 
-//        Member m = new Member();
-//        m.setNickname(nickname);
-//        m.setPhone(phone);
-		Member m = new Member(nickname, phone);
+		Member m = new Member(userId, nickname, phone);
         
         // 서비스 객체 생성
         MemberService memberService = new MemberService();
-        // 닉네임과 전화번호를 이용하여 userId를 가져옵니다.
-        String userId = memberService.idFind(m);
-        System.out.println(userId);
+        // 닉네임과 전화번호를 이용하여 userPwd를 가져옵니다.
+        String userPwd = memberService.pwdFind(m);
+        System.out.println(userPwd);
         if (userId != null) {
             // userId가 존재할 경우
-            String message = "회원 아이디: " + userId;
+            String message = "회원 비밀번호: " + userPwd;
             String url = request.getContextPath();
             String script = "<script>alert('" + message + "');";
             script += "window.location='" + url + "';</script>";
