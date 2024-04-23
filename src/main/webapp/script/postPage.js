@@ -40,4 +40,4 @@ function timeForToday(value) {
         return `${Math.floor(betweenTimeDay / 365)}년전`;
  }
  
- document.getElementById("enrollDate").innerText = "⏱️ " + timeForToday("${p.enrollDate}");
+ document.getElementById("enrollDate").innerText = "⏱️ " + timeForToday(new Date(document.getElementById("enrollDate").innerText));
