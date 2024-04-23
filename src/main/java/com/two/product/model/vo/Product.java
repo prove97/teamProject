@@ -1,6 +1,7 @@
 package com.two.product.model.vo;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class Product {
 	private int goodsId;
@@ -16,7 +17,7 @@ public class Product {
 	private String returnPd;
 	private String locationT;
 	private String productStatus;
-	private String nickName;
+	private String nickname;
 	private int score;
 	
 	public Product() {
@@ -25,7 +26,7 @@ public class Product {
 
 	public Product(int goodsId, int sellerNo, String categoryM, String title, String status, int sellPrice,
 			int viewCount, String pExplain, Date enrollDate, int loveIt, String returnPd, String locationT,
-			String productStatus, String nickName, int score) {
+			String productStatus, String nickname, int score) {
 		super();
 		this.goodsId = goodsId;
 		this.sellerNo = sellerNo;
@@ -40,7 +41,7 @@ public class Product {
 		this.returnPd = returnPd;
 		this.locationT = locationT;
 		this.productStatus = productStatus;
-		this.nickName = nickName;
+		this.nickname = nickname;
 		this.score = score;
 	}
 
@@ -148,12 +149,12 @@ public class Product {
 		this.productStatus = productStatus;
 	}
 
-	public String getNickName() {
-		return nickName;
+	public String getnickname() {
+		return nickname;
 	}
 
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
+	public void setnickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 	public int getScore() {
@@ -169,7 +170,7 @@ public class Product {
 		return "Product [goodsId=" + goodsId + ", sellerNo=" + sellerNo + ", categoryM=" + categoryM + ", title="
 				+ title + ", status=" + status + ", sellPrice=" + sellPrice + ", viewCount=" + viewCount + ", pExplain="
 				+ pExplain + ", enrollDate=" + enrollDate + ", loveIt=" + loveIt + ", returnPd=" + returnPd
-				+ ", locationT=" + locationT + ", productStatus=" + productStatus + ", nickName=" + nickName
+				+ ", locationT=" + locationT + ", productStatus=" + productStatus + ", nickname=" + nickname
 				+ ", score=" + score + "]";
 	}
 }

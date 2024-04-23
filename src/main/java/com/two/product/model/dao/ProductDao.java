@@ -8,7 +8,10 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.two.attachment.model.vo.Attachment;
 import com.two.common.model.vo.PageInfo;
+import com.two.product.model.vo.Nreply;
 import com.two.product.model.vo.Product;
+import com.two.product.model.vo.Reply;
+import com.two.product.model.vo.Request;
 
 public class ProductDao {
 	public int selectListCount(SqlSession sqlSession) {
@@ -55,6 +58,18 @@ public class ProductDao {
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
 		return (ArrayList)sqlSession.selectList("productMapper.selectSearchList", map, rowBounds);
+	}
+
+	public ArrayList<Request> selectRequestList(SqlSession sqlSession, int goodsId) {
+		return (ArrayList)sqlSession.selectList("productMapper.selectRequestList", goodsId);
+	}
+
+	public ArrayList<Reply> selectReplyList(SqlSession sqlSession, int goodsId) {
+		return (ArrayList)sqlSession.selectList("productMapper.selectReplyList", goodsId);
+	}
+
+	public ArrayList<Nreply> selectNreplyList(SqlSession sqlSession, int goodsId) {
+		return (ArrayList)sqlSession.selectList("productMapper.selectNreplyList", goodsId);
 	}
 	
 	public int selectcateCount(SqlSession sqlSession, HashMap<String, String> map) {
