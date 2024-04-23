@@ -48,13 +48,18 @@ public class MemberIdFindController extends HttpServlet {
         System.out.println(userId);
         if (userId != null) {
             // userId가 존재할 경우
-            String message = "회원 아이디: " + userId;
-            String url = request.getContextPath();
-            String script = "<script>alert('" + message + "');";
-            script += "window.location='" + url + "';</script>";
-            response.setContentType("text/html; charset=UTF-8");
-            PrintWriter out = response.getWriter();
-            out.println(script);
+//            String message = "회원 아이디: " + userId;
+//            String url = request.getContextPath();
+//            String script = "<script>alert('" + message + "');";
+//            script += "window.location='" + url + "';</script>";
+//            response.setContentType("text/html; charset=UTF-8");
+//            PrintWriter out = response.getWriter();
+//            out.println(script);
+            String message = "회원님의 아이디 : " + userId;
+            // successMsg에 비밀번호 메시지 저장
+            request.setAttribute("successMsg", message);
+            // FindResult.jsp로 포워딩
+            request.getRequestDispatcher("views/common/FindResult.jsp").forward(request, response);
         } else {
             // userId가 존재하지 않을 경우
             request.setAttribute("errorMsg", "해당하는 회원이 없습니다.");

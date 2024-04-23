@@ -1,0 +1,45 @@
+body{
+    display: flex;
+    justify-content: center;
+    height: 1280px;
+    position: relative;
+}
+
+.main{
+    width: 1151px;
+    height: 100%;
+    text-align: center;
+}
+
+#submit-button{
+    width: 200px;
+    height: 60px;
+    color: white;
+    background: #70C9A0;
+    border-radius: 15px;
+    border-style: none;
+    opacity: 0.6;
+    font-size: 20px;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+#font{
+    margin-top: 200px;
+    margin-bottom: 50px;
+    font-size: 50px;
+    color: #70C9A0;
+
+}
+
+.result-area{
+    border: 5px solid #B5B5B5;
+    width: 600px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+#img1{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
