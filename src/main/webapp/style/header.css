@@ -33,11 +33,9 @@
     width: 553px;
     margin-left: 130px;
     height: 35px;
-}
-#searchBar form{
-    height: 100%;
     position: relative;
 }
+
 #searchBar input{
     width: 100%;
     height: 100%;

@@ -17,10 +17,11 @@ public class MemberDao {
 		return result;
 	}
 	
-	public String idFind(SqlSession sqlSession, String nickname, String phone) {
-	    Map<String, String> paramMap = new HashMap<>();
-	    paramMap.put("nickname", nickname);
-	    paramMap.put("phone", phone);
-	    return sqlSession.selectOne("memberMapper.idFind", paramMap);
+	public String idFind(SqlSession sqlSession, Member m) {
+	    return sqlSession.selectOne("memberMapper.idFind", m);
+	}
+	
+	public String pwdFind(SqlSession sqlSession, Member m) {
+	    return sqlSession.selectOne("memberMapper.pwdFind", m);
 	}
 }
