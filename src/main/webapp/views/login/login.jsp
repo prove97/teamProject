@@ -32,7 +32,7 @@
 							style="background-image: url(${pageContext.request.contextPath}/resources/image/idInput.png);">
 					</div>
 					<div id="login-form">
-						<input type="text" placeholder="비밀번호를 입력하세요" required id="pwd-input" name="userPwd"
+						<input type="password" placeholder="비밀번호를 입력하세요" required id="pwd-input" name="userPwd"
 							style="background-image: url(${pageContext.request.contextPath}/resources/image/pwdInput.png);">
 					</div>
 					<div id="save-id">
@@ -60,18 +60,20 @@
 			</div>
     </div>
     </section>
-    <script>
+
+	<script>
         document.getElementById('save-id').addEventListener('click', function() {
-            var checkbox = document.getElementById('save-checkbox');
+            let checkbox = document.getElementById('save-checkbox');
             checkbox.checked = !checkbox.checked;
         });
         document.getElementById('save-checkbox').addEventListener('click', function() {
-            var checkbox = document.getElementById('save-checkbox');
+            let checkbox = document.getElementById('save-checkbox');
             checkbox.checked = !checkbox.checked;
         });
-        </script>
+    </script>
 
     <!-- 푸터 -->
     <%@ include file="/views/common/footer.jsp" %>
+
 </body>
 </html>
