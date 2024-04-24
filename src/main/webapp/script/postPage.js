@@ -78,3 +78,8 @@ function formatDate(originalDate) {
     };
     return new Intl.DateTimeFormat('ko-KR', options).format(date);
 }
+
+const purchaseRequest = document.getElementById("purchase_requesting");
+document.getElementById("button3").onclick = function(){
+	purchaseRequest.style.display = "none";
+}
