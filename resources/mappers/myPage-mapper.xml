@@ -99,6 +99,8 @@
         FROM PRODUCT
         WHERE SELLER_NO = #{userNo}
         AND STATUS = '판매중'
+        ORDER BY GOODS_ID DESC
+        
     </select>
 
 	<!-- 로그인 유저의 판매완료글 개수 -->
@@ -107,7 +109,6 @@
         FROM PRODUCT
         WHERE SELLER_NO = #{userNo}
         AND NOT STATUS = '판매중'
-        
     </select>
 
     <!-- 로그인 유저의 판매완료글 조회 -->
@@ -126,7 +127,10 @@
                LOCATION_T,
                PRODUCT_STATUS
         FROM PRODUCT
-        WHERE NOT SELLER_NO = #{userNo}
+        WHERE SELLER_NO = #{userNo}
+        AND NOT STATUS = '판매중'
+        ORDER BY GOODS_ID DESC
+        
     </select>
     
     <!-- 로그인 유저의 전체 댓글 개수 조회 -->
