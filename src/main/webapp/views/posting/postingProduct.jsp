@@ -36,7 +36,7 @@
                        <!-- <p id="photo_count">(0/10)</p> -->
                    </td>
                    <td class="column2">
-                       <img id="product-img" name="attachment" src="${pageContext.request.contextPath}/img/fileImg.png" style="width: 144px; height: 150px;" onclick="chooseFile(1);">
+                       <img id="product-img" name="at" src="${pageContext.request.contextPath}/img/fileImg.png" style="width: 144px; height: 150px;" onclick="chooseFile(1);">
                    </td>
                </tr>
                <tr class="lines">

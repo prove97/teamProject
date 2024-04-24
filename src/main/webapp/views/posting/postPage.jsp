@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.Date, java.util.Calendar" %>
+<%@ page import="java.util.Date, java.util.Calendar, java.text.SimpleDateFormat" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -87,7 +87,8 @@
         
         <div class="main_part">
             <div>
-                <img src="${pageContext.request.contextPath}/img/airpod.jpeg" alt="" id="airpod">
+                <!-- <img src="${pageContext.request.contextPath}/img/airpod.jpeg" alt="" id="airpod"> -->
+                <img src="${pageContext.request.contextPath}/${attachment.filePath}/${attachment.changeName}" alt="" id="airpod">
             </div>
             <div>
                 <div><h2>${p.title}</h2></div>
@@ -188,6 +189,23 @@
 	                </div>
 	            </div>
         	</c:forEach>
+        	<div class="purchase_request" id="purchase_requesting" style="display: none">
+                <p class="purchase_method">[구매 신청 작성중]</p>
+                <p class="time_of_writing1"><%=new SimpleDateFormat("yyyy-MM-dd hh:mm").format(new Date()) %></p>
+                <div class="buyer">
+                    <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" class="buyer_pic">
+                    <p class="buyer_name">${p.nickname}</p>
+                    <div id="SellerBrightnessRate" style="height: 35px;">
+		                <p style="font-size: 14px; margin: 0; width: 100%">${p.score} lux</p>
+		                <div class="progress" style="width: 50px; height: 10px;  border-radius: 10px; border: 0.1px solid darkgray;" >
+		                    <div id="progress-bar" style="width:${p.score}%; background: #70C9A0;"></div>
+		                </div>
+		            </div>
+                </div>
+                <div class="suggested_price">
+                    <p>구매 희망 가격 : <input type="number" id="requestingPrice">원 <button type="button" id="requestingBtn">신청하기</button></p>
+                </div>
+            </div>
         </div>
         <div class="comment" id="comment_banner_menu2">
         
