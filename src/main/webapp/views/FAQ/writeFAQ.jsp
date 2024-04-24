@@ -148,7 +148,14 @@
         </table>
             <div align="center" style="padding-top: 30px;">
                 <button type="submit" style="border: 1px solid #8BD3B2;">문의하기</button>
-                <button type="reset" style="border: 1px solid #8BD3B2;">취소하기</button>
+                <button type="button" id="cancel-btn" style="border: 1px solid #8BD3B2;">취소하기</button>
+                
+                <script>
+				    document.getElementById("cancel-btn").addEventListener("click", function() {
+				        location.href = "indexToMyPage.my";
+				   	 });
+				</script>
+                
             </div>
      </form>
    </div>

@@ -9,7 +9,7 @@
 		<result column="USER_NO" property="userNo"/>
 		<result column="FAQ_TITLE" property="faqTitle"/>
 		<result column="ANSWER" property="answer"/>
-		<result column="FAQ_CONTENTS" property="faqContents"/>
+		<result column="FAQ_CONTENTS" property="faqCntents"/>
 		<result column="FAQ_DATE" property="faqDate"/>
 	</resultMap>
 	
@@ -33,29 +33,36 @@
           WHERE USER_ID = #{userId}
     </select>
     
-    <!-- 첨부파일 삽입 -->
-    <insert id="insertAttachment">
-        INSERT INTO ATTACHMENT(
-            ORIGIN_NAME,
-            CHANGE_NAME,
-            FILE_PATH
-        ) VALUES (
-            #{originName},
-            #{changeName},
-            #{filePath}
-        )
+    <insert id="insertFaq">
+    	INSERT INTO FAQ(
+				    USER_NO,
+				    FAQ_TITLE,
+				    FAQ_CONTENTS,
+				    FAQ_DATE
+				)
+				VALUES (
+				    SEQ_FNO.CURRVAL,
+				    #{f.faqTitle},
+				    #{f.faqContents},
+				    SYSDATE
+				)
     </insert>
     
-    <!-- 1:1 문의 삽입 -->
-	<insert id="insertFaq">
-	    INSERT INTO FAQ(
-	        USER_NO,
-	        FAQ_TITLE,
-	        FAQ_CONTENTS
-	    ) VALUES (
-	        #{userNo},
-	        #{faqTitle},
-	        #{faqContents}
-	    )
-	</insert>
+    <insert id="insertAttachment">
+    	INSERT INTO ATTACHMENT(
+    	            FILE_NO,
+					REF_BNO,
+					FILE_LEVEL,
+					FILE_PATH,
+					ORIGIN_NAME,
+					CHANGE_NAME
+    	            )
+			 VALUES (
+				    SEQ_FNO.NEXTVAL,
+				    SEQ_FNO.CURRVAL,
+				    #{f.faqTitle},
+				    #{f.faqContents},
+				    SYSDATE
+				)
+    </insert>
 </mapper>

@@ -41,6 +41,24 @@ public class FaqServiceImpl implements FaqService{
 		
 		return result1 * result2;
 	}
+
+	@Override
+	public int insertFaq(Faq f, Attachment at) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		int result1 = new FaqDao().insertFaq(sqlSession, f);
+		int result2 = new FaqDao().insertAttachment(sqlSession, at);
+		
+		if(result1 > 0 && result2 > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		
+		return result1 * result2;
+	}
 	
 	
 	
