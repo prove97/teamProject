@@ -26,7 +26,6 @@ public class IndexToFaqController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 자주 묻는 질문
 		request.getRequestDispatcher("views/FAQ/mainFAQ.jsp").forward(request, response);
 	}
 

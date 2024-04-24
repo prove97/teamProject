@@ -33,13 +33,16 @@ public class FaqListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//나의 문의내역
+		int listCount = new FaqServiceImpl().selectListCount(); //현재 총 문의내역 수 
+		int currentPage = Integer.parseInt(request.getParameter("cpage"));
 		
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 5);
+		ArrayList<Faq> list = new FaqServiceImpl().selectList(pi);
 		
-		ArrayList<Faq> list = new FaqServiceImpl().selectFaqList();
-		//응답뷰
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("views/FAQ/myFAQ.jsp").forward(request, response);
+		request.setAttribute("pi", pi);
+		
+		request.getRequestDispatcher("WEB-INF/views/FAQ/myFAQ.jsp").forward(request, response);
 		
 	}
 
