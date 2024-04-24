@@ -183,13 +183,11 @@
                         </tr>
                     </c:forEach>
 
-                    <c:set var="list" value="${list}" />
                     <c:set var="listSize" value="${fn:length(list)}" />
                     <c:set var="bLimit" value="${pi.boardLimit}" />
                     <c:forEach var="i" begin="1" end="${bLimit - listSize}">
                         <tr class="nullCommentSpace"></tr>
                     </c:forEach>
-                    <c:remove var="list" />
                     <c:remove var="listSize" />
                     <c:remove var="bLimit" />
 
