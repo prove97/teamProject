@@ -81,5 +81,5 @@ function formatDate(originalDate) {
 
 const purchaseRequest = document.getElementById("purchase_requesting");
 document.getElementById("button3").onclick = function(){
-	purchaseRequest.style.display = "none";
+	purchaseRequest.style.display = "block";
 }

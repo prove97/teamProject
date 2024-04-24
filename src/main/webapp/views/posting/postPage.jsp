@@ -81,6 +81,7 @@
                 </div>
             </div>
             <div class="report">
+                <button type="button" id="modifyBtn" style="margin-right: 30px; color: black; width: 70px; height: 30px; text-size: 10px;">수정하기</button>
                 <a href="indexToFaq.fa">☏ 신고하기</a>
             </div>
         </div>
@@ -113,16 +114,16 @@
         <div class="seller_part">
             <div class="seller_info">
                 <div>
-                    <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" id="seller">
+                    <img src="${pageContext.request.contextPath}/img/프사.jpg" alt="" id="seller">
                 </div>
                 <div>
-                    <p id="sellerName">${p.nickname}</p>
+                    <p id="sellerName">${loginUser.nickname}</p>
                 </div>
             </div>
             <div id="SellerBrightnessRate" style="height: 35px; position: absolute; left: 180px; top: 15px;">
-                <p style="font-size: 14px; margin: 0; width: 100%">밝음 수치: ${p.score} lux</p>
+                <p style="font-size: 14px; margin: 0; width: 100%">밝음 수치: ${loginUser.score} lux</p>
                 <div class="progress" style="width: 120px; height: 14px;  border-radius: 10px; border: 0.1px solid darkgray;" >
-                    <div id="progress-bar" style="width:${p.score}%; background: #70C9A0;"></div>
+                    <div id="progress-bar" style="width:${loginUser.score}%; background: #70C9A0;"></div>
                 </div>
             </div>
         </div>
@@ -175,7 +176,7 @@
 	                <p class="purchase_method">[구매 신청]</p>
 	                <p class="time_of_writing1">${q.requestDate}</p>
 	                <div class="buyer">
-	                    <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" class="buyer_pic">
+	                    <img src="${pageContext.request.contextPath}/img/프사.jpg" alt="" class="buyer_pic">
 	                    <p class="buyer_name">${q.nickname}</p>
 	                    <div id="SellerBrightnessRate" style="height: 35px;">
 			                <p style="font-size: 14px; margin: 0; width: 100%">${q.score} lux</p>
@@ -193,12 +194,12 @@
                 <p class="purchase_method">[구매 신청 작성중]</p>
                 <p class="time_of_writing1"><%=new SimpleDateFormat("yyyy-MM-dd hh:mm").format(new Date()) %></p>
                 <div class="buyer">
-                    <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" class="buyer_pic">
-                    <p class="buyer_name">${p.nickname}</p>
+                    <img src="${pageContext.request.contextPath}/img/프사.jpg" alt="" class="buyer_pic">
+                    <p class="buyer_name">${loginUser.nickname}</p>
                     <div id="SellerBrightnessRate" style="height: 35px;">
-		                <p style="font-size: 14px; margin: 0; width: 100%">${p.score} lux</p>
+		                <p style="font-size: 14px; margin: 0; width: 100%">${loginUser.score} lux</p>
 		                <div class="progress" style="width: 50px; height: 10px;  border-radius: 10px; border: 0.1px solid darkgray;" >
-		                    <div id="progress-bar" style="width:${p.score}%; background: #70C9A0;"></div>
+		                    <div id="progress-bar" style="width:${loginUser.score}%; background: #70C9A0;"></div>
 		                </div>
 		            </div>
                 </div>
@@ -207,11 +208,40 @@
                 </div>
             </div>
         </div>
-        <div class="comment" id="comment_banner_menu2">
-        
-        	<c:forEach var="r" items="${replyList}">
-        		<div class="buyer" style="margin-bottom: 20px;">
-	                <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" class="buyer_pic">
+        <div>
+	        <div class="comment" id="comment_banner_menu2">
+	        	<c:forEach var="r" items="${replyList}">
+	        		<div class="buyer" style="margin-bottom: 20px;">
+		                <img src="${pageContext.request.contextPath}/img/프사.jpg" alt="" class="buyer_pic">
+		                <p class="buyer_name">${r.nickname}</p>
+		                <div id="SellerBrightnessRate" style="height: 35px;">
+			                <p style="font-size: 14px; margin: 0; width: 100%">${r.score} lux</p>
+			                <div class="progress" style="width: 50px; height: 10px;  border-radius: 10px; border: 0.1px solid darkgray;" >
+			                    <div id="progress-bar" style="width:${r.score}%; background: #70C9A0;"></div>
+			                </div>
+			            </div>
+		            </div>
+		            <div class="first_comment">
+		                <p style="font-size: 20px;">${r.replyContent}</p>
+		            </div>
+		            <div>
+		                <p class="time_of_writing2">${r.replyDate}</p>
+		                <p class="extension_button">▽</p>
+		            </div>
+		            
+		            <c:forEach var="n" items="${nreplyList}">
+		            	<div class="reply">
+			                <p>↳</p>
+			                <img src="${pageContext.request.contextPath}/img/프사.jpg" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin: 0px 5px;">
+			                <p class="comment_reply">${n.nreplyContent}</p>
+			                <p class="time_of_writing3">${n.nreplyDate}</p>
+			            </div>
+		            </c:forEach>
+	        	</c:forEach>
+	        </div>
+	        <div class="comment">
+	        	<div class="buyer" style="margin-bottom: 20px;">
+	                <img src="${pageContext.request.contextPath}/img/프사.jpg" alt="" class="buyer_pic">
 	                <p class="buyer_name">${r.nickname}</p>
 	                <div id="SellerBrightnessRate" style="height: 35px;">
 		                <p style="font-size: 14px; margin: 0; width: 100%">${r.score} lux</p>
@@ -221,22 +251,13 @@
 		            </div>
 	            </div>
 	            <div class="first_comment">
-	                <p style="font-size: 20px;">${r.replyContent}</p>
+	                <p style="font-size: 20px;"><input type="text" id="replying" placeholder="댓글 입력"> <button type="button" id="replyingBtn">작성</button></p>
 	            </div>
 	            <div>
-	                <p class="time_of_writing2">${r.replyDate}</p>
+	                <p class="time_of_writing2"><%=new SimpleDateFormat("yyyy-MM-dd hh:mm").format(new Date()) %></p>
 	                <p class="extension_button">▽</p>
 	            </div>
-	            
-	            <c:forEach var="n" items="${nreplyList}">
-	            	<div class="reply">
-		                <p>↳</p>
-		                <img src="${pageContext.request.contextPath}/img/seller.jpeg" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin: 0px 5px;">
-		                <p class="comment_reply">${n.nreplyContent}</p>
-		                <p class="time_of_writing3">${n.nreplyDate}</p>
-		            </div>
-	            </c:forEach>
-        	</c:forEach>
+	        </div>
         </div>
     <%@ include file="../common/footer.jsp" %>
     </div>
