@@ -125,28 +125,32 @@
    
    <!-- 메인 -->
     <section class="main">
-   <div style="width: 100%; padding-left: 174px;">
-      <div class="FAQ-title">
-         <h1 id="title-text">1:1 문의하기</h1>
-      </div>
-      <fieldset class="write-area">
-         <div>
-            <input type="text" name="title" id="title-input" placeholder="제목"
-               required>
+        <div class="FAQ-title">
+            <h1 style="padding-left: 170px;">1:1 문의하기</h1>
          </div>
-         <div>
-            <textarea name="content" id="content-input" placeholder="내용"
-               required></textarea>
-         </div>
-         <div>
-            <div class="button-input">
-               첨부 파일 : <input type="file" name="" id="">
+   <div style="width: 100%;" align="center">
+      
+      <form id="write-form" action="insert.fa" method="post" enctype="multipart/form-data">
+        <table class="write-area">
+            <tbody>
+                <tr>
+                    <td><input type="text" name="title" id="title-input" placeholder="제목" required></td>
+                </tr>
+                <tr>
+                    <td><textarea name="content" id="content-input" placeholder="내용" required></textarea></td>
+                </tr>
+                <tr style="height: 60px;">
+                    <td align="center"> 첨부파일 : 
+                        <input type="file" name="upfile">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+            <div align="center" style="padding-top: 30px;">
+                <button type="submit" style="border: 1px solid #8BD3B2;">문의하기</button>
+                <button type="reset" style="border: 1px solid #8BD3B2;">취소하기</button>
             </div>
-            <div>
-               <input type="submit" value="문의하기" id="submit-input">
-            </div>
-         </div>
-      </fieldset>
+     </form>
    </div>
 </section>
    <!-- 푸터 -->
