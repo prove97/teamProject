@@ -92,4 +92,8 @@ public class ProductDao {
 	public Attachment selectAttachment(SqlSession sqlSession, int goodsId) {
 		return sqlSession.selectOne("productMapper.selectAttachment", goodsId);
 	}
+
+	public int deleteProduct(SqlSession sqlSession, int goodsId) {
+		return sqlSession.update("productMapper.deleteProduct", goodsId);
+	}
 }

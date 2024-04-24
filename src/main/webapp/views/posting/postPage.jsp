@@ -81,8 +81,11 @@
                 </div>
             </div>
             <div class="report">
-                <button type="button" id="modifyBtn" style="margin-right: 30px; color: black; width: 70px; height: 30px; text-size: 10px;">수정하기</button>
                 <a href="indexToFaq.fa">☏ 신고하기</a>
+                <form action="delete.pr" method="post">
+                	<input type="hidden" name="goodsId" value="${p.goodsId}"/>
+                	<button type="submit" id="modifyBtn" style="margin-left: 30px; color: black; width: 90px; height: 30px; font-size: 13px; border-radius: 5px; font-weight: 600;">✂️삭제하기</button>
+                </form>
             </div>
         </div>
         
@@ -204,13 +207,16 @@
 		            </div>
                 </div>
                 <div class="suggested_price">
-                    <p>구매 희망 가격 : <input type="number" id="requestingPrice">원 <button type="button" id="requestingBtn">신청하기</button></p>
+                	<form action="insert.req">
+                    	<p>구매 희망 가격 : <input type="number" id="requestingPrice">원 <button type="button" id="requestingBtn">신청하기</button></p>
+                    </form>
                 </div>
             </div>
         </div>
         <div>
-	        <div class="comment" id="comment_banner_menu2">
-	        	<c:forEach var="r" items="${replyList}">
+        	<c:forEach var="r" items="${replyList}">
+		        <div class="comment" id="comment_banner_menu2" style="display: none;">
+	        		<button type="button" id="nreplyingBtn">대댓글</button>
 	        		<div class="buyer" style="margin-bottom: 20px;">
 		                <img src="${pageContext.request.contextPath}/img/프사.jpg" alt="" class="buyer_pic">
 		                <p class="buyer_name">${r.nickname}</p>
@@ -237,25 +243,33 @@
 			                <p class="time_of_writing3">${n.nreplyDate}</p>
 			            </div>
 		            </c:forEach>
-	        	</c:forEach>
-	        </div>
-	        <div class="comment">
+		            
+		            <div class="reply" style="display: none;">
+		                <p>↳</p>
+		                <img src="${pageContext.request.contextPath}/img/프사.jpg" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin: 0px 5px;">
+		                <p class="comment_reply">${n.nreplyContent}</p>
+		                <p class="time_of_writing3">${n.nreplyDate}</p>
+		            </div>
+		        </div>
+        	</c:forEach>
+	        <div class="comment" id="replying" style="display: none;">
 	        	<div class="buyer" style="margin-bottom: 20px;">
 	                <img src="${pageContext.request.contextPath}/img/프사.jpg" alt="" class="buyer_pic">
-	                <p class="buyer_name">${r.nickname}</p>
+	                <p class="buyer_name">${loginUser.nickname}</p>
 	                <div id="SellerBrightnessRate" style="height: 35px;">
-		                <p style="font-size: 14px; margin: 0; width: 100%">${r.score} lux</p>
+		                <p style="font-size: 14px; margin: 0; width: 100%">${loginUser.score} lux</p>
 		                <div class="progress" style="width: 50px; height: 10px;  border-radius: 10px; border: 0.1px solid darkgray;" >
-		                    <div id="progress-bar" style="width:${r.score}%; background: #70C9A0;"></div>
+		                    <div id="progress-bar" style="width:${loginUser.score}%; background: #70C9A0;"></div>
 		                </div>
 		            </div>
 	            </div>
 	            <div class="first_comment">
-	                <p style="font-size: 20px;"><input type="text" id="replying" placeholder="댓글 입력"> <button type="button" id="replyingBtn">작성</button></p>
+	            	<form action="insert.rep">
+	                	<p style="font-size: 20px;"><input type="text" id="replyingComment" placeholder="댓글 입력"> <button type="button" id="replyingBtn">작성</button></p>
+	            	</form>
 	            </div>
 	            <div>
 	                <p class="time_of_writing2"><%=new SimpleDateFormat("yyyy-MM-dd hh:mm").format(new Date()) %></p>
-	                <p class="extension_button">▽</p>
 	            </div>
 	        </div>
         </div>

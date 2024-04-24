@@ -153,4 +153,19 @@ public class ProductServiceImpl implements ProductService{
 		sqlSession.close();
 		return at;
 	}
+
+	@Override
+	public int deleteProduct(int goodsId) {
+		SqlSession sqlSession = Template.getSqlSession();
+		int result = new ProductDao().deleteProduct(sqlSession, goodsId);
+		
+		if(result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		return result;
+	}
 }

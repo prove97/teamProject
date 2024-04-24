@@ -63,10 +63,6 @@ public class ProductInsertController extends HttpServlet {
 				at.setOriginName(multiRequest.getOriginalFileName("attachment"));
 				at.setChangeName(multiRequest.getFilesystemName("attachment"));
 				at.setFilePath("resources/product_upfile");
-				
-				System.out.println(at.getOriginName());
-				System.out.println(at.getFilePath());
-				System.out.println(at.getChangeName());
 			}
 			
 			int result = new ProductServiceImpl().insertProduct(p, at);

@@ -307,9 +307,6 @@ hr{
     right: 100px;
     color: gray;
 }
-.comment{
-    display: none;
-}
 .reply{
 position: relative;
 }
@@ -330,4 +327,25 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     height: 35px;
     font-size: 15px;
     margin-left: 30px;
+}
+#replyingBtn{
+	background-color: mediumseagreen;
+    border: 0px;
+    color: white;
+    width: 70px;
+    height: 35px;
+    font-size: 15px;
+    margin-left: 10px;
+}
+#nreplyingBtn{
+	background-color: mediumseagreen;
+    border: 0px;
+    color: white;
+    width: 60px;
+    height: 25px;
+    font-size: 15px;
+    margin-left: 10px;
+    position: absolute;
+    top: 5px;
+    right: 100px;
 }
