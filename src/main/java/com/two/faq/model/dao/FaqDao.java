@@ -15,7 +15,12 @@ public class FaqDao {
 		return (ArrayList)sqlSession.selectList("faqMapper.selectFaqList");
 	}
 	
+	public int insertFaq(SqlSession sqlSession, Faq f) {
+	    return sqlSession.insert("faqMapper.insertAttachment", f);
+	}
+	
 	public int insertAttachment(SqlSession sqlSession, Attachment at) {
 	    return sqlSession.insert("faqMapper.insertAttachment", at);
 	}
+	
 }

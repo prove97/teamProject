@@ -1,5 +1,6 @@
 package com.two.faq.service;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
@@ -26,22 +27,19 @@ public class FaqServiceImpl implements FaqService{
 
 	//1:1 문의 등록
 	@Override
-	public int insertFaq(Faq f, Attachment at) {
-	    SqlSession sqlSession = MyBatisUtil.getSqlSession();
-	    int result1 = fDao.insertFaq(sqlSession, f);
-	    
-	    // 첨부 파일 정보도 저장
-	    if(at != null) {
-	        int result2 = fDao.insertAttachment(sqlSession, at);
-	        if(result2 > 0) {
-	            sqlSession.commit();
-	        } else {
-	            sqlSession.rollback();
-	        }
-	    }
-	    
-	    sqlSession.close();
-	    return result1;
+	public int insertAttachment(Faq f, Attachment at) {
+		SqlSession sqlSession = Template.getSqlSession();
+		FaqDao bDao = new FaqDao();
+		int result1 = bDao.insertAttachment(sqlSession, at);
+		int result2 = 1;
+		
+		if (at != null) {
+			result2 = bDao.insertFaq(sqlSession, f);
+		}
+		
+		sqlSession.close();
+		
+		return result1 * result2;
 	}
 	
 	

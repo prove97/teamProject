@@ -114,10 +114,10 @@
         display: none;
         height: 110px;
         width: 831px;
-        border: 1 none none;
         border-style: none;
         background: #D6EFE3;
         border-radius: 5px;
+        padding-top: 20px;
     }
 
     /*  푸터div  */
@@ -179,8 +179,7 @@
                                      cursor: pointer;">광고성 콘텐츠(상점)에요.</p>
                 <div class="hidden">
                     <!-- <p style="padding: 27px 0px 30px 36px; font-size: 20px; color: #545454; font-weight: bold;">광고성 콘텐츠(상점)에요.</p> -->
-                    <p style="padding-left: 36px; padding-bottom: 20px; color: #F24E1E;">상점 및 타사이트 홍보</p>
-                    <p style="padding-left: 36px; color: #F24E1E;">상품도배</p>
+                    <div style="padding-left: 36px; color: black; font-size: 20px;" >A : 1:1 게시글을 통해 사진과함께 문의 주시면 확인 후 정지 처리하겠습니다 감사합니다. </div>
                 </div>
             </div>
             <div id="FAQ2" onclick="toggleFAQ('2')">
@@ -188,8 +187,10 @@
                                      cursor: pointer;">상품 정보가 부정확해요.</p>
                 <div class="hidden">
                     <!-- <p style="padding: 27px 0px 30px 36px; font-size: 20px; color: #545454; font-weight: bold;">광고성 콘텐츠(상점)에요.</p> -->
-                    <p style="padding-left: 36px; padding-bottom: 20px; color: #F24E1E;">상점 및 타사이트 홍보</p>
-                    <p style="padding-left: 36px; color: #F24E1E;">상품도배</p>
+                    <p style="padding-left: 36px;color: black; font-size: 20px;">
+                        A : 사기품일 가능성이 높으니 본인을 인증할 수 있는 증거와 함께 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            상품의 사진을 요구하시길 바랍니다 감사합니다.
+                    </p>
                 </div>                                     
             </div>
             <div id="FAQ3" onclick="toggleFAQ('3')">
@@ -197,8 +198,8 @@
                                      cursor: pointer;">거래 금지 품목으로 판단돼요.</p>
                 <div class="hidden">
                     <!-- <p style="padding: 27px 0px 30px 36px; font-size: 20px; color: #545454; font-weight: bold;">광고성 콘텐츠(상점)에요.</p> -->
-                    <p style="padding-left: 36px; padding-bottom: 20px; color: #F24E1E;">상점 및 타사이트 홍보</p>
-                    <p style="padding-left: 36px; color: #F24E1E;">상품도배</p>
+                    <p style="padding-left: 36px; color: black; font-size: 20px;">A : 판매 안하시면됩니다 감사합니다.</p>
+                    <p style="padding-left: 36px; color: black; font-size: 20px;">B : 1:1 게시글을 통해 사진과함께 문의 주시면 확인 후 정지 처리하겠습니다 감사합니다. </p>
                 </div>                                     
             </div>
             <div id="FAQ4" onclick="toggleFAQ('4')">
@@ -206,8 +207,11 @@
                                      cursor: pointer;">사기가 의심돼요.</p>
                 <div class="hidden">
                     <!-- <p style="padding: 27px 0px 30px 36px; font-size: 20px; color: #545454; font-weight: bold;">광고성 콘텐츠(상점)에요.</p> -->
-                    <p style="padding-left: 36px; padding-bottom: 20px; color: #F24E1E;">상점 및 타사이트 홍보</p>
-                    <p style="padding-left: 36px; color: #F24E1E;">상품도배</p>
+                    <p style="padding-left: 36px; color: black; font-size: 20px;">
+                        A : 사기를 행한 행적이있는 알아볼 수 있는 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                        <a href="https://thecheat.co.kr/rb/?mod=_search">https://thecheat.co.kr/rb/?mod=_search</a> 
+                        으로 접속후 <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;확인하시길 바랍니다 감사합니다.</p>
                 </div>                                     
             </div>
             <div id="FAQ5" onclick="toggleFAQ('5')">
@@ -215,8 +219,7 @@
                                      cursor: pointer;">전문 업자 같아요.</p>
                 <div class="hidden">
                     <!-- <p style="padding: 27px 0px 30px 36px; font-size: 20px; color: #545454; font-weight: bold;">광고성 콘텐츠(상점)에요.</p> -->
-                    <p style="padding-left: 36px; padding-bottom: 20px; color: #F24E1E;">상점 및 타사이트 홍보</p>
-                    <p style="padding-left: 36px; color: #F24E1E;">상품도배</p>
+                    <p style="padding-left: 36px; color: black; font-size: 20px;">A : 1:1 게시글을 통해 사진과함께 문의 주시면 확인 후 정지 처리하겠습니다 감사합니다. </p>
                 </div>                                     
             </div>
             <div id="FAQ6" onclick="toggleFAQ('6')">
@@ -224,8 +227,7 @@
                                      cursor: pointer;">욕설 / 비방 / 혐오표현을 해요.</p>
                 <div class="hidden">
                     <!-- <p style="padding: 27px 0px 30px 36px; font-size: 20px; color: #545454; font-weight: bold;">광고성 콘텐츠(상점)에요.</p> -->
-                    <p style="padding-left: 36px; padding-bottom: 20px; color: #F24E1E;">상점 및 타사이트 홍보</p>
-                    <p style="padding-left: 36px; color: #F24E1E;">상품도배</p>
+                    <p style="padding-left: 36px; color: black; font-size: 20px;">A : 1:1 게시글을 통해 사진과함께 문의 주시면 확인 후 정지 처리하겠습니다 감사합니다. </p>
                 </div>                                     
             </div>
             <div id="FAQ7" onclick="toggleFAQ('7')">
@@ -233,8 +235,7 @@
                                      cursor: pointer;">부적절한 성적 행위(발언)를 해요.</p>
                 <div class="hidden">
                     <!-- <p style="padding: 27px 0px 30px 36px; font-size: 20px; color: #545454; font-weight: bold;">광고성 콘텐츠(상점)에요.</p> -->
-                    <p style="padding-left: 36px; padding-bottom: 20px; color: #F24E1E;">상점 및 타사이트 홍보</p>
-                    <p style="padding-left: 36px; color: #F24E1E;">상품도배</p>
+                    <p style="padding-left: 36px;color: black; font-size: 20px;">A : 1:1 게시글을 통해 사진과함께 문의 주시면 확인 후 정지 처리하겠습니다 감사합니다. </p>
                 </div>                                     
             </div>
             <div id="FAQ8" onclick="toggleFAQ('8')">
@@ -242,8 +243,7 @@
                                      cursor: pointer;">기타</p>
                 <div class="hidden">
                     <!-- <p style="padding: 27px 0px 30px 36px; font-size: 20px; color: #545454; font-weight: bold;">광고성 콘텐츠(상점)에요.</p> -->
-                    <p style="padding-left: 36px; padding-bottom: 20px; color: #F24E1E;">상점 및 타사이트 홍보</p>
-                    <p style="padding-left: 36px; color: #F24E1E;">상품도배</p>
+                    <p style="padding-left: 36px;color: black; font-size: 20px;">A : 1:1 문의를 주시면 차례대로 답변해드리고있습니다 감사합니다.</p>
                 </div>                                     
             </div>
         </div>

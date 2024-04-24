@@ -116,7 +116,7 @@ public class FaqInsertController extends HttpServlet {
 				at.setOriginName(multiRequest.getOriginalFileName("upfile"));
 				at.setChangeName(multiRequest.getFilesystemName("upfile"));
 				//어떻게 내 파일이 저장됬냐
-				at.setFilePath("resources/board_upfile/");
+				at.setFilePath("resources/product_upfile/");
 			}
 			
 			// 4. 서비스 요청 -> 어떤걸? 보드를
@@ -126,7 +126,7 @@ public class FaqInsertController extends HttpServlet {
 			// 5. 응답뷰 요청
 			if(result > 0) { //성공 -> 목록페이지로 보냄(kh/list.bo?cpage=1) (다른 url로 가면 무조건 response.sendRedirect)
 				request.getSession().setAttribute("alertMsg", "일반게시글 작성 성공");
-				response.sendRedirect(request.getContextPath() + "/list.bo?cpage=1");
+				response.sendRedirect(request.getContextPath() + "/list.fa");
 				
 			} else { //실패 -> 업로드된 파일 삭제해주고 에러페이지 보내줄거임
 				if(at != null) {

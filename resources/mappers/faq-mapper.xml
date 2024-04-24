@@ -9,7 +9,7 @@
 		<result column="USER_NO" property="userNo"/>
 		<result column="FAQ_TITLE" property="faqTitle"/>
 		<result column="ANSWER" property="answer"/>
-		<result column="FAQ_CONTENTS" property="faqcontents"/>
+		<result column="FAQ_CONTENTS" property="faqContents"/>
 		<result column="FAQ_DATE" property="faqDate"/>
 	</resultMap>
 	
@@ -20,27 +20,42 @@
 		  JOIN MEMBER USING (USER_NO)
 		 WHERE USER_ID = #{userId}
 	</select> -->
-	<!-- 문의내역 페이지 리스트 -->
-	<select id="selectFaqList" resultMap="faqResultSet">
-		 SELECT FAQ_ID,
-		 	    USER_NO,
-		 	    FAQ_TITLE,
-			    ANSWER,
-			    FAQ_CONTENTS,
-			    FAQ_DATE
-		   FROM FAQ
-		   JOIN MEMBER USING (USER_NO)
-		  WHERE USER_ID = #{userId}
-	</select>
-	<insert id="insertAttachment">
-    INSERT INTO ATTACHMENT(
-        ORIGIN_NAME,
-        CHANGE_NAME,
-        FILE_PATH
-    ) VALUES (
-        #{originName},
-        #{changeName},
-        #{filePath}
-    )
-</insert>
+	<!-- 문의내역리스트 조회 -->
+    <select id="selectFaqList" resultMap="faqResultSet">
+         SELECT FAQ_ID,
+                USER_NO,
+                FAQ_TITLE,
+                ANSWER,
+                FAQ_CONTENTS,
+                FAQ_DATE
+           FROM FAQ
+           JOIN MEMBER USING (USER_NO)
+          WHERE USER_ID = #{userId}
+    </select>
+    
+    <!-- 첨부파일 삽입 -->
+    <insert id="insertAttachment">
+        INSERT INTO ATTACHMENT(
+            ORIGIN_NAME,
+            CHANGE_NAME,
+            FILE_PATH
+        ) VALUES (
+            #{originName},
+            #{changeName},
+            #{filePath}
+        )
+    </insert>
+    
+    <!-- 1:1 문의 삽입 -->
+	<insert id="insertFaq">
+	    INSERT INTO FAQ(
+	        USER_NO,
+	        FAQ_TITLE,
+	        FAQ_CONTENTS
+	    ) VALUES (
+	        #{userNo},
+	        #{faqTitle},
+	        #{faqContents}
+	    )
+	</insert>
 </mapper>

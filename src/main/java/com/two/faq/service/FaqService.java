@@ -13,5 +13,5 @@ public interface FaqService {
 	public ArrayList<Faq> selectFaqList();
 
 	//1:1게시판 등록
-	public int insertFaq(Faq f, Attachment at);
+	int insertAttachment(Faq f, Attachment at);
 }
