@@ -63,6 +63,7 @@
             font-size: 30px;
         }
 
+        /*불러올 게시글 상태 select*/
         #menuName>select{
             width: 120px;
             height: 40px;
@@ -74,8 +75,9 @@
             padding-left: 10px;
         }
 
+        /*게시글 테이블*/
         #board-table *{
-            font-size: 15px;
+            font-size: 16px;
         }
 
         #board-table{
@@ -83,9 +85,10 @@
             height: 90%;
         }
 
-        #board-table tr{
+        #board-table>thead{
             height: 60px;
         }
+        
 
         #board-table th{
             margin: auto;
@@ -105,14 +108,17 @@
         }
         
         /* 내 글 리스트 커서 올리면 포인터로 바뀜 */
-        .myPostingList{
+        #myPostingList>tr{
+            height: 60px;
+
             cursor: pointer;
         }
-        .myPostingList:hover{
+        #myPostingList>tr:hover{
             background-color: rgba(0,0,0,0.03) ;
         }
 
-        .myPostingList>.title:hover{
+        
+        #myPostingList>.title:hover{
             text-decoration : underline;
         }
 
@@ -120,11 +126,13 @@
             text-align-last: left;
             padding-left: 20px;
         }
-
+        
         .title>span{
             font-weight: 600;
             color: rgb(145, 145, 145);
         }
+       
+
 
         /* 페이지 선택 */
         #pageSelect{
@@ -150,91 +158,79 @@
 </head>
 
 <body>
-    <!--
-        두가지 방법
-        1. db에서 조건 다르게 해서 가져옴 => ajax
-        2. 모든 Product 리스트를 가져오고 프론트에서 정제
-    -->
 	<div id="main">
 	    <div id="innerMain">
 	        <div id="menuName">나의 판매글
-	            <select name="tradeStatus" id="boardStatusSelect" onchange="reLoadBoardList()">
-	                <option value="all" selected>전체</option>
+	            <select name="tradeStatus" id="boardStatusSelect" onchange="reloadMyTrade();">
+	                <option value="all">전체</option>
 	                <option value="onSale">판매중</option>
 	                <option value="soldOut">판매완료</option>
 	            </select>
 	        </div>
+
             <script>
-                function reLoadBoardList(){
-                    const bss = document.querySelector('#boardStatusSelect').value;           
-                    console.log(bss);
-                    $.ajax({
-                        type: "GET",
-                        url: "reloadTrade.my",
-                        dataType: 'json',
-                        data:{
-                            selected: bss,
-                            cpage: '1'
-                        },
-                        success: function(res){
-                            alert("리로딩 성공");
-                            let list = res.list;
-                            let pi = res.pi;
-                            let newSelected = res.selected;
+                // 페이지가 로드될 때 선택된 값으로 드롭다운 메뉴를 설정하는 함수
+                function setSelectedValue() {
+                    const params = new URLSearchParams(location.search);
+                    const selectedValue = params.get('selected');
+                    if (selectedValue) {
+                        document.querySelector('#boardStatusSelect').value = selectedValue;
+                    }
+                }
 
-                            console.log(list);
-                            console.log(pi);
-                            console.log(newSelected);
+                // 페이지가 로드될 때 선택된 값으로 설정
+                setSelectedValue();
 
-                            let listSpace = '';
-                            for (let i = 0; i < list.length; i++) {
-                                listSpace += "<td>" + ${list[i].goodsId} + "</td>";
-                                listSpace += "<td>" + dataList1[i] + "</td>";
-                                listSpace += "<td>" + dataList1[i] + "</td>";
-                                listSpace += "<td>" + dataList1[i] + "</td>";
-                            }
-                            $('#dataList1Container').html('<ul>' + dataList1Html + '</ul>');
-
-                        },
-                        error: function(err){
-                            alert("리로딩 실패");
-                        }
-                    })
-
-                    
+                // 드롭다운 값이 변경될 때 호출되는 함수
+                function reloadMyTrade() {
+                    const selectedValue = document.querySelector('#boardStatusSelect').value;
+                    console.log(selectedValue);
+                    // 현재 페이지 번호 가져오기
+                    const currentPage = ${pi.currentPage};
+                    location.href = '${pageContext.request.contextPath}/indexToTradeHistory.my?cpage=' + currentPage + '&selected=' + selectedValue;
                 }
             </script>
-	        <div id="board-table">
-	            <table align="center">
-	                <tr>
-	                    <th width="80px">글번호</th>
-	                    <th width="450px">게시글</th>
-	                    <th width="80px">조회수</th>
-	                    <th width="150px">작성일</th>
-	                </tr>
 
-                    <c:forEach var="p" items="${list}">
-                        <tr class="myPostingList" onclick="location.href='${pageContext.request.contextPath}/detail.pr?goodsId=${p.goodsId}'">
-                            <td>${p.goodsId}</td>
-                            <td class="title">
-                                ${p.title} <span>(123)</span>
-                            </td>
-                            <td>${p.viewCount}</td>
-                            <td>${p.enrollDate}</td>
+	        <div id="board-table">
+	            <table align="center">       
+                    <thead>
+                        <tr>
+                            <th width="80px">글번호</th>
+                            <th width="450px">게시글</th>
+                            <th width="80px">조회수</th>
+                            <th width="150px">작성일</th>
                         </tr>
-                    </c:forEach>
-                    
-                    <c:set var="list" value="${list}" />
-                    <c:set var="listSize" value="${fn:length(list)}" />
-                    <c:set var="bLimit" value="${pi.boardLimit}" />
-                    <c:forEach var="i" begin="1" end="${bLimit - listSize}">
-                        <tr></tr>
-                    </c:forEach>
-                    <c:remove var="list" />
-                    <c:remove var="listSize" />
-                    <c:remove var="bLimit" />
-	
-	            </table>
+                    </thead>             
+
+                    <c:choose>
+                        <c:when test="${not empty list}">
+                            <c:forEach var="p" items="${list}">
+                                <tbody id="myPostingList" >
+                                    <tr class="originTr" onclick="location.href='${pageContext.request.contextPath}/detail.pr?goodsId=${p.goodsId}'">
+                                        <td>${p.goodsId}</td>
+                                        <td class="title">
+                                            ${p.title} <span></span>
+                                        </td>
+                                        <td>${p.viewCount}</td>
+                                        <td>${p.enrollDate}</td>
+                                    </tr>
+                                </tbody>
+                                <c:set var="list" value="${list}" />
+                                <c:set var="listSize" value="${fn:length(list)}" />
+                                <c:set var="bLimit" value="${pi.boardLimit}" />
+                                <c:forEach var="i" begin="1" end="${bLimit - listSize}">
+                                    <tr></tr>
+                                </c:forEach>
+                                <c:remove var="list" />
+                                <c:remove var="listSize" />
+                                <c:remove var="bLimit" />
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            <div>게시글이 없습니다</div>
+                        </c:otherwise>
+                    </c:choose>
+                </table>
 	            <div id="pageSelect" align="center">
                     <c:if test="${pi.currentPage != 1}">
                         <a href="indexToTradeHistory.my?cpage=${pi.currentPage - 1}&selected=${selected}">&lt;</a>

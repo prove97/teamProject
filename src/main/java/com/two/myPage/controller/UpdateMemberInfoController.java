@@ -69,7 +69,9 @@ public class UpdateMemberInfoController extends HttpServlet {
 		
 		m.setGender(request.getParameter("gender"));
 		m.setEmail(request.getParameter("email"));
-		m.setLocation(request.getParameter("location"));
+		String location = request.getParameter("location");
+		System.out.println(location);
+		m.setLocation(location);
 		
 		Member updateInfo = mpService.updateInfo(m);//닉네임, 패스워드 제외
 		System.out.println("updateInfo : " + updateInfo);

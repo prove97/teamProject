@@ -109,7 +109,7 @@ public class MyPageServiceImpl implements MyPageService{
 	public int selectOnSaleListCount(int userNo) {
 		SqlSession sqlSession = Template.getSqlSession();
 		
-		int count = mpDao.selectMyTradeListCount(sqlSession, userNo);
+		int count = mpDao.selectOnSaleListCount(sqlSession, userNo);
 		
 		sqlSession.close();
 
@@ -120,7 +120,7 @@ public class MyPageServiceImpl implements MyPageService{
 	public ArrayList<Product> selectOnSaleList(int userNo, PageInfo pi) {
 		SqlSession sqlSession = Template.getSqlSession();
 		
-		ArrayList<Product> list = mpDao.selectMyTradeList(sqlSession, userNo, pi);
+		ArrayList<Product> list = mpDao.selectOnSaleList(sqlSession, userNo, pi);
 		
 		sqlSession.close();
 
@@ -131,7 +131,7 @@ public class MyPageServiceImpl implements MyPageService{
 	public int selectSoldOutListCount(int userNo) {
 		SqlSession sqlSession = Template.getSqlSession();
 		
-		int count = mpDao.selectMyTradeListCount(sqlSession, userNo);
+		int count = mpDao.selectSoldOutListCount(sqlSession, userNo);
 		
 		sqlSession.close();
 
@@ -142,7 +142,7 @@ public class MyPageServiceImpl implements MyPageService{
 	public ArrayList<Product> selectSoldOutList(int userNo, PageInfo pi) {
 		SqlSession sqlSession = Template.getSqlSession();
 		
-		ArrayList<Product> list = mpDao.selectMyTradeList(sqlSession, userNo, pi);
+		ArrayList<Product> list = mpDao.selectSoldOutList(sqlSession, userNo, pi);
 		
 		sqlSession.close();
 

@@ -60,7 +60,7 @@ public class MyPageDao {
 	}
 
 	public int selectOnSaleListCount(SqlSession sqlSession, int userNo) {
-		return sqlSession.update("myPageMapper.selectOnSaleListCount", userNo);
+		return sqlSession.selectOne("myPageMapper.selectOnSaleListCount", userNo);
 	}
 
 	public ArrayList<Product> selectOnSaleList(SqlSession sqlSession, int userNo, PageInfo pi) {
@@ -73,7 +73,7 @@ public class MyPageDao {
 	}
 
 	public int selectSoldOutListCount(SqlSession sqlSession, int userNo) {
-		return sqlSession.update("myPageMapper.selectSoldOutListCount", userNo);
+		return sqlSession.selectOne("myPageMapper.selectSoldOutListCount", userNo);
 	
 	}
 
