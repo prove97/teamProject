@@ -1,320 +1,333 @@
-    *{
-        box-sizing: border-box;
-    }
-    body{
-        display: flex;
-        /* align-items: center; */
-        /* justify-content: center; */
-        position: relative;
-        overflow-x: auto;
-        height: 1500px;
-    }
-    .contentBox{
-        width: 1151px;
-        background-color: white;
-        margin: auto;
-        margin-top: 0;
-        margin-bottom: 0;
-        overflow-x: auto;
-        overflow-y: auto;
-    }
-    ul, li, ol{
-        list-style-type: none;
-        padding: 0px;
-        margin: 0px;
-    }
-    .category_header{
-        margin: 0px auto;
-        margin-top: 80px;
-        width: 870px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-    }
-    .category_header div {
-        display: flex;
-        align-items: center;
-    }
-    .category_navi{
-        height: 100%;
-        position: absolute;
-        left: 0px;
-    }
-    .category_bar1{
-    	border: none;
-    }
-    .category_bar1:hover{
-        cursor: pointer;
-    }
-    .category_bar2:hover{
-        cursor: pointer;
-    }
-    .category_bar1, .category_bar2{
-        position: relative;
-    }
-    #categories1{
-        display: none;
-        position: absolute;
-        border: 1px solid black;
-        top: 14px;
-        left: 74px;
-        width: 175px;
-        background-color: white;
-    }
-    #categories2_1{
-        display: none;
-        position: absolute;
-        border: 1px solid black;
-        top: 14px;
-        left: 279px;
-        width: 175px;
-        background-color: white;
-    }
-    .report{
-        position: absolute;
-        right: 0px;
-    }
-    .main_part{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: auto;
-        width: 870px;
-    }
-    #airpod{
-        width: 300px;
-        height: 360px;
-        margin: 30px 0px;
-        border-radius: 10%;
-        margin-right: 70px;
-    }
-    .post_info{
-        display: flex;
-        align-items: center;
-        gap: 30px;
-    }
-    .post_info > div{
-        font-size: 20px;
-    }
-    .buttons{
-        display: flex;
-        align-items: center;
-        gap: 30px;
-    }
-    div > button:hover{
-        cursor: pointer;
-    }
-    div > button{
-        width: 140px;
-        height: 60px;
-        font-size: 20px;
-        color: white;
-    }
-    #button1{
-        background-color: darkgray;
-        border: 0px;
-    }
-    #button2{
-        background-color: mediumaquamarine;
-        border: 0px;
-    }
-    #button3{
-        background-color: mediumseagreen;
-        border: 0px;
-    }
-    .seller_part{
-        position: relative;
-        display: flex;
-        align-items: center;
-        width: 870px;
-        margin: 0px auto;
-        font-size: 28px;
-        gap: 15px;
-    }
-    .seller_info{
-    	width: 250px;
-    }
-    #seller{
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        float: left;
-    }
-    .score{
-        font-size: 14px;
-        position: absolute;
-        left: 300px;
-    }
-    #colored_score1{
-        border: 1px solid black;
-        width: 70px;
-        height: 15px;
-        border-top-left-radius: 25px;
-        border-bottom-left-radius: 25px;
-        background-color: mediumseagreen;
-    }
-    #empty_score1{
-        border: 1px solid black;
-        width: 50px;
-        height: 15px;
-        border-top-right-radius: 25px;
-        border-bottom-right-radius: 25px;
-    }
-    .score_bar{
-        display: flex;
-        align-items: center;
-    }
-    .product_part{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 870px;
-        margin: 0px auto;
-    }
-    .product_status{
-        float: left;
-        line-height: 2;
-    }
-    table th{
-        color: darkgray;
-    }
-    .product_info{
-        float: left;
-        padding-right: 250px;
-    }
-    hr{
-        margin: 20px auto;
-        width: 870px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .comment_part{
-        margin: 30px auto;
-        margin-top: 0px;
-        width: 870px;
-    }
-    .comment_part > div{
-        margin-bottom: 10px;
-    }
-    .comment_banner{
-        margin: 0px auto;
-        display: flex;
-        gap: 50px;
-        font-size: 22px;
-        width: 870px;
-        margin-bottom: 10px;
-    }
-    #opt1, #opt2{
-        float: left;
-    }
-    #opt1 > b, #opt2 > b{
-        text-decoration: none;
-        color: gray;
-        vertical-align: middle;
-    }
-    #opt1 > b{
-        color: black;
-    }
-    #opt1:hover{
-        cursor: pointer;
-    }
-    #opt2:hover{
-        cursor: pointer;
-    }
-    .purchase_request{
-        position: relative;
-        border: 1px solid darkgray;
-    }
-    .purchase_method{
-        position: absolute;
-        left: 370px;
-        /* align-items: start;
-        justify-content: center; */
-        color: gray;
-        font-size: 20px;
-    }
-    #sellerName{
-    	position: absolute;
-    	top: 10px;
-    	left: 70px;
-    }
-    .buyer{
-        display: flex;
-        position: relative;
-    }
-    .buyer_pic{
-        width: 50px;
-        height: 50px;
-        margin-top: 30px;
-        margin-left: 50px;
-        border-radius: 50%;
-        margin-right: 70px;
-    }
-    .buyer_name{
-        position: absolute;
-        left: 110px;
-        top: 35px;
-        font-size: 20px;
-    }
-    #SellerBrightnessRate{
-    	position: absolute;
-        left: 50px;
-        top: -3px;
-    }
-    .suggested_price{
-        margin-left: 110px;
-        font-size: 20px;
-    }
-    .time_of_writing1{
-        position: absolute;
-        right: 30px;
-        bottom: 0px;
-        color: gray;
-    }
-    .comment{
-        border: 1px solid darkgray;
-        width: 870px;
-        position: relative;
-        margin: 0px auto;
-        margin-bottom: 10px;
-    }
-    .first_comment{
-        position: absolute;
-        top: 40px;
-        left: 280px;
-    }
-    .time_of_writing2{
-        position: absolute;
-        right: 100px;
-        top: 50px;
-        color: gray;
-    }
-    .extension_button{
-        position: absolute;
-        top: 30px;
-        right: 30px;
-    }
-    .reply{
-        display: flex;
-        align-items: center;
-        margin-left: 100px;
-        height: 50px;
-    }
-    .time_of_writing3{
-        position: absolute;
-        right: 100px;
-        color: gray;
-    }
-    .comment{
-        display: none;
-    }
-    .reply{
+*{
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
     position: relative;
-    }
-    .comment_reply{
-    	position: absolute;
-    	left: 50px;
-    	top: 13px;
-    }
+    overflow-x: auto;
+    height: 1500px;
+}
+.contentBox{
+    width: 1151px;
+    background-color: white;
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+ul, li, ol{
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+.category_header{
+    margin: 0px auto;
+    margin-top: 80px;
+    width: 870px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.category_header div {
+    display: flex;
+    align-items: center;
+}
+.category_navi{
+    height: 100%;
+    position: absolute;
+    left: 0px;
+}
+.category_bar1{
+	border: none;
+}
+.category_bar1:hover{
+    cursor: pointer;
+}
+.category_bar2:hover{
+    cursor: pointer;
+}
+.category_bar1, .category_bar2{
+    position: relative;
+}
+#categories1{
+    display: none;
+    position: absolute;
+    border: 1px solid black;
+    top: 14px;
+    left: 74px;
+    width: 175px;
+    background-color: white;
+}
+#categories2_1{
+    display: none;
+    position: absolute;
+    border: 1px solid black;
+    top: 14px;
+    left: 279px;
+    width: 175px;
+    background-color: white;
+}
+.report{
+    position: absolute;
+    right: 0px;
+}
+.main_part{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 870px;
+}
+#airpod{
+    width: 300px;
+    height: 360px;
+    margin: 30px 0px;
+    border-radius: 10%;
+    margin-right: 70px;
+}
+.post_info{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.post_info > div{
+    font-size: 20px;
+}
+.buttons{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+div > button:hover{
+    cursor: pointer;
+}
+div > button{
+    width: 140px;
+    height: 60px;
+    font-size: 20px;
+    color: white;
+}
+#button1{
+    background-color: darkgray;
+    border: 0px;
+}
+#button2{
+    background-color: mediumaquamarine;
+    border: 0px;
+}
+#button3{
+    background-color: mediumseagreen;
+    border: 0px;
+}
+.seller_part{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 870px;
+    margin: 0px auto;
+    font-size: 28px;
+    gap: 15px;
+}
+.seller_info{
+	width: 250px;
+}
+#seller{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    float: left;
+}
+.score{
+    font-size: 14px;
+    position: absolute;
+    left: 300px;
+}
+#colored_score1{
+    border: 1px solid black;
+    width: 70px;
+    height: 15px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    background-color: mediumseagreen;
+}
+#empty_score1{
+    border: 1px solid black;
+    width: 50px;
+    height: 15px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+.score_bar{
+    display: flex;
+    align-items: center;
+}
+.product_part{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 870px;
+    margin: 0px auto;
+}
+.product_status{
+    float: left;
+    line-height: 2;
+}
+table th{
+    color: darkgray;
+}
+.product_info{
+    float: left;
+    padding-right: 250px;
+}
+hr{
+    margin: 20px auto;
+    width: 870px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.comment_part{
+    margin: 30px auto;
+    margin-top: 0px;
+    width: 870px;
+}
+.comment_part > div{
+    margin-bottom: 10px;
+}
+.comment_banner{
+    margin: 0px auto;
+    display: flex;
+    gap: 50px;
+    font-size: 22px;
+    width: 870px;
+    margin-bottom: 10px;
+}
+#opt1, #opt2{
+    float: left;
+}
+#opt1 > b, #opt2 > b{
+    text-decoration: none;
+    color: gray;
+    vertical-align: middle;
+}
+#opt1 > b{
+    color: black;
+}
+#opt1:hover{
+    cursor: pointer;
+}
+#opt2:hover{
+    cursor: pointer;
+}
+.purchase_request{
+    position: relative;
+    border: 1px solid darkgray;
+}
+.purchase_method{
+    position: absolute;
+    left: 370px;
+    /* align-items: start;
+    justify-content: center; */
+    color: gray;
+    font-size: 20px;
+}
+#sellerName{
+	position: absolute;
+	top: 10px;
+	left: 70px;
+}
+.buyer{
+    display: flex;
+    position: relative;
+}
+.buyer_pic{
+    width: 50px;
+    height: 50px;
+    margin-top: 30px;
+    margin-left: 50px;
+    border-radius: 50%;
+    margin-right: 70px;
+}
+.buyer_name{
+    position: absolute;
+    left: 110px;
+    top: 35px;
+    font-size: 20px;
+}
+#SellerBrightnessRate{
+	position: absolute;
+    left: 50px;
+    top: -3px;
+}
+.suggested_price{
+    margin-left: 110px;
+    font-size: 20px;
+}
+.time_of_writing1{
+    position: absolute;
+    right: 30px;
+    bottom: 0px;
+    color: gray;
+}
+.comment{
+    border: 1px solid darkgray;
+    width: 870px;
+    position: relative;
+    margin: 0px auto;
+    margin-bottom: 10px;
+}
+.first_comment{
+    position: absolute;
+    top: 40px;
+    left: 280px;
+}
+.time_of_writing2{
+    position: absolute;
+    right: 100px;
+    top: 50px;
+    color: gray;
+}
+.extension_button{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+.reply{
+    display: flex;
+    align-items: center;
+    margin-left: 100px;
+    height: 50px;
+}
+.time_of_writing3{
+    position: absolute;
+    right: 100px;
+    color: gray;
+}
+.comment{
+    display: none;
+}
+.reply{
+position: relative;
+}
+.comment_reply{
+	position: absolute;
+	left: 50px;
+	top: 13px;
+}
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+#requestingBtn{
+	background-color: mediumseagreen;
+    border: 0px;
+    color: white;
+    width: 95px;
+    height: 35px;
+    font-size: 15px;
+    margin-left: 30px;
+}

@@ -1,5 +1,6 @@
 package com.two.product.controller;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -55,16 +56,28 @@ public class ProductInsertController extends HttpServlet {
 			p.setLocationT(multiRequest.getParameter("locationT"));
 			p.setProductStatus(multiRequest.getParameter("productStatus"));
 			
-			Attachment at = new Attachment();
-			at.setFilePath("/resources/product_upfile");
+			Attachment at = null;
+			
+			if (multiRequest.getOriginalFileName("attachment") != null) {
+				at = new Attachment();
+				at.setOriginName(multiRequest.getOriginalFileName("attachment"));
+				at.setChangeName(multiRequest.getFilesystemName("attachment"));
+				at.setFilePath("resources/product_upfile");
+				
+				System.out.println(at.getOriginName());
+				System.out.println(at.getFilePath());
+				System.out.println(at.getChangeName());
+			}
 			
 			int result = new ProductServiceImpl().insertProduct(p, at);
 			
 			if (result > 0) {
-				System.out.println(p);
 				request.getSession().setAttribute("alertMsg", "상품을 성공적으로 등록했습니다.");
 				response.sendRedirect(request.getContextPath());
 			} else {
+				if (at != null) {
+					new File(savePath + at.getChangeName()).delete();
+				}
 				request.setAttribute("errorMsg", "상품 등록 실패");
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
