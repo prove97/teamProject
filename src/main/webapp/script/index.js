@@ -65,12 +65,14 @@ function drawList(data){
 	console.log(data)
                     let str = "";
                     let Section = document.getElementById("contents");
+                    console.log(data.list[1].filePath)
+                    console.log(data.list[1].changeName)
                     for(const p of data.list){
                                     
                         str += `   <a href="javascript:void(0);" onclick="toDetail(${p.goodsId}); return false;">
                         				<div class="contents-preview">
                                         <div class="thumnail">
-                                            <img src="\img/sample1.png" alt="샘플이미지">
+                                           <img src="/usedArticleTrade/${p.filePath}/${p.changeName}" alt="샘플이미지">
                                         </div>
                                         <div class="thumnail-info">
                                             <div class="name-heart">

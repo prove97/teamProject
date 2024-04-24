@@ -20,6 +20,8 @@
 		<result column="PRODUCT_STATUS" property="productStatus"/>
 		<result column="NICKNAME" property="nickname"/>
 		<result column="SCORE" property="score"/>
+		<result column="FILE_PATH" property="filePath"/>
+		<result column="CHANGE_NAME" property="changeName"/>
 	</resultMap>
 	
 	<resultMap id="requestResultSet" type="Request">
@@ -109,9 +111,12 @@
 				LOVEIT,
 				RETURN_PD,
 				LOCATION_T,
-				PRODUCT_STATUS
+				PRODUCT_STATUS,
+				FILE_PATH,
+				CHANGE_NAME
 		FROM PRODUCT P
 		JOIN MEMBER ON (SELLER_NO = USER_NO)
+		JOIN ATTACHMENT USING(GOODS_ID)
 		WHERE STATUS = '판매중'
 	</select>
 	
