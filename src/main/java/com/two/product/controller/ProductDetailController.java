@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.two.attachment.model.vo.Attachment;
 import com.two.product.model.vo.Nreply;
 import com.two.product.model.vo.Product;
 import com.two.product.model.vo.Reply;
@@ -42,14 +43,19 @@ public class ProductDetailController extends HttpServlet {
 		Product p = pService.increaseCount(goodsId);
 		
 		if (p != null) {
+			Attachment at = pService.selectAttachment(goodsId);
 			ArrayList<Request> requestList = pService.selectRequestList(goodsId);
 			ArrayList<Reply> replyList = pService.selectReplyList(goodsId);
 			ArrayList<Nreply> nreplyList = pService.selectNreplyList(goodsId);
 			
 			request.setAttribute("p", p);
+			request.setAttribute("attachment", at);
 			request.setAttribute("requestList", requestList);
 			request.setAttribute("replyList", replyList);
 			request.setAttribute("nreplyList", nreplyList);
+			
+			System.out.println(goodsId);
+			System.out.println(at);
 			
 			request.getRequestDispatcher("views/posting/postPage.jsp").forward(request, response);
 		} else {

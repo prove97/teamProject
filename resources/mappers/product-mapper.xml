@@ -50,6 +50,17 @@
 		<result column="NREPLY_DATE" property="nreplyDate"/>
 	</resultMap>
 	
+	<resultMap id="attachmentResultSet" type="Attachment">
+		<result column="FILE_NO" property="fileNo"/>
+		<result column="REF_BNO" property="refBno"/>
+		<result column="UPLOAD_DATE" property="uploadDate"/>
+		<result column="FILE_LEVEL" property="fileLevel"/>
+		<result column="FILE_PATH" property="filePath"/>
+		<result column="ORIGIN_NAME" property="originName"/>
+		<result column="GOODS_ID" property="goodsId"/>
+		<result column="CHANGE_NAME" property="changeName"/>
+	</resultMap>
+	
 	<insert id="insertProduct" parameterType="Product">
 		INSERT INTO PRODUCT
 		(
@@ -230,4 +241,41 @@
 		AND CATEGORY_M LIKE '%' || #{cate} || '%'
 	</select>
 	
+	<insert id="insertAttachment" parameterType="Attachment">
+		INSERT
+		INTO ATTACHMENT(
+			FILE_NO,
+			REF_BNO,
+			UPLOAD_DATE,
+			FILE_LEVEL,
+			FILE_PATH,
+			ORIGIN_NAME,
+			GOODS_ID,
+			CHANGE_NAME
+		)
+		VALUES(
+			SEQ_FILENO.NEXTVAL,
+			#{refBno},
+			DEFAULT,
+			#{fileLevel},
+			#{filePath},
+			#{originName},
+			SEQ_GOODSID.CURRVAL,
+			#{changeName}
+		)
+	</insert>
+	
+	<select id="selectAttachment" resultMap="attachmentResultSet">
+		SELECT FILE_NO,
+				REF_BNO,
+				UPLOAD_DATE,
+				FILE_LEVEL,
+				FILE_PATH,
+				ORIGIN_NAME,
+				A.GOODS_ID,
+				CHANGE_NAME
+		FROM ATTACHMENT A
+		LEFT JOIN PRODUCT P ON (A.GOODS_ID = P.GOODS_ID)
+		WHERE A.GOODS_ID = #{goodsId}
+	</select>
 </mapper>

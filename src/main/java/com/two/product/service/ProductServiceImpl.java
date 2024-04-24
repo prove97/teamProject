@@ -39,9 +39,14 @@ public class ProductServiceImpl implements ProductService{
 	public int insertProduct(Product p, Attachment at) {
 		SqlSession sqlSession = Template.getSqlSession();
 		
-		int result = pDao.insertProduct(sqlSession, p, at);
+		int result1 = pDao.insertProduct(sqlSession, p);
+		int result2 = 1;
 		
-		if (result > 0) {
+		if (at != null) {
+			result2 = pDao.insertAttachment(sqlSession, at);
+		}
+		
+		if (result1 > 0) {
 			sqlSession.commit();
 		} else {
 			sqlSession.rollback();
@@ -49,7 +54,7 @@ public class ProductServiceImpl implements ProductService{
 		
 		sqlSession.close();
 		
-		return result;
+		return result1 * result2;
 	}
 
 	@Override
@@ -138,5 +143,14 @@ public class ProductServiceImpl implements ProductService{
 		
 		sqlSession.close();
 		return nreplyList;
+	}
+
+	@Override
+	public Attachment selectAttachment(int goodsId) {
+		SqlSession sqlSession = Template.getSqlSession();
+		Attachment at = pDao.selectAttachment(sqlSession, goodsId);
+		
+		sqlSession.close();
+		return at;
 	}
 }

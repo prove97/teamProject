@@ -153,3 +153,7 @@ li > button:hover{
    cursor: pointer;
    scale: 0.98;
 }
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
