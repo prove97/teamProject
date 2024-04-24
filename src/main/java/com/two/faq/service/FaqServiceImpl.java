@@ -1,36 +1,50 @@
 package com.two.faq.service;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.two.attachment.model.vo.Attachment;
 import com.two.common.Template;
-import com.two.common.model.vo.PageInfo;
 import com.two.faq.model.dao.FaqDao;
 import com.two.faq.model.vo.Faq;
 
 public class FaqServiceImpl implements FaqService{
 
 	private FaqDao fDao = new FaqDao();
+	
 	//문의내역리스트 조회
 	@Override
-	public int selectListCount() {
+	public ArrayList<Faq> selectFaqList() {
 		SqlSession sqlSession = Template.getSqlSession();
-		int listCount = fDao.selectListCount(sqlSession);
+		ArrayList<Faq> flist = fDao.selectFaqList(sqlSession);
 		
 		sqlSession.close();
 		
-		return listCount;
+		return flist;
 	}
-	// 문의내역 페이지 리스트
+
+	//1:1 문의 등록
 	@Override
-	public ArrayList<Faq> selectList(PageInfo pi) {
+	public int insertAttachment(Faq f, Attachment at) {
 		SqlSession sqlSession = Template.getSqlSession();
-		ArrayList<Faq> list = fDao.selectList(sqlSession,pi);
+		FaqDao bDao = new FaqDao();
+		int result1 = bDao.insertAttachment(sqlSession, at);
+		int result2 = 1;
+		
+		if (at != null) {
+			result2 = bDao.insertFaq(sqlSession, f);
+		}
 		
 		sqlSession.close();
 		
-		return list;
+		return result1 * result2;
 	}
+	
+	
+	
+	
+	
 	
 }

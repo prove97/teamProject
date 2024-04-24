@@ -35,6 +35,13 @@
 </head>
 
 <body>
+    <% if(alertMsg != null){ %>
+        <script>
+           alert("<%=alertMsg%>");
+        </script>
+        <% session.removeAttribute("alertMsg"); %>
+     <% } %>
+  
 	<%@ include file="/views/category/mainPart.jsp" %>
     
     <div class="top" >        
@@ -71,11 +78,11 @@
                     <a href="${pageContext.request.contextPath}/indexToMyPage.my" id="myPageTag" onmouseover="overMyPage();"> 마이페이지</a>
                     <div id="mdiv" style="background-image: url(${pageContext.request.contextPath}/img/myPageHover.png); background-size: 100px 200px" onmouseover="overMyPage();" onmouseout="outMyPage();">                  
                             <ul class="myPageUl" >
-                                <li class="three"><a href="${pageContext.request.contextPath}/indexToLike.my"><img src="${pageContext.request.contextPath}/img/heartIcon.png" alt="">좋아요</a></li>
-                                <li class="four"><a href="${pageContext.request.contextPath}/indexToTradeHistory.my"><img src="${pageContext.request.contextPath}/img/chatIcon.png" alt="" >거래내역</a></li>
+                                <li class="three"><a href="${pageContext.request.contextPath}/indexToLike.my?cpage=1"><img src="${pageContext.request.contextPath}/img/heartIcon.png" alt="">좋아요</a></li>
+                                <li class="four"><a href="${pageContext.request.contextPath}/indexToTradeHistory.my?cpage=1&selected=all"><img src="${pageContext.request.contextPath}/img/chatIcon.png" alt="" >거래내역</a></li>
                                 <li class="two"><a href="${pageContext.request.contextPath}/indexToSetting.my"><img src="${pageContext.request.contextPath}/img/settingIcon.png" alt="">설정</a></li>
                                 <li class="three"><a href="${pageContext.request.contextPath}/indexToWrite.po"><img src="${pageContext.request.contextPath}/img/writeIcon.png" alt="">글쓰기</a></li>
-                                <li class="three"><a href="${pageContext.request.contextPath}/indexToProfile.my"><img src="${pageContext.request.contextPath}/img/personIcon.png" alt="">프로필</a></li>
+                                <li class="three"><a href="${pageContext.request.contextPath}/indexToMyPage.my"><img src="${pageContext.request.contextPath}/img/personIcon.png" alt="">프로필</a></li>
                                 <li class="four"><a href="${pageContext.request.contextPath}/indexToFaq.fa"><img src="${pageContext.request.contextPath}/img/faqIcon.png" alt="">고객센터</a></li>
                                 <li class="four"><a href="${pageContext.request.contextPath}/logout.me"><img src="${pageContext.request.contextPath}/img/logoutIcon.png" alt="">로그아웃</a></li>
                             </ul>
