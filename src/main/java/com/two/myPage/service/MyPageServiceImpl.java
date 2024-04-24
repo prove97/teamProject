@@ -103,6 +103,52 @@ public class MyPageServiceImpl implements MyPageService{
 
 		return list;			
 	}
+	
+
+	@Override
+	public int selectOnSaleListCount(int userNo) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		int count = mpDao.selectMyTradeListCount(sqlSession, userNo);
+		
+		sqlSession.close();
+
+		return count;	
+	}
+
+	@Override
+	public ArrayList<Product> selectOnSaleList(int userNo, PageInfo pi) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		ArrayList<Product> list = mpDao.selectMyTradeList(sqlSession, userNo, pi);
+		
+		sqlSession.close();
+
+		return list;	
+	}
+
+	@Override
+	public int selectSoldOutListCount(int userNo) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		int count = mpDao.selectMyTradeListCount(sqlSession, userNo);
+		
+		sqlSession.close();
+
+		return count;	
+	}
+
+	@Override
+	public ArrayList<Product> selectSoldOutList(int userNo, PageInfo pi) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		ArrayList<Product> list = mpDao.selectMyTradeList(sqlSession, userNo, pi);
+		
+		sqlSession.close();
+
+		return list;	
+	}
+	
 
 	@Override
 	public int selectMyCommentListCount(int userNo) {
@@ -169,11 +215,6 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 	
 
-	@Override
-	public Product indexToBoard(int bno) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 

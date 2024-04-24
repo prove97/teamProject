@@ -4,6 +4,13 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="myPageMapper">
+
+	<resultMap id="memberResultSet" type="Member">
+		<result column="USER_NO" property="userNo"/>
+		<result column="USER_ID" property="userId"/>
+		<result column="NICKNAME" property="nickname"/>
+	</resultMap>
+
 	<resultMap id="productResultSet" type="Product">
 		<result column="GOODS_ID" property="goodsId"/>
 		<result column="SELLER_NO" property="sellerNo"/>
@@ -28,12 +35,15 @@
 		<result column="CONTENT" property="content"/>
 		<result column="COMMENTS_DATE" property="commentsDate"/>
 		<result column="KEY2" property="key2"/> <!-- 참조하는 댓글 id(대댓글, null일 경우 대댓글 아님) -->
+		<collection resultMap="productResultSet" property="product" />
 	</resultMap>
 	
 	<resultMap id="wishListResultSet" type="WishList">
 		<result column="USER_NO" property="userNo"/> 
 		<result column="GOODS_ID" property="goodsId"/>
 		<result column="WISH_DATE" property="wishDate"/>
+		<collection resultMap="memberResultSet" property="member" />
+		<collection resultMap="productResultSet" property="product" />
 	</resultMap>
 	
 	<!-- 로그인 유저의 전체 판매글 개수 -->
@@ -60,6 +70,63 @@
                PRODUCT_STATUS
         FROM PRODUCT
         WHERE SELLER_NO = #{userNo}
+        ORDER BY GOODS_ID DESC
+    </select>
+    
+	<!-- 로그인 유저의 판매중인글 개수 -->
+    <select id="selectOnSaleListCount" resultType="_int">
+    	SELECT COUNT(*)
+        FROM PRODUCT
+        WHERE SELLER_NO = #{userNo}
+        AND STATUS = '판매중'
+    </select>
+
+    <!-- 로그인 유저의 판매중인글 조회 -->
+    <select id="selectOnSaleList" resultMap="productResultSet">
+        SELECT GOODS_ID,
+               SELLER_NO,
+               CATEGORY_M,
+               TITLE,
+               STATUS,
+               SELL_PRICE,
+               VIEW_COUNT,
+               P_EXPLAIN,
+               ENROLL_DATE,
+               LOVEIT,
+               RETURN_PD,
+               LOCATION_T,
+               PRODUCT_STATUS
+        FROM PRODUCT
+        WHERE SELLER_NO = #{userNo}
+        AND STATUS = '판매중'
+    </select>
+
+	<!-- 로그인 유저의 판매완료글 개수 -->
+    <select id="selectSoldOutListCount" resultType="_int">
+    	SELECT COUNT(*)
+        FROM PRODUCT
+        WHERE SELLER_NO = #{userNo}
+        AND NOT STATUS = '판매중'
+        
+    </select>
+
+    <!-- 로그인 유저의 판매완료글 조회 -->
+    <select id="selectSoldOutList" resultMap="productResultSet">
+        SELECT GOODS_ID,
+               SELLER_NO,
+               CATEGORY_M,
+               TITLE,
+               STATUS,
+               SELL_PRICE,
+               VIEW_COUNT,
+               P_EXPLAIN,
+               ENROLL_DATE,
+               LOVEIT,
+               RETURN_PD,
+               LOCATION_T,
+               PRODUCT_STATUS
+        FROM PRODUCT
+        WHERE NOT SELLER_NO = #{userNo}
     </select>
     
     <!-- 로그인 유저의 전체 댓글 개수 조회 -->
@@ -69,7 +136,7 @@
         WHERE USER_NO = #{userNo}
     </select>
     
-        <!-- 로그인 유저의 전체 댓글리스트 조회 -->
+    <!-- 로그인 유저의 전체 댓글리스트 조회 -->
     <select id="selectMyCommentList" resultMap="commentsResultSet">
         SELECT KEY1,
 			   USER_NO,
@@ -80,7 +147,7 @@
 			   KEY2,
 			   TITLE <!-- 댓글이 있는 게시글 제목 -->
         FROM COMMENTS
-        LEFT JOIN PRODUCT USING(GOODS_ID) 
+        JOIN PRODUCT USING(GOODS_ID) 
         WHERE USER_NO = #{userNo}
     </select>
     
@@ -93,11 +160,17 @@
 
     <!-- 찜한 게시글(Product) 리스트 조회 -->
     <select id="selectLikeProduct" resultMap="wishListResultSet">
-        SELECT USER_NO,
-			   GOODS_ID,
-			   WISH_DATE
-        FROM WISH_LIST
-        WHERE USER_NO = #{userNo}
+        SELECT W.USER_NO,
+			   W.GOODS_ID,
+			   W.WISH_DATE,
+			   M.NICKNAME,
+			   P.TITLE,
+               P.VIEW_COUNT
+        FROM WISH_LIST W
+        JOIN MEMBER M ON (W.USER_NO = M.USER_NO)
+        JOIN PRODUCT P ON (W.GOODS_ID = P.GOODS_ID)
+        WHERE W.USER_NO = #{userNo}
+        ORDER BY W.WISH_DATE DESC
     </select>
 
 	

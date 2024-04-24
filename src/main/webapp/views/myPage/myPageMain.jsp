@@ -163,7 +163,7 @@
                 <div id="brightnessRate">
                     <h6>밝음 수치: ${loginUser.getScore()} lux</h6>
                     <div class="progress" style="width: 150px; border: 1px solid darkgray; border-radius: 10px;">
-                        <div class="progress-bar" style="width:${loginUser.getScore()}%; background: #70C9A0;"></div>
+                        <div class="progress-bar" style="width:${loginUser.score}%; background: #70C9A0;"></div>
                     </div>
                 </div>
             </div>
@@ -171,21 +171,24 @@
                 <a href="${pageContext.request.contextPath}/indexToMyPage.my" class="nonStyle"><strong>내정보</strong></a>
                 <ul>
                     <strong>나의 활동</strong>
-                    <li><a href="${pageContext.request.contextPath}/indexToTradeHistory.my?cpage=1" class="nonStyle">나의 판매글</a></li>
+                    <li><a href="${pageContext.request.contextPath}/indexToTradeHistory.my?cpage=1&selected=all" class="nonStyle">나의 판매글</a></li>
                     <li><a href="${pageContext.request.contextPath}/indexToCommentHistory.my?cpage=1" class="nonStyle">나의 댓글</a></li>
                     <li><a href="${pageContext.request.contextPath}/indexToLike.my?cpage=1" class="nonStyle">찜목록</a></li>
                 </ul>
                 <ul>
                     <strong>문의사항</strong>
-                    <li><a href="#" class="nonStyle">1:1문의</a></li>
-                    <li><a href="#" class="nonStyle">자주묻는질문</a></li>
-                    <li><a href="#" class="nonStyle">신고내역</a></li>
+                    <li><a href="${pageContext.request.contextPath}/opo.fa" class="nonStyle">1:1문의</a></li>
+                    <li><a href="${pageContext.request.contextPath}/indexToFaq.fa" class="nonStyle">자주묻는질문</a></li>
+                    <li><a href="${pageContext.request.contextPath}/list.fa" class="nonStyle">신고내역</a></li>
                 </ul>
 
 
             </div>
-        </div>        
-		<jsp:include page="${changeUrl}" />		
+        </div>
+        
+        <c:if test="${not empty changeUrl}">
+            <jsp:include page="${changeUrl}" />		
+        </c:if>        
         
     </section>
 

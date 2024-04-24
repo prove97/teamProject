@@ -40,16 +40,38 @@
         #inputPwd>form>table{
             height: 100px;
             width: 600px;
-            font-size: 30px;
+            font-size: 27px;
 
         }
 
-        #inputPwd>form>table tr:nth-child(1){
+        #inputPwd tr:nth-child(1){
             padding-bottom: 30px;
         }
 
-        #inputPwd>form>table td>button{
+        #inputPwd tr:nth-child(2)>td{
+            height: 50px;
+            display: flex;
+            justify-content: left;
+            
+        }
+
+        input[type='password']{
+            width: 70%;
+            height: 100%;
+        }
+
+        button[type='submit']{
+            background: rgb(180, 180, 180);
+            font-size: 23px;
             border: none;
+            border-radius: 5px;
+
+            height: 100%;
+            width: 80px;
+
+            margin-left: 10px;
+
+
         }
 </style>
 </head>
