@@ -18,8 +18,36 @@
 		<result column="RETURN_PD" property="returnPd"/>
 		<result column="LOCATION_T" property="locationT"/>
 		<result column="PRODUCT_STATUS" property="productStatus"/>
-		<result column="NICKNAME" property="nickName"/>
+		<result column="NICKNAME" property="nickname"/>
 		<result column="SCORE" property="score"/>
+	</resultMap>
+	
+	<resultMap id="requestResultSet" type="Request">
+		<result column="REQUEST_NO" property="requestNo"/>
+		<result column="REQUEST_PRICE" property="requestPrice"/>
+		<result column="GOODS_ID" property="goodsId"/>
+		<result column="REQUEST_WRITER" property="requestWriter"/>
+		<result column="REQUEST_DATE" property="requestDate"/>
+		<result column="NICKNAME" property="nickname"/>
+		<result column="SCORE" property="score"/>
+	</resultMap>
+	
+	<resultMap id="replyResultSet" type="Reply">
+		<result column="REPLY_NO" property="replyNo"/>
+		<result column="REPLY_CONTENT" property="replyContent"/>
+		<result column="GOODS_ID" property="goodsId"/>
+		<result column="REPLY_WRITER" property="replyWriter"/>
+		<result column="REPLY_DATE" property="replyDate"/>
+		<result column="NICKNAME" property="nickname"/>
+		<result column="SCORE" property="score"/>
+	</resultMap>
+	
+	<resultMap id="nreplyResultSet" type="Nreply">
+		<result column="NREPLY_NO" property="nreplyNo"/>
+		<result column="NREPLY_CONTENT" property="nreplyContent"/>
+		<result column="REPLY_NO" property="replyNo"/>
+		<result column="NREPLY_WRITER" property="nreplyWriter"/>
+		<result column="NREPLY_DATE" property="nreplyDate"/>
 	</resultMap>
 	
 	<insert id="insertProduct" parameterType="Product">
@@ -119,7 +147,7 @@
 		 AND TITLE LIKE '%' || #{keyword} || '%'
 	</select>
 	
-	<select id="selectSearchList" resultMap="productResultSet">
+	<select id="selectSearchList" parameterType="_int" resultMap="productResultSet">
 		SELECT GOODS_ID,
 				SELLER_NO,
 				CATEGORY_M,
@@ -136,6 +164,70 @@
 		FROM PRODUCT P
 		WHERE STATUS = '판매중'
 		AND TITLE LIKE '%' || #{keyword} || '%'
+	</select>
+	
+	<select id="selectRequestList" parameterType="_int" resultMap="requestResultSet">
+		SELECT REQUEST_NO,
+				REQUEST_PRICE,
+				Q.GOODS_ID,
+				REQUEST_WRITER,
+				REQUEST_DATE,
+				Q.NICKNAME,
+				Q.SCORE
+		FROM REQUEST Q
+		LEFT JOIN PRODUCT P ON (P.GOODS_ID = Q.GOODS_ID)
+			AND (Q.NICKNAME = P.NICKNAME)
+			AND (Q.SCORE = P.SCORE)
+	</select>
+	
+	<select id="selectReplyList" parameterType="_int" resultMap="replyResultSet">
+		SELECT REPLY_NO,
+				REPLY_CONTENT,
+				R.GOODS_ID,
+				REPLY_WRITER,
+				REPLY_DATE,
+				R.NICKNAME,
+				R.SCORE
+		FROM REPLY R
+		LEFT JOIN PRODUCT P ON (P.GOODS_ID = R.GOODS_ID)
+			AND (R.NICKNAME = P.NICKNAME)
+			AND (R.SCORE = P.SCORE)
+	</select>
+	
+	<select id="selectNreplyList" resultMap="nreplyResultSet">
+		SELECT NREPLY_NO,
+				NREPLY_CONTENT,
+				N.REPLY_NO,
+				NREPLY_WRITER,
+				NREPLY_DATE
+		FROM NREPLY N
+		LEFT JOIN REPLY R ON (R.REPLY_NO = N.REPLY_NO)
+	</select>
+
+	<select id="selectcateCount" resultType="_int">
+		SELECT COUNT(*)
+		  FROM PRODUCT P
+		 WHERE P.STATUS = '판매중' 
+		 AND CATEGORY_M LIKE '%' || #{cate} || '%'
+	</select>
+	
+	<select id="selectcateList" resultMap="productResultSet">
+				SELECT GOODS_ID,
+				SELLER_NO,
+				CATEGORY_M,
+				TITLE,
+				STATUS,
+				SELL_PRICE,
+				VIEW_COUNT,
+				P_EXPLAIN,
+				ENROLL_DATE,
+				LOVEIT,
+				RETURN_PD,
+				LOCATION_T,
+				PRODUCT_STATUS
+		FROM PRODUCT P
+		WHERE STATUS = '판매중'
+		AND CATEGORY_M LIKE '%' || #{cate} || '%'
 	</select>
 	
 </mapper>

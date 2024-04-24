@@ -235,6 +235,11 @@
         color: gray;
         font-size: 20px;
     }
+    #sellerName{
+    	position: absolute;
+    	top: 10px;
+    	left: 70px;
+    }
     .buyer{
         display: flex;
         position: relative;
@@ -250,16 +255,13 @@
     .buyer_name{
         position: absolute;
         left: 110px;
-        top: 18px;
-        font-size: 16px;
+        top: 35px;
+        font-size: 20px;
     }
-    .score_bar2{
-        display: flex;
-        align-items: center;
-        width: 100px;
-        position: absolute;
-        left: 110px;
-        top: 60px;
+    #SellerBrightnessRate{
+    	position: absolute;
+        left: 50px;
+        top: -3px;
     }
     .suggested_price{
         margin-left: 110px;
@@ -271,21 +273,6 @@
         bottom: 0px;
         color: gray;
     }
-    #colored_score2{
-        border: 1px solid black;
-        width: 25px;
-        height: 15px;
-        border-top-left-radius: 25px;
-        border-bottom-left-radius: 25px;
-        background-color: mediumseagreen;
-    }
-    #empty_score2{
-        border: 1px solid black;
-        width: 95px;
-        height: 15px;
-        border-top-right-radius: 25px;
-        border-bottom-right-radius: 25px;
-    }
     .comment{
         border: 1px solid darkgray;
         width: 870px;
@@ -295,13 +282,13 @@
     }
     .first_comment{
         position: absolute;
-        top: 25px;
+        top: 40px;
         left: 280px;
     }
     .time_of_writing2{
         position: absolute;
         right: 100px;
-        top: 30px;
+        top: 50px;
         color: gray;
     }
     .extension_button{
@@ -322,4 +309,12 @@
     }
     .comment{
         display: none;
+    }
+    .reply{
+    position: relative;
+    }
+    .comment_reply{
+    	position: absolute;
+    	left: 50px;
+    	top: 13px;
     }

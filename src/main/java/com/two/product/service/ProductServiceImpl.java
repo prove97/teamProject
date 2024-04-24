@@ -9,7 +9,10 @@ import com.two.attachment.model.vo.Attachment;
 import com.two.common.Template;
 import com.two.common.model.vo.PageInfo;
 import com.two.product.model.dao.ProductDao;
+import com.two.product.model.vo.Nreply;
 import com.two.product.model.vo.Product;
+import com.two.product.model.vo.Reply;
+import com.two.product.model.vo.Request;
 
 public class ProductServiceImpl implements ProductService{
 	private ProductDao pDao = new ProductDao();
@@ -87,6 +90,53 @@ public class ProductServiceImpl implements ProductService{
 		return list;
 	}
 
+	@Override
+	public ArrayList<Request> selectRequestList(int goodsId) {
+		SqlSession sqlSession = Template.getSqlSession();
+		ArrayList<Request> requestList = pDao.selectRequestList(sqlSession, goodsId);
+		
+		sqlSession.close();
+		return requestList;
+	}
 
-	
+	@Override
+	public int selectcateCount(HashMap<String, String> map) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		int cateCount = pDao.selectcateCount(sqlSession, map);
+		
+		sqlSession.close();
+		
+		return cateCount;
+	}
+
+	@Override
+	public ArrayList<Product> selectcateList(HashMap<String, String> map, PageInfo pi) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		ArrayList<Product> list = pDao.selectcateList(sqlSession, map, pi);
+		
+		sqlSession.close();
+		
+		return list;
+	}
+
+
+	@Override
+	public ArrayList<Reply> selectReplyList(int goodsId) {
+		SqlSession sqlSession = Template.getSqlSession();
+		ArrayList<Reply> replyList = pDao.selectReplyList(sqlSession, goodsId);
+		
+		sqlSession.close();
+		return replyList;
+	}
+
+	@Override
+	public ArrayList<Nreply> selectNreplyList(int goodsId) {
+		SqlSession sqlSession = Template.getSqlSession();
+		ArrayList<Nreply> nreplyList = pDao.selectNreplyList(sqlSession, goodsId);
+		
+		sqlSession.close();
+		return nreplyList;
+	}
 }

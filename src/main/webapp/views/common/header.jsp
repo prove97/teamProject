@@ -44,7 +44,7 @@
 
         <div id="searchBar">
                 <input type="text" onkeyup="enter(event);" id="searchKeyword"name="keyword" value="${keyword }">
-                <button type="button" onclick="contentsFunction(cpage)"  id="searchBtn" style="background-image: url(${pageContext.request.contextPath}/resources/image/searchBtn.png);"></button>
+                <button type="button" onclick="contentsFunction(1)"  id="searchBtn" style="background-image: url(${pageContext.request.contextPath}/resources/image/searchBtn.png);"></button>
 
         </div>     
             <!-- 로그인 전 -->

@@ -1,28 +1,34 @@
-function contentsFunction(cpage){
+//우리의 메인 함수. currentPage 가져와서 검색창을 기준으로 갈라준다.
+function contentsFunction(cpage, cate){
 			//검색창 가져와서 값가져오기
 			//셀렉트박스가져와서 값가져오기
 
 		const searchValue = document.getElementById("searchKeyword").value;
-		console.log(searchValue.keyCode)
-		if(searchValue == ""){
+		
+		if(searchValue == "" && cate==null){
 			getList({cpage: cpage}, function(data){
 				drawList(data)
 			})
-		}else {
+		} else if(cate!=null  && searchValue == "") {
+			console.log("cate 실행됨",cate);
+			categorySearch({cpage : cpage, cate : cate}, function(data){
+				drawList(data)
+			})
+		}else if(searchValue != "" && cate== null){
 			getSearchList({cpage : cpage, searchValue : searchValue}, function(data){
 				drawList(data)
 			})
 		}
 
 }
-
+//searchBar의 엔터를 감지하기 위한 함수
 function enter(e){
-	console.log(e.code)
 	if(e.code=='Enter'){
 		contentsFunction(1);
 	}
 }
 
+//List = 즉 DB에서 ProductList를 가져오는 함수
 function getList(data, callback){
 	console.log("ajax 실행됨")
         $.ajax({
@@ -38,7 +44,7 @@ function getList(data, callback){
             }
     })
 }
-
+//search하는 함수
 function getSearchList(data, callback){
 		$.ajax({
 	            url: "search.pr",
@@ -54,7 +60,7 @@ function getSearchList(data, callback){
 	    })
 }
 
-
+//index에 productList를 그려주는함수
 function drawList(data){
 	console.log(data)
                     let str = "";
@@ -110,8 +116,31 @@ function drawList(data){
                     pagi.innerHTML = pagingStr;
 }
 
-
+//제품 Detail로 이동하는 함수
 function toDetail(goodsId){
 	location.href=`detail.pr?goodsId=${goodsId}`
+}
+
+//mainPart 함수
+function categoryE(ths) {
+	var cate = $(ths).text();
+	console.log(cate)
+    contentsFunction(1, cate);
+}
+
+function categorySearch(data, callback){
+	$.ajax({
+            url: "categorySearch.pr",
+            dataType:"json",
+            data: data,
+            success: function(data){
+				console.log("카테고리 에젝성공", data);
+                callback(data)
+            },
+            error: function(){
+                console.log("카테고리 ajax요청실패")
+            }
+    })
+	
 }
         

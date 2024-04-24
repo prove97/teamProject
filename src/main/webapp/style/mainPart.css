@@ -49,6 +49,10 @@ top: 61px;
     text-decoration: none  !important;
 }
 
+#side-bar ul>li>ul>li {
+	list-style: none;
+}
+
 /* 소분류의 a에 속성값 부여 */
 #side-bar ul>li>ul>li>a {
     display: block;
@@ -57,7 +61,7 @@ top: 61px;
     font-weight: bold;
     padding-top: 20px;
     padding-bottom: 20px;
-    padding-left: 20px;
+    
 }
 
 
@@ -84,6 +88,7 @@ top: 61px;
     background-color: #ffffff;
     color: black;
     top: 0;
+    padding-left : 0;
     /* 2차 메뉴의 상단을 1차 메뉴의 상단에 고정 */
        left:100%;
    
@@ -106,10 +111,12 @@ top: 61px;
 }
 
 /* 소분류 사이드바 메뉴바 글씨 */
-#side-bar-min-head {
-    margin-top: 20px;
+.side-bar-min-head {
+    padding-top: 19px;
     text-align: center;
     font-size: 18px;
+    border-bottom: #70C9A0 solid 1px;
+    height: 62px;
 }
 
 i.fa-solid:hover {

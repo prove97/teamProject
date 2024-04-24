@@ -39,5 +39,42 @@ function timeForToday(value) {
 
         return `${Math.floor(betweenTimeDay / 365)}년전`;
  }
- 
  document.getElementById("enrollDate").innerText = "⏱️ " + timeForToday(new Date(document.getElementById("enrollDate").innerText));
+ 
+var times1 = document.querySelectorAll('.time_of_writing1');
+
+times1.forEach(function(time) {
+	var originalDate = time.textContent.trim();
+	var formattedDate = formatDate(originalDate);
+	time.textContent = formattedDate;
+});
+
+var times2 = document.querySelectorAll('.time_of_writing2');
+
+times2.forEach(function(time) {
+	var originalDate = time.textContent.trim();
+	var formattedDate = formatDate(originalDate);
+	time.textContent = formattedDate;
+});
+
+var times3 = document.querySelectorAll('.time_of_writing3');
+
+times3.forEach(function(time) {
+	var originalDate = time.textContent.trim();
+	var formattedDate = formatDate(originalDate);
+	time.textContent = formattedDate;
+});
+
+function formatDate(originalDate) {
+    var date = new Date(originalDate);
+    var options = {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false // 오전/오후 표시하지 않음
+    };
+    return new Intl.DateTimeFormat('ko-KR', options).format(date);
+}

@@ -22,6 +22,9 @@
  		<typeAlias type="com.two.myPage.model.vo.MyPage" alias="MyPage"/>
  		<typeAlias type="com.two.priceOffers.model.vo.PriceOffers" alias="PriceOffers"/>
  		<typeAlias type="com.two.product.model.vo.Product" alias="Product"/>
+ 		<typeAlias type="com.two.product.model.vo.Request" alias="Request"/>
+ 		<typeAlias type="com.two.product.model.vo.Reply" alias="Reply"/>
+ 		<typeAlias type="com.two.product.model.vo.Nreply" alias="Nreply"/>
  		<typeAlias type="com.two.tradeReviews.model.vo.TradeReviews" alias="TradeReviews"/>
  		<typeAlias type="com.two.wishList.model.vo.WishList" alias="WishList"/>
  	</typeAliases>
