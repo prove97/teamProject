@@ -32,6 +32,8 @@ public class IndexToMyPageController extends HttpServlet {
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		
+		String selected = request.getParameter("selected");
+		
 		
 		if(loginUser != null) { //로그인 되어있을 경우
 			if(session.getAttribute("completeCheckPwd") == "Y") { // 회원정보창 들어가기전 비밀번호 체크를 했을 경우

@@ -128,30 +128,40 @@
         #genderInput input+label {
             display: inline-block;
             cursor: pointer;
-            height: 28px;
+            height: 29px;
             width: 60px;
             border: 1px solid black;
             border-radius: 5px;
-            line-height: 28px;
+            line-height: 29px;
             text-align: center;
             font-weight: bold;
             font-size: 15px;
         }
 
+        #genderInput label {
+            margin: 0;
+        }
+
+
         #genderInput input:checked+label {
             background-color: #70C9A0;
         }
 
-        /* 시/도 선택 */
-        select[name="h_area1"]{
-            width: 80px;
+        /*이메일 input*/
+        input[type=email]{
+            width: 200px;
         }
 
-        /* 시/군/구 선택 */
+        /* 시/도 선택 */
+        select[name="location"]{
+            width: 150px;
+        }
+
+        /*시/군/구 선택
         select[name="h_area2"]{
             width: 130px;
             margin-left: 10px;
-        }
+        } */
 
         /* 저장버튼 */
         button[type=submit] {
@@ -344,50 +354,64 @@
                                     } 
                                 })
                             </script>
-	
+                        </tr>
+                        <tr>
+
 	                        <th>이메일</th>
 	                        <td><input type="email" name="email" value="${loginUser.email}"></td>
 	                    </tr>
 	                    <tr>
 	                        <th>지역</th>
-	                        <td colspan="3">
-	                            <select name="location1" onChange="location1_change(this.value, location2)">
+	                        <td>
+	                            <select name="location">
 	                                <option>선택</option>
-	                                <option value='1'>서울</option>
-	                                <option value='2'>부산</option>
-	                                <option value='3'>대구</option>
-	                                <option value='4'>인천</option>
-	                                <option value='5'>광주</option>
-	                                <option value='6'>대전</option>
-	                                <option value='7'>울산</option>
-	                                <option value='8'>강원</option>
-	                                <option value='9'>경기</option>
-	                                <option value='10'>경남</option>
-	                                <option value='11'>경북</option>
-	                                <option value='12'>전남</option>
-	                                <option value='13'>전북</option>
-	                                <option value='14'>제주</option>
-	                                <option value='15'>충남</option>
-	                                <option value='16'>충북</option>
+	                                <option value='서울'>서울특별시</option>
+	                                <option value='부산'>부산광역시</option>
+	                                <option value='대구'>대구광역시</option>
+	                                <option value='인천'>인천광역시</option>
+	                                <option value='광주'>광주광역시</option>
+	                                <option value='대전'>대전광역시</option>
+	                                <option value='울산'>울산광역시</option>
+	                                <option value='강원'>강원도</option>
+	                                <option value='경기'>경기도</option>
+	                                <option value='경남'>경상남도</option>
+	                                <option value='경북'>경상북도</option>
+	                                <option value='전남'>전라남도</option>
+	                                <option value='전북'>전라북도</option>
+	                                <option value='제주'>제주특별자치도</option>
+	                                <option value='충남'>충청남도</option>
+	                                <option value='충북'>충청북도</option>
 	                            </select>
-	                            <b>도/시&nbsp;&nbsp;&nbsp;&nbsp;</b>
                                 
+                                <!--
 	                            <select name="location2">
 	                                <option>선택</option>
 	                            </select>
-	                            <!-- <select name="location" id=""></select>
+	                             <select name="location" id=""></select>
 	                            <b>동</b> -->
 	                        </td>
                             <script>
                                 $(function(){
-                                    const location = '${loginUser.location}'.split('/');
-                                    console.log(location[0]);
-                                    console.log(location[1]);
+                                    const location = '${loginUser.location}';
+                                    console.log(location);
                                     if("${loginUser.location}" !== ""){
-                                        $("select[name='location1'] option:contains(" +location[0] +")").attr("selected", "selected");
-                                        $("select[name='location2'] option:contains(" +location[1] +")").attr("selected", "selected");
+                                        $("select[name='location'] option").each(function() { //옵션들에 대해서 하나씩 비교
+                                            let optionText = $(this).text(); //선택된 옵션의 text
+                                            let allCharactersFound = true;
 
-                                    } 
+                                            for (let i = 0; i < location.length; i++) {
+                                                if (optionText.indexOf(location[i]) === -1) { //일치하는 단어가 없다면
+                                                    allCharactersFound = false;
+                                                    break;
+                                                }
+                                            }
+
+                                            if (allCharactersFound) {
+                                                $(this).prop("selected", true);
+                                                return false; // 검색 중지
+                                            }
+                                        });                                   
+                                     } 
                                 })
                             </script>
 
@@ -399,7 +423,7 @@
 	    </form>
 	</div>
     
-    <script>
+    <!-- <script>
         function areaKoreaNo(num){
             let location1_num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
             let location2_num = [];
@@ -462,7 +486,7 @@
             }
         }
 
-    </script>
+    </script> -->
 </body>
 
 </html>

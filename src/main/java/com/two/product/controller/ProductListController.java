@@ -39,7 +39,7 @@ public class ProductListController extends HttpServlet {
 		
 		int currentPage;
 
-		System.out.println(request.getParameter("cpage"));
+		
 		if(request.getParameter("cpage")==null) {
 			currentPage = 1;
 		} else {
@@ -66,6 +66,9 @@ public class ProductListController extends HttpServlet {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("pi", pi);
 		map.put("list",	list);
+		
+		System.out.println(list.get(0).getChangeName());
+		System.out.println(list.get(0).getFilePath());
 		
 		new Gson().toJson(map, response.getWriter());
 	}

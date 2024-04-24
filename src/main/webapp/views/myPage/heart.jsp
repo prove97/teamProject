@@ -67,6 +67,7 @@
         #board-table{
             width: 90%;
             height: 90%;
+            font-size: 16px;
         }
 
         #board-table tr{

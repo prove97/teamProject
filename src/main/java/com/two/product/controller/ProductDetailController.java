@@ -54,9 +54,6 @@ public class ProductDetailController extends HttpServlet {
 			request.setAttribute("replyList", replyList);
 			request.setAttribute("nreplyList", nreplyList);
 			
-			System.out.println(goodsId);
-			System.out.println(at);
-			
 			request.getRequestDispatcher("views/posting/postPage.jsp").forward(request, response);
 		} else {
 			request.setAttribute("errormsg", "상훔 조회 실패");
