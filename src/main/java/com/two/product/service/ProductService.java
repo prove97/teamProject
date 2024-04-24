@@ -22,4 +22,5 @@ public interface ProductService {
 	public ArrayList<Nreply> selectNreplyList(int goodsId);
 	public int selectcateCount(HashMap<String, String> map);
 	public ArrayList<Product> selectcateList(HashMap<String, String> map, PageInfo pi);
+	public Attachment selectAttachment(int goodsId);
 }

@@ -35,7 +35,7 @@ public class ProductDao {
 		return (ArrayList)sqlSession.selectList("productMapper.selectProductList", null, rowBounds);
 	}
 
-	public int insertProduct(SqlSession sqlSession, Product p, Attachment at) {
+	public int insertProduct(SqlSession sqlSession, Product p) {
 		return sqlSession.insert("productMapper.insertProduct", p);
   	}
 
@@ -83,5 +83,13 @@ public class ProductDao {
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
 		return (ArrayList)sqlSession.selectList("productMapper.selectcateList", map, rowBounds);
+	}
+	
+	public int insertAttachment(SqlSession sqlSession, Attachment at) {
+		return sqlSession.insert("productMapper.insertAttachment", at);
+	}
+
+	public Attachment selectAttachment(SqlSession sqlSession, int goodsId) {
+		return sqlSession.selectOne("productMapper.selectAttachment", goodsId);
 	}
 }
