@@ -2,11 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<%@ page import="java.util.Random, java.lang.Math"%>
-<%
-    Random random = new Random();
-    int commentsCount = Math.abs(random.nextInt() % 30);
-%>
 <!DOCTYPE html>
 <html>
 
@@ -141,6 +136,11 @@
 </head>
 
 <body>
+    <script>
+        $(document).ready(function(){
+            console.log("최근 찜한 게시물부터 불러옴");
+        });
+    </script>
 	<div id="main">
 	    <div id="innerMain">
 	        <div id="menuName">찜목록</div>
@@ -148,19 +148,21 @@
 	            <table align="center">
 	                <tr>
 	                    <th width="80px">글번호</th>
-	                    <th width="450px">제목</th>
+	                    <th width="450px">게시글</th>
 	                    <th width="80px">조회수</th>
 	                    <th width="150px">작성자</th>
 	                </tr>
                     <c:forEach var="w" items="${list}">
-                        <tr class="myHeartList">
-                            <td>${w.goodsId}</td>
-                            <td class="title">에어팟 맥스 팝니다 <span>(<%=commentsCount%>)</span></td>
-                            <td>5</td>
-                            <td>dkdksk</td>
+                        <tr class="myHeartList" onclick="location.href='${pageContext.request.contextPath}/detail.pr?goodsId=${w.product.goodsId}'">
+                            <td>${w.product.goodsId}</td>
+                            <td class="title">
+                                ${w.product.title} <span></span>
+                            </td>
+                            <td>${w.product.viewCount}</td>
+                            <td>${w.member.nickname}</td>
                         </tr>
-
                     </c:forEach>
+
                     <c:set var="list" value="${list}" />
                     <c:set var="listSize" value="${fn:length(list)}" />
                     <c:set var="bLimit" value="${pi.boardLimit}" />

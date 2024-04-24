@@ -33,8 +33,6 @@ public interface MyPageService {
 	public ArrayList<WishList> selectLikeProduct(int userNo, PageInfo pi); //로그인한 유저의 찜목록 리스트 불러오기
 	
 	public Member updateInfo(Member m); //멤버 정보 업데이트
-
-	public Product indexToBoard(int bno); //클릭한 게시글로 이동
 	
 	
 	

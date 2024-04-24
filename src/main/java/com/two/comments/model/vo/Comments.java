@@ -2,6 +2,8 @@ package com.two.comments.model.vo;
 
 import java.sql.Date;
 
+import com.two.product.model.vo.Product;
+
 public class Comments {
 	private int key1;
 	private int userNo;
@@ -10,7 +12,9 @@ public class Comments {
 	private String content;
 	private Date commentsDate;
 	private int key2;
-	
+	private Product product;
+
+
 	public Comments() {
 		super();
 	}
@@ -24,6 +28,21 @@ public class Comments {
 		this.content = content;
 		this.commentsDate = commentsDate;
 		this.key2 = key2;
+	}
+	
+	
+
+	public Comments(int key1, int userNo, int goodsId, int postId, String content, Date commentsDate, int key2,
+			Product product) {
+		super();
+		this.key1 = key1;
+		this.userNo = userNo;
+		this.goodsId = goodsId;
+		this.postId = postId;
+		this.content = content;
+		this.commentsDate = commentsDate;
+		this.key2 = key2;
+		this.product = product;
 	}
 
 	@Override
@@ -88,4 +107,11 @@ public class Comments {
 		this.key2 = key2;
 	}
 
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 }

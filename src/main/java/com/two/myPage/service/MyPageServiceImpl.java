@@ -215,12 +215,6 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 	
 
-	@Override
-	public Product indexToBoard(int bno) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 
 

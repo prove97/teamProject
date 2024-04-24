@@ -2,11 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<%@ page import="java.util.Random, java.lang.Math"%>
-<%
-    Random random = new Random();
-    int commentsCount = Math.abs(random.nextInt() % 30);
-%>
 <!DOCTYPE html>
 <html>
 
@@ -213,7 +208,7 @@
 	            <table align="center">
 	                <tr>
 	                    <th width="80px">글번호</th>
-	                    <th width="450px">제목</th>
+	                    <th width="450px">게시글</th>
 	                    <th width="80px">조회수</th>
 	                    <th width="150px">작성일</th>
 	                </tr>
@@ -221,7 +216,9 @@
                     <c:forEach var="p" items="${list}">
                         <tr class="myPostingList" onclick="location.href='${pageContext.request.contextPath}/detail.pr?goodsId=${p.goodsId}'">
                             <td>${p.goodsId}</td>
-                            <td class="title">${p.title} <span>(<%=commentsCount%>)</span></td>
+                            <td class="title">
+                                ${p.title} <span>(123)</span>
+                            </td>
                             <td>${p.viewCount}</td>
                             <td>${p.enrollDate}</td>
                         </tr>
