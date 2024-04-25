@@ -46,8 +46,8 @@ public class FaqServiceImpl implements FaqService{
 	public int insertFaq(Faq f, Attachment at) {
 		SqlSession sqlSession = Template.getSqlSession();
 		
-		int result1 = new FaqDao().insertFaq(sqlSession, f);
-		int result2 = new FaqDao().insertAttachment(sqlSession, at);
+		int result1 = new FaqDao().insertFaq(sqlSession, f); //게시글
+		int result2 = new FaqDao().insertAttachment(sqlSession, at); // 사진
 		
 		if(result1 > 0 && result2 > 0) {
 			sqlSession.commit();

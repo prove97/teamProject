@@ -2,18 +2,22 @@ package com.two.faq.controller;
 
 import java.io.File;
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
-import com.two.attachment.model.vo.Attachment;
-import com.two.faq.model.vo.Faq;
-import com.two.faq.service.FaqService;
-import com.two.faq.service.FaqServiceImpl;
-import com.two.common.model.vo.MyFileRenamePolicy;
+
 import com.oreilly.servlet.MultipartRequest;
+import com.two.attachment.model.vo.Attachment;
+import com.two.common.model.vo.MyFileRenamePolicy;
+import com.two.faq.model.vo.Faq;
+import com.two.faq.service.FaqServiceImpl;
+import com.two.member.model.vo.Member;
 
 @WebServlet("/insert.fa")
 public class FaqInsertController extends HttpServlet {
@@ -76,7 +80,11 @@ public class FaqInsertController extends HttpServlet {
 			
 			String faqTitle = multiRequest.getParameter("title");
 			String faqContent = multiRequest.getParameter("content");
-			String faqNo = multiRequest.getParameter("userNo");
+			
+			HttpSession session = request.getSession();
+			Member loginUser = (Member)session.getAttribute("loginUser");
+			
+			String faqNo = Integer.toString(loginUser.getUserNo());
 			
 			Faq f = new Faq();
 			f.setFaqTitle(faqTitle);
@@ -84,13 +92,12 @@ public class FaqInsertController extends HttpServlet {
 			f.setUserNo(faqNo);
 			
 			
-			Attachment at = null;
+			Attachment at = new Attachment();
 			
 			if (multiRequest.getOriginalFileName("upfile") != null) {
-				at = new Attachment();
-				at.setOriginName(multiRequest.getOriginalFileName("upfile"));
-				at.setChangeName(multiRequest.getFilesystemName("upfile"));
-				at.setFilePath("resources/product_upfile/");
+			    at.setOriginName(multiRequest.getOriginalFileName("upfile"));
+			    at.setChangeName(multiRequest.getFilesystemName("upfile"));
+			    at.setFilePath("resources/product_upfile/");
 			}
 			
 			//4. 서비스요청
@@ -99,7 +106,7 @@ public class FaqInsertController extends HttpServlet {
 			//5. 응답뷰 요청
 			if (result > 0) { //성공 -> 목록페이지(kh/list.bo?cpage=1)
 				request.getSession().setAttribute("alertMsg", "일반게시글 작성 성공");
-				response.sendRedirect(request.getContextPath() + "/list.bo?cpage=1");
+				response.sendRedirect(request.getContextPath() + "/indexToMyPage.my");
 				
 			} else { //실패 -> 업로드된 파일 삭제해주고 에러페이지
 				if (at != null) {

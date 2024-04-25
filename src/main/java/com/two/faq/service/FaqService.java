@@ -12,7 +12,7 @@ public interface FaqService {
 	//문의내역리스트 조회
 	public ArrayList<Faq> selectFaqList();
 
-	//1:1게시판 사진등록
+//	//1:1게시판 사진등록
 	int insertAttachment(Faq f, Attachment at);
 	//1:1게시판 등록
 	int insertFaq(Faq f, Attachment at);

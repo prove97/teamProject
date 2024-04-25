@@ -13,6 +13,17 @@
 		<result column="FAQ_DATE" property="faqDate"/>
 	</resultMap>
 	
+	<resultMap id="attachmentResultSet" type="Attachment">
+		<result column="FILE_NO" property="fileNo"/>
+		<result column="REF_BNO" property="refBno"/>
+		<result column="UPLOAD_DATE" property="uploadDate"/>
+		<result column="FILE_LEVEL" property="fileLevel"/>
+		<result column="FILE_PATH" property="filePath"/>
+		<result column="ORIGIN_NAME" property="originName"/>
+		<result column="GOODS_ID" property="goodsId"/>
+		<result column="CHANGE_NAME" property="changeName"/>
+	</resultMap>
+	
 	<!-- 문의내역리스트 조회
 	<select id="selectFaqList" resultType="_int">
 		SELECT COUNT(*)
@@ -20,7 +31,7 @@
 		  JOIN MEMBER USING (USER_NO)
 		 WHERE USER_ID = #{userId}
 	</select> -->
-	<!-- 문의내역리스트 조회 -->
+	<!-- 문의내역리스트 조회 
     <select id="selectFaqList" resultMap="faqResultSet">
          SELECT FAQ_ID,
                 USER_NO,
@@ -31,38 +42,44 @@
            FROM FAQ
            JOIN MEMBER USING (USER_NO)
           WHERE USER_ID = #{userId}
-    </select>
+    </select> -->
     
     <insert id="insertFaq">
     	INSERT INTO FAQ(
-				    USER_NO,
+    				FAQ_ID,
+    				USER_NO,
 				    FAQ_TITLE,
 				    FAQ_CONTENTS,
 				    FAQ_DATE
 				)
 				VALUES (
-				    SEQ_FNO.CURRVAL,
-				    #{f.faqTitle},
-				    #{f.faqContents},
+					SEQ_FAQID.NEXTVAL,
+					#{userNo},
+				    #{faqTitle},
+				    #{faqContents},
 				    SYSDATE
 				)
     </insert>
     
-    <insert id="insertAttachment">
-    	INSERT INTO ATTACHMENT(
-    	            FILE_NO,
-					REF_BNO,
-					FILE_LEVEL,
-					FILE_PATH,
-					ORIGIN_NAME,
-					CHANGE_NAME
-    	            )
-			 VALUES (
-				    SEQ_FNO.NEXTVAL,
-				    SEQ_FNO.CURRVAL,
-				    #{f.faqTitle},
-				    #{f.faqContents},
-				    SYSDATE
-				)
-    </insert>
+	<insert id="insertAttachment">
+	    <!-- INSERT 문 -->
+	    INSERT INTO ATTACHMENT(
+	        FILE_NO,
+	        REF_BNO,
+	        UPLOAD_DATE,
+	        FILE_LEVEL,
+	        FILE_PATH,
+	        ORIGIN_NAME,
+	        CHANGE_NAME
+	    )
+	    VALUES(
+	        SEQ_FILENO.NEXTVAL,
+	        #{refBno},
+	        SYSDATE,
+	        #{fileLevel},
+	        #{filePath},
+	        #{originName},
+	        #{changeName}
+	    )
+	</insert>
 </mapper>
