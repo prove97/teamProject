@@ -7,13 +7,13 @@ public class Nreply {
 	private String nreplyContent;
 	private int replyNo;
 	private int nreplyWriter;
-	private Date nreplyDate;
+	private String nreplyDate;
 	
 	public Nreply() {
 		super();
 	}
 
-	public Nreply(int nreplyNo, String nreplyContent, int replyNo, int nreplyWriter, Date nreplyDate) {
+	public Nreply(int nreplyNo, String nreplyContent, int replyNo, int nreplyWriter, String nreplyDate) {
 		super();
 		this.nreplyNo = nreplyNo;
 		this.nreplyContent = nreplyContent;
@@ -54,11 +54,11 @@ public class Nreply {
 		this.nreplyWriter = nreplyWriter;
 	}
 
-	public Date getNreplyDate() {
+	public String getNreplyDate() {
 		return nreplyDate;
 	}
 
-	public void setNreplyDate(Date nreplyDate) {
+	public void setNreplyDate(String nreplyDate) {
 		this.nreplyDate = nreplyDate;
 	}
 

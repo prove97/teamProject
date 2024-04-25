@@ -296,19 +296,17 @@ hr{
     top: 30px;
     right: 30px;
 }
-.reply{
+.reply, #nreplying{
     display: flex;
     align-items: center;
     margin-left: 100px;
     height: 50px;
+	position: relative;
 }
 .time_of_writing3{
     position: absolute;
     right: 100px;
     color: gray;
-}
-.reply{
-position: relative;
 }
 .comment_reply{
 	position: absolute;
@@ -337,15 +335,23 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     font-size: 15px;
     margin-left: 10px;
 }
-#nreplyingBtn{
+.nreplyingBtn{
 	background-color: mediumseagreen;
     border: 0px;
     color: white;
     width: 60px;
     height: 25px;
     font-size: 15px;
-    margin-left: 10px;
+    margin-left: 700px;
+    margin-top: 10px;
     position: absolute;
-    top: 5px;
-    right: 100px;
+    z-index: 1;
+}
+#nreplyingSubBtn{
+	background-color: mediumseagreen;
+    border: 0px;
+    color: white;
+    width: 60px;
+    height: 25px;
+    font-size: 15px;
 }

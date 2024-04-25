@@ -90,7 +90,7 @@
 			#{sellPrice},
 			DEFAULT,
 			#{pExplain},
-			DEFAULT,
+			TO_CHAR(DEFAULT, 'YYYY.MM.DD HH24:MI'),
 			DEFAULT,
 			#{returnPd},
 			#{locationT},
@@ -261,7 +261,7 @@
 		VALUES(
 			SEQ_FILENO.NEXTVAL,
 			#{refBno},
-			DEFAULT,
+			TO_CHAR(DEFAULT, 'YYYY.MM.DD HH24:MI'),
 			#{fileLevel},
 			#{filePath},
 			#{originName},
@@ -289,4 +289,63 @@
 		SET STATUS = '판매중지'
 		WHERE GOODS_ID = #{goodsId}
 	</update>
+	
+	<insert id="insertRequest" parameterType="Request">
+		INSERT INTO REQUEST(
+			REQUEST_NO,
+			REQUEST_PRICE,
+			GOODS_ID,
+			REQUEST_WRITER,
+			REQUEST_DATE,
+			NICKNAME,
+			SCORE
+		)
+		VALUES(
+			SEQ_REQUESTNO.NEXTVAL,
+			#{requestPrice},
+			#{goodsId},
+			#{requestWriter},
+			TO_CHAR(DEFAULT, 'YYYY.MM.DD HH24:MI'),
+			#{nickname},
+			#{score}
+		)
+	</insert>
+	
+	<insert id="insertReply" parameterType="Reply">
+		INSERT INTO REPLY(
+			REPLY_NO,
+			REPLY_CONTENT,
+			GOODS_ID,
+			REPLY_WRITER,
+			REPLY_DATE,
+			NICKNAME,
+			SCORE
+		)
+		VALUES(
+			SEQ_REPLYNO.NEXTVAL,
+			#{replyContent},
+			#{goodsId},
+			#{replyWriter},
+			TO_CHAR(DEFAULT, 'YYYY.MM.DD HH24:MI'),
+			#{nickname},
+			#{score}
+		)
+	</insert>
+	
+	<insert id="insertNreply" parameterType="Nreply">
+		INSERT INTO NREPLY(
+			NREPLY_NO,
+			NREPLY_CONTENT,
+			REPLY_NO,
+			NREPLY_WRITER,
+			NREPLY_DATE
+		)
+		VALUES(
+			SEQ_NREPLYNO.NEXTVAL,
+			#{nreplyContent},
+			#{replyNo},
+			#{nreplyWriter},
+			TO_CHAR(DEFAULT, 'YYYY.MM.DD HH24:MI')
+		)
+	</insert>
 </mapper>

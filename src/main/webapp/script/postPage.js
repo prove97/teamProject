@@ -4,6 +4,9 @@ const opt1 = document.getElementById("banner_opt1");
 const opt2 = document.getElementById("banner_opt2");
 const purchaseRequest = document.getElementById("purchase_requesting");
 const replyComment = document.getElementById("replying");
+const nreplying = document.getElementById("nreplying");
+
+comment_part.style.display = "block";
 
 function show_comment_part() {
     comment_part.style.display = "block";
@@ -22,6 +25,36 @@ function show_comment() {
     banner_opt1.style.color = "gray";
     banner_opt2.style.color = "black";
 }
+
+document.getElementById("button3").onclick = function(){
+	if (comment_part.style.display == "block") {
+		if (purchaseRequest.style.display == "none") {
+			purchaseRequest.style.display = "block"
+		} else {
+			purchaseRequest.style.display = "none"
+		}
+	}
+}
+
+document.getElementById("button2").onclick = function() {
+	if (comment.style.display == "block") {
+		if (replyComment.style.display == "none") {
+			replyComment.style.display = "block";
+		} else {
+			replyComment.style.display = "none";
+		}
+	}
+}
+
+$(".nreplyingBtn").click(function(ev) {
+	var num = "#nreplying" + ev.target.dataset.rno
+	
+	if ($(num).css("display") == "none") {
+		$(num).css("display", "flex");
+	} else {
+		$(num).css("display", "none");
+	}
+})
 
 function timeForToday(value) {
         const today = new Date();
@@ -83,24 +116,4 @@ function formatDate(originalDate) {
         hour12: false // 오전/오후 표시하지 않음
     };
     return new Intl.DateTimeFormat('ko-KR', options).format(date);
-}
-
-document.getElementById("button3").onclick = function(){
-	if (comment_part.style.display == "block") {
-		if (purchaseRequest.style.display == "none") {
-			purchaseRequest.style.display = "block"
-		} else {
-			purchaseRequest.style.display = "none"
-		}
-	}
-}
-
-document.getElementById("button2").onclick = function() {
-	if (comment.style.display == "block") {
-		if (replyComment.style.display == "none") {
-			replyComment.style.display = "block";
-		} else {
-			replyComment.style.display = "none";
-		}
-	}
 }
