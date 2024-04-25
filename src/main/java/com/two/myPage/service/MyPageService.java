@@ -2,10 +2,10 @@ package com.two.myPage.service;
 
 import java.util.ArrayList;
 
-import com.two.comments.model.vo.Comments;
 import com.two.common.model.vo.PageInfo;
 import com.two.member.model.vo.Member;
 import com.two.product.model.vo.Product;
+import com.two.product.model.vo.Reply;
 import com.two.wishList.model.vo.WishList;
 
 public interface MyPageService {
@@ -26,13 +26,15 @@ public interface MyPageService {
 	public int selectSoldOutListCount(int userNo); //로그인한 유저의 판매완료된글 개수 불러오기 
 	public ArrayList<Product> selectSoldOutList(int userNo, PageInfo pi); //로그인한 유저의 판매완료된글 리스트 불러오기 
 	
-	public int selectMyCommentListCount(int userNo); //로그인한 유저의 댓글 개수 불러오기 
-	public ArrayList<Comments> selectMyCommentList(int userNo, PageInfo pi); //로그인한 유저의 전체 댓글 리스트 불러오기
+	public int selectMyReplyListCount(int userNo); //로그인한 유저의 댓글 개수 불러오기 
+	public ArrayList<Reply> selectMyReplyList(int userNo, PageInfo pi); //로그인한 유저의 전체 댓글 리스트 불러오기
 	
 	public int selectLikeProductCount(int userNo); //로그인한 유저의 찜목록 리스트 수
 	public ArrayList<WishList> selectLikeProduct(int userNo, PageInfo pi); //로그인한 유저의 찜목록 리스트 불러오기
 	
 	public Member updateInfo(Member m); //멤버 정보 업데이트
+	
+    public int deleteMember(Member m); //회원 탈퇴
 	
 	
 	

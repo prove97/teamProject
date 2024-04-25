@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.two.comments.model.vo.Comments;
 import com.two.common.Template;
 import com.two.common.model.vo.PageInfo;
 import com.two.member.model.vo.Member;
 import com.two.myPage.model.dao.MyPageDao;
 import com.two.product.model.vo.Product;
+import com.two.product.model.vo.Reply;
 import com.two.wishList.model.vo.WishList;
 
 public class MyPageServiceImpl implements MyPageService{
@@ -151,10 +151,10 @@ public class MyPageServiceImpl implements MyPageService{
 	
 
 	@Override
-	public int selectMyCommentListCount(int userNo) {
+	public int selectMyReplyListCount(int userNo) {
 		SqlSession sqlSession = Template.getSqlSession();
 		
-		int count = mpDao.selectMyCommentListCount(sqlSession, userNo);
+		int count = mpDao.selectMyReplyListCount(sqlSession, userNo);
 		
 		sqlSession.close();
 
@@ -162,10 +162,10 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 
 	@Override
-	public ArrayList<Comments> selectMyCommentList(int userNo, PageInfo pi) {
+	public ArrayList<Reply> selectMyReplyList(int userNo, PageInfo pi) {
 		SqlSession sqlSession = Template.getSqlSession();
 		
-		ArrayList<Comments> list = mpDao.selectMyCommentList(sqlSession, userNo, pi);
+		ArrayList<Reply> list = mpDao.selectMyReplyList(sqlSession, userNo, pi);
 		
 		sqlSession.close();
 
@@ -214,6 +214,24 @@ public class MyPageServiceImpl implements MyPageService{
 		return updateUser;
 	}
 	
+
+    @Override
+    public int deleteMember(Member m) {
+        SqlSession sqlSession = Template.getSqlSession();
+        
+        int result = mpDao.deleteMember(sqlSession, m);
+        
+        if(result > 0) {
+            sqlSession.commit();
+            
+        } else {
+            sqlSession.rollback();
+        }
+        
+        sqlSession.close();
+
+        return result;
+    }
 
 
 

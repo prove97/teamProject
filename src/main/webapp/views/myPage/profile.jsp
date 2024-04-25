@@ -218,7 +218,7 @@
 	                        <th>*닉네임</th>    
 	                        <td>
                                 <input type="checkbox" name="submitNickname" value="selected" style="display: none;">
-	                            <input type="text" value="${loginUser.nickname}" class="necessaryInput" name="nickname" oninput="unCheckNickname();">
+	                            <input type="text" value="${loginUser.nickname}" class="necessaryInput" name="nickname" minlength="1" maxlength="10" oninput="unCheckNickname();">
 	                            <div class="warning">중복된 닉네임입니다</div>                                        
 	                            <button type="button" id="duplicationCheckBtn" onclick="nicknameCheck();">중복확인</button>
 	                        </td>                                

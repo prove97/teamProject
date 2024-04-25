@@ -171,13 +171,14 @@
             <script>
                 // 페이지가 로드될 때 선택된 값으로 드롭다운 메뉴를 설정하는 함수
                 function setSelectedValue() {
-                    const params = new URLSearchParams(location.search);
+                    const params = new URLSearchParams(location.search); // 현재 페이지의 쿼리스트링을 불러와서 변수로 설정
+                    console.log(params);
                     const selectedValue = params.get('selected');
                     if (selectedValue) {
                         document.querySelector('#boardStatusSelect').value = selectedValue;
                     }
                 }
-
+                
                 // 페이지가 로드될 때 선택된 값으로 설정
                 setSelectedValue();
 
@@ -185,9 +186,7 @@
                 function reloadMyTrade() {
                     const selectedValue = document.querySelector('#boardStatusSelect').value;
                     console.log(selectedValue);
-                    // 현재 페이지 번호 가져오기
-                    const currentPage = ${pi.currentPage};
-                    location.href = '${pageContext.request.contextPath}/indexToTradeHistory.my?cpage=' + currentPage + '&selected=' + selectedValue;
+                    location.href = '${pageContext.request.contextPath}/indexToTradeHistory.my?cpage=1&selected=' + selectedValue;
                 }
             </script>
 
@@ -214,35 +213,41 @@
                                         <td>${p.viewCount}</td>
                                         <td>${p.enrollDate}</td>
                                     </tr>
-                                </tbody>
-                                <c:set var="list" value="${list}" />
-                                <c:set var="listSize" value="${fn:length(list)}" />
-                                <c:set var="bLimit" value="${pi.boardLimit}" />
-                                <c:forEach var="i" begin="1" end="${bLimit - listSize}">
-                                    <tr></tr>
                                 </c:forEach>
-                                <c:remove var="list" />
-                                <c:remove var="listSize" />
-                                <c:remove var="bLimit" />
-                            </c:forEach>
+                                
+                                    <c:set var="listSize" value="${fn:length(list)}" />
+                                    <c:set var="bLimit" value="${pi.boardLimit}" />
+                                    <c:forEach var="i" begin="1" end="${bLimit - listSize}">
+                                        <tr></tr>
+                                    </c:forEach>
+                                    <c:remove var="listSize" />
+                                    <c:remove var="bLimit" />
+                                </tbody>
                         </c:when>
                         <c:otherwise>
-                            <div>게시글이 없습니다</div>
-                        </c:otherwise>
+                            <tbody id="myPostingList" >
+                                <tr>
+                                    <td colspan="4" style="height: 600px;">게시글이 없습니다</td>
+                                </tr>
+                            </tbody>                     
+                           </c:otherwise>
                     </c:choose>
                 </table>
 	            <div id="pageSelect" align="center">
-                    <c:if test="${pi.currentPage != 1}">
-                        <a href="indexToTradeHistory.my?cpage=${pi.currentPage - 1}&selected=${selected}">&lt;</a>
-                   </c:if>
+                    <c:if test="${pi.listCount != 0}">
+                        <c:if test="${pi.currentPage != 1}">
+                            <a href="indexToTradeHistory.my?cpage=${pi.currentPage - 1}&selected=${selected}">&lt;</a>
+                        </c:if>
+                        
+                        <c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage}">
+                            <a href="indexToTradeHistory.my?cpage=${i}&selected=${selected}">${i}</a>
+                        </c:forEach>
+                        
+                        <c:if test="${pi.currentPage ne pi.maxPage}">
+                            <a href="indexToTradeHistory.my?cpage=${pi.currentPage + 1}&selected=${selected}">&gt;</a>
+                        </c:if>
 
-                   <c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage}">
-                        <a href="indexToTradeHistory.my?cpage=${i}&selected=${selected}">${i}</a>
-                   </c:forEach>
-                   
-                   <c:if test="${pi.currentPage ne pi.maxPage}">
-                        <a href="indexToTradeHistory.my?cpage=${pi.currentPage + 1}&selected=${selected}">&gt;</a>
-                   </c:if>
+                    </c:if>
 	            </div>
 	        </div>
 	    </div>
