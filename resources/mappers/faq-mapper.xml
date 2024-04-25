@@ -9,7 +9,7 @@
 		<result column="USER_NO" property="userNo"/>
 		<result column="FAQ_TITLE" property="faqTitle"/>
 		<result column="ANSWER" property="answer"/>
-		<result column="FAQ_CONTENTS" property="faqCntents"/>
+		<result column="FAQ_CONTENTS" property="faqContents"/>
 		<result column="FAQ_DATE" property="faqDate"/>
 	</resultMap>
 	
@@ -24,26 +24,7 @@
 		<result column="CHANGE_NAME" property="changeName"/>
 	</resultMap>
 	
-	<!-- 문의내역리스트 조회
-	<select id="selectFaqList" resultType="_int">
-		SELECT COUNT(*)
-		  FROM FAQ
-		  JOIN MEMBER USING (USER_NO)
-		 WHERE USER_ID = #{userId}
-	</select> -->
-	<!-- 문의내역리스트 조회 
-    <select id="selectFaqList" resultMap="faqResultSet">
-         SELECT FAQ_ID,
-                USER_NO,
-                FAQ_TITLE,
-                ANSWER,
-                FAQ_CONTENTS,
-                FAQ_DATE
-           FROM FAQ
-           JOIN MEMBER USING (USER_NO)
-          WHERE USER_ID = #{userId}
-    </select> -->
-    
+     <!-- 1:1 게시판 글 등록 -->
     <insert id="insertFaq">
     	INSERT INTO FAQ(
     				FAQ_ID,
@@ -60,7 +41,7 @@
 				    SYSDATE
 				)
     </insert>
-    
+    <!-- 1:1 게시판 사진등록 -->
 	<insert id="insertAttachment">
 	    <!-- INSERT 문 -->
 	    INSERT INTO ATTACHMENT(
@@ -82,4 +63,18 @@
 	        #{changeName}
 	    )
 	</insert>
+	
+
+	
+	<select id="selectFaqList" resultMap="faqResultSet">
+		SELECT FAQ_ID,
+			   USER_NO,
+			   FAQ_TITLE,
+			   FAQ_CONTENTS,
+			   FAQ_DATE
+		  FROM FAQ
+		  JOIN MEMBER USING (USER_NO)
+		 WHERE USER_NO = #{userNo}
+	</select>
+
 </mapper>

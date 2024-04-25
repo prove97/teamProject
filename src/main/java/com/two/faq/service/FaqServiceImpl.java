@@ -7,23 +7,14 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.two.attachment.model.vo.Attachment;
 import com.two.common.Template;
+import com.two.common.model.vo.PageInfo;
 import com.two.faq.model.dao.FaqDao;
 import com.two.faq.model.vo.Faq;
+import com.two.member.model.vo.Member;
 
 public class FaqServiceImpl implements FaqService{
 
 	private FaqDao fDao = new FaqDao();
-	
-	//문의내역리스트 조회
-	@Override
-	public ArrayList<Faq> selectFaqList() {
-		SqlSession sqlSession = Template.getSqlSession();
-		ArrayList<Faq> flist = fDao.selectFaqList(sqlSession);
-		
-		sqlSession.close();
-		
-		return flist;
-	}
 
 	//1:1 문의 등록
 	@Override
@@ -59,10 +50,15 @@ public class FaqServiceImpl implements FaqService{
 		
 		return result1 * result2;
 	}
-	
-	
-	
-	
-	
-	
+
+	// 내 문의내역 리스트
+	@Override
+	public ArrayList<Faq> selectList(int uNo) {
+		SqlSession sqlSession = Template.getSqlSession();
+		ArrayList<Faq> list = new FaqDao().selectFaqList(sqlSession,uNo);
+		
+		sqlSession.close();
+		return list;
+	}
+
 }
