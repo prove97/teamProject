@@ -32,8 +32,12 @@ public class ProductDeleteController extends HttpServlet {
 		
 		int result = new ProductServiceImpl().deleteProduct(goodsId);
 		
-		if(result > 0) {
-			request.getAttribute("alter", "dfasdf");
+		if (result > 0) {
+			request.getSession().setAttribute("alertMsg", "성공적으로 상품이 삭제되었습니다.");
+			response.sendRedirect(request.getContextPath());
+		} else {
+			request.setAttribute("errorMsg", "상품 삭제 실패");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
 	}
 
