@@ -283,4 +283,10 @@
 		LEFT JOIN PRODUCT P ON (A.GOODS_ID = P.GOODS_ID)
 		WHERE A.GOODS_ID = #{goodsId}
 	</select>
+	
+	<update id="deleteProduct">
+		UPDATE PRODUCT
+		SET STATUS = '판매중지'
+		WHERE GOODS_ID = #{goodsId}
+	</update>
 </mapper>
