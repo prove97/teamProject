@@ -214,6 +214,7 @@
                                         <td>${p.enrollDate}</td>
                                     </tr>
                                 </c:forEach>
+                                
                                     <c:set var="listSize" value="${fn:length(list)}" />
                                     <c:set var="bLimit" value="${pi.boardLimit}" />
                                     <c:forEach var="i" begin="1" end="${bLimit - listSize}">
