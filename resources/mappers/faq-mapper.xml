@@ -13,49 +13,68 @@
 		<result column="FAQ_DATE" property="faqDate"/>
 	</resultMap>
 	
-	<!-- 문의내역리스트 조회
-	<select id="selectFaqList" resultType="_int">
-		SELECT COUNT(*)
-		  FROM FAQ
-		  JOIN MEMBER USING (USER_NO)
-		 WHERE USER_ID = #{userId}
-	</select> -->
-	<!-- 문의내역리스트 조회 -->
-    <select id="selectFaqList" resultMap="faqResultSet">
-         SELECT FAQ_ID,
-                USER_NO,
-                FAQ_TITLE,
-                ANSWER,
-                FAQ_CONTENTS,
-                FAQ_DATE
-           FROM FAQ
-           JOIN MEMBER USING (USER_NO)
-          WHERE USER_ID = #{userId}
-    </select>
-    
-    <!-- 첨부파일 삽입 -->
-    <insert id="insertAttachment">
-        INSERT INTO ATTACHMENT(
-            ORIGIN_NAME,
-            CHANGE_NAME,
-            FILE_PATH
-        ) VALUES (
-            #{originName},
-            #{changeName},
-            #{filePath}
-        )
+	<resultMap id="attachmentResultSet" type="Attachment">
+		<result column="FILE_NO" property="fileNo"/>
+		<result column="REF_BNO" property="refBno"/>
+		<result column="UPLOAD_DATE" property="uploadDate"/>
+		<result column="FILE_LEVEL" property="fileLevel"/>
+		<result column="FILE_PATH" property="filePath"/>
+		<result column="ORIGIN_NAME" property="originName"/>
+		<result column="GOODS_ID" property="goodsId"/>
+		<result column="CHANGE_NAME" property="changeName"/>
+	</resultMap>
+	
+     <!-- 1:1 게시판 글 등록 -->
+    <insert id="insertFaq">
+    	INSERT INTO FAQ(
+    				FAQ_ID,
+    				USER_NO,
+				    FAQ_TITLE,
+				    FAQ_CONTENTS,
+				    FAQ_DATE
+				)
+				VALUES (
+					SEQ_FAQID.NEXTVAL,
+					#{userNo},
+				    #{faqTitle},
+				    #{faqContents},
+				    SYSDATE
+				)
     </insert>
-    
-    <!-- 1:1 문의 삽입 -->
-	<insert id="insertFaq">
-	    INSERT INTO FAQ(
-	        USER_NO,
-	        FAQ_TITLE,
-	        FAQ_CONTENTS
-	    ) VALUES (
-	        #{userNo},
-	        #{faqTitle},
-	        #{faqContents}
+    <!-- 1:1 게시판 사진등록 -->
+	<insert id="insertAttachment">
+	    <!-- INSERT 문 -->
+	    INSERT INTO ATTACHMENT(
+	        FILE_NO,
+	        REF_BNO,
+	        UPLOAD_DATE,
+	        FILE_LEVEL,
+	        FILE_PATH,
+	        ORIGIN_NAME,
+	        CHANGE_NAME
+	    )
+	    VALUES(
+	        SEQ_FILENO.NEXTVAL,
+	        #{refBno},
+	        SYSDATE,
+	        #{fileLevel},
+	        #{filePath},
+	        #{originName},
+	        #{changeName}
 	    )
 	</insert>
+	
+
+	
+	<select id="selectFaqList" resultMap="faqResultSet">
+		SELECT FAQ_ID,
+			   USER_NO,
+			   FAQ_TITLE,
+			   FAQ_CONTENTS,
+			   FAQ_DATE
+		  FROM FAQ
+		  JOIN MEMBER USING (USER_NO)
+		 WHERE USER_NO = #{userNo}
+	</select>
+
 </mapper>
