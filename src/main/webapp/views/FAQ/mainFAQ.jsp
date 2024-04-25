@@ -21,17 +21,13 @@
         position: relative;
     }
 
-    /*  메인div  */
-    .main{
-        width: 1151px;
-        height: auto;
-    }
-
     .FAQ-title{
-        margin-top: 140px;
-        margin-bottom: 65px;
-        width: 100%;
-        height: 48px;
+    margin-top: 140px;
+    margin-bottom: 65px;
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
     }
 
     .FAQ-area{
@@ -119,50 +115,23 @@
         border-radius: 5px;
         padding-top: 20px;
     }
-
-    /*  푸터div  */
-    .footer{
-        width: 1151px;
-        height: 120px;
-        margin: 0 auto;
-        bottom: 0px;
-        position: absolute;
-        height: 10rem;
-        background: white;
-    }
-    #footer-1{
-        height: 48px;
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
-        display: flex;
-        justify-content: center;
-    }
-    #footer-1-box{
-        width: 625px;
+ 
+    #title-left{
+        width: 50%;
         height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
     }
 
+    #title-right{
+        width: 50%;
+        height: 100%;
+    }
 
-    #footer-1 a{
-        text-decoration: none;
-        color: black;
+    #FAQ-submit{
+        border-radius: 10px;
+        background: #D6EFE3;
+        width: 220px;
+        height: 50px;
     }
-    #footer-2{
-        display: flex;
-        justify-content: space-around;
-    }
-    #footer-2 div:nth-child(1) p{
-        margin: 0;
-    }
-    #footer-2 div:nth-child(2) p{
-        margin: 0;
-    }
-    #footer-2 div:nth-child(3) p{
-        margin: 0;
-    }    
 </style>
 </head>
 <body>
@@ -172,8 +141,9 @@
     <div>
         <div class="FAQ-title">
             <h1 id="title-text">자주 묻는 질문</h1>
+            <input type="submit" value="1:1 문의하기" onclick="location.href='${pageContext.request.contextPath}/views/FAQ/writeFAQ.jsp'" id="FAQ-submit">
         </div>
-        <div class="FAQ-area">
+        <div class="FAQ-area" style="margin-bottom: 50px;">
             <div id="FAQ1" onclick="toggleFAQ('1')">
                 <p style="padding: 20px 0px 20px 36px; font-size: 20px; color: #545454; font-weight: bold;
                                      cursor: pointer;">광고성 콘텐츠(상점)에요.</p>
