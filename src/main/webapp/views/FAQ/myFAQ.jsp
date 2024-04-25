@@ -28,21 +28,22 @@
         </div>
 			<c:forEach var="f" items="${list}">
 	            <div class="FAQ-area" onclick="toggleFAQ()">
-	                <div id="FAQ1">
+	                <div id="FAQ1" class="FAQ">
 	                    <div>
-	                        <div id="FAQ2">
+	                        <div id="FAQ2" class="FAQ-in">
 	                            <p align="left" style="font-size: 25px; margin-top: 13px; padding-left: 12px;">제목 : ${f.faqTitle }</p> 
 	                            <div align="right"><span style="padding: 6px; border: 2px solid #FFB800; color: #FFB800; border-radius: 10px;">답변대기</span><span id="icon1">▽</span></div>
 	                        </div>
+	                        <div>
 	                            <p style="padding-left: 36px; font-size: 15px; margin-bottom: 13px;">내용 : ${f.faqContents}</p>
 	                        <div id="bottom">
-	                            <div id="b-right"><p align="right">${f.faqDate}</p></div>
+	                            <div id="b-right"><p align="left" style="padding-left: 36px;">${f.faqDate}</p></div>
 	                        </div>
 	                    </div>
 	                    <div class="hidden">
 	                        <p style="padding-left: 36px; padding-bottom: 20px; font-size: 20px; margin-top: 15px;">운영자 답변</p>
 	                        <p style="padding-left: 36px; font-size: 15px; margin-bottom: 13px;">내용 : ${f.answer}</p>
-	                        <p>${f.faqDate}</p>
+	                        <p style="padding-left: 36px;">${f.faqDate}</p>
 	                    </div>
 	                </div>
 	            </div>
