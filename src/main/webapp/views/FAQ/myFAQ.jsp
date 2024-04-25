@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +18,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/style/myFAQ.css">
 </head>
 <body>
+
     <!-- 헤더 -->
     <%@ include file="/views/common/header.jsp" %>
     <!-- 메인 -->
@@ -48,7 +51,6 @@
         var hiddenDiv = document.querySelector('.hidden');
         var icon = document.getElementById('icon1');
         var FAQ1Div = document.getElementById('FAQ1');
-
         if (hiddenDiv.style.display === 'none' || hiddenDiv.style.display === '') {
             hiddenDiv.style.display = 'block';
             icon.innerHTML = '△'; // 올림차순 아이콘으로 변경
