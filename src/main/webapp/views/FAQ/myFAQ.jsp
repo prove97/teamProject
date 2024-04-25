@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +18,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/style/myFAQ.css">
 </head>
 <body>
+
     <!-- 헤더 -->
     <%@ include file="/views/common/header.jsp" %>
     <!-- 메인 -->
@@ -23,32 +26,33 @@
         <div class="FAQ-title">
             <h1 id="title-text">나의 문의내역</h1>
         </div>
-        <div class="FAQ-area" onclick="toggleFAQ()">
-            <div id="FAQ1">
-                <div>
-                    <div id="FAQ2">
-                        <p align="left" style="font-size: 25px; margin-top: 13px; padding-left: 12px;">제목 : ${f.faqTitle }</p> 
-                        <div align="right"><span style="padding: 6px; border: 2px solid #FFB800; color: #FFB800; border-radius: 10px;">답변대기</span><span id="icon1">▽</span></div>
-                    </div>
-                        <p style="padding-left: 36px; font-size: 15px; margin-bottom: 13px;">내용 : ${f.faqcontents}</p>
-                    <div id="bottom">
-                        <div id="b-right"><p align="right">${f.faqDate}</p></div>
-                    </div>
-                </div>
-                <div class="hidden">
-                    <p style="padding-left: 36px; padding-bottom: 20px; font-size: 20px; margin-top: 15px;">운영자 답변</p>
-                    <p style="padding-left: 36px; font-size: 15px; margin-bottom: 13px;">내용 : ${f.answer}</p>
-                    <p>${f.faqDate}</p>
-                </div>
-            </div>
-        </div>
+			<c:forEach var="f" items="${list}">
+	            <div class="FAQ-area" onclick="toggleFAQ()">
+	                <div id="FAQ1">
+	                    <div>
+	                        <div id="FAQ2">
+	                            <p align="left" style="font-size: 25px; margin-top: 13px; padding-left: 12px;">제목 : ${f.faqTitle }</p> 
+	                            <div align="right"><span style="padding: 6px; border: 2px solid #FFB800; color: #FFB800; border-radius: 10px;">답변대기</span><span id="icon1">▽</span></div>
+	                        </div>
+	                            <p style="padding-left: 36px; font-size: 15px; margin-bottom: 13px;">내용 : ${f.faqContents}</p>
+	                        <div id="bottom">
+	                            <div id="b-right"><p align="right">${f.faqDate}</p></div>
+	                        </div>
+	                    </div>
+	                    <div class="hidden">
+	                        <p style="padding-left: 36px; padding-bottom: 20px; font-size: 20px; margin-top: 15px;">운영자 답변</p>
+	                        <p style="padding-left: 36px; font-size: 15px; margin-bottom: 13px;">내용 : ${f.answer}</p>
+	                        <p>${f.faqDate}</p>
+	                    </div>
+	                </div>
+	            </div>
+            </c:forEach>
     </div>
     <script>
     function toggleFAQ() {
         var hiddenDiv = document.querySelector('.hidden');
         var icon = document.getElementById('icon1');
         var FAQ1Div = document.getElementById('FAQ1');
-
         if (hiddenDiv.style.display === 'none' || hiddenDiv.style.display === '') {
             hiddenDiv.style.display = 'block';
             icon.innerHTML = '△'; // 올림차순 아이콘으로 변경

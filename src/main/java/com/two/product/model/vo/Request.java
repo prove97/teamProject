@@ -7,7 +7,7 @@ public class Request {
 	private int requestPrice;
 	private int goodsId;
 	private int requestWriter;
-	private Date requestDate;
+	private String requestDate;
 	private String nickname;
 	private int score;
 	
@@ -15,7 +15,7 @@ public class Request {
 		super();
 	}
 
-	public Request(int requestNo, int requestPrice, int goodsId, int requestWriter, Date requestDate, String nickname,
+	public Request(int requestNo, int requestPrice, int goodsId, int requestWriter, String requestDate, String nickname,
 			int score) {
 		super();
 		this.requestNo = requestNo;
@@ -59,11 +59,11 @@ public class Request {
 		this.requestWriter = requestWriter;
 	}
 
-	public Date getRequestDate() {
+	public String getRequestDate() {
 		return requestDate;
 	}
 
-	public void setRequestDate(Date requestDate) {
+	public void setRequestDate(String requestDate) {
 		this.requestDate = requestDate;
 	}
 

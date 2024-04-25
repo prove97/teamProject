@@ -7,15 +7,16 @@ public class Reply {
 	private String replyContent;
 	private int goodsId;
 	private int replyWriter;
-	private Date replyDate;
+	private String replyDate;
 	private String nickname;
 	private int score;
+    private Product product;
 	
 	public Reply() {
 		super();
 	}
 
-	public Reply(int replyNo, String replyContent, int goodsId, int replyWriter, Date replyDate, String nickname,
+	public Reply(int replyNo, String replyContent, int goodsId, int replyWriter, String replyDate, String nickname,
 			int score) {
 		super();
 		this.replyNo = replyNo;
@@ -26,6 +27,19 @@ public class Reply {
 		this.nickname = nickname;
 		this.score = score;
 	}
+	
+    public Reply(int replyNo, String replyContent, int goodsId, int replyWriter, Date replyDate, String nickname,
+            int score, Product product) {
+        super();
+        this.replyNo = replyNo;
+        this.replyContent = replyContent;
+        this.goodsId = goodsId;
+        this.replyWriter = replyWriter;
+        this.replyDate = replyDate;
+        this.nickname = nickname;
+        this.score = score;
+        this.product = product;
+    }
 
 	public int getReplyNo() {
 		return replyNo;
@@ -59,11 +73,11 @@ public class Reply {
 		this.replyWriter = replyWriter;
 	}
 
-	public Date getReplyDate() {
+	public String getReplyDate() {
 		return replyDate;
 	}
 
-	public void setReplyDate(Date replyDate) {
+	public void setReplyDate(String replyDate) {
 		this.replyDate = replyDate;
 	}
 
@@ -82,11 +96,18 @@ public class Reply {
 	public void setScore(int score) {
 		this.score = score;
 	}
+    
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
 	@Override
 	public String toString() {
 		return "Reply [replyNo=" + replyNo + ", replyContent=" + replyContent + ", goodsId=" + goodsId
 				+ ", replyWriter=" + replyWriter + ", replyDate=" + replyDate + ", nickname=" + nickname + ", score="
-				+ score + "]";
-	}
+                + score + ", product=" + product + "]";	}
 }

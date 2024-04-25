@@ -1,30 +1,27 @@
-package com.two.faq.controller;
+package com.two.product.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.two.faq.model.vo.Faq;
-import com.two.faq.service.FaqServiceImpl;
-import com.two.member.model.vo.Member;
+import com.two.product.model.vo.Nreply;
+import com.two.product.service.ProductServiceImpl;
 
 /**
- * Servlet implementation class FaqListController
+ * Servlet implementation class NreplyInsertController
  */
-@WebServlet("/list.fa")
-public class FaqListController extends HttpServlet {
+@WebServlet("/insert.nr")
+public class NreplyInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqListController() {
+    public NreplyInsertController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,19 +30,25 @@ public class FaqListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//나의 문의내역
-		HttpSession session = request.getSession();
-		Member loginUser = (Member)session.getAttribute("loginUser");
+		String nreplyContent = request.getParameter("nreplyContent");
+		int replyNo = Integer.parseInt(request.getParameter("replyNo"));
+		int nreplyWriter = Integer.parseInt(request.getParameter("nreplyWriter"));
 		
-		int uNo = loginUser.getUserNo();
+		int goodsId = Integer.parseInt(request.getParameter("goodsId"));
 		
-		ArrayList<Faq> list = new FaqServiceImpl().selectList(uNo);
-		//The method parseInt(String) in the type Integer is not applicable for the arguments (int)
-		System.out.println("lsit : " + list);
+		Nreply n = new Nreply();
 		
-		request.setAttribute("list", list);
-	    request.getRequestDispatcher("views/FAQ/myFAQ.jsp").forward(request, response);
+		n.setNreplyContent(nreplyContent);
+		n.setReplyNo(replyNo);
+		n.setNreplyWriter(nreplyWriter);
 		
+		int result = new ProductServiceImpl().insertNreply(n);
+		
+		if (result > 0) {
+			response.sendRedirect(request.getContextPath() + "/detail.pr?goodsId=" + goodsId);
+		} else {
+			request.setAttribute("errorMsg", "구매요청 실패");
+		}
 	}
 
 	/**

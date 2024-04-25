@@ -168,4 +168,46 @@ public class ProductServiceImpl implements ProductService{
 		sqlSession.close();
 		return result;
 	}
+
+	public int insertRequest(Request q) {
+		SqlSession sqlSession = Template.getSqlSession();
+		int result = pDao.insertRequest(sqlSession, q);
+		
+		if (result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		return result;
+	}
+
+	public int insertReply(Reply r) {
+		SqlSession sqlSession = Template.getSqlSession();
+		int result = pDao.insertReply(sqlSession, r);
+		
+		if (result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		return result;
+	}
+
+	public int insertNreply(Nreply n) {
+		SqlSession sqlSession = Template.getSqlSession();
+		int result = pDao.insertNreply(sqlSession, n);
+		
+		if (result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		return result;
+	}
 }
