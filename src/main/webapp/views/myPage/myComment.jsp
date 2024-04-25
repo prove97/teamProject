@@ -77,22 +77,22 @@
         }
 
         /* 댓글 리스트 */
-        .nullCommentSpace{
+        .nullReplySpace{
             height: 99px;
         }
 
-        .commentList{
+        .replyList{
             height: 99px;
             border-top: 0.1px solid rgb(187, 187, 187);
             border-bottom: 0.1px solid rgb(187, 187, 187);
         }
 
-        .commentList:hover{
+        .replyList:hover{
             cursor: pointer;
             background-color: rgba(0,0,0,0.03) ;
         }
 
-        .commentList>td:nth-child(2){
+        .replyList>td:nth-child(2){
             height: 99px;
 
             display: flex;
@@ -101,13 +101,13 @@
         }
 
         /*댓글 번호*/
-        .commentList>#commentNo{
+        .replyList>#replyNo{
             text-align: center;
 
         }
 
         /*댓글 내용*/
-        .commentList>td>#commentContent{
+        .replyList>td>#replyContent{
             font-size: 20px;
             text-align: left;
 
@@ -118,12 +118,12 @@
 
         }
 
-        .commentList>td>#commentContent:hover{
+        .replyList>td>#replyContent:hover{
             text-decoration: underline;
         }
 
         /*댓글이 있는 게시글 제목*/
-        .commentList>td>#boardTitle{
+        .replyList>td>#boardTitle{
             font-size: 15px; 
             color: #b3b3b3;           
             text-align: left;   
@@ -131,7 +131,7 @@
         }
 
         /*댓글 등록일*/
-        .commentList>#enrollDate{
+        .replyList>#enrollDate{
             text-align: center;   
             font-size: 15px; 
         }
@@ -154,9 +154,6 @@
             text-align: center;
             line-height: 30px;
         }
-
-
-
         
     </style>
 </head>
@@ -171,28 +168,38 @@
                         <th width="100px">댓글번호</th>
 	                    <th width="560px">댓글</th>
 	                    <th width="200px">작성일</th>
-	                </tr>
-                    <c:forEach var="cmt" items="${list}">
-                        <tr class="commentList" onclick="location.href='${pageContext.request.contextPath}/detail.pr?goodsId=${cmt.product.goodsId}'">
-                            <td id="commentNo">${cmt.key1}</td>
-                            <td>
-                                <div id="commentContent">${cmt.content}</div>
-                                <div id="boardTitle">게시글: ${cmt.product.title}</div>
-                            </td>
-                            <td id="enrollDate">${cmt.commentsDate}</td>
-                        </tr>
-                    </c:forEach>
+	                </tr>         
+                    <c:choose>
+                        <c:when test="${not empty rList}">
+                            <c:forEach var="r" items="${rList}">
+                                <tr class="replyList" onclick="location.href='${pageContext.request.contextPath}/detail.pr?goodsId=${r.product.goodsId}'">
+                                    <td id="replyNo">${r.replyNo}</td>
+                                    <td>
+                                        <div id="replyContent">${r.replyContent}</div>
+                                        <div id="boardTitle">게시글: ${r.product.title}</div>
+                                    </td>
+                                    <td id="enrollDate">${r.replyDate}</td>
+                                </tr>
+                            </c:forEach>
+                            
+                            <c:set var="listSize" value="${fn:length(rList)}" />
+                            <c:set var="bLimit" value="${pi.boardLimit}" />
+                            <c:forEach var="i" begin="1" end="${bLimit - listSize}">
+                                <tr class="nullReplySpace"></tr>
+                            </c:forEach>
+                            <c:remove var="listSize" />
+                            <c:remove var="bLimit" />
 
-                    <c:set var="listSize" value="${fn:length(list)}" />
-                    <c:set var="bLimit" value="${pi.boardLimit}" />
-                    <c:forEach var="i" begin="1" end="${bLimit - listSize}">
-                        <tr class="nullCommentSpace"></tr>
-                    </c:forEach>
-                    <c:remove var="listSize" />
-                    <c:remove var="bLimit" />
+                        </c:when>
+                        <c:otherwise>
+                            <tbody id="myPostingList" >
+                                <tr>
+                                    <td colspan="4" style="height: 600px;">게시글이 없습니다</td>
+                                </tr>
+                            </tbody>                     
+                        </c:otherwise>
+                    </c:choose>
 
-
-	
 	            </table>
 	            <div id="pageSelect" align="center">
                     <c:if test="${pi.currentPage != 1}">

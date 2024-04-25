@@ -136,6 +136,12 @@
             text-decoration: underline solid;
         }
 
+        /*회원탈퇴 버튼*/
+        #deleteMember{
+            font-size: 17px;
+            font-weight: bold;
+        }
+
         /* 마이페이지 기본틀 */
         .main {
             display: flex;
@@ -180,6 +186,9 @@
                     <li><a href="${pageContext.request.contextPath}/opo.fa" class="nonStyle">1:1문의</a></li>
                     <li><a href="${pageContext.request.contextPath}/indexToFaq.fa" class="nonStyle">자주묻는질문</a></li>
                     <li><a href="${pageContext.request.contextPath}/list.fa" class="nonStyle">신고내역</a></li>
+                </ul>
+                <ul>
+                    <li><a href="${pageContext.request.contextPath}/deleteForm.my" id="deleteMember">회원탈퇴</a></li>
                 </ul>
 
 

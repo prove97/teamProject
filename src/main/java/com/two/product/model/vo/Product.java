@@ -12,7 +12,7 @@ public class Product {
 	private int sellPrice;
 	private int viewCount;
 	private String pExplain;
-	private Date enrollDate;
+	private String enrollDate;
 	private int loveIt;
 	private String returnPd;
 	private String locationT;
@@ -24,7 +24,7 @@ public class Product {
 	public Product() {
 	}
 	public Product(int goodsId, int sellerNo, String categoryM, String title, String status, int sellPrice,
-			int viewCount, String pExplain, Date enrollDate, int loveIt, String returnPd, String locationT,
+			int viewCount, String pExplain, String enrollDate, int loveIt, String returnPd, String locationT,
 			String productStatus, String nickname, int score, String filePath, String changeName) {
 		this.goodsId = goodsId;
 		this.sellerNo = sellerNo;
@@ -92,10 +92,10 @@ public class Product {
 	public void setpExplain(String pExplain) {
 		this.pExplain = pExplain;
 	}
-	public Date getEnrollDate() {
+	public String getEnrollDate() {
 		return enrollDate;
 	}
-	public void setEnrollDate(Date enrollDate) {
+	public void setEnrollDate(String enrollDate) {
 		this.enrollDate = enrollDate;
 	}
 	public int getLoveIt() {
