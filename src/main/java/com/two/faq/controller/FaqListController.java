@@ -8,11 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.two.common.Pagination;
-import com.two.common.model.vo.PageInfo;
 import com.two.faq.model.vo.Faq;
 import com.two.faq.service.FaqServiceImpl;
+import com.two.member.model.vo.Member;
 
 /**
  * Servlet implementation class FaqListController
@@ -34,12 +34,17 @@ public class FaqListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//나의 문의내역
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
 		
+		int uNo = loginUser.getUserNo();
 		
-		ArrayList<Faq> list = new FaqServiceImpl().selectFaqList();
-		//응답뷰
+		ArrayList<Faq> list = new FaqServiceImpl().selectList(uNo);
+		//The method parseInt(String) in the type Integer is not applicable for the arguments (int)
+		System.out.println("lsit : " + list);
+		
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("views/FAQ/myFAQ.jsp").forward(request, response);
+	    request.getRequestDispatcher("views/FAQ/myFAQ.jsp").forward(request, response);
 		
 	}
 

@@ -208,7 +208,7 @@
                 <div class="hidden">
                     <!-- <p style="padding: 27px 0px 30px 36px; font-size: 20px; color: #545454; font-weight: bold;">광고성 콘텐츠(상점)에요.</p> -->
                     <p style="padding-left: 36px; color: black; font-size: 20px;">
-                        A : 사기를 행한 행적이있는 알아볼 수 있는 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                        A : 사기전적이 있는지 알아볼 수 있는 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                         <a href="https://thecheat.co.kr/rb/?mod=_search">https://thecheat.co.kr/rb/?mod=_search</a> 
                         으로 접속후 <br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;확인하시길 바랍니다 감사합니다.</p>
@@ -219,7 +219,7 @@
                                      cursor: pointer;">전문 업자 같아요.</p>
                 <div class="hidden">
                     <!-- <p style="padding: 27px 0px 30px 36px; font-size: 20px; color: #545454; font-weight: bold;">광고성 콘텐츠(상점)에요.</p> -->
-                    <p style="padding-left: 36px; color: black; font-size: 20px;">A : 1:1 게시글을 통해 사진과함께 문의 주시면 확인 후 정지 처리하겠습니다 감사합니다. </p>
+                    <p style=" padding-left: 36px; color: black; font-size: 20px;">A : 1:1 게시글을 통해 사진과함께 문의 주시면 확인 후 정지 처리하겠습니다 감사합니다. </p>
                 </div>                                     
             </div>
             <div id="FAQ6" onclick="toggleFAQ('6')">

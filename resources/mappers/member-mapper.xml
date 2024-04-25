@@ -128,8 +128,15 @@
     	AND PHONE = #{phone}
     	AND ACTIVATED = 'N'
 	</select>
-	
-		<select id="pwdFind" resultType="String">
+	    
+    <update id="deleteMember" parameterType="Member">
+        UPDATE MEMBER
+        SET ACTIVATED = 'Y'
+        WHERE USER_NO=#{userNo}
+        AND USER_PWD=#{userPwd}
+   </update>
+   
+	<select id="pwdFind" resultType="String">
     	SELECT USER_PWD
     	FROM MEMBER
     	WHERE USER_ID = #{userId}
