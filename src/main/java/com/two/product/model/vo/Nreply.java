@@ -1,7 +1,5 @@
 package com.two.product.model.vo;
 
-import java.sql.Date;
-
 public class Nreply {
 	private int nreplyNo;
 	private String nreplyContent;
