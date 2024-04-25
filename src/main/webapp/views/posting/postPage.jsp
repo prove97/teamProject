@@ -173,7 +173,7 @@
                 <li id="opt2" onclick="show_comment()"><b id="banner_opt2">댓글</b></li>
             </ul>
         </div>
-        <div class="comment_part" id="comment_banner_menu1">
+        <div class="comment_part" id="comment_banner_menu1" style="display: none">
         	<c:forEach var="q" items="${requestList}">
 	        	<div class="purchase_request">
 	                <p class="purchase_method">[구매 신청]</p>
@@ -195,7 +195,7 @@
         	</c:forEach>
         	<div class="purchase_request" id="purchase_requesting" style="display: none">
                 <p class="purchase_method">[구매 신청 작성중]</p>
-                <p class="time_of_writing1"><%=new SimpleDateFormat("yyyy-MM-dd hh:mm").format(new Date()) %></p>
+                <p class="time_of_writing1"><%=new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date()) %></p>
                 <div class="buyer">
                     <img src="${pageContext.request.contextPath}/img/프사.jpg" alt="" class="buyer_pic">
                     <p class="buyer_name">${loginUser.nickname}</p>
@@ -208,15 +208,19 @@
                 </div>
                 <div class="suggested_price">
                 	<form action="insert.req">
-                    	<p>구매 희망 가격 : <input type="number" id="requestingPrice">원 <button type="button" id="requestingBtn">신청하기</button></p>
+               			<input type="hidden" name="goodsId" value="${p.goodsId}"/>
+               			<input type="hidden" name="requestWriter" value="${loginUser.userNo}"/>
+               			<input type="hidden" name="nickname" value="${loginUser.nickname}"/>
+               			<input type="hidden" name="score" value="${loginUser.score}"/>
+                    	<p>구매 희망 가격 : <input type="number" id="requestingPrice" name="requestPrice" placeholder="숫자만 입력">원 <button type="submit" id="requestingBtn">신청하기</button></p>
                     </form>
                 </div>
             </div>
         </div>
-        <div>
+        <div id="comment_banner_menu2" style="display: none;">
         	<c:forEach var="r" items="${replyList}">
-		        <div class="comment" id="comment_banner_menu2" style="display: none;">
-	        		<button type="button" id="nreplyingBtn">대댓글</button>
+		        <div class="comment">
+	        		<button type="button" class="nreplyingBtn" data-rno="${r.replyNo}">대댓글</button>
 	        		<div class="buyer" style="margin-bottom: 20px;">
 		                <img src="${pageContext.request.contextPath}/img/프사.jpg" alt="" class="buyer_pic">
 		                <p class="buyer_name">${r.nickname}</p>
@@ -235,20 +239,29 @@
 		                <p class="extension_button">▽</p>
 		            </div>
 		            
+		            <c:set var="replyNo" value="${r.replyNo}"/>
 		            <c:forEach var="n" items="${nreplyList}">
-		            	<div class="reply">
-			                <p>↳</p>
-			                <img src="${pageContext.request.contextPath}/img/프사.jpg" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin: 0px 5px;">
-			                <p class="comment_reply">${n.nreplyContent}</p>
-			                <p class="time_of_writing3">${n.nreplyDate}</p>
-			            </div>
+		            	<c:set var="refReplyNo" value="${n.replyNo}"/>
+		            	<c:if test="${replyNo eq refReplyNo}">
+			            	<div class="reply">
+				                <p>↳</p>
+				                <img src="${pageContext.request.contextPath}/img/프사.jpg" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin: 0px 5px;">
+				                <p class="comment_reply">${n.nreplyContent}</p>
+				                <p class="time_of_writing3">${n.nreplyDate}</p>
+				            </div>
+				        </c:if>
 		            </c:forEach>
 		            
-		            <div class="reply" style="display: none;">
+		            <div class="reply" id="nreplying${r.replyNo}" style="display: none;">
 		                <p>↳</p>
 		                <img src="${pageContext.request.contextPath}/img/프사.jpg" alt="" style="width: 30px; height: 30px; border-radius: 50%; margin: 0px 5px;">
-		                <p class="comment_reply">${n.nreplyContent}</p>
-		                <p class="time_of_writing3">${n.nreplyDate}</p>
+		                <form action="insert.nr">
+		                	<input type="hidden" name="goodsId" value="${p.goodsId}"/>
+		                	<input type="hidden" name="replyNo" value="${r.replyNo}"/>
+	               			<input type="hidden" name="nreplyWriter" value="${loginUser.userNo}"/>
+		                	<p class="comment_reply"><input type="text" id="replyingComment" name="nreplyContent" placeholder="대댓글 입력"> <button type="submit" id="nreplyingSubBtn">작성</button></p>
+		                </form>
+		                <p class="time_of_writing3"><%=new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date())%></p>
 		            </div>
 		        </div>
         	</c:forEach>
@@ -265,11 +278,15 @@
 	            </div>
 	            <div class="first_comment">
 	            	<form action="insert.rep">
-	                	<p style="font-size: 20px;"><input type="text" id="replyingComment" placeholder="댓글 입력"> <button type="button" id="replyingBtn">작성</button></p>
+	            		<input type="hidden" name="goodsId" value="${r.goodsId}"/>
+               			<input type="hidden" name="replyWriter" value="${loginUser.userNo}"/>
+               			<input type="hidden" name="nickname" value="${loginUser.nickname}"/>
+               			<input type="hidden" name="score" value="${loginUser.score}"/>
+	                	<p style="font-size: 20px;"><input type="text" id="replyingComment" name="replyContent" placeholder="댓글 입력"> <button type="submit" id="replyingBtn">작성</button></p>
 	            	</form>
 	            </div>
 	            <div>
-	                <p class="time_of_writing2"><%=new SimpleDateFormat("yyyy-MM-dd hh:mm").format(new Date()) %></p>
+	                <p class="time_of_writing2"><%=new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date()) %></p>
 	            </div>
 	        </div>
         </div>

@@ -96,4 +96,16 @@ public class ProductDao {
 	public int deleteProduct(SqlSession sqlSession, int goodsId) {
 		return sqlSession.update("productMapper.deleteProduct", goodsId);
 	}
+
+	public int insertRequest(SqlSession sqlSession, Request q) {
+		return sqlSession.insert("productMapper.insertRequest", q);
+	}
+
+	public int insertReply(SqlSession sqlSession, Reply r) {
+		return sqlSession.insert("productMapper.insertReply", r);
+	}
+
+	public int insertNreply(SqlSession sqlSession, Nreply n) {
+		return sqlSession.insert("productMapper.insertNreply", n);
+	}
 }

@@ -24,4 +24,7 @@ public interface ProductService {
 	public ArrayList<Product> selectcateList(HashMap<String, String> map, PageInfo pi);
 	public Attachment selectAttachment(int goodsId);
 	public int deleteProduct(int goodsId);
+	public int insertRequest(Request q);
+	public int insertReply(Reply r);
+	public int insertNreply(Nreply n);
 }

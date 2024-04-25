@@ -7,7 +7,7 @@ public class Reply {
 	private String replyContent;
 	private int goodsId;
 	private int replyWriter;
-	private Date replyDate;
+	private String replyDate;
 	private String nickname;
 	private int score;
     private Product product;
@@ -16,7 +16,7 @@ public class Reply {
 		super();
 	}
 
-	public Reply(int replyNo, String replyContent, int goodsId, int replyWriter, Date replyDate, String nickname,
+	public Reply(int replyNo, String replyContent, int goodsId, int replyWriter, String replyDate, String nickname,
 			int score) {
 		super();
 		this.replyNo = replyNo;
@@ -73,11 +73,11 @@ public class Reply {
 		this.replyWriter = replyWriter;
 	}
 
-	public Date getReplyDate() {
+	public String getReplyDate() {
 		return replyDate;
 	}
 
-	public void setReplyDate(Date replyDate) {
+	public void setReplyDate(String replyDate) {
 		this.replyDate = replyDate;
 	}
 
