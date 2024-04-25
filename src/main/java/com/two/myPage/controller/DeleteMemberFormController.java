@@ -1,27 +1,26 @@
-package com.two.member.controller;
+package com.two.myPage.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.two.member.model.vo.Member;
-import com.two.member.service.MemberService;
 
 /**
- * Servlet implementation class MemberLoginPageController
+ * Servlet implementation class DeleteMemberController
  */
-@WebServlet("/loginPage.me")
-public class MemberLoginPageController extends HttpServlet {
+@WebServlet("/deleteForm.my")
+public class DeleteMemberFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberLoginPageController() {
+    public DeleteMemberFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,21 +29,19 @@ public class MemberLoginPageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		Member m = new Member();
-		m.setUserId(request.getParameter("userId"));
-		m.setUserPwd(request.getParameter("userPwd"));
-		Member loginUser = new MemberService().loginMember(m);
-		System.out.println(m);
+		//로그인 되어있고, provePwd.jsp에서 비밀번호를 맞게 입력했다면 뜨게해야함
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		if (loginUser == null) {
-			request.setAttribute("errorMsg", "로그인에 실패하였습니다");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-		
-		} else {
-			request.getSession().setAttribute("loginUser", loginUser);
-			response.sendRedirect(request.getContextPath());
-		}
+		if(loginUser != null) { //로그인 되어있을 경우
+			request.setAttribute("changeUrl", "deleteMember.jsp"); //changeUrl의 값에 따라 myPageMain.jsp창에서 뜨는 내용이 달라짐
+			request.getRequestDispatcher("views/myPage/myPageMain.jsp").forward(request, response);	
+			
+		} else { //로그인 되어있지 않을 경우
+			session.setAttribute("alertMsg", "로그인 해주세요");
+			response.sendRedirect(request.getContextPath()+"/Login.me");
+		}			
+
 	}
 
 	/**

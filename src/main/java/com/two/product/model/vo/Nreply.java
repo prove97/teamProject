@@ -8,6 +8,8 @@ public class Nreply {
 	private int replyNo;
 	private int nreplyWriter;
 	private Date nreplyDate;
+	private Reply reply;
+	private Product product;
 	
 	public Nreply() {
 		super();
@@ -20,6 +22,18 @@ public class Nreply {
 		this.replyNo = replyNo;
 		this.nreplyWriter = nreplyWriter;
 		this.nreplyDate = nreplyDate;
+	}
+	
+	public Nreply(int nreplyNo, String nreplyContent, int replyNo, int nreplyWriter, Date nreplyDate, Reply reply,
+			Product product) {
+		super();
+		this.nreplyNo = nreplyNo;
+		this.nreplyContent = nreplyContent;
+		this.replyNo = replyNo;
+		this.nreplyWriter = nreplyWriter;
+		this.nreplyDate = nreplyDate;
+		this.reply = reply;
+		this.product = product;
 	}
 
 	public int getNreplyNo() {
@@ -61,10 +75,30 @@ public class Nreply {
 	public void setNreplyDate(Date nreplyDate) {
 		this.nreplyDate = nreplyDate;
 	}
+	
+
+	public Reply getReply() {
+		return reply;
+	}
+
+	public void setReply(Reply reply) {
+		this.reply = reply;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 
 	@Override
 	public String toString() {
 		return "Nreply [nreplyNo=" + nreplyNo + ", nreplyContent=" + nreplyContent + ", replyNo=" + replyNo
-				+ ", nreplyWriter=" + nreplyWriter + ", nreplyDate=" + nreplyDate + "]";
+				+ ", nreplyWriter=" + nreplyWriter + ", nreplyDate=" + nreplyDate + ", reply=" + reply + ", product="
+				+ product + "]";
 	}
+
+
 }
