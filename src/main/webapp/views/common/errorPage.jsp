@@ -9,6 +9,6 @@
 <body>
 	<jsp:include page="header.jsp"/>
 	<br><br>
-	<h1 align="center" style="color:red">${errorMsg }</h1>
+	<h1 align="center" style="color:red; margin-top: 150px">${errorMsg }</h1>
 </body>
 </html>
