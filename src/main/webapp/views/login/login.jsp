@@ -125,7 +125,7 @@
 							let end = cookieData.indexOf(';', start);
 							if (end == -1)
 								end = cookieData.length;
-							console.log("end 위치: " + end);
+							//console.log("end 위치: " + end);
 							cookieValue = unescape(
 									cookieData.substring(start, end + 1))
 									.replace(';', ''); // 세미콜론 제거
