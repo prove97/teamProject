@@ -27,25 +27,15 @@
 		<result column="PRODUCT_STATUS" property="productStatus"/>
 	</resultMap>
 
-	<resultMap id="replyResultSet" type="Reply">
-		<result column="REPLY_NO" property="replyNo"/>
-		<result column="REPLY_CONTENT" property="replyContent"/>
+	<resultMap id="commentsResultSet" type="Comments">
+		<result column="KEY1" property="key1"/> <!-- 댓글 id번호 -->
+		<result column="USER_NO" property="userNo"/>
 		<result column="GOODS_ID" property="goodsId"/>
-		<result column="REPLY_WRITER" property="replyWriter"/>
-		<result column="REPLY_DATE" property="replyDate"/>
-		<result column="NICKNAME" property="nickname"/>
-		<result column="SCORE" property="score"/>
+		<result column="POST_ID" property="postId"/>
+		<result column="CONTENT" property="content"/>
+		<result column="COMMENTS_DATE" property="commentsDate"/>
+		<result column="KEY2" property="key2"/> <!-- 참조하는 댓글 id(대댓글, null일 경우 대댓글 아님) -->
 		<collection resultMap="productResultSet" property="product" />
-	</resultMap>
-
-	<resultMap id="nReplyResultSet" type="Nreply">
-		<result column="NREPLY_NO" property="nreplyNo"/>
-		<result column="NREPLY_CONTENT" property="nreplyContent"/>
-		<result column="REPLY_NO" property="replyNo"/>
-		<result column="NREPLY_WRITER" property="nreplyWriter"/>
-		<result column="NREPLY_DATE" property="nreplyDate"/>
-		<collection resultMap="productResultSet" property="product" />
-		<collection resultMap="replyResultSet" property="reply" />
 	</resultMap>
 	
 	<resultMap id="wishListResultSet" type="WishList">
@@ -144,34 +134,25 @@
     </select>
     
     <!-- 로그인 유저의 전체 댓글 개수 조회 -->
-    <select id="selectMyReplyListCount" resultType="_int">
+    <select id="selectMyCommentListCount" resultType="_int">
         SELECT COUNT(*)
-		FROM (SELECT REPLY_NO, REPLY_CONTENT, REPLY_WRITER, REPLY_DATE, GOODS_ID, TITLE
-		      FROM REPLY
-		      JOIN PRODUCT USING (GOODS_ID)
-		      WHERE REPLY_WRITER = #{userNo}
-		      UNION ALL
-		      SELECT NREPLY_NO, NREPLY_CONTENT, NREPLY_WRITER, NREPLY_DATE, GOODS_ID, TITLE
-		      FROM NREPLY       
-              JOIN REPLY USING(REPLY_NO)
-              JOIN PRODUCT USING(GOODS_ID)
-		      WHERE NREPLY_WRITER = #{userNo})
+        FROM COMMENTS
+        WHERE USER_NO = #{userNo}
     </select>
     
     <!-- 로그인 유저의 전체 댓글리스트 조회 -->
-    <select id="selectMyReplyList" resultMap="replyResultSet">
-        SELECT *
-		FROM (SELECT REPLY_NO, REPLY_CONTENT, REPLY_WRITER, REPLY_DATE, GOODS_ID, TITLE
-		      FROM REPLY
-		      JOIN PRODUCT USING (GOODS_ID)
-		      WHERE REPLY_WRITER = #{userNo}
-		      UNION ALL
-		      SELECT NREPLY_NO, NREPLY_CONTENT, NREPLY_WRITER, NREPLY_DATE, GOODS_ID, TITLE
-		      FROM NREPLY       
-              JOIN REPLY USING(REPLY_NO)
-              JOIN PRODUCT USING(GOODS_ID)
-		      WHERE NREPLY_WRITER = #{userNo})
-		ORDER BY REPLY_DATE DESC
+    <select id="selectMyCommentList" resultMap="commentsResultSet">
+        SELECT KEY1,
+			   USER_NO,
+			   GOODS_ID,
+			   POST_ID,
+			   CONTENT,
+			   COMMENTS_DATE,
+			   KEY2,
+			   TITLE <!-- 댓글이 있는 게시글 제목 -->
+        FROM COMMENTS
+        JOIN PRODUCT USING(GOODS_ID) 
+        WHERE USER_NO = #{userNo}
     </select>
     
     <!-- 찜한 게시글(Product) 리스트 수 조회 -->

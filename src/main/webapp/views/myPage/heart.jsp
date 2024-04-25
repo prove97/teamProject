@@ -153,35 +153,24 @@
 	                    <th width="80px">조회수</th>
 	                    <th width="150px">작성자</th>
 	                </tr>
-                    <c:choose>
-                        <c:when test="${not empty list}">
-                            <c:forEach var="w" items="${list}">
-                                <tr class="myHeartList" onclick="location.href='${pageContext.request.contextPath}/detail.pr?goodsId=${w.product.goodsId}'">
-                                    <td>${w.product.goodsId}</td>
-                                    <td class="title">
-                                        ${w.product.title} <span></span>
-                                    </td>
-                                    <td>${w.product.viewCount}</td>
-                                    <td>${w.member.nickname}</td>
-                                </tr>
-                            </c:forEach>
+                    <c:forEach var="w" items="${list}">
+                        <tr class="myHeartList" onclick="location.href='${pageContext.request.contextPath}/detail.pr?goodsId=${w.product.goodsId}'">
+                            <td>${w.product.goodsId}</td>
+                            <td class="title">
+                                ${w.product.title} <span></span>
+                            </td>
+                            <td>${w.product.viewCount}</td>
+                            <td>${w.member.nickname}</td>
+                        </tr>
+                    </c:forEach>
 
-                            <c:set var="listSize" value="${fn:length(list)}" />
-                            <c:set var="bLimit" value="${pi.boardLimit}" />
-                            <c:forEach var="i" begin="1" end="${bLimit - listSize}">
-                                <tr></tr>
-                            </c:forEach>
-                            <c:remove var="listSize" />
-                            <c:remove var="bLimit" />
-                        </c:when>
-                        <c:otherwise>
-                            <tbody id="myPostingList" >
-                                <tr>
-                                    <td colspan="3" style="height: 600px;">게시글이 없습니다</td>
-                                </tr>
-                            </tbody>                     
-                       </c:otherwise>
-                </c:choose>
+                    <c:set var="listSize" value="${fn:length(list)}" />
+                    <c:set var="bLimit" value="${pi.boardLimit}" />
+                    <c:forEach var="i" begin="1" end="${bLimit - listSize}">
+                        <tr></tr>
+                    </c:forEach>
+                    <c:remove var="listSize" />
+                    <c:remove var="bLimit" />
 
 	
 	            </table>

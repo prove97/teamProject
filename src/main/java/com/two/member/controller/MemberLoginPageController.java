@@ -38,7 +38,7 @@ public class MemberLoginPageController extends HttpServlet {
 		System.out.println(m);
 		
 		if (loginUser == null) {
-			request.setAttribute("errorMsg", "ë¡œê·¸ì¸ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤");
+			request.setAttribute("errorMsg", "·Î±×ÀÎ ½ÇÆĞ");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		
 		} else {

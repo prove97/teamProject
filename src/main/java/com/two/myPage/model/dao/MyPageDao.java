@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
+import com.two.comments.model.vo.Comments;
+import com.two.common.Template;
 import com.two.common.model.vo.PageInfo;
 import com.two.member.model.vo.Member;
-import com.two.product.model.vo.Nreply;
 import com.two.product.model.vo.Product;
-import com.two.product.model.vo.Reply;
 import com.two.wishList.model.vo.WishList;
 
 public class MyPageDao {
@@ -88,17 +88,17 @@ public class MyPageDao {
 	
 	
 	
-	public int selectMyReplyListCount(SqlSession sqlSession, int userNo) {
-		return sqlSession.selectOne("myPageMapper.selectMyReplyListCount", userNo);
+	public int selectMyCommentListCount(SqlSession sqlSession, int userNo) {
+		return sqlSession.selectOne("myPageMapper.selectMyCommentListCount", userNo);
 	}
 	
-	public ArrayList<Reply> selectMyReplyList(SqlSession sqlSession, int userNo, PageInfo pi) {
+	public ArrayList<Comments> selectMyCommentList(SqlSession sqlSession, int userNo, PageInfo pi) {
 		int offset = (pi.getCurrentPage()-1) * pi.getBoardLimit();
 		int limit = pi.getBoardLimit();
 
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-		return (ArrayList)sqlSession.selectList("myPageMapper.selectMyReplyList", userNo, rowBounds);
+		return (ArrayList)sqlSession.selectList("myPageMapper.selectMyCommentList", userNo, rowBounds);
 	}
 
 	public int selectLikeProductCount(SqlSession sqlSession, int userNo) {
@@ -107,10 +107,6 @@ public class MyPageDao {
 
 	public ArrayList<WishList> selectLikeProduct(SqlSession sqlSession, int userNo, PageInfo pi) {
 		return (ArrayList)sqlSession.selectList("myPageMapper.selectLikeProduct", userNo);
-	}
-	
-	public int deleteMember(SqlSession sqlSession, Member m) {
-		return sqlSession.update("memberMapper.deleteMember", m);
 	}
 	
 	

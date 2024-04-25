@@ -137,11 +137,4 @@
     	AND PHONE = #{phone}
     	AND ACTIVATED = 'N'
 	</select>
-	
-	<update id="deleteMember" parameterType="Member">
-		UPDATE MEMBER
-		SET ACTIVATED = 'Y'
-		WHERE USER_NO=#{userNo}
-		AND USER_PWD=#{userPwd}
-   </update>
 </mapper>

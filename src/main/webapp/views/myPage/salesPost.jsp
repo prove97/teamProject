@@ -213,15 +213,15 @@
                                         <td>${p.viewCount}</td>
                                         <td>${p.enrollDate}</td>
                                     </tr>
-                            </c:forEach>
-                                <c:set var="listSize" value="${fn:length(list)}" />
-                                <c:set var="bLimit" value="${pi.boardLimit}" />
-                                <c:forEach var="i" begin="1" end="${bLimit - listSize}">
-                                    <tr></tr>
                                 </c:forEach>
-                                <c:remove var="listSize" />
-                                <c:remove var="bLimit" />
-                            </tbody>
+                                    <c:set var="listSize" value="${fn:length(list)}" />
+                                    <c:set var="bLimit" value="${pi.boardLimit}" />
+                                    <c:forEach var="i" begin="1" end="${bLimit - listSize}">
+                                        <tr></tr>
+                                    </c:forEach>
+                                    <c:remove var="listSize" />
+                                    <c:remove var="bLimit" />
+                                </tbody>
                         </c:when>
                         <c:otherwise>
                             <tbody id="myPostingList" >
