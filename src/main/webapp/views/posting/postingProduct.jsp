@@ -95,7 +95,7 @@
                            <div id="category_middle_4" style="display: none">
                               <li><button type="button" id="category_middle_opt41" value="잉크젯 프린터" onclick="category_middle(this);">잉크젯 프린터</button></li>
                                <li><button type="button" id="category_middle_opt42" value="레이저 프린터" onclick="category_middle(this);">레이저 프린터</button></li>
-                               <li><button type="button" id="category_middle_opt43" value="혹합기" onclick="category_middle(this);">복합기</button></li>
+                               <li><button type="button" id="category_middle_opt43" value="복합기" onclick="category_middle(this);">복합기</button></li>
                                <li><button type="button" id="category_middle_opt44" value="스캐너" onclick="category_middle(this);">스캐너</button></li>
                            </div>
                            <div id="category_middle_5" style="display: none">
