@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.Date, java.util.Calendar, java.text.SimpleDateFormat" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,13 +121,13 @@
                     <img src="${pageContext.request.contextPath}/img/프사.jpg" alt="" id="seller">
                 </div>
                 <div>
-                    <p id="sellerName">${loginUser.nickname}</p>
+                    <p id="sellerName">${p.nickname}</p>
                 </div>
             </div>
             <div id="SellerBrightnessRate" style="height: 35px; position: absolute; left: 180px; top: 15px;">
-                <p style="font-size: 14px; margin: 0; width: 100%">밝음 수치: ${loginUser.score} lux</p>
+                <p style="font-size: 14px; margin: 0; width: 100%">밝음 수치: ${p.score} lux</p>
                 <div class="progress" style="width: 120px; height: 14px;  border-radius: 10px; border: 0.1px solid darkgray;" >
-                    <div id="progress-bar" style="width:${loginUser.score}%; background: #70C9A0;"></div>
+                    <div id="progress-bar" style="width:${p.score}%; background: #70C9A0;"></div>
                 </div>
             </div>
         </div>
@@ -278,7 +279,7 @@
 	            </div>
 	            <div class="first_comment">
 	            	<form action="insert.rep">
-	            		<input type="hidden" name="goodsId" value="${r.goodsId}"/>
+	            		<input type="hidden" name="goodsId" value="${p.goodsId}"/>
                			<input type="hidden" name="replyWriter" value="${loginUser.userNo}"/>
                			<input type="hidden" name="nickname" value="${loginUser.nickname}"/>
                			<input type="hidden" name="score" value="${loginUser.score}"/>

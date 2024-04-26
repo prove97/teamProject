@@ -36,6 +36,12 @@ public class ReplyInsertController extends HttpServlet {
 		String nickname = request.getParameter("nickname");
 		int score = Integer.parseInt(request.getParameter("score"));
 		
+		System.out.println(replyContent);
+		System.out.println(goodsId);
+		System.out.println(replyWriter);
+		System.out.println(nickname);
+		System.out.println(score);
+		
 		Reply r = new Reply();
 		
 		r.setReplyContent(replyContent);
@@ -49,7 +55,7 @@ public class ReplyInsertController extends HttpServlet {
 		if (result > 0) {
 			response.sendRedirect(request.getContextPath() + "/detail.pr?goodsId=" + goodsId);
 		} else {
-			request.setAttribute("errorMsg", "구매요청 실패");
+			request.setAttribute("errorMsg", "댓글 작성 실패");
 		}
 	}
 
