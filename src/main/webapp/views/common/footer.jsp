@@ -23,7 +23,7 @@
         height: 120px;
         margin: 0 auto;
         bottom: 0;
-        position: absolute;
+        position: fixed;
         height: 10rem;
         background: white;
     }
