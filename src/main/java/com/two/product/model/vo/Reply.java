@@ -28,7 +28,7 @@ public class Reply {
 		this.score = score;
 	}
 	
-    public Reply(int replyNo, String replyContent, int goodsId, int replyWriter, Date replyDate, String nickname,
+    public Reply(int replyNo, String replyContent, int goodsId, int replyWriter, String replyDate, String nickname,
             int score, Product product) {
         super();
         this.replyNo = replyNo;
