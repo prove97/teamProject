@@ -17,8 +17,9 @@
     body{
         display: flex;
         justify-content: center;
-        height: 1200px;
+        height: auto;
         position: relative;
+        overflow-y: auto;  
     }
 
     .FAQ-title{
@@ -32,8 +33,6 @@
 
     .FAQ-area{
         width: 831px;
-        height: 685px;
-        margin: 0 auto;
     }
 
     #FAQ1{
@@ -138,7 +137,7 @@
     <!-- 헤더 -->
     <%@ include file="/views/common/header.jsp" %>
     <!-- 메인 -->
-    <div>
+    <div class="main" style="margin-bottom: 180px;">
         <div class="FAQ-title">
             <h1 id="title-text">자주 묻는 질문</h1>
             <input type="submit" value="1:1 문의하기" onclick="location.href='${pageContext.request.contextPath}/views/FAQ/writeFAQ.jsp'" id="FAQ-submit">

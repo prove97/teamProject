@@ -22,7 +22,7 @@
     <!-- 헤더 -->
     <%@ include file="/views/common/header.jsp" %>
     <!-- 메인 -->
-    <div>
+    <div style="margin-bottom: 180px;">
         <div class="FAQ-title">
             <h1 id="title-text">나의 문의내역</h1>
         </div>
@@ -58,7 +58,7 @@
             hiddenDiv.style.display = 'block';
             icon.innerHTML = '△'; // 올림차순 아이콘으로 변경
             let FAQHeight = FAQDiv.offsetHeight; // FAQ1 div의 높이를 가져옴
-            hiddenDiv.style.top = FAQHeight + 'px'; // FAQ1 div의 높이에 따라 hidden div의 위치 조정
+            hiddenDiv.style.top = FAQHeight + 'px'; // FAQ1 div의 높이에 따라 hidden div의 위치 조정            
         } else {
             hiddenDiv.style.display = 'none';
             icon.innerHTML = '▽'; // 내림차순 아이콘으로 변경

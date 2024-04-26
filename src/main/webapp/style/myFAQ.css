@@ -57,16 +57,20 @@
     left: 0;
     width: 100%;
 } */
+
 body {
     display: flex;
     justify-content: center;
-    height: 1200px;
+    height: auto;
     position: relative;
+    overflow-y: auto;     
 }
 
 .main {
     width: 1151px;
-    height: auto;
+    height: 1080px;
+    min-height: 100%;
+    position: relative;
 }
 
 .FAQ-title {
@@ -78,29 +82,31 @@ body {
 }
 
 .FAQ-area {
-    width: 100%;
     margin-bottom: 20px; /* 마진 조정 */
     width: 831px;
+    position: relative;
     /* height: 70px; */
 }
 
 .FAQ {
+    word-break:break-all;
     width: 100%;
     border: 1px solid #D9D9D9;
     border-radius: 5px;
 }
 
 .FAQ-in {
+    word-break:break-all;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px; /* 안쪽 여백 조정 */
+    padding: 20px;
 }
 
 .hide {
     display: none;
     background: #D6EFE3;
     border-radius: 5px;
-    padding: 20px; /* 안쪽 여백 조정 */
-    margin-top: 20px; /* 위쪽 마진 조정 */
+    padding: 20px;
+    margin-top: 20px;
 }
