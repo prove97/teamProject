@@ -67,8 +67,6 @@ public class ProductListController extends HttpServlet {
 		map.put("pi", pi);
 		map.put("list",	list);
 		
-		System.out.println(list.get(0).getChangeName());
-		System.out.println(list.get(0).getFilePath());
 		
 		new Gson().toJson(map, response.getWriter());
 	}

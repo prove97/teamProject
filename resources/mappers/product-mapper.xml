@@ -122,6 +122,7 @@
 		JOIN MEMBER ON (SELLER_NO = USER_NO)
 		JOIN ATTACHMENT USING(GOODS_ID)
 		WHERE STATUS = '판매중'
+		ORDER BY ENROLL_DATE DESC
 	</select>
 	
 	<select id="selectListCount" resultType="_int">
@@ -167,7 +168,7 @@
 		 AND TITLE LIKE '%' || #{keyword} || '%'
 	</select>
 	
-	<select id="selectSearchList" parameterType="_int" resultMap="productResultSet">
+	<select id="selectSearchList" resultMap="productResultSet">
 		SELECT GOODS_ID,
 				SELLER_NO,
 				CATEGORY_M,
@@ -180,10 +181,16 @@
 				LOVEIT,
 				RETURN_PD,
 				LOCATION_T,
-				PRODUCT_STATUS
+				PRODUCT_STATUS,
+				FILE_PATH,
+				CHANGE_NAME
 		FROM PRODUCT P
+		JOIN MEMBER ON (SELLER_NO = USER_NO)
+		JOIN ATTACHMENT USING(GOODS_ID)
 		WHERE STATUS = '판매중'
 		AND TITLE LIKE '%' || #{keyword} || '%'
+		ORDER BY ENROLL_DATE DESC
+		
 	</select>
 	
 	<select id="selectRequestList" parameterType="_int" resultMap="requestResultSet">
@@ -244,10 +251,15 @@
 				LOVEIT,
 				RETURN_PD,
 				LOCATION_T,
-				PRODUCT_STATUS
+				PRODUCT_STATUS,
+				FILE_PATH,
+				CHANGE_NAME
 		FROM PRODUCT P
+		JOIN MEMBER ON (SELLER_NO = USER_NO)
+		JOIN ATTACHMENT USING(GOODS_ID)
 		WHERE STATUS = '판매중'
 		AND CATEGORY_M LIKE '%' || #{cate} || '%'
+		ORDER BY ENROLL_DATE DESC
 	</select>
 	
 	<insert id="insertAttachment" parameterType="Attachment">

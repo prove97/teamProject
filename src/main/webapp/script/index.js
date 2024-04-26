@@ -65,10 +65,10 @@ function drawList(data){
 	console.log(data)
                     let str = "";
                     let Section = document.getElementById("contents");
-                    console.log(data.list[1].filePath)
-                    console.log(data.list[1].changeName)
+
+                    
                     for(const p of data.list){
-                                    
+						let day = dataFormat(p.enrollDate)
                         str += `   <a href="javascript:void(0);" onclick="toDetail(${p.goodsId}); return false;">
                         				<div class="contents-preview">
                                         <div class="thumnail">
@@ -89,11 +89,12 @@ function drawList(data){
                                                     <p>`+p.sellPrice+`</p>
                                                 </div>
                                                 <div class="beforeDay">
-                                                    <p>`+p.enrollDate+`</p>
+                                                    <p id="eDate">`+day.getFullYear()+-+(day.getMonth()+1)+-+day.getDate()+`</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div></a>`
+                                    
                     }
                     Section.innerHTML = str;
                     
@@ -145,4 +146,10 @@ function categorySearch(data, callback){
     })
 	
 }
+
+function dataFormat(data, callback){
+	let day = new Date(data);
+	return day;
+}
         
+
