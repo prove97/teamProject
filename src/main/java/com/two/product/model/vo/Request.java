@@ -1,7 +1,5 @@
 package com.two.product.model.vo;
 
-import java.sql.Date;
-
 public class Request {
 	private int requestNo;
 	private int requestPrice;

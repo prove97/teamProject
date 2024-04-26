@@ -29,6 +29,8 @@
         <br>
 
       <form action="${pageContext.request.contextPath}/insert.pr" id="productEnroll-form" method="POST" enctype="multipart/form-data">
+           <input type="hidden" name="nickname" value="${loginUser.nickname}"/>
+           <input type="hidden" name="score" value="${loginUser.score}"/>
            <table class="input_table" style="font-size: 18px;">
                <tr class="row1">
                    <td class="column1">
@@ -185,7 +187,7 @@
                    <input type="file" name="attachment" id="file1" required onchange="loadImg(this, 1)">
                </div>
            <div class="btn">
-               <button type="reset" id="delete_btn">삭제하기</button>
+               <button type="reset" id="delete_btn">지우기</button>
                <button type="submit" id="submit_btn">등록하기</button>
            </div>
        </form>

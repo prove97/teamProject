@@ -55,6 +55,8 @@ public class ProductInsertController extends HttpServlet {
 			p.setReturnPd((multiRequest.getParameter("returnPd") == null) ? "N" : "Y");
 			p.setLocationT(multiRequest.getParameter("locationT"));
 			p.setProductStatus(multiRequest.getParameter("productStatus"));
+			p.setNickname(multiRequest.getParameter("nickname"));
+			p.setScore(Integer.parseInt(multiRequest.getParameter("score")));
 			
 			Attachment at = null;
 			
