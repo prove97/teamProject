@@ -62,8 +62,7 @@ body {
     display: flex;
     justify-content: center;
     height: auto;
-    position: relative;
-    overflow-y: auto;     
+    position: relative;    
 }
 
 .main {
