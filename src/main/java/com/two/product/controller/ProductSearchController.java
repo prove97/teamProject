@@ -35,8 +35,8 @@ public class ProductSearchController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String keyword = request.getParameter("searchValue"); //사용자가 입력한 키워드값
-		System.out.println("keyword"+keyword);
 		HashMap<String, String> map = new HashMap<>();
 		map.put("keyword", keyword);
 		
@@ -52,7 +52,7 @@ public class ProductSearchController extends HttpServlet {
 		searchMap.put("list",list);
 
 		request.setAttribute("keyword", keyword);
-		
+		response.setContentType("application/json; charset=utf-8");
 		new Gson().toJson(searchMap, response.getWriter());
 		
 
