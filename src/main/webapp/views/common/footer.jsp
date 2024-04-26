@@ -22,7 +22,7 @@
         width: 1151px;
         height: 120px;
         margin: 0 auto;
-        bottom: 0px;
+        bottom: 0;
         position: absolute;
         height: 10rem;
         background: white;
