@@ -47,7 +47,7 @@ public class ProductCategorySearch extends HttpServlet {
 		HashMap<String, Object> cateMap = new HashMap<>();
 		PageInfo pi = Pagination.getPageInfo(cateCount, currentPage, 10 , 18);
 		ArrayList<Product> list = new ProductServiceImpl().selectcateList(map, pi);
-		
+		response.setContentType("application/json; charset=utf-8");
 		cateMap.put("pi", pi);
 		cateMap.put("list",	list);
 
