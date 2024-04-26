@@ -35,7 +35,7 @@ public class MemberLoginPageController extends HttpServlet {
 		m.setUserId(request.getParameter("userId"));
 		m.setUserPwd(request.getParameter("userPwd"));
 		Member loginUser = new MemberService().loginMember(m);
-		System.out.println(m);
+		//System.out.println(m);
 		
 		if (loginUser == null) {
 			request.setAttribute("errorMsg", "로그인 실패! 아이디 / 비밀번호가 틀렸습니다.");

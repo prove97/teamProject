@@ -130,7 +130,7 @@
          </div>
    <div style="width: 100%;" align="center">
       
-      <form id="write-form" action="insert.fa" method="post" enctype="multipart/form-data">
+      <form id="write-form" action="${pageContext.request.contextPath}/insert.fa" method="post" enctype="multipart/form-data">
         <table class="write-area">
             <tbody>
                 <tr>
