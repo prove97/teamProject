@@ -47,7 +47,7 @@ public class NreplyInsertController extends HttpServlet {
 		if (result > 0) {
 			response.sendRedirect(request.getContextPath() + "/detail.pr?goodsId=" + goodsId);
 		} else {
-			request.setAttribute("errorMsg", "구매요청 실패");
+			request.setAttribute("errorMsg", "대댓글 작성 실패");
 		}
 	}
 

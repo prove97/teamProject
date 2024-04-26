@@ -78,7 +78,9 @@
 			LOVEIT,
 			RETURN_PD,
 			LOCATION_T,
-			PRODUCT_STATUS
+			PRODUCT_STATUS,
+			NICKNAME,
+			SCORE
 		)
 		VALUES
 		(
@@ -90,11 +92,13 @@
 			#{sellPrice},
 			DEFAULT,
 			#{pExplain},
-			TO_CHAR(DEFAULT, 'YYYY.MM.DD HH24:MI'),
+			DEFAULT,
 			DEFAULT,
 			#{returnPd},
 			#{locationT},
-			#{productStatus}
+			#{productStatus},
+			#{nickname},
+			#{score}
 		)
 	</insert>
 	
@@ -261,7 +265,7 @@
 		VALUES(
 			SEQ_FILENO.NEXTVAL,
 			#{refBno},
-			TO_CHAR(DEFAULT, 'YYYY.MM.DD HH24:MI'),
+			DEFAULT,
 			#{fileLevel},
 			#{filePath},
 			#{originName},
@@ -305,7 +309,7 @@
 			#{requestPrice},
 			#{goodsId},
 			#{requestWriter},
-			TO_CHAR(DEFAULT, 'YYYY.MM.DD HH24:MI'),
+			DEFAULT,
 			#{nickname},
 			#{score}
 		)
@@ -326,7 +330,7 @@
 			#{replyContent},
 			#{goodsId},
 			#{replyWriter},
-			TO_CHAR(DEFAULT, 'YYYY.MM.DD HH24:MI'),
+			DEFAULT,
 			#{nickname},
 			#{score}
 		)
@@ -345,7 +349,7 @@
 			#{nreplyContent},
 			#{replyNo},
 			#{nreplyWriter},
-			TO_CHAR(DEFAULT, 'YYYY.MM.DD HH24:MI')
+			DEFAULT
 		)
 	</insert>
 </mapper>
