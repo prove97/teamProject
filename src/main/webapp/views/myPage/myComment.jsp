@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -178,7 +179,10 @@
                                         <div id="replyContent">${r.replyContent}</div>
                                         <div id="boardTitle">게시글: ${r.product.title}</div>
                                     </td>
-                                    <td id="enrollDate">${r.replyDate}</td>
+                                    <td id="enrollDate">
+                                        <fmt:parseDate value="${r.replyDate}" var="date" pattern="yyyy-MM-dd HH:mm:ss" />
+                                        <fmt:formatDate value="${date}" pattern="yyyy-MM-dd" />
+                                    </td>
                                 </tr>
                             </c:forEach>
                             

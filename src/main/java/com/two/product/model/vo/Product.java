@@ -1,6 +1,5 @@
 package com.two.product.model.vo;
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 public class Product {
